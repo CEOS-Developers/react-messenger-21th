@@ -2,6 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
     :root{
+    }
+    * {
         box-sizing: border-box;
     }
     body {
@@ -11,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
         display: flex;
         justify-content: center;
         align-items: center;
+        box-sizing: border-box;
     }
     ul{
         list-style: none;

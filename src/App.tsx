@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import NavBar from "./components/NavBar";
+import FriendPage from "./components/FriendPage";
 
 function App() {
   return (
     <>
       <GlobalStyles />
       <Container>
+        <FriendPage />
         <NavBar />
       </Container>
     </>
@@ -16,10 +18,10 @@ function App() {
 export default App;
 
 const Container = styled.div`
-  display: flex;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 44px;
   position: relative;
-  justify-content: center;
-  align-items: center;
   width: 375px;
   height: 100vh;
   background: rgb(255, 255, 255);
