@@ -4,7 +4,6 @@ import chat from "/image/chat.svg";
 import teamRoom from "/image/teamRoom.svg";
 import news from "/image/news.svg";
 import plus from "/image/plus.svg";
-import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
