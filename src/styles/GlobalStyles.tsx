@@ -2,12 +2,18 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
     :root{
-        back-ground-color: #f5f5f5;
+        box-sizing: border-box;
     }
     body {
+        background:rgb(225, 225, 225);
         margin: 0;
         padding: 0;
-        font-family: 'Roboto', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    ul{
+        list-style: none;
     }
 `;
 
