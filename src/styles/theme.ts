@@ -23,4 +23,8 @@ const colors = {
   profileBackground: 'linear-gradient( #FFFFFF, #92C6FF)',
 }
 
-export { colors }
+const theme = {
+  colors,
+}
+
+export default theme

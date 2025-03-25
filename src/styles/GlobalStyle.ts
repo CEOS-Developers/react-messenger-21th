@@ -14,6 +14,10 @@ body, html {
   height: 100%;
 }
 
+body{
+  font-family: 'Pretendard', sans-serif;
+}
+
 a {
   text-decoration: none;
   color: inherit;
