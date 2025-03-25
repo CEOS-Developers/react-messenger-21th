@@ -1,0 +1,38 @@
+@import 'tailwindcss';
+@import url('./theme.css');
+
+:root {
+	--color-main-400: #177bff;
+	--color-main-300: #98c4ff;
+	--color-main-200: #e8f2ff;
+	--color-main-100: #f8fbff;
+
+	--color-black-900: #090d13; /* black */
+	--color-black-700: #373d45;
+	--color-black-600: #4f5760;
+	--color-black-500: #6f7780;
+	--color-black-400: #98a0a9;
+	--color-black-300: #b9bfc6;
+	--color-black-200: #d3d8de;
+	--color-black-100: #f0f3f6;
+	--color-black-000: #ffffff; /* white */
+
+	--color-blue-200: #98c4ff; /* 프로필 진한 색 */
+	--color-blue-100: #e8f2ff; /* 프로필 연한 색 */
+
+	--color-yellow-200: #ffe28b;
+	--color-yellow-100: #fff9e8;
+
+	--color-purple-200: #ad9bff;
+	--color-purple-100: #f6f4ff;
+
+	--color-pink-200: #ff98f6;
+	--color-pink-100: #fff0fe;
+
+	--color-orange-200: #ffb898;
+	--color-orange-100: #fff2ec;
+}
+
+body {
+	color: var(--color-black-900);
+}
