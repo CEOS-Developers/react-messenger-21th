@@ -1,14 +1,17 @@
 import '@/styles/global.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ChatRoom from './pages/ChatRoom';
+import Frame from './components/Frame';
 
 function App() {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/chatroom/:chatRoomId" element={<ChatRoom />} />
-			</Routes>
-		</BrowserRouter>
+		<Frame>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/chatroom/:chatRoomId" element={<ChatRoom />} />
+				</Routes>
+			</BrowserRouter>
+		</Frame>
 	);
 }
 
