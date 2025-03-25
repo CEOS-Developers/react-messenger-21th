@@ -18,8 +18,6 @@ function App() {
 export default App;
 
 const Container = styled.div`
-  padding-left: 16px;
-  padding-right: 16px;
   padding-top: 44px;
   position: relative;
   width: 375px;
