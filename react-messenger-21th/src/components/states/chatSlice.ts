@@ -71,8 +71,14 @@ const chatSlice = createSlice({
   name: 'chat',
   initialState,
   reducers: {
-    sendMessage: (state, action: PayloadAction<Message>) => {
-      state.messages.push(action.payload);
+    // 채팅 메시지 보내기                    // isMine의 정보를 제외한 데이터만 전달
+    sendMessage: (state, action: PayloadAction<Omit<Message, 'isMine'>>) => {
+      const newMessage = {
+        ...action.payload,
+        // isMine 정보를 id 비교를 통해 자동 설정
+        isMine: action.payload.senderId === state.currentSelectedUser.id, // ✅ 자동 설정
+      };
+      state.messages.push(newMessage);
     },
     // 채팅 파트너 상태 변경
     // 이미 있는 사람 전달 -> 삭제 / 없는 사람 전달 -> 추가
@@ -102,5 +108,5 @@ const chatSlice = createSlice({
   },
 });
 
-export const { sendMessage } = chatSlice.actions;
+export const { sendMessage, switchChatPartner } = chatSlice.actions;
 export default chatSlice.reducer;
