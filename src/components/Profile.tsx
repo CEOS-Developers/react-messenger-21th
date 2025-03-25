@@ -1,18 +1,24 @@
 import styled from "styled-components";
+import MyBottomSheets from "./MyBottomSheet";
+import { useState } from "react";
 interface ProfileProps {
   name: string;
   type: string;
 }
 const Profile = ({ name, type }: ProfileProps) => {
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
   return (
-    <ProfileContainer>
-      <ProfileDetail>
+    <>
+      <ProfileContainer onClick={() => setIsSheetOpen(true)}>
         <ProfileImg>
           <Status type={type} />
         </ProfileImg>
         <ProfileName type={type}>{name}</ProfileName>
-      </ProfileDetail>
-    </ProfileContainer>
+      </ProfileContainer>
+      {isSheetOpen && type === "me" && (
+        <MyBottomSheets isClose={() => setIsSheetOpen(false)} />
+      )}
+    </>
   );
 };
 export default Profile;
@@ -20,18 +26,12 @@ const ProfileName = styled.div<{ type: string }>`
   font-size: 14px;
   weight: ${(props) => (props.type === "AI" ? "600" : "400")};
 `;
-const ProfileDetail = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 13px;
-`;
 const ProfileContainer = styled.div`
   height: 58px;
   padding: 10px 16px;
   display: flex;
   align-items: center;
+  gap: 13px;
 `;
 const ProfileImg = styled.div`
   width: 38px;

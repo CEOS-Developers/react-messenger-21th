@@ -21,6 +21,7 @@ const NavContainer = styled.nav`
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 1;
   display: flex;
   justify-content: space-around;
   align-items: center;
