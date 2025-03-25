@@ -3,6 +3,9 @@ import camera from "/image/camera.svg";
 import mychat from "/image/mychat.svg";
 import files from "/image/files.svg";
 import setting from "/image/setting.svg";
+import call from "/image/call.svg";
+import email from "/image/email.svg";
+import birth from "/image/birth.svg";
 
 interface MyBottomSheetsProps {
   isClose: () => void;
@@ -25,24 +28,51 @@ const MyBottomSheets = ({ isClose }: MyBottomSheetsProps) => {
         </Contents>
         <MyMenu>
           <MenuItem>
-            <MenuIcon src={mychat} />
+            <img src={mychat} />
             내게쓰기
           </MenuItem>
           <MenuItem>
-            <MenuIcon src={files} />
+            <img src={files} />
             파일함
           </MenuItem>
           <MenuItem>
-            <MenuIcon src={setting} />
+            <img src={setting} />
             상세설정
           </MenuItem>
         </MyMenu>
+        <Info>
+          <InfoItem>
+            <img src={email} />
+            A123456@nate.com
+          </InfoItem>
+          <InfoItem>
+            <img src={call} />
+            010-1234-5678
+          </InfoItem>
+          <InfoItem>
+            <img src={birth} />
+            1992.12.25
+          </InfoItem>
+        </Info>
       </BottomSheet>
     </OverLay>
   );
 };
 export default MyBottomSheets;
-const MenuIcon = styled.img``;
+const InfoItem = styled.div`
+  padding: 8px 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #111111;
+`;
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+`;
 const MenuItem = styled.div`
   width: calc(100% / 3);
   height: 90px;
