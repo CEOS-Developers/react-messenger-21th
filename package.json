@@ -13,6 +13,7 @@
     "@types/styled-system": "^5.1.23",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router": "^7.4.0",
     "styled-components": "^6.1.16"
   },
   "devDependencies": {
