@@ -1,9 +1,5 @@
 import { css } from 'styled-components'
-
-interface ExecutionContext {
-  $isM: boolean
-  $isR: boolean
-}
+import StyledProps from '../interface/styledProps'
 
 const fontWeight = {
   Bold: '700',
@@ -32,21 +28,21 @@ const Headline3 = css`
   line-height: 155%;
   letter-spacing: calc(-0.1% * 20px);
 `
-const Subhead = css<ExecutionContext>`
+const Subhead = css<StyledProps>`
   font-weight: ${({ $isM }) => ($isM ? fontWeight.Medium : fontWeight.Bold)};
   font-size: 18px;
   line-height: 150%;
   letter-spacing: calc(-0.1% * 18px);
 `
 
-const Body_1 = css<ExecutionContext>`
+const Body_1 = css<StyledProps>`
   font-weight: ${({ $isM }) => ($isM ? fontWeight.Medium : fontWeight.Bold)};
   font-size: 16px;
   line-height: 150%;
   letter-spacing: calc(-0.1% * 16px);
 `
 
-const Body_2 = css<ExecutionContext>`
+const Body_2 = css<StyledProps>`
   font-weight: ${({ $isM, $isR }) =>
     $isM ? fontWeight.Medium : $isR ? fontWeight.Regular : fontWeight.Bold};
   font-size: 14px;
@@ -54,7 +50,7 @@ const Body_2 = css<ExecutionContext>`
   letter-spacing: calc(-0.1% * 14px);
 `
 
-const Caption = css<ExecutionContext>`
+const Caption = css<StyledProps>`
   font-weight: ${({ $isM }) => ($isM ? fontWeight.Medium : fontWeight.Bold)};
   font-size: 12px;
   line-height: 140%;
