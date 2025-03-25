@@ -70,7 +70,7 @@ const TextInput = styled.input`
   }
 `;
 const StatusText = styled.div`
-  font-size: 16px;
+  font-size: 14px;
   margin-left: 8px;
   height: 20px;
   font-weight: 400;

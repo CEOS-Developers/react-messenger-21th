@@ -32,6 +32,7 @@ const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 13px;
+  cursor: pointer;
 `;
 const ProfileImg = styled.div`
   width: 38px;
