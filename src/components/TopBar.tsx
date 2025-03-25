@@ -4,7 +4,7 @@ import Back from '@/assets/icons/back.svg?react';
 import Search from '@/assets/icons/search.svg?react';
 import Menu from '@/assets/icons/menu.svg?react';
 
-import HeaderButton from '../HeaderButton';
+import HeaderButton from './HeaderButton';
 import clsx from 'clsx';
 
 export default function TopBar({ content, onClickContent }: { content: string; onClickContent?: () => void }) {
