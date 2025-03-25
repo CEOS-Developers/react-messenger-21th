@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import FriendPage from "./pages/FriendPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ChatPage from "./pages/ChatPage";
+import ChatRoomPage from "./pages/ChatRoomPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<FriendPage />} />
             <Route path="/chat" element={<ChatPage />} />
+            <Route path="/chatRoom" element={<ChatRoomPage />} />
           </Routes>
           <NavBar />
         </BrowserRouter>

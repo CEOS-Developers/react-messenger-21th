@@ -6,59 +6,74 @@ import setting from "/image/setting.svg";
 import call from "/image/call.svg";
 import email from "/image/email.svg";
 import birth from "/image/birth.svg";
+import arrowDown from "/image/arrowDown.svg";
+import { useState } from "react";
+import MyModal from "./MyModal";
 
 interface MyBottomSheetsProps {
   isClose: () => void;
 }
 const MyBottomSheets = ({ isClose }: MyBottomSheetsProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <OverLay onClick={isClose}>
-      <BottomSheet onClick={(e) => e.stopPropagation()}>
-        <CloseButton onClick={isClose} />
-        <Contents>
-          <MyImg>
-            <Camera src={camera} />
-          </MyImg>
-          <MyName>김민수</MyName>
-          <MyStatus>
-            <StatusIcon />
-            <StatusText>대화가능</StatusText>
-          </MyStatus>
-          <TextInput placeholder="대화명을 입력해보세요" />
-        </Contents>
-        <MyMenu>
-          <MenuItem>
-            <img src={mychat} />
-            내게쓰기
-          </MenuItem>
-          <MenuItem>
-            <img src={files} />
-            파일함
-          </MenuItem>
-          <MenuItem>
-            <img src={setting} />
-            상세설정
-          </MenuItem>
-        </MyMenu>
-        <Info>
-          <InfoItem>
-            <img src={email} />
-            A123456@nate.com
-          </InfoItem>
-          <InfoItem>
-            <img src={call} />
-            010-1234-5678
-          </InfoItem>
-          <InfoItem>
-            <img src={birth} />
-            1992.12.25
-          </InfoItem>
-        </Info>
-      </BottomSheet>
-    </OverLay>
+    <>
+      {isModalOpen && <MyModal isClose={() => setIsModalOpen(false)} />}
+      <OverLay onClick={isClose}>
+        <BottomSheet onClick={(e) => e.stopPropagation()}>
+          <CloseButton onClick={isClose} />
+          <Contents>
+            <MyImg>
+              <Camera src={camera} />
+            </MyImg>
+            <MyName>김민수</MyName>
+            <MyStatus>
+              <StatusIcon />
+              <StatusText>대화가능</StatusText>
+              <Arrow
+                src={arrowDown}
+                onClick={() => setIsModalOpen(!isModalOpen)}
+              />
+            </MyStatus>
+            <TextInput placeholder="대화명을 입력해보세요" />
+          </Contents>
+          <MyMenu>
+            <MenuItem>
+              <img src={mychat} />
+              내게쓰기
+            </MenuItem>
+            <MenuItem>
+              <img src={files} />
+              파일함
+            </MenuItem>
+            <MenuItem>
+              <img src={setting} />
+              상세설정
+            </MenuItem>
+          </MyMenu>
+          <Info>
+            <InfoItem>
+              <img src={email} />
+              A123456@nate.com
+            </InfoItem>
+            <InfoItem>
+              <img src={call} />
+              010-1234-5678
+            </InfoItem>
+            <InfoItem>
+              <img src={birth} />
+              1992.12.25
+            </InfoItem>
+          </Info>
+        </BottomSheet>
+      </OverLay>
+    </>
   );
 };
 export default MyBottomSheets;
+
+const Arrow = styled.img`
+  cursor: pointer;
+`;
 const InfoItem = styled.div`
   padding: 8px 4px;
   display: flex;
@@ -103,6 +118,7 @@ const StatusText = styled.div`
   font-size: 14px;
   margin-left: 8px;
   height: 20px;
+  margin-right: 2px;
   font-weight: 400;
 `;
 const StatusIcon = styled.div`

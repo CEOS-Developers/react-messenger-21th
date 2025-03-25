@@ -3,6 +3,7 @@ import manage from "/image/manage.svg";
 import search from "/image/search.svg";
 import addFriend from "/image/addFriend.svg";
 import ChatToggle from "../components/ChatToggle";
+import ChatContents from "../components/ChatContents";
 
 const ChatPage = () => {
   return (
@@ -17,6 +18,7 @@ const ChatPage = () => {
           </SubNav>
         </Title>
         <ChatToggle />
+        <ChatContents />
       </PageHeader>
     </>
   );

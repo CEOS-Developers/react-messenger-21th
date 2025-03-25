@@ -26,15 +26,17 @@ const ChatToggle = () => {
 export default ChatToggle;
 const Slider = styled.div<{ active: string }>`
   position: absolute;
-  width: 50%;
-  height: 100%;
+  width: calc(50% - 4px);
+  height: 38px;
   background-color: #ffffff;
   border: 1px solid #6a00ff;
   border-radius: 100px;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   z-index: 1;
+  left: 2px;
+  top: 2px;
   transform: ${({ active }) =>
-    active === "group" ? "translateX(100%)" : "translateX(0)"};
+    active === "group" ? "translateX(102%)" : "translateX(0)"};
 `;
 const ToggleContainer = styled.div`
   display: flex;
@@ -46,6 +48,8 @@ const ToggleContainer = styled.div`
   background: #f5f7fa;
   border-radius: 24px;
   margin-top: 8px;
+  padding: 2px;
+  margin-bottom: 21.5px;
 `;
 const ToggleButton = styled.button<{ active?: boolean }>`
   flex: 1;
