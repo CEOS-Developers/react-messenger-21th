@@ -1,13 +1,14 @@
 // src/features/chatSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from 'uuid';
 
-type Message = {
-  id: string;
-  senderId: string;
-  receiverId: string;
+export type Message = {
+  id: string; // 메시지 각각의 아이디
+  senderId: string; // 보낸 사람의 고유 아이디
+  receiverId: string; // 받은 사람의 고유 아이디
   text: string;
-  timestamp: string;
-  isMine: boolean;
+  timestamp: string; // 보낸 시간 타임스탬프
+  isMine: boolean; // 현재 선택된 유저와 일치 여부
 };
 
 // User 기본 정보 구조
@@ -26,45 +27,49 @@ interface ChatState {
 }
 
 // 초기 데이터 세팅
+const idForMe = uuidv4();
+const idForYou = uuidv4();
+const userMe: User = {
+  id: idForMe,
+  name: '이지후',
+  image: '/src/assets/icons/ProfileDarkGreyS.svg',
+};
+const userYou: User = {
+  id: idForYou,
+  name: '김서연',
+  image: '/src/assets/icons/ProfileWhiteS.svg',
+};
+
 const initialState: ChatState = {
   messages: [
     {
-      id: '1',
-      senderId: '123',
-      receiverId: 'me',
+      id: uuidv4(),
+      senderId: idForYou,
+      receiverId: idForMe,
       text: '안녕!',
       timestamp: '2024-03-24T12:00:00',
       isMine: false,
     },
     {
-      id: '2',
-      senderId: '123',
-      receiverId: 'me',
+      id: uuidv4(),
+      senderId: idForYou,
+      receiverId: idForYou,
       text: '점심 먹었어?',
       timestamp: '2024-03-24T12:02:00',
       isMine: false,
     },
     {
-      id: '3',
-      senderId: 'me',
-      receiverId: '123',
+      id: uuidv4(),
+      senderId: idForMe,
+      receiverId: idForYou,
       text: '아직!',
       timestamp: '2024-03-24T12:05:00',
       isMine: true,
     },
   ],
-  currentSelectedUser: {
-    id: 'me',
-    name: '이지후',
-    image: '/ProfileDarkGrey.svg',
-  },
-  currentChatPartner: [
-    { id: '123', name: '김서연', image: '/ProfileWhiteS.svg' },
-  ],
-  users: [
-    { id: 'me', name: '이지후', image: '/ProfileDarkGrey.svg' },
-    { id: '123', name: '김서연', image: '/ProfileWhiteS.svg' },
-  ],
+  currentSelectedUser: userMe,
+  currentChatPartner: [userYou],
+  users: [userMe, userYou],
 };
 
 const chatSlice = createSlice({
