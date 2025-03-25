@@ -30,4 +30,5 @@ const Container = styled.div`
   width: 375px;
   height: 100dvh;
   background: rgb(255, 255, 255);
+  overflow: hidden;
 `;

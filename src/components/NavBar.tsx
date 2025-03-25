@@ -32,9 +32,9 @@ const NavContainer = styled.nav`
   align-items: center;
   background: rgb(255, 255, 255);
   width: 100%;
-  height: 48px;
-  margin-bottom: 34px;
+  height: 82px;
   border-top: 1px solid #e0e5eb;
+  padding-bottom: 34px;
 `;
 const IconImg = styled.img`
   cursor: pointer;
