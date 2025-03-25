@@ -1,0 +1,17 @@
+[
+	{
+		"id": 1,
+		"name": "임이솔",
+		"color": "blue"
+	},
+	{
+		"id": 2,
+		"name": "김진현",
+		"color": "purple"
+	},
+	{
+		"id": 3,
+		"name": "하은지",
+		"color": "blue"
+	}
+]
