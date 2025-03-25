@@ -1,0 +1,127 @@
+@import 'tailwindcss'; /* Tailwind CSS */
+
+@theme {
+  /* Headline Typography System */
+  --text-headline-01: 28px;
+  --text-headline-01--line-height: 140%;
+  --text-headline-01--letter-spacing: 0.001em;
+  --text-headline-01--font-weight: 500;
+
+  --text-headline-02: 24px;
+  --text-headline-02--line-height: 140%;
+  --text-headline-02--letter-spacing: 0.001em;
+  --text-headline-02--font-weight: 500;
+
+  --text-headline-03: 20px;
+  --text-headline-03--line-height: 140%;
+  --text-headline-03--letter-spacing: 0.001em;
+  --text-headline-03--font-weight: 600;
+
+  --text-headline-04: 20px;
+  --text-headline-04--line-height: 140%;
+  --text-headline-04--letter-spacing: 0.001em;
+  --text-headline-04--font-weight: 500;
+
+  --text-headline-05: 18px;
+  --text-headline-05--line-height: 140%;
+  --text-headline-05--letter-spacing: 0.001em;
+  --text-headline-05--font-weight: 500;
+
+  --text-headline-06: 12px;
+  --text-headline-06--line-height: 140%;
+  --text-headline-06--letter-spacing: 0.001em;
+  --text-headline-06--font-weight: 500;
+
+  /* Subhead Typography System */
+  --text-subhead-01: 16px;
+  --text-subhead-01--line-height: 140%;
+  --text-subhead-01--letter-spacing: 0.001em;
+  --text-subhead-01--font-weight: 600;
+
+  --text-subhead-02: 16px;
+  --text-subhead-02--line-height: 140%;
+  --text-subhead-02--letter-spacing: 0.001em;
+  --text-subhead-02--font-weight: 500;
+
+  --text-subhead-03: 14px;
+  --text-subhead-03--line-height: 140%;
+  --text-subhead-03--letter-spacing: 0.001em;
+  --text-subhead-03--font-weight: 500;
+
+  /* Body Typography System */
+  --text-body-01: 16px;
+  --text-body-01--line-height: 140%;
+  --text-body-01--letter-spacing: 0.001em;
+  --text-body-01--font-weight: 500;
+
+  --text-body-02: 16px;
+  --text-body-02--line-height: 140%;
+  --text-body-02--letter-spacing: 0.001em;
+  --text-body-02--font-weight: 400;
+
+  /* Caption Typography System */
+  --text-caption-01: 16px;
+  --text-caption-01--line-height: 140%;
+  --text-caption-01--letter-spacing: 0.001em;
+  --text-caption-01--font-weight: 500;
+
+  --text-caption-02: 14px;
+  --text-caption-02--line-height: 140%;
+  --text-caption-02--letter-spacing: 0.001em;
+  --text-caption-02--font-weight: 500;
+
+  --text-caption-03: 10px;
+  --text-caption-03--line-height: 140%;
+  --text-caption-03--letter-spacing: 0.001em;
+  --text-caption-03--font-weight: 700;
+
+  --text-caption-04: 10px;
+  --text-caption-04--line-height: 140%;
+  --text-caption-04--letter-spacing: 0.001em;
+  --text-caption-04--font-weight: 500;
+
+  /* Grayscale Opacity */
+  --color-black-tp-01: rgba(0, 0, 0, 0.8);
+  --color-black-tp-02: rgba(0, 0, 0, 0.6);
+  --color-black-tp-03: rgba(0, 0, 0, 0.4);
+  --color-black-tp-04: rgba(0, 0, 0, 0.1);
+
+  /* White Opacity */
+  --color-white-tp-01: rgba(255, 255, 255, 0.8);
+  --color-white-tp-02: rgba(255, 255, 255, 0.5);
+  --color-white-tp-03: rgba(255, 255, 255, 0.3);
+  --color-white-tp-04: rgba(255, 255, 255, 0.1);
+
+  /* Grayscale Color System */
+  --color-grayscale-00-black: #000000;
+  --color-grayscale-01: #606060;
+  --color-grayscale-02: #8d8d8d;
+  --color-grayscale-03: #bebebe;
+  --color-grayscale-04: #e4e4e4;
+  --color-grayscale-05: #f5f5f5;
+  --color-grayscale-06: #fbfbfb;
+  --color-grayscale-07-white: #ffffff;
+
+  /* Color Color System */
+  --color-point-red: #ff7a7a;
+  --color-point-green: #6de67b;
+
+  --color-background-red: #ffa79f;
+  --color-background-green: #c9ffcf;
+  --color-background-mint: #c6ece1;
+  --color-background-blue-01: #c8e9f9;
+  --color-background-blue-02: #b5c3d8;
+  --color-background-blue-02-opacity: rgba(181, 195, 216, 0.9);
+
+  /* Gradient Color System */
+  --color-graident-01-from: #6de67b;
+  --color-gradient-01-via: #c8e9f9;
+  --color-gradient-01-to: #c9ffcf;
+
+  --color-gradient-02-from: #ffa79f;
+  --color-gradient-02-via: #c6ece1;
+  --color-gradient-02-to: #c8e9f9;
+
+  /* Phone Grid */
+  --spacing-phone-width: 375px;
+}
