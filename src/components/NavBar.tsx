@@ -4,12 +4,17 @@ import chat from "/image/chat.svg";
 import teamRoom from "/image/teamRoom.svg";
 import news from "/image/news.svg";
 import plus from "/image/plus.svg";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
     <NavContainer>
-      <IconImg src={friend} />
-      <IconImg src={chat} />
+      <Link to="/">
+        <IconImg src={friend} />
+      </Link>
+      <Link to="/chat">
+        <IconImg src={chat} />
+      </Link>
       <IconImg src={teamRoom} />
       <IconImg src={news} />
       <IconImg src={plus} />

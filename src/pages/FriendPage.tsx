@@ -2,7 +2,7 @@ import styled from "styled-components";
 import manage from "/image/manage.svg";
 import search from "/image/search.svg";
 import addFriend from "/image/addFriend.svg";
-import Profile from "./Profile";
+import Profile from "../components/Profile";
 
 const FriendPage = () => {
   const friendList = ["송하윤", "배성일", "박재영"];
@@ -47,7 +47,7 @@ const Divider = styled.div`
   color: #676773;
   background: #f5f7fa;
 `;
-const Title = styled.div`
+export const Title = styled.div`
   font-size: 24px;
   font-weight: 600;
   display: flex;

@@ -1,15 +1,22 @@
 import styled from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import NavBar from "./components/NavBar";
-import FriendPage from "./components/FriendPage";
+import FriendPage from "./pages/FriendPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ChatPage from "./pages/ChatPage";
 
 function App() {
   return (
     <>
       <GlobalStyles />
       <Container>
-        <FriendPage />
-        <NavBar />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<FriendPage />} />
+            <Route path="/chat" element={<ChatPage />} />
+          </Routes>
+          <NavBar />
+        </BrowserRouter>
       </Container>
     </>
   );
@@ -21,6 +28,6 @@ const Container = styled.div`
   padding-top: 44px;
   position: relative;
   width: 375px;
-  height: 100vh;
+  height: 100dvh;
   background: rgb(255, 255, 255);
 `;
