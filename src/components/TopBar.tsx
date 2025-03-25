@@ -12,7 +12,7 @@ export default function TopBar({ content, onClickContent }: { content: string; o
 	const opacity = pathname.split('/').includes('chatroom') ? 0.3 : 0.1;
 
 	return (
-		<div className="px-5 py-2.5 grid grid-cols-[4.75rem_auto_4.75rem] bg-black-200 items-center">
+		<div className="sticky px-5 py-2.5 grid grid-cols-[4.75rem_auto_4.75rem] bg-black-200 items-center">
 			<button>
 				<Back className="text-black-300" />
 			</button>
