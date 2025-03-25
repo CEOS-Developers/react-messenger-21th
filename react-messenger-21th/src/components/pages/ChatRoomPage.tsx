@@ -7,7 +7,9 @@ const ChatRoomPage: React.FC = () => {
   return (
     <s.ChatContainer>
       <s.UpperBarContainer></s.UpperBarContainer>
-      <ChatBoard />
+      <s.ChatContentsContainer>
+        <ChatBoard />
+      </s.ChatContentsContainer>
       <s.BottomBarContainer>
         <ChatInput />
       </s.BottomBarContainer>
