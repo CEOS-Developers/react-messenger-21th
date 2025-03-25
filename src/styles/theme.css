@@ -110,3 +110,35 @@
 .border-black-000 {
 	border-color: var(--color-black-000);
 }
+
+/* 프로필 색상 유틸리티 클래스 */
+.bg-profile-blue {
+	background-color: var(--profile-blue-100); /* background */
+}
+.bg-profile-yellow {
+	background-color: var(--profile-yellow-100);
+}
+.bg-profile-purple {
+	background-color: var(--profile-purple-100);
+}
+.bg-profile-pink {
+	background-color: var(--profile-pink-100);
+}
+.bg-profile-orange {
+	background-color: var(--profile-orange-100);
+}
+.color-profile-blue {
+	color: var(--profile-blue-200); /* color */
+}
+.color-profile-yellow {
+	color: var(--profile-yellow-200);
+}
+.color-profile-purple {
+	color: var(--profile-purple-200);
+}
+.color-profile-pink {
+	color: var(--profile-pink-200);
+}
+.color-profile-orange {
+	color: var(--profile-orange-200);
+}
