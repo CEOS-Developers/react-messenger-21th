@@ -1,7 +1,15 @@
 import '@/styles/global.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ChatRoom from './pages/ChatRoom';
 
 function App() {
-	return <button className="text-main-400 head1-semibold">react-messenger-21th</button>;
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/chatroom/:chatRoomId" element={<ChatRoom />} />
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;
