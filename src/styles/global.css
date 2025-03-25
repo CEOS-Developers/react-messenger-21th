@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import url('./theme.css');
+@import url('./font.css');
 
 :root {
 	--color-main-400: #177bff;
@@ -35,4 +36,8 @@
 
 body {
 	color: var(--color-black-900);
+}
+
+button {
+	cursor: pointer;
 }

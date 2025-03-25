@@ -1,7 +1,7 @@
 import './styles/global.css';
 
 function App() {
-	return <div className="text-main-400">react-messenger-21th</div>;
+	return <button className="text-main-400 head1-semibold">react-messenger-21th</button>;
 }
 
 export default App;
