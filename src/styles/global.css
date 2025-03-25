@@ -1,6 +1,6 @@
-@import 'tailwindcss';
 @import url('./theme.css');
 @import url('./font.css');
+@import 'tailwindcss';
 
 :root {
 	--color-main-400: #177bff;
