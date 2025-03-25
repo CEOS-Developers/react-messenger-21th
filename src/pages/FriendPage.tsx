@@ -8,16 +8,16 @@ const FriendPage = () => {
   const friendList = ["송하윤", "배성일", "박재영"];
   return (
     <>
-      <FriendPageHeader>
+      <PageHeader>
         <Title>
           친구
           <SubNav>
-            <img src={manage} />
             <img src={search} />
+            <img src={manage} />
             <img src={addFriend} />
           </SubNav>
         </Title>
-      </FriendPageHeader>
+      </PageHeader>
       <Profile name="김민수" type="me" />
       <Divider>ChatGPT에게 물어보기</Divider>
       <AIChat>
@@ -37,7 +37,7 @@ const AIChat = styled.div`
   height: 58px;
   background: #dfe3f8;
 `;
-const FriendPageHeader = styled.div`
+export const PageHeader = styled.div`
   padding: 0px 16px;
 `;
 const Divider = styled.div`
@@ -56,7 +56,7 @@ export const Title = styled.div`
   width: 100%;
   height: 48px;
 `;
-const SubNav = styled.div`
+export const SubNav = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
