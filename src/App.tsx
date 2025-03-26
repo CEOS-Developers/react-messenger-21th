@@ -8,7 +8,7 @@ function App() {
 		<Frame>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/chatroom/:chatRoomId" element={<ChatRoom />} />
+					<Route path="/" element={<ChatRoom />} />
 				</Routes>
 			</BrowserRouter>
 		</Frame>
