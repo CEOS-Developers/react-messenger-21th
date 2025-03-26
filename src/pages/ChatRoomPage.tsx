@@ -11,23 +11,28 @@ import { useEffect, useState } from "react";
 
 const ChatRoomPage = () => {
   const [messages, setMessages] = useAtom(chatMessagesAtom);
+  const today = new Date().toISOString().split("T")[0];
   const [input, setInput] = useState("");
   const [isMessage, setIsMessage] = useState(false);
   const [user, setUser] = useAtom(userAtom);
   const [users] = useAtom(usersAtom);
 
   const addMessage = () => {
-    setMessages([
-      ...messages,
-      {
-        [new Date().toISOString().split("T")[0]]: {
-          id: Date.now(),
-          user: user,
-          text: input,
-          time: `${new Date().getHours()}시 ${new Date().getMinutes()}분`,
-        },
-      },
-    ]);
+    setMessages((prev) => {
+      const date = today;
+      if (!prev[date]) {
+        prev[date] = [];
+      }
+      const newMessage = {
+        id: prev[date].length + 1,
+        user: user,
+        otherUser: user == users[0] ? users[1] : users[0],
+        text: input,
+        time: new Date().toLocaleTimeString(),
+      };
+      prev[date].push(newMessage);
+      return { ...prev };
+    });
     setInput("");
     setIsMessage(false);
     console.log(messages);
@@ -41,6 +46,12 @@ const ChatRoomPage = () => {
   };
   const changeUser = () => {
     setUser(users[1]);
+    if (user.id === 1) {
+      setUser(users[1]);
+    }
+    if (user.id === 2) {
+      setUser(users[0]);
+    }
   };
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
@@ -71,21 +82,20 @@ const ChatRoomPage = () => {
           </FrontItem>
         </HeaderBar>
         <ChatContents>
-          {messages.map((date) => (
-            <>
-              {Object.keys(date).map((key) => (
-                <>
-                  <DateDetail>{key}</DateDetail>
-                  {date[key].map((message) => (
-                    <>
-                      <TextContents user={message.user.id === user.id}>
-                        {message.text}
-                      </TextContents>
-                    </>
-                  ))}
-                </>
+          {Object.entries(messages).map(([date, messagesByDate]) => (
+            <div key={date}>
+              <DateContainer>
+                <DateDetail>{date}</DateDetail>
+              </DateContainer>
+              {messagesByDate.map((message) => (
+                <TextContents
+                  key={message.id}
+                  user={message.user.id === user.id}
+                >
+                  {message.text}
+                </TextContents>
               ))}
-            </>
+            </div>
           ))}
         </ChatContents>
         <ChatInputContainer>
@@ -118,25 +128,45 @@ const ChatRoomPage = () => {
   );
 };
 export default ChatRoomPage;
+const DateContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 const DateDetail = styled.div`
   width: 102px;
   height: 26px;
   background: #0000000a;
   color: #767676;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  margin-top: 20px;
   radius: 100px;
 `;
 const TextContents = styled.div<{ user: boolean }>`
   margin-left: ${(props) => (props.user ? "auto" : "0")};
   margin-right: ${(props) => (props.user ? "0" : "auto")};
   background: ${(props) => (props.user ? "#CFD2FE" : "#fff")};
+  width: fit-content;
   max-width: 240px;
   padding: 8px;
+  margin-top: 8px;
+  border-radius: ${(props) =>
+    props.user ? "16px 16px 0px 16px" : "16px 16px 16px 0px"};
+  font-size: 14px;
+  font-weight: 400;
 `;
 const ChatContents = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
   padding: 0px 16px;
+  max-height: 70%;
+  overflow-y: auto;
 `;
 const ChatInput = styled.input`
   border: none;

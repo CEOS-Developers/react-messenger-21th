@@ -1,11 +1,12 @@
 import { atom } from "jotai";
 
 export type ChatMessages = {
-  [key: string]: ChatMessage[];
+  [key: string]: ChatMessageInfo[];
 };
-export type ChatMessage = {
+export type ChatMessageInfo = {
   id: number;
   user: User;
+  otherUser: User;
   text: string;
   time: string;
 };
@@ -25,27 +26,30 @@ export const userAtom = atom<User>({
   status: "online",
 });
 
-export const chatMessagesAtom = atom<ChatMessages[]>([
-  {
-    "2021-10-20": [
-      {
-        id: 1,
-        user: { id: 1, name: "이주희", status: "online" },
-        text: "ㅎㅇㅎㅇ",
-        time: "12시 30분",
-      },
-      {
-        id: 2,
-        user: { id: 2, name: "김상곤", status: "online" },
-        text: "안녕하세요",
-        time: "12시 31분",
-      },
-      {
-        id: 3,
-        user: { id: 1, name: "이주희", status: "online" },
-        text: "과제 좀 그만내라",
-        time: "12시 36분",
-      },
-    ],
-  },
-]);
+export const chatMessagesAtom = atom<ChatMessages>({
+  "2021-10-20": [
+    {
+      id: 1,
+      user: { id: 1, name: "이주희", status: "online" },
+      otherUser:{ id: 2, name: "김상곤", status: "online"},
+      text: "ㅎㅇㅎㅇ",
+      time: "12시 30분",
+    },
+    {
+      id: 2,
+      user: { id: 2, name: "김상곤", status: "online" },
+      otherUser:{ id: 2, name: "김상곤", status: "online"},
+      text: "안녕하세요",
+      time: "12시 31분",
+    },
+  ],
+  "2021-10-21": [
+    {
+      id: 3,
+      user: { id: 1, name: "이주희", status: "online" },
+      otherUser:{ id: 2, name: "김상곤", status: "online"},
+      text: "과제 좀 그만내라",
+      time: "12시 36분",
+    },
+  ],
+});
