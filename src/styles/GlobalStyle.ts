@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
         background: ${({ theme }) => theme.colors.Grayscale[1000]};
     }
 
+    h1, h2, h3, h4, h5, h6, p {
+        margin: 0;
+    }
+
     ul,li {
         list-style: none;
         padding: 0;
