@@ -3,10 +3,12 @@ import { JSX } from 'react/jsx-runtime';
 // mock data
 import { updatedProfileList } from '@/mock/updatedProfile';
 
+import { PROFILE_SIZE_LIST } from '@/constants/Profile';
+
 import ProfileImageBox from '@/components/ProfileImageBox/ProfileImageBox';
+import FriendPageSubTitle from '@/components/FriendPageSubTitle/FriendPageSubTitle';
 
 import * as S from './UpdatedProfileCell.styled';
-import FriendPageSubTitle from '@/components/FriendPageSubTitle/FriendPageSubTitle';
 
 const UpdatedProfileCell = (): JSX.Element => {
   return (
@@ -20,7 +22,7 @@ const UpdatedProfileCell = (): JSX.Element => {
           {updatedProfileList.map((profile) => (
             <S.UpdatedProfileItem key={profile.id}>
               <S.UpdatedProfileItemLink>
-                <ProfileImageBox size={40} />
+                <ProfileImageBox size={PROFILE_SIZE_LIST.updated} />
                 <S.UpdatedProfileName>{profile.name}</S.UpdatedProfileName>
               </S.UpdatedProfileItemLink>
             </S.UpdatedProfileItem>

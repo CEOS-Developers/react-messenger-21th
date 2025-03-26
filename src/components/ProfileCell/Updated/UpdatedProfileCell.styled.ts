@@ -48,4 +48,6 @@ export const UpdatedProfileItemLink = styled.a`
 export const UpdatedProfileName = styled.p`
   ${({ theme }) => theme.fontStyles.Caption1_medium}
   color: ${({ theme }) => theme.colors.Grayscale[1000]};
+
+  user-select: none;
 `;

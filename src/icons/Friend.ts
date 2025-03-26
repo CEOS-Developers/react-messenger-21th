@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import plusIcon from '@/assets/svgs/Friend/plus.svg?react';
 import defaultProfileIcon from '@/assets/svgs/Friend/default-profile.svg?react';
+import giftIcon from '@/assets/svgs/Friend/gift.svg?react';
 
 export const PlusIcon = styled(plusIcon)`
   width: 1.4rem;
@@ -11,4 +12,9 @@ export const PlusIcon = styled(plusIcon)`
 export const DefaultProfileIcon = styled(defaultProfileIcon)<{ $size: number }>`
   width: ${({ $size }) => $size}px;
   height: ${({ $size }) => $size}px;
+`;
+
+export const GiftIcon = styled(giftIcon)`
+  width: 1.4rem;
+  height: fit-content;
 `;
