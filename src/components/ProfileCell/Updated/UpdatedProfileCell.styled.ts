@@ -1,0 +1,62 @@
+import styled from 'styled-components';
+
+export const UpdatedProfileCellContainer = styled.div`
+  width: 100%;
+  height: fit-content;
+  padding: 0.8rem 0 1.6rem 0;
+`;
+
+export const UpdatedProfileCellTitle = styled.h3`
+  padding-left: 2rem;
+  margin-bottom: 1.2rem;
+
+  ${({ theme }) => theme.fontStyles.Caption1_medium}
+  color: ${({ theme }) => theme.colors.Grayscale[500]};
+
+  span {
+    margin-left: 0.6rem;
+  }
+`;
+
+export const UpdatedProfileScrollSection = styled.section`
+  width: 100%;
+  height: fit-content;
+  padding-left: 2rem;
+
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const UpdatedProfileList = styled.ul`
+  position: relative;
+
+  width: 100%;
+  height: fit-content;
+
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+`;
+
+export const UpdatedProfileItem = styled.li`
+  width: fit-content;
+  height: fit-content;
+`;
+
+export const UpdatedProfileItemLink = styled.a`
+  width: 4rem;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+`;
+
+export const UpdatedProfileName = styled.p`
+  ${({ theme }) => theme.fontStyles.Caption1_medium}
+  color: ${({ theme }) => theme.colors.Grayscale[1000]};
+`;
