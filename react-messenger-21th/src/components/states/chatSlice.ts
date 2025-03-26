@@ -3,12 +3,18 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
 export type Message = {
-  id: string; // 메시지 각각의 아이디
-  senderId: string; // 보낸 사람의 고유 아이디
-  receiverId: string; // 받은 사람의 고유 아이디
+  id: string; // text의 고유 ID
+  senderId: string; // 보낸 사람의 ID (채팅방 번호로 나누니까 받는 사람 필요 없음)
   text: string;
-  timestamp: string; // 보낸 시간 타임스탬프
-  isMine: boolean; // 현재 선택된 유저와 일치 여부
+  timestamp: string;
+  isMine: boolean;
+};
+
+// 채팅방 타입 (여러 개의 채팅방을 관리)
+type ChatRoom = {
+  id: string; // 채팅방 ID
+  participants: string[]; // 채팅방 참여자 ID 배열
+  messages: Message[]; // 해당 채팅방의 메시지 리스트
 };
 
 // User 기본 정보 구조
@@ -18,11 +24,11 @@ type User = {
   image: string;
 };
 
-// 채팅방 정보 관리 구조
+// 전체 전역 상태 (채팅방 구조로 수정)
 interface ChatState {
-  messages: Message[];
-  currentSelectedUser: User;
-  currentChatPartner: User[]; // 현재 채팅방 내 대화 중인 상대
+  chatRooms: ChatRoom[]; // 여러 개의 채팅방을 관리
+  currentChatRoomId: string | null; // 현재 선택된 채팅방 ID
+  currentSenderId: string | null;
   users: User[]; // 전체 유저 목록
 }
 
@@ -32,86 +38,97 @@ const idForYou = uuidv4();
 const userMe: User = {
   id: idForMe,
   name: '이지후',
-  image: '/src/assets/icons/ProfileDarkGreyS.svg',
+  image: '/src/assets/icons/ProfileWhiteS.svg',
 };
 const userYou: User = {
   id: idForYou,
   name: '김서연',
-  image: '/src/assets/icons/ProfileWhiteS.svg',
+  image: '/src/assets/icons/ProfileDarkGreyS.svg',
 };
 
+// 초기 데이터
 const initialState: ChatState = {
-  messages: [
+  chatRooms: [
     {
-      id: uuidv4(),
-      senderId: idForYou,
-      receiverId: idForMe,
-      text: '안녕!',
-      timestamp: '2024-03-24T12:00:00',
-      isMine: false,
-    },
-    {
-      id: uuidv4(),
-      senderId: idForYou,
-      receiverId: idForYou,
-      text: '점심 먹었어?',
-      timestamp: '2024-03-24T12:02:00',
-      isMine: false,
-    },
-    {
-      id: uuidv4(),
-      senderId: idForMe,
-      receiverId: idForYou,
-      text: '아직!',
-      timestamp: '2024-03-24T12:05:00',
-      isMine: true,
+      id: 'room1',
+      participants: [idForMe, idForYou], // 예시: 나와 김서연의 채팅방
+      messages: [
+        {
+          id: uuidv4(),
+          senderId: idForYou,
+          text: '안녕!',
+          timestamp: '2024-03-24T12:00:00',
+          isMine: false,
+        },
+        {
+          id: uuidv4(),
+          senderId: idForYou,
+          text: '점심 먹었어?',
+          timestamp: '2024-03-24T12:02:00',
+          isMine: false,
+        },
+        {
+          id: uuidv4(),
+          senderId: idForMe,
+          text: '아직!',
+          timestamp: '2024-03-24T12:05:00',
+          isMine: true,
+        },
+      ],
     },
   ],
-  currentSelectedUser: userMe,
-  currentChatPartner: [userYou],
+  currentChatRoomId: 'room1', // 기본값 설정
+  currentSenderId: idForMe, // 현재 보낸 사람 ID 설정
   users: [userMe, userYou],
 };
 
+// Redux Slice 생성
 const chatSlice = createSlice({
   name: 'chat',
   initialState,
   reducers: {
-    // 채팅 메시지 보내기                    // isMine의 정보를 제외한 데이터만 전달
-    sendMessage: (state, action: PayloadAction<Omit<Message, 'isMine'>>) => {
-      const newMessage = {
-        ...action.payload,
-        // isMine 정보를 id 비교를 통해 자동 설정
-        isMine: action.payload.senderId === state.currentSelectedUser.id, // ✅ 자동 설정
-      };
-      state.messages.push(newMessage);
-    },
-    // 채팅 파트너 상태 변경
-    // 이미 있는 사람 전달 -> 삭제 / 없는 사람 전달 -> 추가
-    // == toggle
-    switchChatPartner: (state, action: PayloadAction<string>) => {
-      // users 배열에서 user id가 전달된 action의 아이디와 일치하는 유저 찾기
-      const selectedUser = state.users.find(
-        (user) => user.id === action.payload,
-      );
-      if (!selectedUser) return; // 일치하는 유저가 없으면 리턴
-
-      // 이미 대화 상대 목록에 있으면 제거, 없으면 추가
-      const isAlreadyInChat = state.currentChatPartner.some(
-        (user) => user.id === selectedUser.id,
-      );
-
-      if (isAlreadyInChat) {
-        // 이미 포함된 유저면 제거
-        state.currentChatPartner = state.currentChatPartner.filter(
-          (user) => user.id !== selectedUser.id,
-        );
-      } else {
-        // 포함되지 않은 유저면 추가
-        state.currentChatPartner.push(selectedUser);
+    // 메시지 전송
+    sendMessage: (
+      state,
+      action: PayloadAction<{
+        roomId: string; // isMine 정보는 빼고
+        message: Omit<Message, 'isMine'>;
+      }>,
+    ) => {
+      const { roomId, message } = action.payload; // room id 가 같은 경우만
+      const chatRoom = state.chatRooms.find((room) => room.id === roomId);
+      if (chatRoom) {
+        // chatRoom.messages에 새로 푸쉬
+        chatRoom.messages.push({
+          ...message,
+          isMine: message.senderId === idForMe, // 자동 설정
+        });
       }
+    },
+
+    // 현재 선택된 채팅방 변경
+    switchChatRoom: (state, action: PayloadAction<string>) => {
+      state.currentChatRoomId = action.payload;
+    },
+
+    // 새로운 채팅방 추가
+    addChatRoom: (
+      state,
+      action: PayloadAction<{ roomId: string; participants: string[] }>,
+    ) => {
+      state.chatRooms.push({
+        id: action.payload.roomId,
+        participants: action.payload.participants,
+        messages: [],
+      });
+    },
+
+    // 보낸 사람 변경 !! (New)
+    switchSender: (state, action: PayloadAction<string>) => {
+      state.currentSenderId = action.payload ?? '';
     },
   },
 });
 
-export const { sendMessage, switchChatPartner } = chatSlice.actions;
+export const { sendMessage, switchChatRoom, addChatRoom } = chatSlice.actions;
 export default chatSlice.reducer;

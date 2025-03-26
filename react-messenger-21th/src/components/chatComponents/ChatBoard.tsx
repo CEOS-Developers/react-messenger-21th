@@ -6,79 +6,45 @@ import ChatBubble from './ChatBubble';
 import styled from 'styled-components';
 
 const ChatBoard: React.FC = () => {
-  const messages = useSelector((state: RootState) => state.chat.messages);
-  const users = useSelector((state: RootState) => state.chat.users); // 유저 정보 가져오기
+  const chatRooms = useSelector((state: RootState) => state.chat.chatRooms);
+  const currentChatRoomId = useSelector(
+    (state: RootState) => state.chat.currentChatRoomId,
+  );
+  const users = useSelector((state: RootState) => state.chat.users);
 
-  // ✅ 메시지를 시간 그룹별로 나누기
-  const groupMessages = () => {
-    const groupedMessages: { date: string; messages: Message[] }[] = [];
-    let lastDate = '';
-    let lastTime = 0;
-
-    messages.forEach((msg) => {
-      const msgDate = new Date(msg.timestamp).toLocaleDateString();
-      const msgTime = new Date(msg.timestamp).getTime();
-
-      // ✅ 날짜가 바뀌면 새로운 그룹 추가
-      if (msgDate !== lastDate) {
-        groupedMessages.push({ date: msgDate, messages: [] });
-        lastDate = msgDate;
-      }
-
-      // ✅ 같은 그룹에 추가 (1분 이내 메시지는 같은 그룹)
-      if (msgTime - lastTime > 60000 || groupedMessages.length === 0) {
-        groupedMessages[groupedMessages.length - 1].messages.push(msg);
-      } else {
-        groupedMessages[groupedMessages.length - 1].messages.push(msg);
-      }
-
-      lastTime = msgTime;
-    });
-
-    return groupedMessages;
-  };
-
-  const groupedMessages = groupMessages();
+  // 현재 선택된 채팅방 찾기
+  const currentChatRoom = chatRooms.find(
+    (room) => room.id === currentChatRoomId,
+  );
+  if (!currentChatRoom) return <p>채팅방을 선택하세요.</p>;
 
   return (
     <ChatContainer>
-      {groupedMessages.map((group, index) => (
-        <div key={index}>
-          {/* ✅ 날짜 스탬프 출력 */}
-          <DateStamp>{group.date}</DateStamp>
-          {group.messages.map((msg, msgIndex) => {
-            // ✅ 현재 메시지의 보낸 유저 정보 찾기
-            const sender = users.find((user) => user.id === msg.senderId);
+      {/* 현재 선택된 채팅방 메시지에 대해*/}
+      {currentChatRoom.messages.map((msg, index) => {
+        {
+          /* 누가 보낸 메시지인지 찾아서 */
+        }
+        const sender = users.find((user) => user.id === msg.senderId);
 
-            // ✅ 같은 그룹 내에서 첫 번째 메시지만 프로필 이미지 표시
-            const showProfile =
-              msgIndex === 0 ||
-              group.messages[msgIndex - 1].senderId !== msg.senderId;
-
-            return (
-              <ChatBubble
-                key={msgIndex}
-                image={sender?.image || '/default-profile.svg'} // 유저 이미지 적용
-                text={msg.text}
-                isMine={msg.isMine}
-                timestamp={msg.timestamp}
-                showProfile={showProfile} // ✅ 프로필 표시 여부 전달
-              />
-            );
-          })}
-        </div>
-      ))}
+        return (
+          <ChatBubble
+            // chatBubble 인자로 보내기
+            key={index}
+            image={sender?.image || '/default-profile.svg'}
+            text={msg.text}
+            isMine={msg.isMine}
+            timestamp={msg.timestamp}
+            showProfile={
+              index === 0 ||
+              currentChatRoom.messages[index - 1].senderId !== msg.senderId
+            }
+          />
+        );
+      })}
     </ChatContainer>
   );
 };
-
-// ✅ 날짜 스탬프 스타일
-const DateStamp = styled.div`
-  text-align: center;
-  font-size: 12px;
-  color: gray;
-  margin: 10px 0;
-`;
 
 // ✅ 전체 채팅 보드 스타일
 const ChatContainer = styled.div`
