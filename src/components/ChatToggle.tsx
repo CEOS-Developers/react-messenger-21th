@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useAtom } from "jotai";
 import styled from "styled-components";
+import { chatRoomTypeAtom } from "../store/message";
 
 const ChatToggle = () => {
-  const [activeTab, setActiveTab] = useState<"personal" | "group">("personal");
+  const [activeTab, setActiveTab] = useAtom(chatRoomTypeAtom);
   return (
     <>
       <ToggleContainer>

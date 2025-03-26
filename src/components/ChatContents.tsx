@@ -1,27 +1,53 @@
+import { useAtom } from "jotai";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import {
+  ChatMessageInfo,
+  ChatMessages,
+  chatRoomsAtom,
+  chatRoomTypeAtom,
+} from "../store/message";
+import { useEffect } from "react";
 
 const ChatContents = () => {
+  const [activeTab] = useAtom(chatRoomTypeAtom);
+  const [chatRooms] = useAtom(chatRoomsAtom);
+  const findPreview = (messages: ChatMessages) => {
+    const keys = Object.keys(messages);
+    const lastKey = keys[keys.length - 1];
+    const lastMessages = messages[lastKey];
+    return lastMessages[lastMessages.length - 1];
+  };
+  useEffect(() => {
+    console.log(chatRooms);
+    Object.keys(chatRooms).map((key) => {
+      console.log(chatRooms[key].type === activeTab);
+    });
+  }, []);
   return (
     <>
-      <Link to="/chatRoom">
-        <ChatContainer>
-          <InfoContainer>
-            <UserImg />
-            <ChatInfo>
-              <UserName>김상곤</UserName>
-              <ChatPreview>
-                수업좀 들어라 아니 근데 진짜 하기 너무 싫고 알골 이란게 나랑
-                그렇게 맞는 것 같지도 않고 더ㅗㅠㄴ오류너ㅗㅠ
-              </ChatPreview>
-            </ChatInfo>
-          </InfoContainer>
-          <DetailInfo>
-            <Date>오전 9:30</Date>
-            <ChatCount>2</ChatCount>
-          </DetailInfo>
-        </ChatContainer>
-      </Link>
+      {Object.keys(chatRooms).map(
+        (key) =>
+          chatRooms[key].type === activeTab && (
+            <Link key={key} to="/chatRoom">
+              <ChatContainer>
+                <InfoContainer>
+                  <UserImg />
+                  <ChatInfo>
+                    <UserName>{chatRooms[key].users[1].name}</UserName>
+                    <ChatPreview>
+                      {findPreview(chatRooms[key].messages).text}
+                    </ChatPreview>
+                  </ChatInfo>
+                </InfoContainer>
+                <DetailInfo>
+                  <Date>{findPreview(chatRooms[key].messages).time}</Date>
+                  <ChatCount>2</ChatCount>
+                </DetailInfo>
+              </ChatContainer>
+            </Link>
+          )
+      )}
     </>
   );
 };

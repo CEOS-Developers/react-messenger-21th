@@ -7,7 +7,7 @@ import inputBar from "/image/inputBar.svg";
 import fileInput from "/image/fileInput.svg";
 import { chatMessagesAtom, userAtom, usersAtom } from "../store/message";
 import { useAtom } from "jotai";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ChatRoomPage = () => {
   const [messages, setMessages] = useAtom(chatMessagesAtom);
@@ -16,6 +16,13 @@ const ChatRoomPage = () => {
   const [isMessage, setIsMessage] = useState(false);
   const [user, setUser] = useAtom(userAtom);
   const [users] = useAtom(usersAtom);
+  const days = ["일", "월", "화", "수", "목", "금", "토"];
+  const containerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   const addMessage = () => {
     setMessages((prev) => {
@@ -28,7 +35,10 @@ const ChatRoomPage = () => {
         user: user,
         otherUser: user == users[0] ? users[1] : users[0],
         text: input,
-        time: new Date().toLocaleTimeString(),
+        time: new Date().toLocaleTimeString("ko-KR", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
       };
       prev[date].push(newMessage);
       return { ...prev };
@@ -81,20 +91,42 @@ const ChatRoomPage = () => {
             <UserName onClick={changeUser}>김상곤</UserName>
           </FrontItem>
         </HeaderBar>
-        <ChatContents>
+        <ChatContents ref={containerRef}>
           {Object.entries(messages).map(([date, messagesByDate]) => (
             <div key={date}>
               <DateContainer>
-                <DateDetail>{date}</DateDetail>
+                <DateDetail>
+                  {new Date(date).getMonth() + 1}월 {new Date(date).getDate()}일{" "}
+                  {days[new Date(date).getDay()]}요일
+                </DateDetail>
               </DateContainer>
-              {messagesByDate.map((message) => (
-                <TextContents
-                  key={message.id}
-                  user={message.user.id === user.id}
-                >
-                  {message.text}
-                </TextContents>
-              ))}
+              {messagesByDate.map((message, index) => {
+                const showTime =
+                  index === messagesByDate.length - 1 ||
+                  message.time !== messagesByDate[index + 1].time;
+                return (
+                  <>
+                    <TextContainer user={message.user.id === user.id}>
+                      {showTime && message.user.id === user.id && (
+                        <Time user={message.user.id === user.id}>
+                          {message.time}
+                        </Time>
+                      )}
+                      <TextContents
+                        key={message.id}
+                        user={message.user.id === user.id}
+                      >
+                        {message.text}
+                      </TextContents>
+                      {showTime && message.user.id !== user.id && (
+                        <Time user={message.user.id === user.id}>
+                          {message.time}
+                        </Time>
+                      )}
+                    </TextContainer>
+                  </>
+                );
+              })}
             </div>
           ))}
         </ChatContents>
@@ -128,6 +160,12 @@ const ChatRoomPage = () => {
   );
 };
 export default ChatRoomPage;
+const TextContainer = styled.div<{ user: boolean }>`
+  display: flex;
+  justify-content: ${(props) => (props.user ? "flex-end" : "flex-start")};
+  align-items: center;
+  gap: 2px;
+`;
 const DateContainer = styled.div`
   width: 100%;
   display: flex;
@@ -149,8 +187,6 @@ const DateDetail = styled.div`
   radius: 100px;
 `;
 const TextContents = styled.div<{ user: boolean }>`
-  margin-left: ${(props) => (props.user ? "auto" : "0")};
-  margin-right: ${(props) => (props.user ? "0" : "auto")};
   background: ${(props) => (props.user ? "#CFD2FE" : "#fff")};
   width: fit-content;
   max-width: 240px;
@@ -262,4 +298,12 @@ const HeaderBar = styled.div`
   background: #fff;
   height: 44px;
   padding: 8px 16px;
+`;
+const Time = styled.span<{ user: boolean }>`
+  padding: 2px;
+  padding-top: 15px;
+  font-size: 12px;
+  color: #a4a8af;
+  margin-top: 4px;
+  width: fit-content;
 `;
