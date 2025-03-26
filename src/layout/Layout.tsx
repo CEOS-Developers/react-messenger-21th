@@ -9,8 +9,7 @@ import * as S from './Layout.styled';
 const Layout = (): JSX.Element => {
   return (
     <S.TopLevelContainer>
-      {/* tabOption 전역 상태 관리 */}
-      <Header tabOption="친구" />
+      <Header />
 
       <S.MainContent>
         <Outlet />

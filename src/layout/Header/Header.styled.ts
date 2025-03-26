@@ -7,7 +7,7 @@ export const HeaderContainer = styled.header`
   z-index: 100;
 
   width: 100%;
-  height: fit-content;
+  height: 70px;
   padding: 1.6rem 2rem;
 
   display: flex;

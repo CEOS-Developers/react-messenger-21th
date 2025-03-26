@@ -1,12 +1,14 @@
+import { TabBarOptionList } from '@/types/TabBar.types';
+
 import * as I from '@/icons/TabBar';
 
-type TabBarType = {
-  name: string;
+type TabBarOptionType = {
+  name: TabBarOptionList;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   path: string;
 };
 
-export const TAB_BAR_LIST: TabBarType[] = [
+export const TAB_BAR_OPTION_LIST: TabBarOptionType[] = [
   {
     name: '친구',
     icon: I.UserIcon,

@@ -8,7 +8,7 @@ export const TabBarContainer = styled.nav`
   z-index: 100;
 
   width: 100%;
-  height: fit-content;
+  height: 80px;
   padding: 0.8rem 3rem 3.2rem;
 
   background: #fbfbfb;

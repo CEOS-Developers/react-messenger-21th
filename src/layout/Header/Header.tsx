@@ -2,16 +2,16 @@ import { JSX } from 'react/jsx-runtime';
 
 import { HEADER_OPTION_LIST } from '@/constants/Header';
 
+import { useTabBarOption } from '@/stores/useTabBarOption';
+
 import * as S from './Header.styled';
 
-type HeaderProps = {
-  tabOption: string;
-};
+const Header = (): JSX.Element => {
+  const { selectedTab } = useTabBarOption();
 
-const Header = ({ tabOption }: HeaderProps): JSX.Element => {
   return (
     <S.HeaderContainer>
-      <S.HeaderTitle>{tabOption}</S.HeaderTitle>
+      <S.HeaderTitle>{selectedTab}</S.HeaderTitle>
       <S.HeaderNavBar>
         <S.HeaderOptionList>
           {HEADER_OPTION_LIST.map((option) => (
