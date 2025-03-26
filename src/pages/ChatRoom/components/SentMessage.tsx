@@ -1,7 +1,9 @@
 import SentArrow from '@/assets/icons/sentArrow.svg?react';
-import Message from './Message';
-import { messageByUserDto } from '@/utils/dto';
+
 import { formatCreatedAt } from '@/utils/formatCreatedAt';
+import type { messageByUserDto } from '@/utils/dto';
+
+import Message from './Message';
 
 export default function SentMessage({ messages }: { messages: messageByUserDto[] }) {
 	return (

@@ -26,6 +26,7 @@ export default function ChatRoom() {
 	const otherUsers = joinedUsers.filter((user) => user.id !== currentUserId);
 	const otherUserContent = createOtherUserContent(otherUsers || null);
 
+	// 초기 데이터 페칭
 	useEffect(() => {
 		const response = getAllMessages(chatRoomId);
 
@@ -33,6 +34,7 @@ export default function ChatRoom() {
 		setMessages(response.messages);
 	}, []);
 
+	// 메시지가 추가될 때마다 유저별 메시지 필터링
 	useEffect(() => {
 		setMessagesByUsers(createMessagesByUsers(messages));
 	}, [messages]);

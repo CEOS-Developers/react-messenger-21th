@@ -1,6 +1,7 @@
+import { ChangeEvent, useState } from 'react';
+
 import Plus from '@/assets/icons/plus.svg?react';
 import Send from '@/assets/icons/send.svg?react';
-import { ChangeEvent, useState } from 'react';
 
 export default function MessageInput({ onSubmit }: { onSubmit: (message: string) => void }) {
 	const [message, setMessage] = useState('');

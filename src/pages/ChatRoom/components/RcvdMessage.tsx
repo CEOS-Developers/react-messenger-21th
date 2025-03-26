@@ -1,8 +1,10 @@
 import RcvdArrow from '@/assets/icons/rcvdArrow.svg?react';
 import Profile from '@/assets/icons/profile.svg?react';
-import Message from './Message';
-import { messagesByUserDto } from '@/utils/dto';
+
 import { formatCreatedAt } from '@/utils/formatCreatedAt';
+import type { messagesByUserDto } from '@/utils/dto';
+
+import Message from './Message';
 
 export default function RcvdMessage({ fromUser, messages }: messagesByUserDto) {
 	const profileBackgroundColor = `bg-profile-${fromUser.color}`;

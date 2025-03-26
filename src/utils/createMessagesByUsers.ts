@@ -1,5 +1,6 @@
-import { MessageDto } from '@/pages/ChatRoom/dto';
-import { messagesByUserDto } from './dto';
+import type { MessageDto } from '@/pages/ChatRoom/dto';
+import type { messagesByUserDto } from './dto';
+
 import { formatCreatedAt } from './formatCreatedAt';
 
 // 유저별 메시지를 하나의 배열로 묶음

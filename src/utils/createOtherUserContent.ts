@@ -1,4 +1,4 @@
-import { UserDto } from '@/pages/ChatRoom/dto';
+import type { UserDto } from '@/pages/ChatRoom/dto';
 
 export const createOtherUserContent = (otherUsers: UserDto[] | null) => {
 	if (otherUsers === null) return '';

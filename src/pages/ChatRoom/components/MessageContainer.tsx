@@ -1,7 +1,9 @@
-import { messagesByUserDto } from '@/utils/dto';
+import { useEffect, useRef } from 'react';
+
+import type { messagesByUserDto } from '@/utils/dto';
+
 import SentMessage from './SentMessage';
 import RcvdMessage from './RcvdMessage';
-import { useEffect, useRef } from 'react';
 
 export default function MessageContainer({
 	messagesByUsers,
