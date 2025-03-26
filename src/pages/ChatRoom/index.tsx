@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 
+import { getAllMessages } from '@/apis/getAllMessages';
+import { createMessagesByUsers } from '@/utils/createMessagesByUsers';
 import { createOtherUserContent } from '@/utils/createOtherUserContent';
 import TopBar from '@/components/TopBar';
 
-import RcvdMessage from './components/RcvdMessage';
-import SentMessage from './components/SentMessage';
-import MessageInput from './components/MessageInput';
+import type { messagesByUserDto } from '@/utils/dto';
+import type { MessageDto, UserDto } from './dto';
 
-import { createMessagesByUsers } from '@/utils/createMessagesByUsers';
-import { getAllMessages } from '@/apis/getAllMessages';
-import { MessageDto, UserDto } from './dto';
-import { messagesByUserDto } from '@/utils/dto';
+import MessageInput from './components/MessageInput';
+import MessageContainer from './components/MessageContainer';
 
 export default function ChatRoom() {
 	const chatRoomId = 1;
@@ -55,15 +54,7 @@ export default function ChatRoom() {
 	return (
 		<div className="relative flex-grow flex flex-col bg-black-200">
 			<TopBar content={otherUserContent} onClickContent={handleTopBarContentClick} />
-			<div className="flex flex-col h-[38.5rem] overflow-y-scroll px-5" style={{ scrollbarWidth: 'none' }}>
-				{messagesByUsers.map((messagesByUser) =>
-					messagesByUser.fromUser.id === currentUserId ? (
-						<SentMessage key={messagesByUser.messages[0].id} messages={messagesByUser.messages} />
-					) : (
-						<RcvdMessage key={messagesByUser.messages[0].id} {...messagesByUser} />
-					),
-				)}
-			</div>
+			<MessageContainer messagesByUsers={messagesByUsers} currentUserId={currentUserId} />
 			<MessageInput onSubmit={handleMessageSubmit} />
 		</div>
 	);
