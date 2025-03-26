@@ -15,6 +15,15 @@ const Container = styled.div`
   box-shadow: 0 0 8px #9aa6b230;
 `
 
+/* 헤더, 푸터 제외한 모든 영역을 가질 컴포넌트 */
+const Content = styled.div`
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
 /* 상단 Status Bar */
 const StatusDiv = styled.div<StyledProps>`
   background-color: ${({ $isTransparent, theme }) =>
@@ -49,4 +58,4 @@ const BlackBar = styled.div`
   margin-top: 21px;
 `
 
-export { Container, StatusDiv, StatusItem, HomeBarDiv, BlackBar }
+export { Container, Content, StatusDiv, StatusItem, HomeBarDiv, BlackBar }

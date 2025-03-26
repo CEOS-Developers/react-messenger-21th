@@ -1,15 +1,15 @@
-import { Container } from '../components/common/Common.Styled'
+import { Container, Content } from '../components/common/Common.Styled'
 import { StatusBar, HomeBar } from '../components/common/Bar'
+import ChatContent from '../components/ChatContent/ChatContent'
 
 const ChatRoom = () => {
-  const s = { Container }
+  const s = { Container, Content }
   return (
-    <div>
-      <s.Container>
-        <StatusBar />
-        <HomeBar />
-      </s.Container>
-    </div>
+    <s.Container>
+      <StatusBar />
+      <ChatContent />
+      <HomeBar />
+    </s.Container>
   )
 }
 
