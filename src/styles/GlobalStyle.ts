@@ -7,6 +7,13 @@ const GlobalStyle = createGlobalStyle`
       'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #000000;
   }
+  
+  :root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
 `;
 
 export default GlobalStyle;
