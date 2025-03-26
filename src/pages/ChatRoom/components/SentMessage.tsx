@@ -11,7 +11,9 @@ export default function SentMessage({ messages }: { messages: messageByUserDto[]
 
 				return (
 					<div key={id} className="flex justify-end">
-						{isTimeVisible && <div className="caption2-regular mr-1.5 mt-auto">{formattedCreatedAt}</div>}
+						{isTimeVisible && (
+							<div className="caption2-regular mr-1.5 mt-auto text-black-500">{formattedCreatedAt}</div>
+						)}
 
 						<Message isReceived={false}>
 							{index === 0 && <SentArrow className="absolute top-[0.1563rem] -right-2" />}

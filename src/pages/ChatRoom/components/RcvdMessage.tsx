@@ -28,7 +28,9 @@ export default function RcvdMessage({ fromUser, messages }: messagesByUserDto) {
 								{content}
 							</Message>
 
-							{isTimeVisible && <div className="ml-1.5 mt-auto caption2-regular">{formattedCreatedAt}</div>}
+							{isTimeVisible && (
+								<div className="ml-1.5 mt-auto caption2-regular text-black-500">{formattedCreatedAt}</div>
+							)}
 						</div>
 					);
 				})}
