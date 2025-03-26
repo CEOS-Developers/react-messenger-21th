@@ -3,6 +3,9 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
+    fontFamily: {
+      sans: ['Pretendard', 'sans-serif'],
+    },
     colors: {
       primary: {
         0: '#39D4A3',
@@ -20,7 +23,28 @@ module.exports = {
         900: '#121214',
       },
     },
-    extend: {},
+    extend: {
+      fontSize: {
+        head0: ['24px', { lineHeight: '36px', letterSpacing: '0px' }],
+        head1: ['20px', { lineHeight: '30px', letterSpacing: '-0.3px' }],
+        title1: ['18px', { lineHeight: '27px', letterSpacing: '-0.3px' }],
+        title2: ['18px', { lineHeight: '27px', letterSpacing: '-0.3px' }],
+        label1: ['16px', { lineHeight: '24px', letterSpacing: '-0.3px' }],
+        label2: ['16px', { lineHeight: '24px', letterSpacing: '-0.3px' }],
+        body1: ['14px', { lineHeight: '21px', letterSpacing: '-0.3px' }],
+        body2: ['14px', { lineHeight: '21px', letterSpacing: '-0.3px' }],
+        caption1: ['12px', { lineHeight: '18px', letterSpacing: '-0.3px' }],
+        caption2: ['12px', { lineHeight: '18px', letterSpacing: '-0.3px' }],
+      },
+      fontWeight: {
+        regular: '400',
+        medium: '500',
+        semibold: '600',
+      },
+      boxShadow: {
+        bottommenu: '0px 0px 12px 0px #00000014',
+      },
+    },
   },
   plugins: [require('tailwind-scrollbar-hide')],
 };
