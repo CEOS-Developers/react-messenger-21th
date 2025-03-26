@@ -1,13 +1,6 @@
 import { MessageDto } from '@/pages/ChatRoom/dto';
 import { messagesByUserDto } from './dto';
-
-const formatCreatedAt = (date: Date) => {
-	return new Intl.DateTimeFormat('ko-KR', {
-		hour: '2-digit',
-		minute: '2-digit',
-		hour12: true,
-	}).format(new Date(date));
-};
+import { formatCreatedAt } from './formatCreatedAt';
 
 // 유저별 메시지를 하나의 배열로 묶음
 export const createMessagesByUsers = (messages: MessageDto[]) => {
