@@ -2,7 +2,6 @@ import { useAtom } from "jotai";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {
-  ChatMessageInfo,
   ChatMessages,
   chatRoomsAtom,
   chatRoomTypeAtom,
@@ -42,7 +41,7 @@ const ChatContents = () => {
                 </InfoContainer>
                 <DetailInfo>
                   <Date>{findPreview(chatRooms[key].messages).time}</Date>
-                  <ChatCount>2</ChatCount>
+                  <ChatCount>1</ChatCount>
                 </DetailInfo>
               </ChatContainer>
             </Link>

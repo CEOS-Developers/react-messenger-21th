@@ -58,6 +58,15 @@ const messages = {
       time: "12시 36분",
     },
   ],
+  "2025-3-22": [
+    {
+      id: 4,
+      user: { id: 2, name: "김상곤", status: "online" },
+      otherUser: { id: 2, name: "김상곤", status: "online" },
+      text: "ㅇㅇ ㅋ",
+      time: "12시 40분",
+    },
+  ],
 };
 export const chatMessagesAtom = atom<ChatMessages>(messages);
 export const chatRoomTypeAtom = atom<"personal" | "group">("personal");
