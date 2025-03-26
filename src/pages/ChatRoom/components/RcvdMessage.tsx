@@ -5,10 +5,15 @@ import { messagesByUserDto } from '@/utils/dto';
 import { formatCreatedAt } from '@/utils/formatCreatedAt';
 
 export default function RcvdMessage({ fromUser, messages }: messagesByUserDto) {
+	const profileBackgroundColor = `bg-profile-${fromUser.color}`;
+	const profilePathColor = `color-profile-${fromUser.color}`;
+
 	return (
 		<div className="flex gap-3 py-2.5">
-			<button className="w-9 h-9 flex justify-center items-center border border-black-100 rounded-full bg-profile-blue">
-				<Profile width={27} height={27} className="color-profile-blue" />
+			<button
+				className={`w-9 h-9 flex justify-center items-center border border-black-100 rounded-full ${profileBackgroundColor}`}
+			>
+				<Profile width={27} height={27} className={profilePathColor} />
 			</button>
 
 			<div className="flex flex-col gap-2">
