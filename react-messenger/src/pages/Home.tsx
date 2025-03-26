@@ -5,7 +5,7 @@ import ProfileSection from '@/components/home/ProfileSection';
 
 const Home = () => {
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full bg-grey-50">
       <NavBar />
       <div className="pt-[44.6px]">
         <ProfileSection />

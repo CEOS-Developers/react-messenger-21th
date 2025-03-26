@@ -42,7 +42,7 @@ module.exports = {
         semibold: '600',
       },
       boxShadow: {
-        bottommenu: '0px 0px 12px 0px #00000014',
+        bottommenu: '0 -4px 12px rgba(0, 0, 0, 0.08)',
       },
     },
   },

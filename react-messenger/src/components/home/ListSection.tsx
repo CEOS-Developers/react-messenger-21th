@@ -14,7 +14,7 @@ const ListSection = () => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pb-[100px]">
       {data.map((section, idx) => {
         const isGroup = section.group === '내 그룹';
         const items = isGroup ? section.groups : section.users;
@@ -36,14 +36,14 @@ const ListSection = () => {
                 {isGroup
                   ? section.groups?.map((group) => (
                       <UserItem
-                        key={`${group.groupName}-${group.memberCount}`}
+                        key={group.id}
                         name={group.groupName}
                         profileImg={group.profileImg}
                         count={group.memberCount}
                       />
                     ))
                   : section.users?.map((user) => (
-                      <UserItem key={`${user.name}-${user.profileImg}`} name={user.name} profileImg={user.profileImg} />
+                      <UserItem key={user.id} name={user.name} profileImg={user.profileImg} />
                     ))}
               </div>
             )}

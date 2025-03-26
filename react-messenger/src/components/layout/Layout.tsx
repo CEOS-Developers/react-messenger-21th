@@ -24,7 +24,7 @@ const Layout = () => {
 
   return (
     <div className="w-full flex justify-center">
-      <div className="w-[375px] h-[812px]">{showOnboarding ? <Onboarding /> : <Outlet />}</div>
+      <div className="w-[375px] min-h-screen">{showOnboarding ? <Onboarding /> : <Outlet />}</div>
     </div>
   );
 };
