@@ -2,9 +2,8 @@ import { JSX } from 'react/jsx-runtime';
 
 import { PROFILE_SIZE_LIST } from '@/constants/Profile';
 
-import { PlusIcon } from '@/icons/Friend';
-
 import ProfileImageBox from '@/components/ProfileImageBox/ProfileImageBox';
+import MultiProfileButton from '@/components/Button/MultiProfile/MultiProfileButton';
 
 import * as S from './MyProfileCell.styled';
 
@@ -21,10 +20,7 @@ const MyProfileCell = ({
         <ProfileImageBox size={PROFILE_SIZE_LIST.my} />
         <S.MyProfileName>{profileName}</S.MyProfileName>
       </S.MyProfileInfoSection>
-      <S.MultiProfileButton>
-        멀티프로필
-        <PlusIcon />
-      </S.MultiProfileButton>
+      <MultiProfileButton />
     </S.MyProfileCellContainer>
   );
 };
