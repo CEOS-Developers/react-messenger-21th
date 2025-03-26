@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { createOtherUserContent } from '@/utils/createOtherUserContent';
-import allMessages from '@/assets/data/messages.json';
 import TopBar from '@/components/TopBar';
 
 import RcvdMessage from './components/RcvdMessage';
@@ -9,22 +8,48 @@ import SentMessage from './components/SentMessage';
 import MessageInput from './components/MessageInput';
 
 import { createMessagesByUsers } from '@/utils/createMessagesByUsers';
+import { getAllMessages } from '@/apis/getAllMessages';
+import { MessageDto, UserDto } from './dto';
+import { messagesByUserDto } from '@/utils/dto';
 
 export default function ChatRoom() {
+	const chatRoomId = 1;
+
 	const [currentUserId, setCurrentUserId] = useState(3);
-	const currentRoomData = allMessages.find((chatRoom) => chatRoom.chatRoomId === 1)!;
-	const messagesByUsers = createMessagesByUsers(currentRoomData.messages);
+	const [messages, setMessages] = useState<MessageDto[]>([]);
+	const [joinedUsers, setJoinedUsers] = useState<UserDto[]>([]);
+
+	const [messagesByUsers, setMessagesByUsers] = useState<messagesByUserDto[]>([]);
 
 	// 상대방 필터링
-	const joinedUserIds = currentRoomData.joinedUsers.map((user) => user.id);
-	const otherUsers = currentRoomData.joinedUsers.filter((user) => user.id !== currentUserId);
+	const joinedUserIds = joinedUsers.map((user) => user.id);
+	const currentUser = joinedUsers.find((user) => user.id === currentUserId)!;
+	const otherUsers = joinedUsers.filter((user) => user.id !== currentUserId);
 	const otherUserContent = createOtherUserContent(otherUsers || null);
+
+	useEffect(() => {
+		const response = getAllMessages(chatRoomId);
+
+		setJoinedUsers(response.joinedUsers);
+		setMessages(response.messages);
+	}, []);
+
+	useEffect(() => {
+		setMessagesByUsers(createMessagesByUsers(messages));
+	}, [messages]);
 
 	const handleTopBarContentClick = () => {
 		const currentIndex = joinedUserIds.indexOf(currentUserId);
 		const nextIndex = (currentIndex + 1) % joinedUserIds.length;
 
 		setCurrentUserId(joinedUserIds[nextIndex]);
+	};
+
+	const handleMessageSubmit = (message: string) => {
+		setMessages([
+			...messages,
+			{ fromUser: currentUser, content: message, createdAt: new Date().toISOString(), id: crypto.randomUUID() },
+		]);
 	};
 
 	return (
@@ -39,7 +64,7 @@ export default function ChatRoom() {
 					),
 				)}
 			</div>
-			<MessageInput />
+			<MessageInput onSubmit={handleMessageSubmit} />
 		</div>
 	);
 }
