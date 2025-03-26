@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: #000000;
   }
   
-  :root {
+  #root {
     display: flex;
     justify-content: center;
     align-items: center;
