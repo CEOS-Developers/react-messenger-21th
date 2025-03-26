@@ -1,72 +1,47 @@
-import styled from 'styled-components'
+import { useEffect, useRef, useState } from 'react'
 import {
   AddIcon,
   MicrophoneIcon,
   SendIcon,
   FaceIcon,
 } from '../../assets/Icons/TextInput'
-import { Body_1 } from '../../styles/Typo.Styled'
-import StyledProps from '../../interface/styledProps'
-import { useState } from 'react'
+import * as s from './TextInput.Styled'
 
 const TextInput = () => {
+  const inputRef = useRef<HTMLDivElement | null>(null)
   const [text, setText] = useState('')
-  const handleInputChange = (e) => {
-    const { value } = e.target
-    setText(value)
+  const [isComposing, setIsComposing] = useState(false)
+
+  const handleInput = () => {
+    if (inputRef.current) setText(inputRef.current.textContent || '')
   }
+
+  useEffect(() => {
+    const isComposing = text === '' ? false : true
+    setIsComposing(isComposing)
+  }, [text])
+
   return (
-    <InputDiv>
-      <LeftIcon>
+    <s.TextFieldWrapper>
+      <s.LeftIcon>
         <AddIcon />
-      </LeftIcon>
-      <Input value={text} rows={1} onChange={handleInputChange} $isM={true} />
-      <FaceIcon />
-      <RightIcon>
-        <MicrophoneIcon />
-      </RightIcon>
-    </InputDiv>
+      </s.LeftIcon>
+      <s.TextFieldContainer>
+        <s.InputContainer>
+          <s.Input
+            ref={inputRef}
+            contentEditable="true"
+            $isM={true}
+            onInput={handleInput}
+          />
+          <FaceIcon width={24} style={{ display: 'flex;' }} />
+        </s.InputContainer>
+      </s.TextFieldContainer>
+      <s.RightIcon>
+        {isComposing ? <SendIcon /> : <MicrophoneIcon />}
+      </s.RightIcon>
+    </s.TextFieldWrapper>
   )
 }
-
-const LeftIcon = styled.div`
-  margin: 6px 8.5px 6px 0px;
-`
-
-const RightIcon = styled.div`
-  margin: 6px 0px 6px 8.5px;
-`
-
-const Input = styled.textarea<StyledProps>`
-  color: ${({ theme }) => theme.colors.gray14};
-  background-color: ${({ theme }) => theme.colors.gray02};
-  border: 1px solid ${({ theme }) => theme.colors.gray05};
-  border-radius: 20px;
-  padding: 6px 12px;
-
-  width: 262px;
-  min-height: 24px;
-  max-height: 72px;
-
-  resize: none;
-  font-family: 'Pretendard', sans-serif;
-  ${Body_1}
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`
-
-const InputDiv = styled.div`
-  background-color: ${({ theme }) => theme.colors.white};
-  padding: 10px 12px;
-
-  min-height: 36px;
-  max-height: 104px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-`
 
 export default TextInput
