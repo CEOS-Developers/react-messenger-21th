@@ -8,12 +8,12 @@ import RcvdMessage from './components/RcvdMessage';
 import SentMessage from './components/SentMessage';
 import MessageInput from './components/MessageInput';
 
-import { MessageDto } from './dto';
+import { createMessagesByUsers } from '@/utils/createMessagesByUsers';
 
 export default function ChatRoom() {
 	const [currentUserId, setCurrentUserId] = useState(3);
 	const currentRoomData = allMessages.find((chatRoom) => chatRoom.chatRoomId === 1)!;
-	const messages: MessageDto[] = currentRoomData.messages;
+	const messagesByUsers = createMessagesByUsers(currentRoomData.messages);
 
 	// 상대방 필터링
 	const joinedUserIds = currentRoomData.joinedUsers.map((user) => user.id);
@@ -31,8 +31,13 @@ export default function ChatRoom() {
 		<div className="relative flex-grow flex flex-col bg-black-200">
 			<TopBar content={otherUserContent} onClickContent={handleTopBarContentClick} />
 			<div className="flex flex-col h-[38.5rem] overflow-y-scroll px-5" style={{ scrollbarWidth: 'none' }}>
-				<RcvdMessage />
-				<SentMessage />
+				{messagesByUsers.map((messagesByUser) =>
+					messagesByUser.fromUser.id === currentUserId ? (
+						<SentMessage key={messagesByUser.messages[0].id} />
+					) : (
+						<RcvdMessage key={messagesByUser.messages[0].id} />
+					),
+				)}
 			</div>
 			<MessageInput />
 		</div>
