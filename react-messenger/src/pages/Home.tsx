@@ -5,11 +5,13 @@ import ProfileSection from '@/components/home/ProfileSection';
 
 const Home = () => {
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-full">
       <NavBar />
-      <ProfileSection />
-      <ListSection />
-      <BottomMenu />
+      <div className="pt-[44.6px]">
+        <ProfileSection />
+        <ListSection />
+        <BottomMenu />
+      </div>
     </div>
   );
 };

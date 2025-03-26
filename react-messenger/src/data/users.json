@@ -1,0 +1,25 @@
+[
+  {
+    "group": "새 친구",
+    "users": [
+      { "id": 1, "name": "원채영", "profileImg": "/src/assets/svgs/home/User1.svg" },
+      { "id": 2, "name": "브라운", "profileImg": "/src/assets/svgs/home/User2.svg" }
+    ]
+  },
+  {
+    "group": "내 그룹",
+    "groups": [
+      { "id": 1, "groupName": "전가네", "profileImg": "/src/assets/svgs/home/User3.svg", "memberCount": 6 },
+      { "id": 2, "groupName": "CEOS", "profileImg": "/src/assets/svgs/home/User4.svg", "memberCount": 64 },
+
+      { "id": 3, "groupName": "야작팟", "profileImg": "/src/assets/svgs/home/User5.svg", "memberCount": 3 }
+    ]
+  },
+  {
+    "group": "내 친구",
+    "users": [
+      { "id": 3, "name": "따봉이", "profileImg": "/src/assets/svgs/home/User6.svg" },
+      { "id": 4, "name": "봉이", "profileImg": "/src/assets/svgs/home/User7.svg" }
+    ]
+  }
+]

@@ -5,7 +5,7 @@ import MoreBtn from '@/assets/svgs/home/MoreBtn.svg';
 
 const NavBar = () => {
   return (
-    <div className="flex  justify-end items-center w-full h-[44.63px] px-4 py-[10px]">
+    <div className="flex fixed top-0 justify-end items-center w-[375px] h-[44.6px] px-4 py-[10px] bg-grey-50">
       <div className="flex gap-[14px]">
         <img src={Search} alt="검색" width={24} height={24} className="cursor-pointer" />
         <img src={Friend} alt="친구" width={24} height={24} className="cursor-pointer" />
