@@ -1,5 +1,5 @@
 export interface MessageDto {
-	id: number;
+	id: string;
 	content: string;
 	createdAt: string;
 	fromUser: UserDto;
