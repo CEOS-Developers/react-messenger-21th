@@ -9,7 +9,7 @@ function Layout() {
 
   return (
     <div className="relative w-phone-width h-phone-height bg-grayscale-07-white">
-      <StatusBar />
+      <StatusBar isProfile={isProfile} />
       <Outlet />
       <Navbar />
       <Indicator isProfile={isProfile} />
