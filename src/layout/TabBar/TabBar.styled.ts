@@ -35,9 +35,11 @@ export const TabBarLink = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.4rem;
 `;
 
-export const TabBarOption = styled.span`
+export const TabBarOption = styled.p<{ $isSelected: boolean }>`
   ${({ theme }) => theme.fontStyles.Caption2};
-  color: ${({ theme }) => theme.colors.Grayscale[500]};
+  color: ${({ $isSelected, theme }) =>
+    $isSelected ? theme.colors.Primary.MainBlue : theme.colors.Grayscale[500]};
 `;

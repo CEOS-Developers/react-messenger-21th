@@ -11,22 +11,19 @@ const IconCommon = css`
   height: fit-content;
 `;
 
-export const UserIcon = styled(userIcon)`
+const createTabBarIcon = (
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+) => styled(Icon)<{ $isSelected: boolean }>`
   ${IconCommon}
+
+  path {
+    stroke: ${({ $isSelected, theme }) =>
+      $isSelected && theme.colors.Primary.MainBlue};
+  }
 `;
 
-export const ChatIcon = styled(chatIcon)`
-  ${IconCommon}
-`;
-
-export const GlobalIcon = styled(globalIcon)`
-  ${IconCommon}
-`;
-
-export const ShopIcon = styled(shopIcon)`
-  ${IconCommon}
-`;
-
-export const MoreIcon = styled(moreIcon)`
-  ${IconCommon}
-`;
+export const UserIcon = createTabBarIcon(userIcon);
+export const ChatIcon = createTabBarIcon(chatIcon);
+export const GlobalIcon = createTabBarIcon(globalIcon);
+export const ShopIcon = createTabBarIcon(shopIcon);
+export const MoreIcon = createTabBarIcon(moreIcon);

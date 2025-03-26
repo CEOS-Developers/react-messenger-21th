@@ -7,7 +7,7 @@ import { useTabBarOption } from '@/stores/useTabBarOption';
 import * as S from './TabBar.styled';
 
 const TabBar = (): JSX.Element => {
-  const { setSelectedTab } = useTabBarOption();
+  const { selectedTab, setSelectedTab } = useTabBarOption();
 
   return (
     <S.TabBarContainer>
@@ -18,8 +18,10 @@ const TabBar = (): JSX.Element => {
               to={tab.path}
               onClick={() => setSelectedTab(tab.name)}
             >
-              <tab.icon />
-              <S.TabBarOption>{tab.name}</S.TabBarOption>
+              <tab.icon $isSelected={selectedTab === tab.name} />
+              <S.TabBarOption $isSelected={selectedTab === tab.name}>
+                {tab.name}
+              </S.TabBarOption>
             </S.TabBarLink>
           </S.TabBarItem>
         ))}

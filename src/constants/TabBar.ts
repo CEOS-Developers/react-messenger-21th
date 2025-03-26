@@ -4,7 +4,7 @@ import * as I from '@/icons/TabBar';
 
 type TabBarOptionType = {
   name: TabBarOptionList;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  icon: React.ComponentType<{ $isSelected: boolean }>;
   path: string;
 };
 
