@@ -1,18 +1,12 @@
-import styled from 'styled-components'
+import * as s from './ContentHeader.Styled'
 
 const ContentHeader = ({ leftChild, rightChild }) => {
   return (
-    <HeaderDiv>
+    <s.HeaderDiv>
       {leftChild}
       {rightChild}
-    </HeaderDiv>
+    </s.HeaderDiv>
   )
 }
-
-const HeaderDiv = styled.div`
-  padding: 0px ${({ theme }) => theme.phoneGrid.margin};
-  display: flex;
-  justify-content: space-between;
-`
 
 export default ContentHeader
