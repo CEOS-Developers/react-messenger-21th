@@ -5,12 +5,12 @@ import { formatCreatedAt } from '@/utils/formatCreatedAt';
 
 export default function SentMessage({ messages }: { messages: messageByUserDto[] }) {
 	return (
-		<div className="flex justify-end py-2.5">
+		<div className="flex flex-col gap-2 py-2.5">
 			{messages.map(({ id, createdAt, content, isTimeVisible }, index) => {
 				const formattedCreatedAt = formatCreatedAt(new Date(createdAt));
 
 				return (
-					<div key={id}>
+					<div key={id} className="flex justify-end">
 						{isTimeVisible && <div className="caption2-regular mr-1.5 mt-auto">{formattedCreatedAt}</div>}
 
 						<Message isReceived={false}>
