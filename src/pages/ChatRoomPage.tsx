@@ -3,9 +3,59 @@ import arrowLeft from "/image/arrowLeft.svg";
 import { Link } from "react-router-dom";
 import add from "/image/add.svg";
 import emo from "/image/emo.svg";
+import inputBar from "/image/inputBar.svg";
 import fileInput from "/image/fileInput.svg";
+import { chatMessagesAtom, userAtom, usersAtom } from "../store/message";
+import { useAtom } from "jotai";
+import { useEffect, useState } from "react";
 
 const ChatRoomPage = () => {
+  const [messages, setMessages] = useAtom(chatMessagesAtom);
+  const [input, setInput] = useState("");
+  const [isMessage, setIsMessage] = useState(false);
+  const [user, setUser] = useAtom(userAtom);
+  const [users] = useAtom(usersAtom);
+
+  const addMessage = () => {
+    setMessages([
+      ...messages,
+      {
+        [new Date().toISOString().split("T")[0]]: {
+          id: Date.now(),
+          user: user,
+          text: input,
+          time: `${new Date().getHours()}시 ${new Date().getMinutes()}분`,
+        },
+      },
+    ]);
+    setInput("");
+    setIsMessage(false);
+    console.log(messages);
+  };
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.isComposing) return;
+    if (e.key === "Enter") {
+      e.preventDefault();
+      addMessage();
+    }
+  };
+  const changeUser = () => {
+    setUser(users[1]);
+  };
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleKeyDown]);
+
+  useEffect(() => {
+    if (input.length > 0) {
+      setIsMessage(true);
+    } else {
+      setIsMessage(false);
+    }
+  }, [input]);
   return (
     <>
       <RoomContainer>
@@ -17,18 +67,49 @@ const ChatRoomPage = () => {
             <ProfileImg>
               <Status />
             </ProfileImg>
-            <UserName>김상곤</UserName>
+            <UserName onClick={changeUser}>김상곤</UserName>
           </FrontItem>
         </HeaderBar>
+        <ChatContents>
+          {messages.map((date) => (
+            <>
+              {Object.keys(date).map((key) => (
+                <>
+                  <DateDetail>{key}</DateDetail>
+                  {date[key].map((message) => (
+                    <>
+                      <TextContents user={message.user.id === user.id}>
+                        {message.text}
+                      </TextContents>
+                    </>
+                  ))}
+                </>
+              ))}
+            </>
+          ))}
+        </ChatContents>
         <ChatInputContainer>
           <InputContainer>
             <FrontIcon>
               <InputIcon src={add} />
-              <ChatInput placeholder="메시지 보내기" />
+              <ChatInput
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="메시지 보내기"
+              />
             </FrontIcon>
             <BackIcons>
               <InputIcon src={emo} />
-              <InputIcon src={fileInput} />
+              {isMessage ? (
+                <>
+                  {" "}
+                  <InputIcon src={inputBar} onClick={addMessage} />
+                </>
+              ) : (
+                <>
+                  <InputIcon src={fileInput} />
+                </>
+              )}
             </BackIcons>
           </InputContainer>
         </ChatInputContainer>
@@ -37,6 +118,26 @@ const ChatRoomPage = () => {
   );
 };
 export default ChatRoomPage;
+const DateDetail = styled.div`
+  width: 102px;
+  height: 26px;
+  background: #0000000a;
+  color: #767676;
+  radius: 100px;
+`;
+const TextContents = styled.div<{ user: boolean }>`
+  margin-left: ${(props) => (props.user ? "auto" : "0")};
+  margin-right: ${(props) => (props.user ? "0" : "auto")};
+  background: ${(props) => (props.user ? "#CFD2FE" : "#fff")};
+  max-width: 240px;
+  padding: 8px;
+`;
+const ChatContents = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0px 16px;
+`;
 const ChatInput = styled.input`
   border: none;
   width: 212px;
@@ -64,6 +165,7 @@ const BackIcons = styled.div`
 `;
 const InputIcon = styled.img`
   z-index: 1;
+  cursor: pointer;
 `;
 const ChatInputContainer = styled.div`
   position: absolute;
@@ -120,8 +222,9 @@ const Status = styled.div`
 `;
 const UserName = styled.div`
   font-size: 16px;
-  weight: 600;
+  font-weight: 600;
   margin-left: 4px;
+  cursor: pointer;
 `;
 const HeaderBar = styled.div`
   display: flex;
