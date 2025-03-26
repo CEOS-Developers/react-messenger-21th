@@ -17,7 +17,27 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: var(--font-primary);       
+        font-family: var(--font-primary);
+        background: ${({ theme }) => theme.colors.Grayscale[1000]};
+    }
+
+    ul,li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    button {
+        border: none;
+        padding: 0;
+        background: none;
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
     }
 `;
 
