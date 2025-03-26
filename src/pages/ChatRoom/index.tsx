@@ -33,9 +33,9 @@ export default function ChatRoom() {
 			<div className="flex flex-col h-[38.5rem] overflow-y-scroll px-5" style={{ scrollbarWidth: 'none' }}>
 				{messagesByUsers.map((messagesByUser) =>
 					messagesByUser.fromUser.id === currentUserId ? (
-						<SentMessage key={messagesByUser.messages[0].id} />
+						<SentMessage key={messagesByUser.messages[0].id} messages={messagesByUser.messages} />
 					) : (
-						<RcvdMessage key={messagesByUser.messages[0].id} />
+						<RcvdMessage key={messagesByUser.messages[0].id} {...messagesByUser} />
 					),
 				)}
 			</div>

@@ -1,8 +1,10 @@
 import RcvdArrow from '@/assets/icons/rcvdArrow.svg?react';
 import Profile from '@/assets/icons/profile.svg?react';
 import Message from './Message';
+import { messagesByUserDto } from '@/utils/dto';
+import { formatCreatedAt } from '@/utils/formatCreatedAt';
 
-export default function RcvdMessage() {
+export default function RcvdMessage({ fromUser, messages }: messagesByUserDto) {
 	return (
 		<div className="flex gap-3 py-2.5">
 			<button className="w-9 h-9 flex justify-center items-center border border-black-100 rounded-full bg-profile-blue">
@@ -10,16 +12,21 @@ export default function RcvdMessage() {
 			</button>
 
 			<div className="flex flex-col gap-2">
-				<div className="caption1-medium">임이솔</div>
+				<div className="caption1-medium">{fromUser.name}</div>
+				{messages.map(({ id, createdAt, content, isTimeVisible }, index) => {
+					const formattedCreatedAt = formatCreatedAt(new Date(createdAt));
 
-				<div className="flex">
-					<Message isReceived={true}>
-						<RcvdArrow className="absolute top-[0.1563rem] -left-2" />
-						그럼 오늘 어디서 만날래?
-					</Message>
+					return (
+						<div className="flex" key={id}>
+							<Message isReceived={true}>
+								{index === 0 && <RcvdArrow className="absolute top-[0.1563rem] -left-2" />}
+								{content}
+							</Message>
 
-					<div className="ml-1.5 mt-auto caption2-regular">오후 5:15</div>
-				</div>
+							{isTimeVisible && <div className="ml-1.5 mt-auto caption2-regular">{formattedCreatedAt}</div>}
+						</div>
+					);
+				})}
 			</div>
 		</div>
 	);
