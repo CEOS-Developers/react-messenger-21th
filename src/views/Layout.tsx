@@ -1,16 +1,18 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import StatusBar from '@/components/common/StatusBar';
+import StatusBar from '@/components/common/StatusBar/StatusBar';
 import Navbar from '@/components/layout/Navbar/Navbar';
+import Indicator from '@/components/common/Indicator/Indicator';
 
 function Layout() {
   const { pathname } = useLocation();
   const isProfile = pathname.startsWith('/profile/');
 
   return (
-    <div className="relative max-w-phone-width mx-auto">
+    <div className="relative w-phone-width h-phone-height bg-grayscale-07-white">
       <StatusBar />
       <Outlet />
-      <Navbar isProfile={isProfile} />
+      <Navbar />
+      <Indicator isProfile={isProfile} />
     </div>
   );
 }

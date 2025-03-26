@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 const NavbarWrapper = styled.nav`
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 83px;
   max-width: 374px; /* phone width - 1px */
   padding: 14px 35px 24px;
-  z-index: 999;
+  z-index: 900;
 `;
 
 const NavList = styled.ul`
