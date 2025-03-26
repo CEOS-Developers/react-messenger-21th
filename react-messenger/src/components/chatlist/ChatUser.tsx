@@ -1,0 +1,39 @@
+type ChatUserProps = {
+  profileImg: string;
+  username: string;
+  lastMessage: string;
+  time: string;
+  unread?: number;
+  memberCount?: number;
+};
+
+const ChatUser = ({ profileImg, username, lastMessage, time, unread, memberCount }: ChatUserProps) => {
+  return (
+    <div className="flex items-center px-4 py-2 relative">
+      <img
+        src={profileImg}
+        className="w-[60px] h-[60px] mx-[3.5px] rounded-full object-cover mr-[3.5px]"
+        alt={username}
+      />
+
+      <div className="flex flex-col justify-center w-[254px]">
+        <span className="text-title2 px-4 py-1 font-medium text-grey-900 h-[33px]">
+          {username}
+          {memberCount && <span className="text-title2 text-grey-600">&nbsp;({memberCount})</span>}
+        </span>
+        <div className="flex gap-1 px-4 pb-1 pt-[2.4px] h-[27px]">
+          <span className="text-body2 text-grey-400 truncate">{lastMessage}</span>
+          <span className="text-body2 text-grey-400">· {time}</span>
+        </div>
+      </div>
+
+      {typeof unread === 'number' && unread > 0 && (
+        <div className="ml-auto text-caption2 text-grey-50 bg-primary-0 rounded-full w-[20px] h-[20px] text-center">
+          {unread}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ChatUser;

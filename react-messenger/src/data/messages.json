@@ -1,0 +1,58 @@
+[
+  {
+    "id": 4,
+    "type": "user",
+    "lastMessage": "뺌뺌빠라밤",
+    "time": "오전 9:36",
+    "unreadCount": 0
+  },
+  {
+    "id": 1,
+    "type": "group",
+    "lastMessage": "밥 잘 챙겨먹고",
+    "time": "오후 6:25",
+    "unreadCount": 0
+  },
+  {
+    "id": 3,
+    "type": "group",
+    "lastMessage": "가비애?",
+    "time": "오전 9:25",
+    "unreadCount": 8
+  },
+  {
+    "id": 2,
+    "type": "user",
+    "lastMessage": "오키",
+    "time": "오후 4:25",
+    "unreadCount": 1
+  },
+  {
+    "id": 2,
+    "type": "group",
+    "lastMessage": "MT 기대가 됩니다",
+    "time": "오후 3:25",
+    "unreadCount": 0
+  },
+  {
+    "id": 5,
+    "type": "user",
+    "lastMessage": "츄르 먹어도 돼?",
+    "time": "오전 11:25",
+    "unreadCount": 2
+  },
+  {
+    "id": 1,
+    "type": "user",
+    "lastMessage": "감사합니다 !!! 홧팅 홧팅",
+    "time": "오후 4:25",
+    "unreadCount": 0
+  },
+  {
+    "id": 3,
+    "type": "user",
+    "lastMessage": "진심 따봉이다",
+    "time": "오전 9:23",
+    "unreadCount": 1
+  }
+]

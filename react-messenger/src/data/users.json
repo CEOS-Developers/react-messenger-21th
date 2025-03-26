@@ -19,7 +19,8 @@
     "group": "내 친구",
     "users": [
       { "id": 3, "name": "따봉이", "profileImg": "/src/assets/svgs/home/User6.svg" },
-      { "id": 4, "name": "봉이", "profileImg": "/src/assets/svgs/home/User7.svg" }
+      { "id": 4, "name": "콩이", "profileImg": "/src/assets/svgs/home/User7.svg" },
+      { "id": 5, "name": "봉이", "profileImg": "/src/assets/svgs/home/User8.svg" }
     ]
   }
 ]
