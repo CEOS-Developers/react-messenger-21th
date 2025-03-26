@@ -1,10 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '@/views/Layout';
-import Home from '@/views/Home';
-import ChatList from '@/views/Chat/ChatList';
-import ChatRoom from '@/views/Chat/ChatRoom';
-import Call from '@/views/Call';
-import Plus from '@/views/Plus';
+import Home from '@/views/Home/Home';
+import ChatList from '@/views/ChatList/ChatList';
+import ChatRoom from '@/views/ChatRoom/ChatRoom';
+import Call from '@/views/Call/Call';
+import Plus from '@/views/Plus/Plus';
 
 const router = createBrowserRouter([
   {
