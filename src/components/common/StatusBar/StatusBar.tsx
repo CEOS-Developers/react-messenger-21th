@@ -4,7 +4,7 @@ import { STATUS_ITEMS } from '@/constants/status';
 function StatusBar({ isProfile }: { isProfile: boolean }) {
   return (
     <S.StatusBarWrapper className="bg-grayscale-07-white">
-      <span className="!text-subhead-03">09:41</span>
+      <span className="!text-status-bar">09:41</span>
       <S.StatusList>
         {STATUS_ITEMS.map(({ key, blackIcon: BlackIcon, whiteIcon: WhiteIcon, width, height }) => {
           const IconComponent = isProfile ? WhiteIcon : BlackIcon;
