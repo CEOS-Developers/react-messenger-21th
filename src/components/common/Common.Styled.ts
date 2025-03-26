@@ -27,7 +27,7 @@ const Content = styled.div`
 /* 상단 Status Bar */
 const StatusDiv = styled.div<StyledProps>`
   background-color: ${({ $isTransparent, theme }) =>
-    $isTransparent ? 'transparent' : theme.colors.white};
+    $isTransparent ? 'transparent' : theme.colors.gray02};
   padding: 0px ${({ theme }) => theme.phoneGrid.margin};
   height: 44px;
 

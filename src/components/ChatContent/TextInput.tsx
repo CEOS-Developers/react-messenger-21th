@@ -34,7 +34,7 @@ const TextInput = () => {
             $isM={true}
             onInput={handleInput}
           />
-          <FaceIcon width={24} style={{ display: 'flex;' }} />
+          <FaceIcon width={24} style={{ display: 'flex' }} />
         </s.InputContainer>
       </s.TextFieldContainer>
       <s.RightIcon>
