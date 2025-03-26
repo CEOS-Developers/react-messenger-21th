@@ -16,7 +16,7 @@ function Navbar() {
             <li key={path}>
               <Link to={path} className="flex flex-col items-center gap-[1px]">
                 <IconComponent className="w-[24px] h-[24px]" />
-                <span className="!text-caption-02">{label}</span>
+                <span className="!text-caption-02 text-grayscale-00-black">{label}</span>
               </Link>
             </li>
           );
