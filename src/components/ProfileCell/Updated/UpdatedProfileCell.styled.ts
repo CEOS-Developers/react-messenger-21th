@@ -6,18 +6,7 @@ export const UpdatedProfileCellContainer = styled.div`
   padding: 0.8rem 0 1.6rem 0;
 `;
 
-export const UpdatedProfileCellTitle = styled.h3`
-  padding-left: 2rem;
-  margin-bottom: 1.2rem;
-
-  ${({ theme }) => theme.fontStyles.Caption1_medium}
-  color: ${({ theme }) => theme.colors.Grayscale[500]};
-
-  span {
-    margin-left: 0.6rem;
-  }
-`;
-
+// 업데이트 친구 리스트 스크롤 영역
 export const UpdatedProfileScrollSection = styled.section`
   width: 100%;
   height: fit-content;

@@ -6,13 +6,15 @@ import { updatedProfileList } from '@/mock/updatedProfile';
 import ProfileImageBox from '@/components/ProfileImageBox/ProfileImageBox';
 
 import * as S from './UpdatedProfileCell.styled';
+import FriendPageSubTitle from '@/components/FriendPageSubTitle/FriendPageSubTitle';
 
 const UpdatedProfileCell = (): JSX.Element => {
   return (
     <S.UpdatedProfileCellContainer>
-      <S.UpdatedProfileCellTitle>
-        업데이트한 프로필<span>{updatedProfileList.length}</span>
-      </S.UpdatedProfileCellTitle>
+      <FriendPageSubTitle
+        subTitle="업데이트한 프로필"
+        friendList={updatedProfileList}
+      />
       <S.UpdatedProfileScrollSection>
         <S.UpdatedProfileList>
           {updatedProfileList.map((profile) => (
