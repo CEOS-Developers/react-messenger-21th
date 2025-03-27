@@ -4,26 +4,26 @@ import Onboarding from '@/pages/OnBoarding';
 
 const Layout = () => {
   const { pathname } = useLocation();
+  const [hasChecked, setHasChecked] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(false);
 
   useEffect(() => {
-    const hasSeen = sessionStorage.getItem('onBoarding');
-
     if (pathname === '/') {
+      const hasSeen = sessionStorage.getItem('onBoarding');
       if (!hasSeen) {
         setShowOnboarding(true);
         const timer = setTimeout(() => {
           sessionStorage.setItem('onBoarding', 'true');
           setShowOnboarding(false);
         }, 3000);
+        setHasChecked(true);
         return () => clearTimeout(timer);
-      } else {
-        setShowOnboarding(false);
       }
-    } else {
-      setShowOnboarding(false);
     }
+    setHasChecked(true); // onboarding 안 봐도 체크 완료
   }, [pathname]);
+
+  if (!hasChecked) return null;
 
   return (
     <div className="w-full flex justify-center">
