@@ -1,6 +1,10 @@
 //import { useState } from 'react';
+// 라우터 설정
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import ChatRoomPage from './components/pages/ChatRoomPage';
+import ProfilePage from './components/pages/ProfilePage';
+import ShowChatRoomPage from './components/pages/ShowChatRoomPage';
 import { ThemeProvider } from 'styled-components';
 import theme from './components/styles/theme';
 import GlobalStyle from './components/styles/GlobalStyles';
@@ -12,7 +16,13 @@ function App() {
       <ChatWrapper>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <ChatRoomPage />
+          <Router>
+            <Routes>
+              <Route path="/" element={<ProfilePage />} />
+              <Route path="/chats" element={<ShowChatRoomPage />} />
+              <Route path="/chat/:roomId" element={<ChatRoomPage />} />
+            </Routes>
+          </Router>
         </ThemeProvider>
       </ChatWrapper>
     </AppWrapper>
