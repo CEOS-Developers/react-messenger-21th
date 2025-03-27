@@ -9,8 +9,10 @@ import PlusButtonIcon from '../../assets/icons/PlusNotSelected.svg?react';
 import PrevButton from '../../assets/icons/PrevButton.svg?react';
 
 const ChatRoomPage: React.FC = () => {
+  const [isEmojiOpen, setIsEmojiOpen] = useState(false);
+
   return (
-    <s.ChatContainer>
+    <s.ChatContainer isEmojiOpen={isEmojiOpen}>
       <s.UpperBarContainer>
         <PrevButton />
         <CurrentPartnersName />
@@ -21,7 +23,7 @@ const ChatRoomPage: React.FC = () => {
       <s.ChatContentsContainer>
         <ChatBoard />
       </s.ChatContentsContainer>
-      <s.BottomBarContainer>
+      <s.BottomBarContainer isEmojiOpen={isEmojiOpen}>
         <PlusButtonIcon width="16px" height="16px" />
         <ChatInput />
       </s.BottomBarContainer>
