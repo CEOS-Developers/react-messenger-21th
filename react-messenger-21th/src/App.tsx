@@ -24,13 +24,13 @@ const AppWrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #f9fafb;
-  width: 100vw;
+  width: 100dvw;
   height: 100dvh;
   overflow: auto;
 `;
 
 const ChatWrapper = styled.div`
-  width: 375px;
+  width: 100dvw;
   height: 100dvh;
   min-height: 100dvh;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
