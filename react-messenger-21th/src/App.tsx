@@ -33,7 +33,7 @@ const ChatWrapper = styled.div`
   width: 100%;
   height: 100%;
   max-width: 375px; // PC 최대 너비 제한
-  max-height: 720px; // PC 최대 높이 제한
+  max-height: 728px; // PC 최대 높이 제한
   min-height: 100dvh;
 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
