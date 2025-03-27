@@ -1,25 +1,44 @@
-// src/components/styles/globalStyles.ts
+// GlobalStyle.ts
 import { createGlobalStyle } from 'styled-components';
-import Pretendard from '/assets/fonts/Pretendard-Medium.otf';
+import pretendardFont from '/public/assets/fonts/Pretendard-Medium.otf';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Pretendard';
-    src: url(${Pretendard}') format('opentype');
+    src: url(${pretendardFont}) format('opentype');
     font-weight: 400;
     font-style: normal;
   }
 
-  * {
+  *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
-  body {
+  html, body, #root {
+    width: 100%;
+    height: 100%;
     font-family: 'Pretendard', sans-serif;
-    background-color: ${({ theme }) => theme.colors.white};
-    color: ${({ theme }) => theme.colors.black};
+    background-color: #ffffff;
+    color: #000000;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 `;
 

@@ -114,7 +114,7 @@ const InputArea = styled.textarea`
   flex: 1;
   background-color: transparent;
   color: #374151;
-  font-family: 'Pretendard Variable';
+  font-family: 'Pretendard';
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
