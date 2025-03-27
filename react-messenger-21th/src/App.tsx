@@ -30,9 +30,12 @@ const AppWrapper = styled.div`
 `;
 
 const ChatWrapper = styled.div`
-  width: 100dvw;
-  height: 100dvh;
+  width: 100%;
+  height: 100%;
+  max-width: 375px; // PC 최대 너비 제한
+  max-height: 720px; // PC 최대 높이 제한
   min-height: 100dvh;
+
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 12px;
   overflow: hidden;
@@ -41,6 +44,8 @@ const ChatWrapper = styled.div`
   @media (max-width: 420px) {
     width: 100vw;
     height: 100dvh;
+    max-width: 100vw;
+    max-height: 100dvh;
     border-radius: 0;
     box-shadow: none;
   }

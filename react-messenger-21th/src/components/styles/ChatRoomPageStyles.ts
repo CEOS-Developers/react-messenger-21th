@@ -25,7 +25,7 @@ export const UpperBarContainer = styled.div`
 
 // 채팅 내용 (내부만 스크롤 가능)
 export const ChatContentsContainer = styled.div`
-  width: 100dvw
+  width: 100%;
   min-height: 0; // 스크롤 문제 방지 (부모가 고정된 높이를 가질 때 필요)
   overflow-y: auto; // 내부에서만 스크롤 가능하게 변경
   display: grid;
@@ -38,9 +38,9 @@ export const ChatContentsContainer = styled.div`
 export const BottomBarContainer = styled.div<{ isEmojiOpen: boolean }>`
   height: auto;
   align-items: stretch;
-  width: 100dvw;
+  width: 100%;
   display: flex;
-  padding: 12px 20px 0px 20px;
+  padding: 12px 20px 12px 20px;
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;
