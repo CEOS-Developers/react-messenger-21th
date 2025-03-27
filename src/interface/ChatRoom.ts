@@ -5,7 +5,9 @@ export type ChatRoomId = string
 
 export interface ChatRoom {
   chatRoomId: ChatRoomId
-  roomName: string
+  roomName: string | null
   member: UserId[]
-  chats: Chat[]
+  chats: {
+    [key: string]: Chat[]
+  }
 }
