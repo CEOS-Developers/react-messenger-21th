@@ -2,25 +2,25 @@
   {
     "group": "새 친구",
     "users": [
-      { "id": 1, "name": "원채영", "profileImg": "/src/assets/svgs/home/User1.svg?url" },
-      { "id": 2, "name": "브라운", "profileImg": "/src/assets/svgs/home/User2.svg?url" }
+      { "id": 1, "name": "원채영", "profileImg": "/images/User1.svg" },
+      { "id": 2, "name": "브라운", "profileImg": "/images/User2.svg" }
     ]
   },
   {
     "group": "내 그룹",
     "groups": [
-      { "id": 1, "groupName": "전가네", "profileImg": "/src/assets/svgs/home/User3.svg?url", "memberCount": 6 },
-      { "id": 2, "groupName": "CEOS", "profileImg": "/src/assets/svgs/home/User4.svg?url", "memberCount": 64 },
+      { "id": 1, "groupName": "전가네", "profileImg": "/images/User3.svg", "memberCount": 6 },
+      { "id": 2, "groupName": "CEOS", "profileImg": "/images/User4.svg", "memberCount": 64 },
 
-      { "id": 3, "groupName": "야작팟", "profileImg": "/src/assets/svgs/home/User5.svg?url", "memberCount": 3 }
+      { "id": 3, "groupName": "야작팟", "profileImg": "/images/User5.svg", "memberCount": 3 }
     ]
   },
   {
     "group": "내 친구",
     "users": [
-      { "id": 3, "name": "따봉이", "profileImg": "/src/assets/svgs/home/User6.svg?url" },
-      { "id": 4, "name": "콩이", "profileImg": "/src/assets/svgs/home/User7.svg?url" },
-      { "id": 5, "name": "봉이", "profileImg": "/src/assets/svgs/home/User8.svg?url" }
+      { "id": 3, "name": "따봉이", "profileImg": "/images/User6.svg" },
+      { "id": 4, "name": "콩이", "profileImg": "/images/User7.svg" },
+      { "id": 5, "name": "봉이", "profileImg": "/images/User8.svg" }
     ]
   }
 ]
