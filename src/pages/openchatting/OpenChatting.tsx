@@ -1,5 +1,5 @@
 const OpenChatting = () => {
-  return <>chatting</>;
+  return <>open chatting</>;
 };
 
 export default OpenChatting;

@@ -6,18 +6,20 @@ import {
 } from 'react-router-dom';
 import { Suspense } from 'react';
 import { PATH } from '@/constants/path';
-import Layout from '@/components/layout/Layout';
+import GlobalLayout from '@/components/layout/GlobalLayout';
+import MainLayout from '@/components/layout/MainLayout';
 import { Loading } from '@/components/loading/Loading';
 import { Chatting, Home, Market, More, OpenChatting } from '@/pages';
+import MyProfile from '@/pages/home/MYProfile';
 
 const router = createBrowserRouter([
   {
     path: PATH.ROOT,
     element: (
       <Suspense fallback={<Loading />}>
-        <Layout>
+        <GlobalLayout>
           <Outlet />
-        </Layout>
+        </GlobalLayout>
       </Suspense>
     ),
     children: [
@@ -31,7 +33,15 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Home />,
+            element: (
+              <MainLayout>
+                <Home />
+              </MainLayout>
+            ),
+          },
+          {
+            path: PATH.HOME.myProfile,
+            element: <MyProfile />,
           },
         ],
       },
@@ -41,37 +51,53 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Chatting />,
+            element: (
+              <MainLayout>
+                <Chatting />
+              </MainLayout>
+            ),
           },
         ],
       },
       {
-        path: PATH.HOME.base,
+        path: PATH.OPEN_CHATTING.base,
         element: <Outlet />,
         children: [
           {
             index: true,
-            element: <OpenChatting />,
+            element: (
+              <MainLayout>
+                <OpenChatting />
+              </MainLayout>
+            ),
           },
         ],
       },
       {
-        path: PATH.HOME.base,
+        path: PATH.MARKET.base,
         element: <Outlet />,
         children: [
           {
             index: true,
-            element: <Market />,
+            element: (
+              <MainLayout>
+                <Market />
+              </MainLayout>
+            ),
           },
         ],
       },
       {
-        path: PATH.HOME.base,
+        path: PATH.MORE.base,
         element: <Outlet />,
         children: [
           {
             index: true,
-            element: <More />,
+            element: (
+              <MainLayout>
+                <More />
+              </MainLayout>
+            ),
           },
         ],
       },

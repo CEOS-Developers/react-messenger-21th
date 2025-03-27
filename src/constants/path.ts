@@ -2,7 +2,7 @@ export const PATH = {
   ROOT: '/',
   HOME: {
     base: '/home',
-    profile: '/myprofile',
+    myProfile: 'myprofile',
   },
   CHATTING: {
     base: '/chatting',

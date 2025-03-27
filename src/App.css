@@ -96,7 +96,7 @@
     line-height: 145%; /* 23.2px */
     letter-spacing: -0.32px;
   }
-  .font-body-1-sb {
+  .font-body-2-sb {
     font-family: var(--font-body-1-sb);
     color: var(--color-neutral-900);
     font-size: 14px;
@@ -130,6 +130,14 @@
     font-style: normal;
     font-weight: 500;
     line-height: 150%; /* 18px */
+  }
+
+  .bg-myprofile {
+    display: flex;
+    flex-grow: 1;
+    background-image: url(./assets/images/profile/MyProfileBG.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   body {
