@@ -7,7 +7,11 @@ import styled from 'styled-components';
 import SendMessageOn from '../../assets/icons/SendMessageOn.svg?react';
 import SendEmoticonNotSelected from '../../assets/icons/EmoticonNotSelected.svg?react';
 
-const ChatInput: React.FC = () => {
+interface ChatInputProps {
+  setIsEmojiOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const ChatInput: React.FC<ChatInputProps> = ({ setIsEmojiOpen }) => {
   const dispatch = useDispatch();
   // input 값 상태 관리
   const [messageInput, setMessageInput] = useState('');
@@ -69,7 +73,11 @@ const ChatInput: React.FC = () => {
           rows={1}
         />
         <IconWrapper>
-          <SendEmoticonNotSelected width="16px" height="16px" />
+          <SendEmoticonNotSelected
+            width="16px"
+            height="16px"
+            onClick={() => setIsEmojiOpen(true)}
+          />
           <SendMessageOn
             width="16px"
             height="16px"

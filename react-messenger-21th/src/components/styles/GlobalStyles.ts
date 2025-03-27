@@ -5,7 +5,7 @@ import Pretendard from '/srx/assets/fonts/Pretendard-Medium.otf';
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Pretendard';
-    src: url('/src/assets/fonts/Pretendard-Medium.otf') format('opentype');
+    src: url(${Pretendard}') format('opentype');
     font-weight: 400;
     font-style: normal;
   }
