@@ -33,18 +33,18 @@ export default function MessageContainer({
 	return (
 		<div
 			ref={messageContainerRef}
-			className="flex flex-col gap-3 h-[38.5rem] overflow-y-scroll px-5"
+			className="flex flex-col h-[38.5rem] overflow-y-scroll px-5"
 			style={{ scrollbarWidth: 'none' }}
 		>
 			{messagesByUsers.map((messagesByUser) => (
-				<>
+				<div key={messagesByUser.messages[0].id}>
 					{messagesByUser.isDateVisible && <DateDivider date={new Date(messagesByUser.messages[0].createdAt)} />}
 					{messagesByUser.fromUser.id === currentUserId ? (
-						<SentMessage key={messagesByUser.messages[0].id} messages={messagesByUser.messages} />
+						<SentMessage messages={messagesByUser.messages} />
 					) : (
-						<RcvdMessage key={messagesByUser.messages[0].id} {...messagesByUser} />
+						<RcvdMessage {...messagesByUser} />
 					)}
-				</>
+				</div>
 			))}
 		</div>
 	);
