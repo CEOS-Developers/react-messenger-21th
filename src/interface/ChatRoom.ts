@@ -1,15 +1,11 @@
 import { UserId } from './User'
-import { ChatId } from './Chat'
+import { Chat } from './Chat'
 
-export type ChatRoomId = number
-
-type Chats = {
-  [key: string]: ChatId[]
-}
+export type ChatRoomId = string
 
 export interface ChatRoom {
   chatRoomId: ChatRoomId
   roomName: string
   member: UserId[]
-  chats: Chats
+  chats: Chat[]
 }
