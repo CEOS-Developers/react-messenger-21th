@@ -62,6 +62,16 @@ const ChatInput: React.FC<ChatInputProps> = ({ setIsEmojiOpen }) => {
     }
   };
 
+  // 엔터 눌렀을 때 전송되도록
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    const isComposing = (e.nativeEvent as KeyboardEvent).isComposing;
+
+    if (e.key === 'Enter' && !e.shiftKey && !isComposing) {
+      e.preventDefault(); // 줄바꿈 방지
+      handleSendMessage();
+    }
+  };
+
   return (
     <ChatInputWrapper>
       <InputWrapper>
@@ -69,6 +79,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ setIsEmojiOpen }) => {
           ref={textareaRef}
           value={messageInput}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
           placeholder="메시지를 입력하세요"
           rows={1}
         />
