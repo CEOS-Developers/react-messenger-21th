@@ -37,7 +37,7 @@ const ChatContents = () => {
             >
               <ChatContainer>
                 <InfoContainer>
-                  <UserImg />
+                  <UserImg src={chatRooms[key].users[1].profileImg} />
                   <ChatInfo>
                     <UserName>{chatRooms[key].users[1].name}</UserName>
                     <ChatPreview>
@@ -90,6 +90,7 @@ const UserImg = styled.div<{ src?: string }>`
   height: 56px;
   border-radius: 100px;
   background: url(${(props) => (props.src ? props.src : defaulImg)});
+  background-size: cover;
 `;
 const ChatInfo = styled.div`
   display: flex;
