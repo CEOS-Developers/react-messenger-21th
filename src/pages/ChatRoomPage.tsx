@@ -60,6 +60,7 @@ const ChatRoomPage = () => {
         time: new Date().toLocaleTimeString("ko-KR", {
           hour: "2-digit",
           minute: "2-digit",
+          hour12: true,
         }),
       };
       prev[date].push(newMessage);

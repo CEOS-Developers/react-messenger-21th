@@ -42,14 +42,14 @@ const messages = {
       user: { id: 1, name: "이주희", status: "online" },
       otherUser: { id: 2, name: "김상곤", status: "online" },
       text: "ㅎㅇㅎㅇ",
-      time: "12시 30분",
+      time: "오전 12:30",
     },
     {
       id: 2,
       user: { id: 2, name: "김상곤", status: "online" },
       otherUser: { id: 2, name: "김상곤", status: "online" },
       text: "안녕하세요",
-      time: "12시 31분",
+      time: "오전 12:31",
     },
   ],
   "2025/3/21": [
@@ -58,7 +58,7 @@ const messages = {
       user: { id: 1, name: "이주희", status: "online" },
       otherUser: { id: 2, name: "김상곤", status: "online" },
       text: "과제 좀 그만내라",
-      time: "12시 36분",
+      time: "오후 12:36분",
     },
   ],
   "2025/3/22": [
@@ -67,7 +67,7 @@ const messages = {
       user: { id: 2, name: "김상곤", status: "online" },
       otherUser: { id: 2, name: "김상곤", status: "online" },
       text: "ㅇㅇ ㅋ",
-      time: "12시 40분",
+      time: "오전 12:40",
     },
   ],
 };
@@ -78,7 +78,7 @@ const messages2 = {
       user: { id: 1, name: "이주희", status: "online" },
       otherUser: { id: 2, name: "배성일", status: "online" },
       text: "ㅎㅇㅎㅇ",
-      time: "12시 30분",
+      time: "오후 12:30",
     },
   ],
 };
