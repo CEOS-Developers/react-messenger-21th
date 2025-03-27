@@ -1,6 +1,7 @@
 import NavBar from '../components/NavBar';
 import AppBar from '../components/AppBar';
 import Search from '../components/ChatList/Search';
+import SingleChatRoom from '../components/ChatList/SingleChatRoom';
 
 import BackArrowIcon from '../assets/back_arrow.svg?react';
 import AddChatIcon from '../assets/add_chat_room.svg?react';
@@ -24,6 +25,10 @@ const ChatList = () => {
       />
       <section className="mt-4 flex flex-col items-center gap-1 self-stretch">
         <Search />
+        <article className="flex flex-col items-start self-stretch">
+          <SingleChatRoom />
+          <SingleChatRoom />
+        </article>
       </section>
 
       <NavBar />
