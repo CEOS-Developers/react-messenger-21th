@@ -1,6 +1,7 @@
 import * as Types from '@/types';
 
 const STORAGE_KEY = 'messenger';
+const ID_KEY = 'my-id';
 
 function loadData(): Types.ChatList {
   const data = localStorage.getItem(STORAGE_KEY);
@@ -11,4 +12,13 @@ function saveData(data: Types.ChatList) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
-export { loadData, saveData };
+function loadMyId(): string {
+  const idData = localStorage.getItem(ID_KEY);
+  return idData || '';
+}
+
+function saveMyId(myId: string) {
+  localStorage.setItem(ID_KEY, myId);
+}
+
+export { loadData, saveData, loadMyId, saveMyId };
