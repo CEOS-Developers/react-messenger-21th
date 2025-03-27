@@ -2,11 +2,11 @@ import { useClock } from '@/hooks/useClock';
 import * as S from './StatusBar.Styled';
 import { STATUS_ITEMS } from '@/constants/status';
 
-function StatusBar({ isProfile }: { isProfile: boolean }) {
+function StatusBar({ isProfile, isChatRoom }: { isProfile: boolean; isChatRoom: boolean }) {
   const time = useClock();
 
   return (
-    <S.StatusBarWrapper className="bg-grayscale-07-white">
+    <S.StatusBarWrapper className={`${isChatRoom ? 'bg-background-blue-02-opacity' : 'bg-grayscale-07-white'}`}>
       <span className="!text-status-bar text-grayscale-00-black">{time}</span>
       <S.StatusList>
         {STATUS_ITEMS.map(({ key, blackIcon: BlackIcon, whiteIcon: WhiteIcon, width, height }) => {

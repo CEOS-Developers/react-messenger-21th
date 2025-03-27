@@ -1,8 +1,8 @@
 import * as S from './Indicator.Styled';
-import { IndicatorBlack, IndicatorWhite } from '@/assets/icons/navigation';
+import * as Icons from '@/assets/icons/navigation';
 
 function Indicator({ isProfile }: { isProfile: boolean }) {
-  const Indicator = isProfile ? IndicatorWhite : IndicatorBlack;
+  const Indicator = isProfile ? Icons.IndicatorWhite : Icons.IndicatorBlack;
 
   return (
     <S.IndicatorWrapper>
