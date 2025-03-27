@@ -1,44 +1,44 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @font-face {
   font-family: Pretendard;
   font-display: block;
-  src: url("./assets/font/PretendardVariable.woff2") format("woff2");
+  src: url('./assets/font/PretendardVariable.woff2') format('woff2');
 }
 
 @theme {
   /* Main color */
-  --color-blue-400: #5378F2;
+  --color-blue-400: #5378f2;
 
   /* Sub color */
-  --color-blue-300: #7291F7;
-  --color-blue-200: #99B0FB;
-  --color-blue-100: #C6D3FE;
-  --color-blue-0: #F8F9FF;
+  --color-blue-300: #7291f7;
+  --color-blue-200: #99b0fb;
+  --color-blue-100: #c6d3fe;
+  --color-blue-0: #f8f9ff;
 
   /* Neutral color */
-  --color-neutral-900: #13151A;
-  --color-neutral-800: #373B49;
-  --color-neutral-700: #5B6177;
-  --color-neutral-600: #7A839E;
-  --color-neutral-500: #969FBE;
-  --color-neutral-400: #ADB7D6;
-  --color-neutral-300: #C3CBE7;
-  --color-neutral-200: #F8F9FF;
-  --color-neutral-100: #D6DDF3;
-  --color-neutral-0: #F7F9FF;
+  --color-neutral-900: #13151a;
+  --color-neutral-800: #373b49;
+  --color-neutral-700: #5b6177;
+  --color-neutral-600: #7a839e;
+  --color-neutral-500: #969fbe;
+  --color-neutral-400: #adb7d6;
+  --color-neutral-300: #c3cbe7;
+  --color-neutral-200: #f8f9ff;
+  --color-neutral-100: #d6ddf3;
+  --color-neutral-0: #f7f9ff;
 
-    /* Fonts */
-  --font-heading-1: "Pretendard", sans-serif;
-  --font-headline-1: "Pretendard", sans-serif;
-  --font-headline-2: "Pretendard", sans-serif;
-  --font-headline-3: "Pretendard", sans-serif;
-  --font-body-1-sb: "Pretendard", sans-serif;
-  --font-body-1-med: "Pretendard", sans-serif;
-  --font-body-2-sb: "Pretendard", sans-serif;
-  --font-body-2-med: "Pretendard", sans-serif;
-  --font-cap-sb: "Pretendard", sans-serif;
-  --font-cap-med: "Pretendard", sans-serif;
+  /* Fonts */
+  --font-heading-1: 'Pretendard', sans-serif;
+  --font-headline-1: 'Pretendard', sans-serif;
+  --font-headline-2: 'Pretendard', sans-serif;
+  --font-headline-3: 'Pretendard', sans-serif;
+  --font-body-1-sb: 'Pretendard', sans-serif;
+  --font-body-1-med: 'Pretendard', sans-serif;
+  --font-body-2-sb: 'Pretendard', sans-serif;
+  --font-body-2-med: 'Pretendard', sans-serif;
+  --font-cap-sb: 'Pretendard', sans-serif;
+  --font-cap-med: 'Pretendard', sans-serif;
 }
 
 @layer utilities {
@@ -130,5 +130,26 @@
     font-style: normal;
     font-weight: 500;
     line-height: 150%; /* 18px */
+  }
+
+  @keyframes flash {
+    0% {
+      background-color: var(--color-blue-300);
+      box-shadow:
+        32px 0 var(--color-blue-300),
+        -32px 0 #fff;
+    }
+    50% {
+      background-color: #fff;
+      box-shadow:
+        32px 0 var(--color-blue-300),
+        -32px 0 var(--color-blue-300);
+    }
+    100% {
+      background-color: var(--color-blue-300);
+      box-shadow:
+        32px 0 #fff,
+        -32px 0 var(--color-blue-300);
+    }
   }
 }
