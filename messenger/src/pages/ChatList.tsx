@@ -1,9 +1,9 @@
-import NavBar from "../components/NavBar";
-import AppBar from "../components/AppBar";
+import NavBar from '../components/NavBar';
+import AppBar from '../components/AppBar';
 
-import BackArrowIcon from "../assets/back_arrow.svg?react";
-import AddChatIcon from "../assets/add_chat_room.svg?react";
-import ProfileIcon from "../assets/profile.svg?react";
+import BackArrowIcon from '../assets/back_arrow.svg?react';
+import AddChatIcon from '../assets/add_chat_room.svg?react';
+import ProfileIcon from '../assets/profile.svg?react';
 
 const ChatList = () => {
   return (

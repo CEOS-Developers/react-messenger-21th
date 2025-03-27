@@ -1,23 +1,23 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router-dom';
 
-import home from "../assets/home_nav.svg?react";
-import neighbor from "../assets/neighbor_nav.svg?react";
-import subscribe from "../assets/subscribe_nav.svg?react";
-import popular from "../assets/popular_nav.svg?react";
-import news from "../assets/news_nav.svg?react";
-import chat from "../assets/chat_nav.svg?react";
+import home from '../assets/home_nav.svg?react';
+import neighbor from '../assets/neighbor_nav.svg?react';
+import subscribe from '../assets/subscribe_nav.svg?react';
+import popular from '../assets/popular_nav.svg?react';
+import news from '../assets/news_nav.svg?react';
+import chat from '../assets/chat_nav.svg?react';
 
 const NavBar = () => {
   const location = useLocation();
   const nav = useNavigate();
 
   const navItems = [
-    { label: "카페홈", icon: home, path: "/home" },
-    { label: "이웃", icon: neighbor, path: "/neighbor" },
-    { label: "구독", icon: subscribe, path: "/subscribe" },
-    { label: "인기글", icon: popular, path: "/popular" },
-    { label: "내소식", icon: news, path: "/news" },
-    { label: "채팅", icon: chat, path: "/" },
+    { label: '카페홈', icon: home, path: '/home' },
+    { label: '이웃', icon: neighbor, path: '/neighbor' },
+    { label: '구독', icon: subscribe, path: '/subscribe' },
+    { label: '인기글', icon: popular, path: '/popular' },
+    { label: '내소식', icon: news, path: '/news' },
+    { label: '채팅', icon: chat, path: '/' },
   ];
 
   return (
@@ -26,7 +26,7 @@ const NavBar = () => {
         <button
           key={i}
           onClick={() => nav(item.path)}
-          className={`flex flex-col items-center gap-[0.124rem] text-xs font-medium ${location.pathname === item.path ? "text-green-400" : "text-gray-300"}`}
+          className={`flex flex-col items-center gap-[0.124rem] text-xs font-medium ${location.pathname === item.path ? 'text-green-400' : 'text-gray-300'}`}
         >
           <item.icon className="h-6 w-6" />
           <span>{item.label}</span>
