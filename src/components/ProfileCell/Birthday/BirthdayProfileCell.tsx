@@ -27,7 +27,10 @@ const BirthdayProfileCell = (): JSX.Element => {
             <S.BirthdayProfileCellItem key={profile.id}>
               <S.BirthdayProfileCellItemLink>
                 <S.BirthdayProfileInfoBox>
-                  <ProfileImageBox size={PROFILE_SIZE_LIST.basic} />
+                  <ProfileImageBox
+                    size={PROFILE_SIZE_LIST.basic}
+                    username={profile.name}
+                  />
                   <S.BirthdatProfileTextInfo>
                     <S.BirthdayProfileName>
                       {profile.name}

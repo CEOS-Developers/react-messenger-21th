@@ -9,9 +9,16 @@ export const PlusIcon = styled(plusIcon)`
   height: fit-content;
 `;
 
-export const DefaultProfileIcon = styled(defaultProfileIcon)<{ $size: number }>`
+export const DefaultProfileIcon = styled(defaultProfileIcon)<{
+  $size: number;
+  $bgColor: string;
+}>`
   width: ${({ $size }) => $size}px;
   height: ${({ $size }) => $size}px;
+
+  rect {
+    fill: ${({ $bgColor }) => $bgColor};
+  }
 `;
 
 export const GiftIcon = styled(giftIcon)`

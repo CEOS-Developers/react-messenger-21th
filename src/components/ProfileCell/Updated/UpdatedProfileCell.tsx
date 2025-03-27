@@ -22,7 +22,10 @@ const UpdatedProfileCell = (): JSX.Element => {
           {updatedProfileList.map((profile) => (
             <S.UpdatedProfileItem key={profile.id}>
               <S.UpdatedProfileItemLink>
-                <ProfileImageBox size={PROFILE_SIZE_LIST.updated} />
+                <ProfileImageBox
+                  size={PROFILE_SIZE_LIST.updated}
+                  username={profile.name}
+                />
                 <S.UpdatedProfileName>{profile.name}</S.UpdatedProfileName>
               </S.UpdatedProfileItemLink>
             </S.UpdatedProfileItem>

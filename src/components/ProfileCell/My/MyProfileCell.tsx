@@ -17,7 +17,7 @@ const MyProfileCell = ({
   return (
     <S.MyProfileCellContainer>
       <S.MyProfileInfoSection>
-        <ProfileImageBox size={PROFILE_SIZE_LIST.my} />
+        <ProfileImageBox size={PROFILE_SIZE_LIST.my} username={profileName} />
         <S.MyProfileName>{profileName}</S.MyProfileName>
       </S.MyProfileInfoSection>
       <MultiProfileButton />

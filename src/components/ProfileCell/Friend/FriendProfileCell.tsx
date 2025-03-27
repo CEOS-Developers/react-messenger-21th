@@ -18,7 +18,10 @@ const FriendProfileCell = (): JSX.Element => {
           {friendProfileList.map((profile) => (
             <S.FriendProfileCellItem key={profile.id}>
               <S.FriendProfileCellItemLink>
-                <ProfileImageBox size={PROFILE_SIZE_LIST.basic} />
+                <ProfileImageBox
+                  size={PROFILE_SIZE_LIST.basic}
+                  username={profile.name}
+                />
                 <S.FriendProfileName>{profile.name}</S.FriendProfileName>
               </S.FriendProfileCellItemLink>
             </S.FriendProfileCellItem>
