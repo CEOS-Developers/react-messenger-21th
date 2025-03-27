@@ -1,13 +1,5 @@
-import { Message } from './Message';
-
-type ChatRoom = {
-  userIds: string[];
-  title: string;
-  messages: Message[];
-  isPinned: boolean;
-  lastReadMessageId: string | null;
-};
+import { ChatRoom } from './ChatRoom';
 
 type ChatList = Record<string, ChatRoom>;
 
-export type { ChatRoom, ChatList };
+export type { ChatList };

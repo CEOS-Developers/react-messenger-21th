@@ -1,2 +1,3 @@
 export type { Message } from './Message';
-export type { ChatRoom, ChatList } from './ChatList';
+export type { ChatRoom } from './ChatRoom';
+export type { ChatList } from './ChatList';
