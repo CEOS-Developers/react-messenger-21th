@@ -56,8 +56,8 @@ const ChatInput: React.FC<ChatInputProps> = ({ setIsEmojiOpen }) => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = `${
-        textareaRef.current.scrollHeight > 56
-          ? 56
+        textareaRef.current.scrollHeight > 52
+          ? 52
           : textareaRef.current.scrollHeight
       }px`;
     }
@@ -113,13 +113,13 @@ const InputWrapper = styled.div`
 `;
 
 const ChatInputWrapper = styled.div`
-  width: 279px;
+  width: 303px;
+  height: auto;
   display: flex;
   padding: 8px 12px;
   align-items: flex-end;
   justify-content: space-between; // 양끝 정렬
   gap: 12px;
-  flex: 1 0 0;
   border-radius: 12px;
   border: 1px solid var(--Grey-Grey04, #9ca3af);
   background: var(--Grey-Grey01, #f3f4f6);

@@ -41,30 +41,86 @@ const ChatRoomPage: React.FC = () => {
   };
 
   return (
-    <s.ChatContainer isEmojiOpen={isEmojiOpen}>
+    <s.ChatContainer>
       <s.UpperBarContainer>
-        <PrevButton />
-        <CurrentPartnersName onClick={handlePartnerClick}>
-          {partner?.name || '이름 없음'}
-        </CurrentPartnersName>
-        <CurrentUsersNumber>{roomUsers?.length || 0}</CurrentUsersNumber>
-        <SearchButtonIcon width="16px" height="16px" />
-        <MenuButtonIcon width="12px" height="12px" />
+        <LeftGroup>
+          <PrevButton />
+        </LeftGroup>
+
+        <CenterGroup>
+          <PartnerInfo onClick={handlePartnerClick}>
+            <CurrentPartnersName>
+              {partner?.name || '이름 없음'}
+            </CurrentPartnersName>
+            <CurrentUsersNumber>{roomUsers?.length || 0}</CurrentUsersNumber>
+          </PartnerInfo>
+        </CenterGroup>
+
+        <RightGroup>
+          <SearchButtonIcon width="16px" height="16px" />
+          <MenuButtonIcon width="12px" height="12px" />
+        </RightGroup>
       </s.UpperBarContainer>
       <s.ChatContentsContainer>
         <ChatBoard />
       </s.ChatContentsContainer>
       <s.BottomBarContainer isEmojiOpen={isEmojiOpen}>
-        <PlusButtonIcon width="16px" height="16px" />
+        <PlusButtonWrapper>
+          <PlusButtonIcon width="16px" height="16px" />
+        </PlusButtonWrapper>{' '}
         <ChatInput setIsEmojiOpen={setIsEmojiOpen} />
       </s.BottomBarContainer>
     </s.ChatContainer>
   );
 };
 
+// s.UpperBarContainer
+export const UpperBarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  height: 48px;
+  border-bottom: 1px solid #e5e7eb;
+`;
+
+const PlusButtonWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 8px; // 여기만 바닥에서 띄움
+`;
+
+// 왼쪽, 가운데, 오른쪽 그룹 정렬
+const LeftGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+const CenterGroup = styled.div`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+`;
+
+const PartnerInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+`;
+
+const RightGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+`;
+
 const CurrentPartnersName = styled.span`
   cursor: pointer;
-  margin: 0 8px;
+  margin: 0px;
   color: var(--Grey-Grey09, #111827);
   text-align: center;
   font-size: 14px;
