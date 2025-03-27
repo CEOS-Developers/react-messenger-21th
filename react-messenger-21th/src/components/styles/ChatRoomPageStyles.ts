@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 // 전체 채팅 페이지 (그리드 레이아웃 적용)
 export const ChatContainer = styled.div`
-  width: 375px;
-  height: 100dvh;
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-rows: 48px 1fr auto; // 마지막 줄을 auto로
   box-sizing: border-box;
@@ -12,7 +12,7 @@ export const ChatContainer = styled.div`
 // 상단 바 (고정)
 export const UpperBarContainer = styled.div`
   position: relative;
-  width: 375px
+  width: 100%;
   height: 48px;
   display: flex;
   justify-content: space-between;
