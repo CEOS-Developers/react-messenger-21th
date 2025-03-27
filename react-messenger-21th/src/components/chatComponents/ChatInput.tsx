@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 import SendMessageOn from '/public/assets/icons/SendMessageOn.svg?react';
 import SendEmoticonNotSelected from '/public/assets/icons/EmoticonNotSelected.svg?react';
+import SearchNotSelected from '/public/assets/icons/SearchNotSelected.svg?react';
 
 interface ChatInputProps {
   setIsEmojiOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -89,11 +90,15 @@ const ChatInput: React.FC<ChatInputProps> = ({ setIsEmojiOpen }) => {
             height="16px"
             onClick={() => setIsEmojiOpen(true)}
           />
-          <SendMessageOn
-            width="16px"
-            height="16px"
-            onClick={handleSendMessage}
-          />
+          {messageInput.trim() === '' ? (
+            <SearchNotSelected width="16px" height="16px" />
+          ) : (
+            <SendMessageOn
+              width="16px"
+              height="16px"
+              onClick={handleSendMessage}
+            />
+          )}
         </IconWrapper>
       </InputWrapper>
     </ChatInputWrapper>
