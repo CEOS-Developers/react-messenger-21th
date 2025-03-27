@@ -24,16 +24,18 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
         {!isMine && showProfile && <ProfileImage src={image} alt="profile" />}
       </ProfileColumn>
 
-      <MessageBlock isMine={isMine}>
-        {!isMine && showProfile && <UserName>{userName}</UserName>}
-        <Bubble isMine={isMine}>{text}</Bubble>
+      <MessageWrapper isMine={isMine}>
+        <MessageBlock isMine={isMine}>
+          {!isMine && showProfile && <UserName>{userName}</UserName>}
+          <Bubble isMine={isMine}>{text}</Bubble>
+        </MessageBlock>
         <Timestamp isMine={isMine}>
           {new Date(timestamp).toLocaleTimeString([], {
             hour: '2-digit',
             minute: '2-digit',
           })}
         </Timestamp>
-      </MessageBlock>
+      </MessageWrapper>
     </BubbleRow>
   );
 };
@@ -45,6 +47,7 @@ const BubbleRow = styled.div<{ isMine: boolean }>`
   align-items: flex-start;
   gap: 4px;
   align-self: stretch;
+  padding: 4px;
 `;
 
 // 프로필
@@ -70,25 +73,32 @@ const UserName = styled.div`
 // 말풍선 + 시간
 const MessageBlock = styled.div<{ isMine: boolean }>`
   display: flex;
-  flex-direction: column;
+  flex-direction: column; // 🔥 세로로 정렬!
   align-items: ${({ isMine }) => (isMine ? 'flex-end' : 'flex-start')};
   gap: 4px;
 `;
 
 const Bubble = styled.div<{ isMine: boolean }>`
   background-color: ${({ isMine }) => (isMine ? '#D1D5DB' : '#FEFEFE')};
+  border: ${({ isMine }) => (isMine ? '1px solid #D1D5DB' : '')};
   color: #111827;
-  padding: 10px;
   border-radius: 12px;
   font-size: 14px;
   max-width: 200px;
   white-space: pre-wrap;
+  padding: 8px 12px;
 `;
 
 const Timestamp = styled.div<{ isMine: boolean }>`
   font-size: 10px;
   color: gray;
   text-align: ${({ isMine }) => (isMine ? 'left' : 'right')};
+`;
+
+const MessageWrapper = styled.div<{ isMine: boolean }>`
+  display: flex;
+  align-items: flex-end;
+  flex-direction: ${({ isMine }) => (isMine ? 'row-reverse' : 'row')};
 `;
 
 export default ChatBubble;
