@@ -26,9 +26,9 @@ function formatChatPreviewTime(timestamp: number): string {
     return `${isAM ? '오전' : '오후'} ${formattedHour}:${minutes}`;
   } else if (diffInDays === 1) {
     return '어제';
+  } else {
+    return `${diffInDays}일 전`;
   }
-
-  return `${diffInDays}일 전`;
 }
 
 export { getLastTimeStamp, formatChatPreviewTime, truncateChatPreviewText };
