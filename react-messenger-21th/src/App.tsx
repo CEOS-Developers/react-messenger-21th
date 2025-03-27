@@ -18,8 +18,8 @@ function App() {
           <GlobalStyle />
           <Router>
             <Routes>
-              <Route path="/" element={<ProfilePage />} />
-              <Route path="/chats" element={<ShowChatRoomPage />} />
+              <Route path="/friends" element={<ProfilePage />} />
+              <Route path="/chat-rooms" element={<ShowChatRoomPage />} />
               <Route path="/chat/:roomId" element={<ChatRoomPage />} />
             </Routes>
           </Router>

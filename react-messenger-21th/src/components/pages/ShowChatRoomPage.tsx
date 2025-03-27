@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../states/store';
 import styled from 'styled-components';
 import ChatRoomCard from '../showChatRoomComponents/ChatRoomCard';
-import BottomBar from '../BottomBar';
+import BottomNav from '../bottomBarComponents/BottomNav';
 import SearchButtonIcon from '/public/assets/icons/SearchUpperBar.svg?react';
 import OpenChatButtonIcon from '/public/assets/icons/OpenChat.svg?react';
 import SettingButtonIcon from '/public/assets/icons/Setting.svg?react';
@@ -23,12 +23,15 @@ const ShowChatRoomPage: React.FC = () => {
       </UpperBar>
 
       <ChatRoomList>
+        {/* 방 번호로 묶어 리스트 보여주기 */}
         {chatRooms.map((room) => (
           <ChatRoomCard key={room.id} room={room} users={users} />
         ))}
       </ChatRoomList>
 
-      <BottomBar current="chat" />
+      <BottomBarContainer>
+        <BottomNav />
+      </BottomBarContainer>
     </ChatRoomWrapper>
   );
 };
@@ -36,6 +39,8 @@ const ShowChatRoomPage: React.FC = () => {
 export default ShowChatRoomPage;
 
 // styled-components
+const BottomBarContainer = styled.div``;
+
 const ChatRoomWrapper = styled.div``;
 
 const UpperBar = styled.div``;
