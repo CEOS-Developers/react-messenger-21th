@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import PlusBtn from '@/assets/svgs/chatroom/PlusBtn.svg';
 import CameraBtn from '@/assets/svgs/chatroom/CameraBtn.svg';
 import GalleryBtn from '@/assets/svgs/chatroom/GalleryBtn.svg';
@@ -23,6 +23,7 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
     galleryInputRef.current?.click();
   };
 
+  const [isComposing, setIsComposing] = useState(false);
   return (
     <div className="flex items-center w-[375px] fixed bottom-0 py-2 px-4 shadow-bottommenu bg-grey-50">
       <input
@@ -62,8 +63,10 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
           onChange={onChange}
           placeholder="텍스트를 입력해주세요"
           className="flex-1 w-[191px] border-grey-100 border-[0.5px] pr-[37px] bg-grey-75 rounded-lg p-2 outline-none text-body2 text-grey-900 placeholder:text-grey-400"
+          onCompositionStart={() => setIsComposing(true)}
+          onCompositionEnd={() => setIsComposing(false)}
           onKeyDown={(e) => {
-            if (e.key === 'Enter') {
+            if (e.key === 'Enter' && !isComposing) {
               e.preventDefault();
               onSend();
             }
