@@ -101,7 +101,7 @@ const chatSlice = createSlice({
         // chatRoom.messages에 새로 푸쉬
         chatRoom.messages.push({
           ...message,
-          isMine: message.senderId === idForMe, // 자동 설정
+          isMine: message.senderId === state.currentSenderId, // 현재 senderId 기준으로 설정 -> 리렌더 될 수 있도록
         });
       }
     },
@@ -130,5 +130,6 @@ const chatSlice = createSlice({
   },
 });
 
-export const { sendMessage, switchChatRoom, addChatRoom } = chatSlice.actions;
+export const { sendMessage, switchChatRoom, addChatRoom, switchSender } =
+  chatSlice.actions;
 export default chatSlice.reducer;

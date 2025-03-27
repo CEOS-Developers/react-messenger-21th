@@ -6,6 +6,9 @@ import ChatBubble from './ChatBubble';
 import styled from 'styled-components';
 
 const ChatBoard: React.FC = () => {
+  const currentSenderId = useSelector(
+    (state: RootState) => state.chat.currentSenderId,
+  );
   const chatRooms = useSelector((state: RootState) => state.chat.chatRooms);
   const currentChatRoomId = useSelector(
     (state: RootState) => state.chat.currentChatRoomId,
@@ -77,7 +80,7 @@ const ChatBoard: React.FC = () => {
                 image={sender?.image || '/default-profile.svg'}
                 userName={sender?.name || ''}
                 text={msg.text}
-                isMine={msg.isMine}
+                isMine={msg.senderId === currentSenderId}
                 timestamp={msg.timestamp}
                 showProfile={
                   msgIndex === 0 ||
@@ -93,14 +96,14 @@ const ChatBoard: React.FC = () => {
   );
 };
 
-// ✅ 전체 채팅 보드 스타일
+// 전체 채팅 보드 스타일
 const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px;
 `;
 
-// ✅ 날짜 스탬프 스타일
+// 날짜 스탬프 스타일
 const DateStamp = styled.div`
   text-align: center;
   font-size: 12px;
