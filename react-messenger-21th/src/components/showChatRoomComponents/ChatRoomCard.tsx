@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Message } from '../states/chatSlice';
+import { idForMe } from '../../mocks/mockData';
+import { useNavigate } from 'react-router-dom';
 
 // 타입 정의
 interface User {
@@ -21,11 +23,17 @@ interface Props {
 }
 // 방 번호와 유저 명단 받아오기
 const ChatRoomCard: React.FC<Props> = ({ room, users }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/chat/${room.id}`); // URL에 포함해서 보냄
+  };
+
   // participants = 유저 아이디 배열
   // 유저 아이디 => 실제 유저 객체로 변환
   // 현재 참가자 중 유저 정보의 아이디와 같은 사람이 있으면 유저 반환
   const participants = room.participants
-    .map((id) => users.find((user) => user.id === id))
+    .map((id) => users.find((user) => user.id === id && user.id !== idForMe))
     .filter((u): u is User => !!u);
 
   // 제일 마지막 메시지 정보 가져오기
@@ -41,7 +49,7 @@ const ChatRoomCard: React.FC<Props> = ({ room, users }) => {
     : '';
 
   return (
-    <CardWrapper>
+    <CardWrapper onClick={handleClick}>
       <ProfileImages>
         {participants.slice(0, 4).map((user, i) => (
           <ProfileImage key={i} src={user.image} alt="profile" />

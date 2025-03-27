@@ -7,19 +7,16 @@ import styled from 'styled-components';
 import SendMessageOn from '/public/assets/icons/SendMessageOn.svg?react';
 import SendEmoticonNotSelected from '/public/assets/icons/EmoticonNotSelected.svg?react';
 import SearchNotSelected from '/public/assets/icons/SearchNotSelected.svg?react';
+import { useParams } from 'react-router-dom';
 
-interface ChatInputProps {
-  setIsEmojiOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+const ChatInput: React.FC = () => {
+  // roomId 받아오기기
+  const { roomId } = useParams();
 
-const ChatInput: React.FC<ChatInputProps> = ({ setIsEmojiOpen }) => {
   const dispatch = useDispatch();
   // input 값 상태 관리
   const [messageInput, setMessageInput] = useState('');
-  // 현재 선택된 채팅방 번호 가져오기
-  const currentChatRoomId = useSelector(
-    (state: RootState) => state.chat.currentChatRoomId,
-  );
+
   // 메시지 보낸 사람 id 가져오기
   const currentSenderId = useSelector(
     (state: RootState) => state.chat.currentSenderId,
@@ -29,11 +26,11 @@ const ChatInput: React.FC<ChatInputProps> = ({ setIsEmojiOpen }) => {
 
   // 메시지 보내는 버튼!
   const handleSendMessage = () => {
-    if (!messageInput.trim() || !currentChatRoomId) return;
+    if (!messageInput.trim() || !roomId) return;
 
     dispatch(
       sendMessage({
-        roomId: currentChatRoomId,
+        roomId: roomId,
         message: {
           id: uuidv4(),
           senderId: currentSenderId ?? '',
@@ -85,11 +82,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ setIsEmojiOpen }) => {
           rows={1}
         />
         <IconWrapper>
-          <SendEmoticonNotSelected
-            width="16px"
-            height="16px"
-            onClick={() => setIsEmojiOpen(true)}
-          />
+          <SendEmoticonNotSelected width="16px" height="16px" />
           {messageInput.trim() === '' ? (
             <SearchNotSelected width="16px" height="16px" />
           ) : (

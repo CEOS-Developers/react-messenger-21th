@@ -7,9 +7,9 @@ import { User } from '../states/chatSlice'; // 유저 타입명 가져오기
 import styled from 'styled-components';
 import BottomNav from '../bottomBarComponents/BottomNav';
 import SearchNotSelected from '/public/assets/icons/SearchNotSelected.svg?react';
-import AddFriendButton from '/public/assets/icons/AddFriend.svg?react';
-import MusicButton from '/public/assets/icons/Music.svg?react';
-import SettingButton from '/public/assets/icons/Setting.svg?react';
+import AddFriendButton from '/public/assets/icons/AddFriendButton.svg?react';
+import MusicButton from '/public/assets/icons/MusicButton.svg?react';
+import SettingButton from '/public/assets/icons/SettingButton.svg?react';
 
 const FriendsPage: React.FC = () => {
   const users = useSelector((state: RootState) => state.chat.users);
@@ -37,6 +37,9 @@ const FriendsPage: React.FC = () => {
             <MyName>{me.name}</MyName>
             <StatusMessage>상태메시지를 입력하세요.</StatusMessage>
           </ProfileTextGroup>
+          <UpdatedProfiles />
+          <BirthdayProfiles />
+          <FriendList />
         </MyProfileContainer>
       </FriendsBoard>
 

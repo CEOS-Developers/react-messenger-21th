@@ -69,7 +69,7 @@ export const chatRooms: ChatRoom[] = [
   },
   {
     id: 'room3',
-    participants: [idForMe, friends[2].id],
+    participants: [idForMe, friends[3].id],
     messages: [
       {
         id: uuidv4(),
@@ -80,7 +80,7 @@ export const chatRooms: ChatRoom[] = [
       },
       {
         id: uuidv4(),
-        senderId: friends[2].id,
+        senderId: friends[3].id,
         text: '응 안 만들어 줘',
         timestamp: new Date().toISOString(),
         isMine: false,

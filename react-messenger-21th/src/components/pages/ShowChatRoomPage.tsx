@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import ChatRoomCard from '../showChatRoomComponents/ChatRoomCard';
 import BottomNav from '../bottomBarComponents/BottomNav';
 import SearchButtonIcon from '/public/assets/icons/SearchUpperBar.svg?react';
-import OpenChatButtonIcon from '/public/assets/icons/OpenChat.svg?react';
-import SettingButtonIcon from '/public/assets/icons/Setting.svg?react';
+import PlusChatButton from '/public/assets/icons/PlusChatButton.svg?react';
+import SettingButtonIcon from '/public/assets/icons/SettingButton.svg?react';
 
 const ShowChatRoomPage: React.FC = () => {
   const chatRooms = useSelector((state: RootState) => state.chat.chatRooms);
@@ -17,7 +17,7 @@ const ShowChatRoomPage: React.FC = () => {
         <ChatText>채팅</ChatText>
         <RightButtons>
           <SearchButtonIcon />
-          <OpenChatButtonIcon />
+          <PlusChatButton />
           <SettingButtonIcon />
         </RightButtons>
       </UpperBar>

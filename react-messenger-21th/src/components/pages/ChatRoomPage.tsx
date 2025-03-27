@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../states/store';
 import { switchSender } from '../states/chatSlice';
@@ -10,29 +10,43 @@ import SearchButtonIcon from '/public/assets/icons/SearchUpperBar.svg?react';
 import MenuButtonIcon from '/public/assets/icons/Hamburger.svg?react';
 import PlusButtonIcon from '/public/assets/icons/PlusNotSelected.svg?react';
 import PrevButton from '/public/assets/icons/PrevButton.svg?react';
+import { useParams, useNavigate } from 'react-router-dom'; // roomID 받아올 예정
 
 const ChatRoomPage: React.FC = () => {
-  const [isEmojiOpen, setIsEmojiOpen] = useState(false);
+  // Hook은 무조건 컴포넌트 최상단에서 호출
+  const chatListRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
+  // prev 버튼
+  const handleBack = () => {
+    navigate('/chat-rooms'); // 채팅방 목록 페이지 경로로
+  };
+
+  const { roomId } = useParams(); // URL에서 roomId 받아오기
   const dispatch = useDispatch();
 
   const chatRooms = useSelector((state: RootState) => state.chat.chatRooms);
-  const currentChatRoomId = useSelector(
-    (state: RootState) => state.chat.currentChatRoomId,
-  );
   const currentSenderId = useSelector(
     (state: RootState) => state.chat.currentSenderId,
   );
   const users = useSelector((state: RootState) => state.chat.users);
 
-  const currentChatRoom = chatRooms.find(
-    (room) => room.id === currentChatRoomId,
-  );
+  // roomId를 기반으로 해당 채팅방 찾기
+  const currentChatRoom = chatRooms.find((room) => room.id === roomId);
+  // messages도 미리 선언 (Hook 쓸 때 순서 중요!!!!!!!!)
+  const messages = currentChatRoom?.messages ?? [];
 
-  const roomUsers = currentChatRoom?.participants
+  useEffect(() => {
+    chatListRef.current?.scrollTo(0, chatListRef.current.scrollHeight);
+  }, [messages.length]);
+
+  if (!currentChatRoom) return <p>채팅방을 찾을 수 없습니다</p>;
+
+  const roomUsers = currentChatRoom.participants
     .map((id) => users.find((user) => user.id === id))
     .filter((u): u is (typeof users)[number] => Boolean(u));
 
-  const partner = roomUsers?.find((user) => user.id !== currentSenderId);
+  const partner = roomUsers.find((user) => user.id !== currentSenderId);
 
   const handlePartnerClick = () => {
     if (partner?.id) {
@@ -40,24 +54,12 @@ const ChatRoomPage: React.FC = () => {
     }
   };
 
-  // 채팅이 업데이트될 때마다 아래로 스크롤
-  const messages = useSelector((state: RootState) => {
-    const room = state.chat.chatRooms.find(
-      (r) => r.id === state.chat.currentChatRoomId,
-    );
-    return room?.messages ?? [];
-  });
-
-  const chatListRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    chatListRef.current?.scrollTo(0, chatListRef.current.scrollHeight);
-  }, [messages]);
-
   return (
     <s.ChatContainer>
+      {/* 현재 선택된 채팅방 메시지에 대해 */}
       <s.UpperBarContainer>
         <LeftGroup>
-          <PrevButton />
+          <PrevButton onClick={handleBack} />
         </LeftGroup>
 
         <CenterGroup>
@@ -65,7 +67,7 @@ const ChatRoomPage: React.FC = () => {
             <CurrentPartnersName>
               {partner?.name || '이름 없음'}
             </CurrentPartnersName>
-            <CurrentUsersNumber>{roomUsers?.length || 0}</CurrentUsersNumber>
+            <CurrentUsersNumber>{roomUsers.length}</CurrentUsersNumber>
           </PartnerInfo>
         </CenterGroup>
 
@@ -74,14 +76,16 @@ const ChatRoomPage: React.FC = () => {
           <MenuButtonIcon width="12px" height="12px" />
         </RightGroup>
       </s.UpperBarContainer>
+
       <s.ChatContentsContainer ref={chatListRef}>
         <ChatBoard />
       </s.ChatContentsContainer>
-      <s.BottomBarContainer isEmojiOpen={isEmojiOpen}>
+
+      <s.BottomBarContainer>
         <PlusButtonWrapper>
           <PlusButtonIcon width="16px" height="16px" />
-        </PlusButtonWrapper>{' '}
-        <ChatInput setIsEmojiOpen={setIsEmojiOpen} />
+        </PlusButtonWrapper>
+        <ChatInput />
       </s.BottomBarContainer>
     </s.ChatContainer>
   );

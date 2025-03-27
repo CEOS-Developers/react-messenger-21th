@@ -35,7 +35,7 @@ export const ChatContentsContainer = styled.div`
 `;
 
 // 하단 입력창 (고정, 절대 밀리지 않음)
-export const BottomBarContainer = styled.div<{ isEmojiOpen: boolean }>`
+export const BottomBarContainer = styled.div`
   height: auto;
   align-items: stretch;
   width: 100%;

@@ -4,21 +4,19 @@ import { RootState } from '../states/store';
 import { Message } from '../states/chatSlice';
 import ChatBubble from './ChatBubble';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 
 const ChatBoard: React.FC = () => {
+  const { roomId } = useParams();
+
   const currentSenderId = useSelector(
     (state: RootState) => state.chat.currentSenderId,
   );
   const chatRooms = useSelector((state: RootState) => state.chat.chatRooms);
-  const currentChatRoomId = useSelector(
-    (state: RootState) => state.chat.currentChatRoomId,
-  );
   const users = useSelector((state: RootState) => state.chat.users);
 
   // 현재 선택된 채팅방 찾기
-  const currentChatRoom = chatRooms.find(
-    (room) => room.id === currentChatRoomId,
-  );
+  const currentChatRoom = chatRooms.find((room) => room.id === roomId);
   if (!currentChatRoom) return <p>채팅방을 선택하세요.</p>;
 
   // 메시지를 날짜 & 시간 기준으로 그룹화
