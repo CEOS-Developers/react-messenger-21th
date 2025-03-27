@@ -4,6 +4,7 @@ import type { messagesByUserDto } from '@/utils/dto';
 
 import SentMessage from './SentMessage';
 import RcvdMessage from './RcvdMessage';
+import DateDivider from './DateDivider';
 
 export default function MessageContainer({
 	messagesByUsers,
@@ -32,16 +33,19 @@ export default function MessageContainer({
 	return (
 		<div
 			ref={messageContainerRef}
-			className="flex flex-col h-[38.5rem] overflow-y-scroll px-5"
+			className="flex flex-col gap-3 h-[38.5rem] overflow-y-scroll px-5"
 			style={{ scrollbarWidth: 'none' }}
 		>
-			{messagesByUsers.map((messagesByUser) =>
-				messagesByUser.fromUser.id === currentUserId ? (
-					<SentMessage key={messagesByUser.messages[0].id} messages={messagesByUser.messages} />
-				) : (
-					<RcvdMessage key={messagesByUser.messages[0].id} {...messagesByUser} />
-				),
-			)}
+			{messagesByUsers.map((messagesByUser) => (
+				<>
+					{messagesByUser.isDateVisible && <DateDivider date={new Date(messagesByUser.messages[0].createdAt)} />}
+					{messagesByUser.fromUser.id === currentUserId ? (
+						<SentMessage key={messagesByUser.messages[0].id} messages={messagesByUser.messages} />
+					) : (
+						<RcvdMessage key={messagesByUser.messages[0].id} {...messagesByUser} />
+					)}
+				</>
+			))}
 		</div>
 	);
 }
