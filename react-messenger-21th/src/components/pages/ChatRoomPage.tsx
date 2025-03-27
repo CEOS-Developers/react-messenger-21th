@@ -6,40 +6,31 @@ import styled from 'styled-components';
 import SearchButtonIcon from '../../assets/icons/SearchUpperBar.svg?react';
 import MenuButtonIcon from '../../assets/icons/Hamburger.svg?react';
 import PlusButtonIcon from '../../assets/icons/PlusNotSelected.svg?react';
+import PrevButton from '../../assets/icons/PrevButton.svg?react';
 
 const ChatRoomPage: React.FC = () => {
   return (
     <s.ChatContainer>
       <s.UpperBarContainer>
         <PrevButton />
-        <CurrentUsers />
-        <SearchButton>
-          <SearchButtonIcon width="24px" height="24px" />
-        </SearchButton>
-        <MenuButton>
-          <MenuButtonIcon width="24px" height="24px" />
-        </MenuButton>
+        <CurrentPartnersName />
+        <CurrentUsersNumber />
+        <SearchButtonIcon width="16px" height="16px" />
+        <MenuButtonIcon width="12px" height="12px" />
       </s.UpperBarContainer>
       <s.ChatContentsContainer>
         <ChatBoard />
       </s.ChatContentsContainer>
       <s.BottomBarContainer>
-        <PlusButton>
-          <PlusButtonIcon width="24px" height="24px" />
-        </PlusButton>
+        <PlusButtonIcon width="16px" height="16px" />
         <ChatInput />
       </s.BottomBarContainer>
     </s.ChatContainer>
   );
 };
 
-const PrevButton = styled.button``;
-const CurrentUsers = styled.span``;
+const CurrentPartnersName = styled.span``;
 
-const SearchButton = styled.button``;
-
-const MenuButton = styled.button``;
-
-const PlusButton = styled.button``;
+const CurrentUsersNumber = styled.span``;
 
 export default ChatRoomPage;

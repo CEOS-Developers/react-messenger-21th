@@ -3,24 +3,29 @@ import styled from 'styled-components';
 
 interface ChatBubbleProps {
   image?: string; // 첫 메시지일 때만 표시
+  userName?: string; // 유저 이름 표시용
   text: string;
   isMine: boolean;
   timestamp: string;
-  showProfile: boolean; // ✅ 첫 메시지인지 여부 확인
+  showProfile: boolean; // 첫 메시지인지 여부 확인
 }
 
 const ChatBubble: React.FC<ChatBubbleProps> = ({
   image,
+  userName,
   text,
   isMine,
   timestamp,
   showProfile,
 }) => {
   return (
-    <BubbleContainer isMine={isMine}>
-      {/* 상대방 메시지이면서 showProfile이 true일 때만 프로필 표시 */}
-      {!isMine && showProfile && <ProfileImage src={image} alt="profile" />}
-      <MessageContainer isMine={isMine}>
+    <BubbleRow isMine={isMine}>
+      <ProfileColumn>
+        {!isMine && showProfile && <ProfileImage src={image} alt="profile" />}
+      </ProfileColumn>
+
+      <MessageBlock isMine={isMine}>
+        {!isMine && showProfile && <UserName>{userName}</UserName>}
         <Bubble isMine={isMine}>{text}</Bubble>
         <Timestamp isMine={isMine}>
           {new Date(timestamp).toLocaleTimeString([], {
@@ -28,48 +33,61 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
             minute: '2-digit',
           })}
         </Timestamp>
-      </MessageContainer>
-    </BubbleContainer>
+      </MessageBlock>
+    </BubbleRow>
   );
 };
 
-// ✅ 전체 메시지 컨테이너
-const BubbleContainer = styled.div<{ isMine: boolean }>`
+// 전체 한 줄 (좌우 정렬 포함)
+const BubbleRow = styled.div<{ isMine: boolean }>`
   display: flex;
-  align-items: flex-end;
   justify-content: ${({ isMine }) => (isMine ? 'flex-end' : 'flex-start')};
-  margin-bottom: 4px;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
 `;
 
-// ✅ 메시지와 타임스탬프를 감싸는 컨테이너
-const MessageContainer = styled.div<{ isMine: boolean }>`
+// 프로필
+const ProfileColumn = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: ${({ isMine }) => (isMine ? 'flex-start' : 'flex-end')};
+  align-items: center;
+  width: 36px;
+  gap: 4px;
 `;
 
-// ✅ 프로필 이미지 스타일
 const ProfileImage = styled.img`
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  margin-right: 8px;
+  width: 36px;
+  height: 36px;
 `;
 
-// ✅ 말풍선 스타일
+const UserName = styled.div`
+  font-size: 12px;
+  color: #374151;
+  text-align: center;
+`;
+
+// 말풍선 + 시간
+const MessageBlock = styled.div<{ isMine: boolean }>`
+  display: flex;
+  flex-direction: column;
+  align-items: ${({ isMine }) => (isMine ? 'flex-end' : 'flex-start')};
+  gap: 4px;
+`;
+
 const Bubble = styled.div<{ isMine: boolean }>`
-  background-color: ${({ isMine }) => (isMine ? '#4CAF50' : '#E0E0E0')};
-  color: ${({ isMine }) => (isMine ? '#FFF' : '#000')};
+  background-color: ${({ isMine }) => (isMine ? '#D1D5DB' : '#FEFEFE')};
+  color: #111827;
   padding: 10px;
-  border-radius: 10px;
-  max-width: 70%;
+  border-radius: 12px;
+  font-size: 14px;
+  max-width: 200px;
+  white-space: pre-wrap;
 `;
 
-// ✅ 타임스탬프 스타일 (내 메시지는 왼쪽, 상대방 메시지는 오른쪽)
 const Timestamp = styled.div<{ isMine: boolean }>`
   font-size: 10px;
   color: gray;
-  margin-top: 2px;
   text-align: ${({ isMine }) => (isMine ? 'left' : 'right')};
 `;
 
