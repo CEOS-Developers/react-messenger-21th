@@ -4,6 +4,7 @@ import ChatHeader from '@/components/chatroom/ChatHeader';
 import ChatInput from '@/components/chatroom/ChatInput';
 import ChatMessage from '@/components/chatroom/ChatMessage';
 import allMessages from '@/data/messages.json';
+import { formatDate } from '@/utils/formatDate';
 
 // 메시지 타입 정의
 export type MessageItem = {
@@ -42,7 +43,6 @@ const ChatRoom = () => {
 
   const roomKey = `${id}-${type}`;
   const [messages, setMessages] = useState<MessageItem[]>(conversationMap[roomKey] || []);
-
   const [input, setInput] = useState('');
 
   const handleSend = () => {
@@ -80,19 +80,35 @@ const ChatRoom = () => {
     setMessages(conversationMap[nextKey] || []);
   };
 
+  let lastDate = '';
+
   return (
     <div className="flex flex-col justify-between h-screen bg-grey-100">
       <div className="flex flex-col gap-2 p-4 overflow-y-auto flex-1">
         <ChatHeader name={targetUser.name} onClick={handleHeaderClick} />
 
-        {messages.map((msg, idx) => (
-          <ChatMessage
-            key={idx}
-            message={msg}
-            isMine={msg.sender === currentUser.id}
-            senderInfo={msg.sender === currentUser.id ? currentUser : targetUser}
-          />
-        ))}
+        {messages.map((msg, idx) => {
+          const currentDate = msg.time.split('T')[0];
+          const isNewDate = currentDate !== lastDate;
+          lastDate = currentDate;
+
+          return (
+            <div key={idx}>
+              {isNewDate && (
+                <div className="flex justify-center my-2 mx-4">
+                  <span className="text-caption2 text-grey-50 bg-grey-700 bg-opacity-50 px-2 rounded-[20px]">
+                    {formatDate(msg.time)}
+                  </span>
+                </div>
+              )}
+              <ChatMessage
+                message={msg}
+                isMine={msg.sender === currentUser.id}
+                senderInfo={msg.sender === currentUser.id ? currentUser : targetUser}
+              />
+            </div>
+          );
+        })}
       </div>
 
       <ChatInput

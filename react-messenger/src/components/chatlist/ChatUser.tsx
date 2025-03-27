@@ -23,8 +23,10 @@ const ChatUser = ({ profileImg, username, lastMessage, time, unread, memberCount
           {memberCount && <span className="text-title2 text-grey-600">&nbsp;({memberCount})</span>}
         </span>
         <div className="flex gap-1 px-4 pb-1 pt-[2.4px] h-[27px]">
-          <span className="text-body2 text-grey-400 truncate">{lastMessage}</span>
-          <span className="text-body2 text-grey-400">· {time}</span>
+          <span className="text-body2 text-grey-400 truncate max-w-[170px] overflow-hidden whitespace-nowrap">
+            {lastMessage}
+          </span>
+          <span className="text-body2 text-grey-400 shrink-0">· {time}</span>
         </div>
       </div>
 
