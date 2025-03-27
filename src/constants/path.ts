@@ -10,6 +10,9 @@ export const PATH = {
   OPEN_CHATTING: {
     base: '/openchatting',
   },
+  MARKET: {
+    base: '/market',
+  },
   MORE: {
     base: '/more',
   },

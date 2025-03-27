@@ -132,6 +132,10 @@
     line-height: 150%; /* 18px */
   }
 
+  body {
+    @apply flex justify-center;
+  }
+
   @keyframes flash {
     0% {
       background-color: var(--color-blue-300);
