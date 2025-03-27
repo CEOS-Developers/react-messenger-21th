@@ -1,9 +1,9 @@
 {
-  "chatRoom": [
+  "chatRoomData": [
     {
       "chatRoomId": "550e8400-e29b-41d4-a716-446655440000",
       "roomName": null,
-      "member": [],
+      "member": [1, 7],
       "chats": {
         "2025-03-20": [
           {
@@ -57,7 +57,7 @@
     {
       "chatRoomId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
       "roomName": "카페투어 모임😇",
-      "member": [1, 7],
+      "member": [1, 7, 8, 9],
       "chats": {
         "2025-03-19": [
           {

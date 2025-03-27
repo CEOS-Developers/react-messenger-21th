@@ -1,5 +1,5 @@
 {
-  "user": [
+  "userData": [
     {
       "id": 0,
       "name": "김영서",
@@ -16,8 +16,14 @@
       "profileMessage": "see you on the other side",
       "profileColor": "orange",
       "joinedRooms": [
-        "550e8400-e29b-41d4-a716-446655440000",
-        "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+        {
+          "chatRoomId": "550e8400-e29b-41d4-a716-446655440000",
+          "lastSeenTime": 1742768880921
+        },
+        {
+          "chatRoomId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "lastSeenTime": 1742390390000
+        }
       ],
       "friends": [0, 1, 2, 3, 4, 5, 6, 7],
       "profileImgUrl": "",
@@ -69,8 +75,14 @@
       "profileMessage": "",
       "profileColor": "orange",
       "joinedRooms": [
-        "550e8400-e29b-41d4-a716-446655440000",
-        "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+        {
+          "chatRoomId": "550e8400-e29b-41d4-a716-446655440000",
+          "lastSeenTime": 1742768881054
+        },
+        {
+          "chatRoomId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "lastSeenTime": 1742382765000
+        }
       ],
       "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9],
       "profileImgUrl": "",
@@ -81,7 +93,12 @@
       "name": "김민지",
       "profileMessage": "",
       "profileColor": "orange",
-      "joinedRooms": ["f47ac10b-58cc-4372-a567-0e02b2c3d479"],
+      "joinedRooms": [
+        {
+          "chatRoomId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "lastSeenTime": 1742429440000
+        }
+      ],
       "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9],
       "profileImgUrl": "",
       "snsUrl": ""
@@ -91,7 +108,12 @@
       "name": "이예린",
       "profileMessage": "",
       "profileColor": "skyblue",
-      "joinedRooms": ["f47ac10b-58cc-4372-a567-0e02b2c3d479"],
+      "joinedRooms": [
+        {
+          "chatRoomId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "lastSeenTime": 1742429440000
+        }
+      ],
       "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9],
       "profileImgUrl": "",
       "snsUrl": ""
