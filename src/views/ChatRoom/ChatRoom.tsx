@@ -4,14 +4,16 @@ import { Link } from 'react-router-dom';
 import * as S from './ChatRoom.Styled';
 import * as Types from '@/types';
 import * as Icons from '@/assets/icons/chatroom';
-import { loadData, loadMyId, saveMyId } from '@/services/localStorage';
+import { loadData, loadMyId, saveMyId, loadDB, saveDB } from '@/services/localStorage';
 import idData from '@/assets/data/idData.json';
+import dbData from '@/assets/data/dbData.json';
 import { groupMessagesByDate, groupMessagesByConsecutiveUser, formatTime, onSend } from '@/utils/chatRoomUtils';
 import togglePin from '@/utils/togglePin';
 
 function ChatRoom() {
   const { chatId } = useParams();
   const [myId, setMyId] = useState('');
+  const [db, setDB] = useState<Types.User | null>(null);
   const [chatRoom, setChatRoom] = useState<Types.ChatRoom | null>(null);
   const [text, setText] = useState('');
   const [isComposing, setIsComposing] = useState(false);
@@ -25,6 +27,16 @@ function ChatRoom() {
       setMyId(idData);
     } else {
       setMyId(myId);
+    }
+  }, []);
+
+  useEffect(() => {
+    const userDB = loadDB();
+    if (!db) {
+      saveDB(userDB);
+      setDB(userDB);
+    } else {
+      setDB(dbData);
     }
   }, []);
 
@@ -95,7 +107,9 @@ function ChatRoom() {
                 {!isMine && (
                   <S.UserName>
                     <Icons.Profile className="w-[36px] h-[36px]" />
-                    <span className="!text-caption-04 text-grayscale-02 text-center">이름임</span>
+                    <span className="!text-caption-04 text-grayscale-02 text-center">
+                      {(dbData as Types.User)[group.senderId] ?? 'NULL'}
+                    </span>
                   </S.UserName>
                 )}
                 <div className="w-full flex flex-col gap-[6px]">
