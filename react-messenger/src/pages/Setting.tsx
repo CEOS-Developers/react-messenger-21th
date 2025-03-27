@@ -1,4 +1,4 @@
 const Setting = () => {
-  return <></>;
+  return <div></div>;
 };
 export default Setting;
