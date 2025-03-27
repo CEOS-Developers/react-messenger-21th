@@ -4,6 +4,7 @@ import type { MessageDto, UserDto } from '@/pages/ChatRoom/dto';
 export interface messagesByUserDto {
 	fromUser: UserDto;
 	messages: messageByUserDto[];
+	isDateVisible: boolean;
 }
 
 export type messageByUserDto = Omit<MessageDto, 'fromUser'> & { isTimeVisible: boolean };
