@@ -4,6 +4,7 @@ import plusIcon from '@/assets/svgs/Friend/plus.svg?react';
 import defaultProfileIcon from '@/assets/svgs/Friend/default-profile.svg?react';
 import giftIcon from '@/assets/svgs/Friend/gift.svg?react';
 
+// Friend List
 export const PlusIcon = styled(plusIcon)`
   width: 1.4rem;
   height: fit-content;

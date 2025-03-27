@@ -1,9 +1,23 @@
+import * as I from '@/icons/Profile';
+
 export const PROFILE_SIZE_LIST = {
   my: 60,
   updated: 40,
   basic: 44,
-  '프로필 상세보기': 110,
+  detail: 110,
   '개인 채팅 목록 프로필': 54,
   '그룹 채팅 목록 프로필': 22,
   '채팅방 내 프로필': 30,
 };
+
+export const PROFILE_DETAIL_SUB_OPTION_LIST = [
+  { id: 1, icon: I.GiftIconWhite },
+  { id: 2, icon: I.FaceIDIcon },
+  { id: 3, icon: I.SettingIcon },
+];
+
+export const PROFILE_DETAIL_MAIN_OPTION_LIST = [
+  { id: 1, icon: I.ChatIcon, name: '1:1 채팅' },
+  { id: 2, icon: I.LinkIcon, name: 'SNS 링크' },
+  { id: 3, icon: I.SettingIconMain, name: '설정' },
+];

@@ -1,12 +1,12 @@
 import { JSX } from 'react/jsx-runtime';
 
-import { Friend } from '@/types/Friend';
+import { UserProfile } from '@/types/Profile';
 
 import * as S from './FriendPageSubTitle.styled';
 
 type FriendPageSubTitleProps = {
   subTitle: string;
-  friendList: Friend[];
+  friendList: UserProfile[];
 };
 
 const FriendPageSubTitle = ({

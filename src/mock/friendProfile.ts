@@ -1,62 +1,64 @@
-export const friendProfileList = [
+import { UserProfile } from '@/types/Profile';
+
+export const friendProfileList: UserProfile[] = [
   {
-    id: 1,
-    name: '임승민',
+    userId: 1,
+    username: '임승민',
     profileImage: '',
   },
   {
-    id: 2,
-    name: '김철흥',
+    userId: 2,
+    username: '김철흥',
     profileImage: '',
   },
   {
-    id: 3,
-    name: '나상혁',
+    userId: 3,
+    username: '나상혁',
     profileImage: '',
   },
   {
-    id: 4,
-    name: '최재백',
+    userId: 4,
+    username: '최재백',
     profileImage: '',
   },
   {
-    id: 5,
-    name: '김민재',
+    userId: 5,
+    username: '김민재',
     profileImage: '',
   },
   {
-    id: 6,
-    name: '김지원',
+    userId: 6,
+    username: '김지원',
     profileImage: '',
   },
   {
-    id: 7,
-    name: '최지민',
+    userId: 7,
+    username: '최지민',
     profileImage: '',
   },
   {
-    id: 8,
-    name: '박지훈',
+    userId: 8,
+    username: '박지훈',
     profileImage: '',
   },
   {
-    id: 9,
-    name: '김진형',
+    userId: 9,
+    username: '김진형',
     profileImage: '',
   },
   {
-    id: 10,
-    name: '박종하',
+    userId: 10,
+    username: '박종하',
     profileImage: '',
   },
   {
-    id: 11,
-    name: '박시원',
+    userId: 11,
+    username: '박시원',
     profileImage: '',
   },
   {
-    id: 12,
-    name: '고진',
+    userId: 12,
+    username: '고진',
     profileImage: '',
   },
 ];
