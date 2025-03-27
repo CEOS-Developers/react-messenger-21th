@@ -1,0 +1,26 @@
+{
+  "userForamt": {
+    "id": -1,
+    "name": "",
+    "profileMessage": "",
+    "profileColor": "",
+    "joinedRooms": [],
+    "friends": [],
+    "profileImgUrl": "",
+    "snsUrl": ""
+  },
+  "chatRoomForamt": {
+    "chatRoomId": "",
+    "roomName": null,
+    "member": [],
+    "chats": {
+      "2025-03-20": [
+        {
+          "id": 1742768880000,
+          "sender": 1,
+          "content": ""
+        }
+      ]
+    }
+  }
+}
