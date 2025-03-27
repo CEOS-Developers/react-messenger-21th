@@ -86,7 +86,12 @@ const ChatRoom = () => {
         <ChatHeader name={targetUser.name} onClick={handleHeaderClick} />
 
         {messages.map((msg, idx) => (
-          <ChatMessage key={idx} message={msg} isMine={msg.sender === currentUser.id} />
+          <ChatMessage
+            key={idx}
+            message={msg}
+            isMine={msg.sender === currentUser.id}
+            senderInfo={msg.sender === currentUser.id ? currentUser : targetUser}
+          />
         ))}
       </div>
 
