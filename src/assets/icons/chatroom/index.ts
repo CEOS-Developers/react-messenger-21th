@@ -1,0 +1,10 @@
+export { default as AddGray } from './AddGray';
+export { default as Back } from './Back';
+export { default as CameraGray } from './CameraGray';
+export { default as ImojiGray } from './ImojiGray';
+export { default as LinkGray } from './LinkGray';
+export { default as Menu } from './Menu';
+export { default as PinOff } from './PinOff';
+export { default as PinOn } from './PinOn';
+export { default as Search } from './Search';
+export { default as Send } from './Send';
