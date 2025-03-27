@@ -1,5 +1,6 @@
 import NavBar from '../components/NavBar';
 import AppBar from '../components/AppBar';
+import Search from '../components/ChatList/Search';
 
 import BackArrowIcon from '../assets/back_arrow.svg?react';
 import AddChatIcon from '../assets/add_chat_room.svg?react';
@@ -21,6 +22,9 @@ const ChatList = () => {
           </div>
         }
       />
+      <section className="mt-4 flex flex-col items-center gap-1 self-stretch">
+        <Search />
+      </section>
 
       <NavBar />
     </>
