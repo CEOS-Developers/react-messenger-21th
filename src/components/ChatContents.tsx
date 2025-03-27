@@ -1,8 +1,10 @@
 import { useAtom } from "jotai";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import defaulImg from "/image/defaultImg.svg";
 import {
   ChatMessages,
+  chatRoomAtom,
   chatRoomsAtom,
   chatRoomTypeAtom,
 } from "../store/message";
@@ -11,6 +13,7 @@ import { useEffect } from "react";
 const ChatContents = () => {
   const [activeTab] = useAtom(chatRoomTypeAtom);
   const [chatRooms] = useAtom(chatRoomsAtom);
+  const [, setChatRoom] = useAtom(chatRoomAtom);
   const findPreview = (messages: ChatMessages) => {
     const keys = Object.keys(messages);
     const lastKey = keys[keys.length - 1];
@@ -18,7 +21,6 @@ const ChatContents = () => {
     return lastMessages[lastMessages.length - 1];
   };
   useEffect(() => {
-    console.log(chatRooms);
     Object.keys(chatRooms).map((key) => {
       console.log(chatRooms[key].type === activeTab);
     });
@@ -28,7 +30,11 @@ const ChatContents = () => {
       {Object.keys(chatRooms).map(
         (key) =>
           chatRooms[key].type === activeTab && (
-            <Link key={key} to="/chatRoom">
+            <Link
+              key={key}
+              to={`/chatRoom?roomId=${key}`}
+              onClick={() => setChatRoom(chatRooms[key])}
+            >
               <ChatContainer>
                 <InfoContainer>
                   <UserImg />
@@ -77,14 +83,20 @@ const InfoContainer = styled.div`
 const ChatContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: 10.5px 0;
 `;
-const UserImg = styled.div`
+const UserImg = styled.div<{ src?: string }>`
   width: 56px;
   height: 56px;
   border-radius: 100px;
-  background: #dfe3f8;
+  background: url(${(props) => (props.src ? props.src : defaulImg)});
 `;
-const ChatInfo = styled.div``;
+const ChatInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+`;
 const UserName = styled.div`
   font-size: 16px;
   font-weight: 600;

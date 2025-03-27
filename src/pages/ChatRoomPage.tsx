@@ -5,12 +5,14 @@ import add from "/image/add.svg";
 import emo from "/image/emo.svg";
 import inputBar from "/image/inputBar.svg";
 import fileInput from "/image/fileInput.svg";
-import { chatMessagesAtom, userAtom, usersAtom } from "../store/message";
+import { chatRoomAtom, userAtom, usersAtom } from "../store/message";
 import { useAtom } from "jotai";
 import { useEffect, useRef, useState } from "react";
+import defaulImg from "/image/defaultImg.svg";
 
 const ChatRoomPage = () => {
-  const [messages, setMessages] = useAtom(chatMessagesAtom);
+  const [chatRoom] = useAtom(chatRoomAtom);
+  const [messages, setMessages] = useState(chatRoom?.messages || {});
   const today = new Date().toISOString().split("T")[0];
   const [input, setInput] = useState("");
   const [isMessage, setIsMessage] = useState(false);
@@ -18,6 +20,7 @@ const ChatRoomPage = () => {
   const [users] = useAtom(usersAtom);
   const days = ["일", "월", "화", "수", "목", "금", "토"];
   const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
@@ -88,7 +91,7 @@ const ChatRoomPage = () => {
             <ProfileImg>
               <Status />
             </ProfileImg>
-            <UserName onClick={changeUser}>김상곤</UserName>
+            <UserName onClick={changeUser}>{chatRoom?.users[1].name}</UserName>
           </FrontItem>
         </HeaderBar>
         <ChatContents ref={containerRef}>
@@ -163,7 +166,7 @@ export default ChatRoomPage;
 const TextContainer = styled.div<{ user: boolean }>`
   display: flex;
   justify-content: ${(props) => (props.user ? "flex-end" : "flex-start")};
-  align-items: center;
+  align-items: flex-end;
   gap: 2px;
 `;
 const DateContainer = styled.div`
@@ -269,10 +272,11 @@ const FrontItem = styled.div`
   gap: 4px;
 `;
 const Arrow = styled.img``;
-const ProfileImg = styled.div`
+const ProfileImg = styled.div<{ src?: string }>`
   width: 28px;
   height: 28px;
-  background: #c4c4c4;
+  background: url(${(props) => (props.src ? props.src : defaulImg)});
+  background-size: cover;
   position: relative;
   border-radius: 100px;
 `;
@@ -301,7 +305,6 @@ const HeaderBar = styled.div`
 `;
 const Time = styled.span<{ user: boolean }>`
   padding: 2px;
-  padding-top: 15px;
   font-size: 12px;
   color: #a4a8af;
   margin-top: 4px;

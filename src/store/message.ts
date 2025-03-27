@@ -68,8 +68,20 @@ const messages = {
     },
   ],
 };
+const messages2 = {
+  "2025-3-20": [
+    {
+      id: 1,
+      user: { id: 1, name: "이주희", status: "online" },
+      otherUser: { id: 2, name: "배성일", status: "online" },
+      text: "ㅎㅇㅎㅇ",
+      time: "12시 30분",
+    },
+  ],
+};
 export const chatMessagesAtom = atom<ChatMessages>(messages);
 export const chatRoomTypeAtom = atom<"personal" | "group">("personal");
+export const chatRoomAtom = atom<ChatRoomInfo>();
 export const chatRoomsAtom = atom<ChatRooms>({
   "1": {
     users: [
@@ -78,5 +90,13 @@ export const chatRoomsAtom = atom<ChatRooms>({
     ],
     type: "personal",
     messages: messages,
+  },
+  "2": {
+    users: [
+      { id: 1, name: "이주희", status: "online" },
+      { id: 2, name: "배성일", status: "online" },
+    ],
+    type: "personal",
+    messages: messages2,
   },
 });
