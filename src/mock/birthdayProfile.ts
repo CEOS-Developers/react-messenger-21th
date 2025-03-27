@@ -1,27 +1,29 @@
-export const birthdayProfileList = [
+import { UserProfile } from '@/types/Profile';
+
+export const birthdayProfileList: UserProfile[] = [
   {
-    id: 1,
-    name: '임승민',
+    userId: 1,
+    username: '임승민',
     profileImage: '',
   },
   {
-    id: 2,
-    name: '김철흥',
+    userId: 2,
+    username: '김철흥',
     profileImage: '',
   },
   {
-    id: 3,
-    name: '나상혁',
+    userId: 3,
+    username: '나상혁',
     profileImage: '',
   },
   {
-    id: 4,
-    name: '최재백',
+    userId: 4,
+    username: '최재백',
     profileImage: '',
   },
   {
-    id: 5,
-    name: '김민재',
+    userId: 5,
+    username: '김민재',
     profileImage: '',
   },
 ];

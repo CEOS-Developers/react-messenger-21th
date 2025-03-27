@@ -7,6 +7,8 @@ import { PROFILE_SIZE_LIST } from '@/constants/Profile';
 import FriendPageSubTitle from '@/components/FriendPageSubTitle/FriendPageSubTitle';
 import ProfileImageBox from '@/components/ProfileImageBox/ProfileImageBox';
 
+import { useProfileOpen } from '@/stores/useProfileOpen';
+
 import { formatDate } from '@/utils/formatDate';
 
 import * as S from './BirthdayProfileCell.styled';
@@ -14,6 +16,8 @@ import GiftButton from '@/components/Button/Gift/GiftButton';
 
 const BirthdayProfileCell = (): JSX.Element => {
   const todayDate = formatDate();
+
+  const { openProfile } = useProfileOpen();
 
   return (
     <S.BirthdayProfileCellContainer>
@@ -24,16 +28,18 @@ const BirthdayProfileCell = (): JSX.Element => {
       <S.BirthdayProfileSection>
         <S.BirthdayProfileCellList>
           {birthdayProfileList.map((profile) => (
-            <S.BirthdayProfileCellItem key={profile.id}>
-              <S.BirthdayProfileCellItemLink>
+            <S.BirthdayProfileCellItem key={profile.userId}>
+              <S.BirthdayProfileCellItemLink
+                onClick={() => openProfile(profile)}
+              >
                 <S.BirthdayProfileInfoBox>
                   <ProfileImageBox
                     size={PROFILE_SIZE_LIST.basic}
-                    username={profile.name}
+                    username={profile.username}
                   />
                   <S.BirthdatProfileTextInfo>
                     <S.BirthdayProfileName>
-                      {profile.name}
+                      {profile.username}
                     </S.BirthdayProfileName>
                     <S.Birthday>오늘 {todayDate}</S.Birthday>
                   </S.BirthdatProfileTextInfo>

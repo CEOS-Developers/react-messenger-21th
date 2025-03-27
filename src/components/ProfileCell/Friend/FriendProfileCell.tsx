@@ -21,15 +21,7 @@ const FriendProfileCell = (): JSX.Element => {
         <S.FriendProfileCellList>
           {friendProfileList.map((profile) => (
             <S.FriendProfileCellItem key={profile.userId}>
-              <S.FriendProfileCellItemLink
-                onClick={() =>
-                  openProfile({
-                    userId: profile.userId,
-                    username: profile.username,
-                    profileImage: profile.profileImage,
-                  })
-                }
-              >
+              <S.FriendProfileCellItemLink onClick={() => openProfile(profile)}>
                 <ProfileImageBox
                   size={PROFILE_SIZE_LIST.basic}
                   username={profile.username}
