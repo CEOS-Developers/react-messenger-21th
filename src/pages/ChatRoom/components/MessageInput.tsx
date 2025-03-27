@@ -39,7 +39,7 @@ export default function MessageInput({ onSubmit }: { onSubmit: (message: string)
 	}, [message]);
 
 	return (
-		<div className="w-full p-3 pb-[2.625rem] border-t border-black-200 flex gap-2 items-center bg-black-000">
+		<div className="w-full p-3 pb-[2.625rem] border-t border-black-200 flex gap-2 items-center bg-black-000 rounded-b-4xl">
 			<button className="w-8 h-8 bg-black-100 rounded-full">
 				<Plus className="m-auto text-black-400" />
 			</button>

@@ -54,7 +54,7 @@ export default function ChatRoom() {
 	};
 
 	return (
-		<div className="relative flex-grow flex flex-col bg-black-200">
+		<div className="relative flex-grow flex flex-col bg-black-200 rounded-b-4xl">
 			<TopBar content={otherUserContent} onClickContent={handleTopBarContentClick} />
 			<MessageContainer messagesByUsers={messagesByUsers} currentUserId={currentUserId} />
 			<MessageInput onSubmit={handleMessageSubmit} />

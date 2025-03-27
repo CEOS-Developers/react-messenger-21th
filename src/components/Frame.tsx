@@ -9,7 +9,7 @@ export default function Frame({ children }: { children: ReactNode }) {
 
 	return (
 		<div
-			className="w-[375px] flex flex-col m-auto
+			className="w-[375px] flex flex-col m-auto rounded-4xl
 				shadow-[0_1px_10px_0_rgba(0,0,0,0.2)]"
 		>
 			<div className={`pt-[1.3125rem] pb-[0.3125rem] flex-grow flex justify-between rounded-t-4xl ${bgColor}`}>
