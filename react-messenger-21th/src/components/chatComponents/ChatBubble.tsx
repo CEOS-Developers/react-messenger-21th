@@ -100,8 +100,13 @@ const Bubble = styled.div<{ isMine: boolean }>`
 const Timestamp = styled.div<{ isMine: boolean }>`
   margin: 4px;
   font-size: 10px;
-  color: gray;
+  color: #9ca3af;
   text-align: ${({ isMine }) => (isMine ? 'left' : 'right')};
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px; /* 150% */
+  letter-spacing: -0.15px;
 `;
 
 const MessageWrapper = styled.div<{ isMine: boolean }>`
