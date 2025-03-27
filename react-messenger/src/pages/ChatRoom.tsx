@@ -73,14 +73,19 @@ const ChatRoom = () => {
   };
 
   const handleImageSend = (file: File) => {
-    const imageUrl = URL.createObjectURL(file);
-    const newMessage: MessageItem = {
-      type: 'image',
-      content: imageUrl,
-      time: new Date().toISOString(),
-      sender: currentUser.id,
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64 = reader.result as string;
+
+      const newMessage: MessageItem = {
+        type: 'image',
+        content: base64,
+        time: new Date().toISOString(),
+        sender: currentUser.id,
+      };
+      updateMessages(newMessage);
     };
-    updateMessages(newMessage);
+    reader.readAsDataURL(file);
   };
 
   const handleHeaderClick = () => {
