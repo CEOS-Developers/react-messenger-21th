@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate:icons": "svgr --typescript --icon --out-dir src/assets/icons public/icons"
+    "generate:icons": "svgr --typescript --icon --config-file svgr.config.js --out-dir src/assets/icons public/icons"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.15",
