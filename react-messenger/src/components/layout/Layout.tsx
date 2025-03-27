@@ -9,14 +9,17 @@ const Layout = () => {
   useEffect(() => {
     const hasSeen = sessionStorage.getItem('onBoarding');
 
-    if (pathname === '/' && !hasSeen) {
-      setShowOnboarding(true);
-      const timer = setTimeout(() => {
-        sessionStorage.setItem('onBoarding', 'true');
+    if (pathname === '/') {
+      if (!hasSeen) {
+        setShowOnboarding(true);
+        const timer = setTimeout(() => {
+          sessionStorage.setItem('onBoarding', 'true');
+          setShowOnboarding(false);
+        }, 3000);
+        return () => clearTimeout(timer);
+      } else {
         setShowOnboarding(false);
-      }, 2000);
-
-      return () => clearTimeout(timer);
+      }
     } else {
       setShowOnboarding(false);
     }
@@ -24,7 +27,7 @@ const Layout = () => {
 
   return (
     <div className="w-full flex justify-center">
-      <div className="w-[375px] min-h-screen">{showOnboarding ? <Onboarding /> : <Outlet />}</div>
+      <div className="w-[375px] min-h-screen">{pathname === '/' && showOnboarding ? <Onboarding /> : <Outlet />}</div>
     </div>
   );
 };

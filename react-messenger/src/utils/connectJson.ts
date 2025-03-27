@@ -1,12 +1,5 @@
 import usersData from '@/data/users.json';
-
-type Message = {
-  id: number;
-  type: 'user' | 'group';
-  lastMessage: string;
-  time: string;
-  unreadCount?: number;
-};
+import { Message } from '@/type/message';
 
 export const connectJson = (msg: Message) => {
   for (const section of usersData) {

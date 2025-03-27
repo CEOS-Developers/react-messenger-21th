@@ -5,10 +5,12 @@ import ChatList from '@/pages/ChatList';
 import ChatRoom from '@/pages/ChatRoom';
 import Setting from '@/pages/Setting';
 import Profile from '@/pages/Profile';
+import ScrollToTop from './components/common/ScrollToTop';
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
