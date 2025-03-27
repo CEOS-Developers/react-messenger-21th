@@ -8,15 +8,15 @@ const MyProfileList = () => {
   const navigate = useNavigate();
 
   return (
-    <section
-      className='flex px-4 py-3 justify-between align-middle self-stretch cursor-pointer'
-      onClick={() => navigate(PATH.HOME.myProfile)}
-    >
+    <section className='flex px-4 py-3 justify-between align-middle self-stretch'>
       <span className='flex items-center gap-4'>
-        <Profile />
+        <Profile
+          className='cursor-pointer'
+          onClick={() => navigate(PATH.HOME.myProfile)}
+        />
         <span className='font-body-1-sb'>최서연</span>
       </span>
-      <span className='flex items-center gap-1'>
+      <span className='flex items-center gap-1 cursor-pointer'>
         <ProfileExtraSmall />
         <Arrow className='text-gray-400 w-4 h-4' />
       </span>

@@ -1,9 +1,9 @@
 <svg width="85" height="85" viewBox="0 0 85 85" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_10_737)">
+<g id="Property 1=Extrabig" filter="url(#filter0_d_10_737)">
 <g clip-path="url(#clip0_10_737)">
 <rect x="6.71777" y="6.06128" width="72" height="72" rx="6" fill="#7291F7"/>
-<circle cx="42.7176" cy="38.3859" r="12.4471" fill="#C6D3FE"/>
-<circle cx="42.7178" cy="77.055" r="21.2793" fill="#C6D3FE"/>
+<circle id="Ellipse 1" cx="42.7176" cy="38.3859" r="12.4471" fill="#C6D3FE"/>
+<circle id="Ellipse 2" cx="42.7178" cy="77.055" r="21.2793" fill="#C6D3FE"/>
 </g>
 </g>
 <defs>
