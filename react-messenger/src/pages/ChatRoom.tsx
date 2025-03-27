@@ -6,20 +6,8 @@ import ChatMessage from '@/components/chatRoom/ChatMessage';
 import MyImg from '@/assets/svgs/home/ProfileImg.svg';
 import allMessages from '@/data/messages.json';
 import { formatDate } from '@/utils/formatDate';
-
-// 메시지 타입 정의
-export type MessageItem = {
-  type: 'text' | 'image';
-  content: string;
-  time: string;
-  sender?: number;
-};
-
-export type Message = {
-  id: number;
-  type: 'user' | 'group';
-  messages: MessageItem[];
-};
+import { Message } from '@/type/message';
+import { MessageItem } from '@/type/message';
 
 const generateRoomKey = (userId1: number, userId2: number, type: string) => {
   return [userId1, userId2].sort((a, b) => a - b).join('-') + `-${type}`;

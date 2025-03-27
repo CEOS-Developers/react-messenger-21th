@@ -1,4 +1,4 @@
-import { MessageItem } from '@/pages/ChatRoom';
+import { MessageItem } from '@/type/message';
 import { formatTime } from '@/utils/formatDate';
 
 interface SenderInfo {
