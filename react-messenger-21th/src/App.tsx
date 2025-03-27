@@ -25,13 +25,14 @@ const AppWrapper = styled.div`
   align-items: center;
   background-color: #f9fafb;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   overflow: auto;
 `;
 
 const ChatWrapper = styled.div`
   width: 375px;
   height: 728px;
+  max-height: 100dvh;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 12px;
   overflow: hidden;
@@ -39,7 +40,7 @@ const ChatWrapper = styled.div`
 
   @media (max-width: 420px) {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     border-radius: 0;
     box-shadow: none;
   }
