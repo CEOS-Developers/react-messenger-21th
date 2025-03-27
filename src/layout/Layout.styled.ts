@@ -7,6 +7,8 @@ export const TopLevelContainer = styled.div`
   height: 812px;
 
   background: ${({ theme }) => theme.colors.Grayscale[0]};
+
+  overflow: hidden;
 `;
 
 export const MainContent = styled.main`

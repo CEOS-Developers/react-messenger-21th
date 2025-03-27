@@ -19,7 +19,12 @@ const ProfileDetail = ({ userProfile }: ProfileDetailProps): JSX.Element => {
   const { closeProfile } = useProfileOpen();
 
   return (
-    <S.ProfileDetailContainer>
+    <S.ProfileDetailContainer
+      initial={{ y: '100%', opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: '100%', opacity: 0 }}
+      transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+    >
       <S.ProfileDetailHeaderSection>
         <S.ProfileDetailOptionButton onClick={closeProfile}>
           <CancelIcon />

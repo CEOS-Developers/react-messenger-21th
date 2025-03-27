@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'motion/react';
 
-export const ProfileDetailContainer = styled.div`
+export const ProfileDetailContainer = styled(motion.div)`
   position: absolute;
   top: 0;
   left: 0;
