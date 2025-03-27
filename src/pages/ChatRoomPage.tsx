@@ -124,16 +124,16 @@ const ChatRoomPage = () => {
                 </DateDetail>
               </DateContainer>
               {messagesByDate.map((message, index) => {
-                const showTime =
-                  index === messagesByDate.length - 1 ||
-                  message.time !== messagesByDate[index + 1].time;
+                const isLast = index === messagesByDate.length - 1;
+                const isNextDifferentUser =
+                  messagesByDate[index + 1]?.user.id !== message.user.id;
+
+                const showTime = isLast || isNextDifferentUser;
                 return (
                   <>
                     <TextContainer user={message.user.id === user.id}>
                       {showTime && message.user.id === user.id && (
-                        <Time user={message.user.id === user.id}>
-                          {message.time}
-                        </Time>
+                        <Time user={true}>{message.time}</Time>
                       )}
                       <TextContents
                         key={message.id}
@@ -142,9 +142,7 @@ const ChatRoomPage = () => {
                         {message.text}
                       </TextContents>
                       {showTime && message.user.id !== user.id && (
-                        <Time user={message.user.id === user.id}>
-                          {message.time}
-                        </Time>
+                        <Time user={false}>{message.time}</Time>
                       )}
                     </TextContainer>
                   </>
