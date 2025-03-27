@@ -1,54 +1,69 @@
-# React + TypeScript + Vite
+# 3주차 미션: React-Messenger
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 서론
 
-Currently, two official plugins are available:
+안녕하세요 🙌🏻 21기 프론트 운영진 **최지원**입니다. 이번 미션에서는 드디어 투두리스트에서 벗어나 새로운 프로젝트인 **messenger** 만들기를 진행합니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+이번 주는 특별하게 **디자이너와의 협업**으로 진행되는 미션입니다. 디자이너분께서 열심히 리디자인 한 메신저 프로젝트를 여러분들께서 구현해주시면 됩니다.
 
-## Expanding the ESLint configuration
+동시에, 이번 주부터는 **필수** **TypeScript** 와 **tailwindcss** 혹은 **StyledComponent**를 적용해보려고 합니다. 스타일 라이브러리는 취향 차이라고 생각해서, 둘 중 본인의 취향에 맞춰서 진행해주면 됩니다!
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+프로젝트의 규모가 커지게 될수록, 컴포넌트가 가지는 props의 종류 또한 다양해지게 됩니다. 무지성 코딩을 하다 보면 가끔 이 props의 구성과 이름, 어떤 타입이 들어가야 하는지 헷갈리기 마련이죠. 보통 그럴 때 다시 컴포넌트 정의 부분으로 돌아가 props의 구성을 보고 오곤 합니다.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+하지만 이럴 때, typescript를 적용한다면 컴포넌트의 구성과 그 이름, 심지어 타입까지 한번에 자동완성으로 편리하게 관리할 수 있고, 생산성이 증대되겠죠.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+또한, **React Hooks**에 조금 더 익숙해지는 것을 목표로 합니다. 여러 Hook들이 있지만 그 중에서도 `useState`, `useEffect`, `useRef`를 중점적으로 사용해 보는 미션인데요, React를 사용하면서 굉장히 자주 쓰이는 Hook들이기 때문에 이 부분을 집중적으로 공부해 보아요!
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+그럼 이번 미션도 파이팅입니다!!🎉
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+# 미션
+
+## Key Questions
+
+- 디자이너로부터 전달받은 피그마 링크, 피그마 캡처본, 디자이너와의 소통 tmi 등
+- JSX, JS, TSX, TS 각각의 확장자 개념 사용이유와 차이점.
+- TypeScript를 사용하는 이유.
+- SSR과 CSR 특성 및 차이점.
+
+## 미션 목표
+
+- TypeScript를 사용해봅시다.
+- useState로 컴포넌트의 상태를 관리합니다.
+- useEffect와 useRef의 사용법을 이해합니다.
+- tailwindcss의 사용법에 익숙해집니다.
+
+## 기한
+
+2025년 3월 28일 금요일
+
+## 필수 구현 기능
+
+- 피그마를 보고 [결과화면](https://react-messenger-20th-jw.vercel.app/)과 같이 구현합니다.
+- 디자인 시스템을 구축합니다.
+- tailwindcss 혹은 styledComponent 스타일 라이브러리를 사용합니다.
+- 채팅방 상단의 프로필을 클릭하면 사용자를 변경할 수 있습니다.
+- 메세지를 보내면 채팅방 하단으로 스크롤을 이동시킵니다.
+- 메세지에 유저 정보(프로필 사진, 이름)를 표시합니다.
+- user와 message 데이터를 json 파일에 저장합니다.
+- UI는 **반응형을 제외**하고 피그마파일을 따라서 진행합니다.
+
+### 추가 구현 기능
+
+- 더블 클릭 하면 감정표현을 추가합니다.
+- 그 외 추가하고 싶은 기능이 있다면 마음껏 추가해 주세요!
+
+참고로 이번 과제는 다음 과제까지 이어지는 과제이므로 **확장성**을 충분히 고려해 주세요. 참고로 **4주차 과제에서는 유저 및 기능 추가와 Routing을** 진행합니다. 이를 위해 [zustand](https://zustand.docs.pmnd.rs/getting-started/introduction)나 [redux](https://ko.redux.js.org/introduction/getting-started/), [recoil](https://recoiljs.org/ko/)을 이용한 상태관리를 미리 해보시는 것을 추천합니다!! 모두 공식문서 많이 읽어보시고 자신만의 상태관리 조합도 찾아보면 재밌을 거에요 XD
+
+## 링크 및 참고자료
+
+- [React docs - Hook](https://ko.reactjs.org/docs/hooks-intro.html)
+- [React의 Hooks 완벽 정복하기](https://velog.io/@velopert/react-hooks#1-usestate)
+- [useEffect 완벽 가이드](https://overreacted.io/ko/a-complete-guide-to-useeffect/)
+- [코딩 컨벤션](https://ui.toast.com/fe-guide/ko_CODING-CONVENTION)
+- [타입스크립트 핸드북](https://joshua1988.github.io/ts/intro.html)
+- [리액트 프로젝트에서 타입스크립트 사용하기 (시리즈)](https://velog.io/@velopert/series/react-with-typescript)
+- [디자인 시스템 구축기](https://yozm.wishket.com/magazine/detail/1830/)
+- [[영상] : 컴포넌트에 대한 이해](https://www.youtube.com/watch?v=21eiJc90ggo)
+- [Styled Component로 디자인 시스템 구축하기](https://zaat.dev/blog/building-a-design-system-in-react-with-styled-components/)
+- [Tailwind CSS 장단점, 사용법](https://wonny.space/writing/dev/hello-tailwind-css)
+- [ts 절대경로 설정하기](https://tesseractjh.tistory.com/232)
