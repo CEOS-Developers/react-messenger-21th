@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // 전체 채팅 페이지 (그리드 레이아웃 적용)
 export const ChatContainer = styled.div`
   width: 375px;
-  height: 728px;
+  height: 720px;
   display: grid;
   grid-template-rows: 48px 1fr auto; // 마지막 줄을 auto로
   box-sizing: border-box;
@@ -28,7 +28,6 @@ export const ChatContentsContainer = styled.div`
   width: 375px
   min-height: 0; // 스크롤 문제 방지 (부모가 고정된 높이를 가질 때 필요)
   overflow-y: auto; // 내부에서만 스크롤 가능하게 변경
-  padding: 10px;
   display: grid;
   flex-direction: column;
   grid-auto-rows: min-content; // 자식 요소가 내용을 초과하지 않도록 설정
