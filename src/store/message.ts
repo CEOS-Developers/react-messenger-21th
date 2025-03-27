@@ -33,7 +33,7 @@ export const userAtom = atom<User>({
   status: "online",
 });
 const messages = {
-  "2025-3-20": [
+  "2025/3/20": [
     {
       id: 1,
       user: { id: 1, name: "이주희", status: "online" },
@@ -49,7 +49,7 @@ const messages = {
       time: "12시 31분",
     },
   ],
-  "2025-3-21": [
+  "2025/3/21": [
     {
       id: 3,
       user: { id: 1, name: "이주희", status: "online" },
@@ -58,7 +58,7 @@ const messages = {
       time: "12시 36분",
     },
   ],
-  "2025-3-22": [
+  "2025/3/22": [
     {
       id: 4,
       user: { id: 2, name: "김상곤", status: "online" },
@@ -69,7 +69,7 @@ const messages = {
   ],
 };
 const messages2 = {
-  "2025-3-20": [
+  "2025/3/20": [
     {
       id: 1,
       user: { id: 1, name: "이주희", status: "online" },
