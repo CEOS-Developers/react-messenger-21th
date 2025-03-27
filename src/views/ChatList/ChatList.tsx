@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './ChatList.Styled';
 import * as Types from '@/types';
+import * as Icons from '@/assets/icons/chatlist';
 import { loadData, saveData } from '@/services/localStorage';
 import chatData from '@/assets/data/chatData.json';
 import { getLastTimeStamp, formatChatPreviewTime, truncateChatPreviewText } from '@/utils/chatListUtils';
+import togglePin from '@/utils/togglePin';
 
 function ChatList() {
   const [chatList, setChatList] = useState<Types.ChatList>({});
@@ -19,6 +21,12 @@ function ChatList() {
     }
   }, []);
 
+  const handleTogglePin = (chatId: string, chatRoom: Types.ChatRoom) => {
+    if (!chatId || !chatRoom) return;
+    const [chatData, _] = togglePin(chatId, chatRoom);
+    setChatList(chatData);
+  };
+
   const pinnedChats = Object.entries(chatList)
     .filter(([, room]) => room.isPinned)
     .sort(([, a], [, b]) => getLastTimeStamp(b) - getLastTimeStamp(a));
@@ -27,14 +35,14 @@ function ChatList() {
     .filter(([, room]) => !room.isPinned)
     .sort(([, a], [, b]) => getLastTimeStamp(b) - getLastTimeStamp(a));
 
-  const renderChatGroup = (chatGroup: [string, Types.ChatRoom][]) => {
+  const renderChatGroup = (chatGroup: [string, Types.ChatRoom][], isPinned?: boolean) => {
     return (
       <S.ChatGroup>
         {chatGroup.map(([chatId, room]) => {
           return (
-            <li key={chatId}>
+            <li key={chatId} className="flex flex-row items-center">
               <div className="w-[48px] h-[48px] bg-black" />
-              <Link to={`/chat/${chatId}`} className="flex flex-col">
+              <Link to={`/chat/${chatId}`} className="flex flex-col flex-1">
                 <S.ChatTitle>
                   <span className="!text-subhead-02 text-grayscale-00-black">{room.title}</span>
                   {room.userIds.length > 2 && (
@@ -50,6 +58,11 @@ function ChatList() {
                   </span>
                 </S.ChatPreview>
               </Link>
+              {isPinned && (
+                <button onClick={() => handleTogglePin(chatId, room)} className="cursor-pointer">
+                  <Icons.PinOn className="w-[24px] h-[24px] ml-auto" />
+                </button>
+              )}
             </li>
           );
         })}
@@ -60,7 +73,7 @@ function ChatList() {
   return (
     <S.ChatListWrapper className="bg-grayscale-07-white">
       <div className="h-[162px] opacity-0" />
-      {pinnedChats.length > 0 && renderChatGroup(pinnedChats)}
+      {pinnedChats.length > 0 && renderChatGroup(pinnedChats, true)}
       {pinnedChats.length > 0 && <div className="h-[4px] bg-grayscale-05" />}
       {normalChats.length > 0 && renderChatGroup(normalChats)}
     </S.ChatListWrapper>
