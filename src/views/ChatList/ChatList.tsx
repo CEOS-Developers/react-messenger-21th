@@ -2,15 +2,21 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './ChatList.Styled';
 import * as Types from '@/types';
-import { loadData } from '@/services/localStorage';
+import { loadData, saveData } from '@/services/localStorage';
+import chatData from '@/assets/data/chatData.json';
 import { getLastTimeStamp, formatChatPreviewTime, truncateChatPreviewText } from '@/utils/chatListUtils';
 
 function ChatList() {
   const [chatList, setChatList] = useState<Types.ChatList>({});
 
   useEffect(() => {
-    const data = loadData();
-    setChatList(data);
+    const existingData = loadData();
+    if (!existingData || Object.keys(existingData).length === 0) {
+      saveData(chatData);
+      setChatList(chatData);
+    } else {
+      setChatList(existingData);
+    }
   }, []);
 
   const pinnedChats = Object.entries(chatList)
