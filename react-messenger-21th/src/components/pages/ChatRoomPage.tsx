@@ -25,7 +25,7 @@ const ChatRoomPage: React.FC = () => {
       </s.ChatContentsContainer>
       <s.BottomBarContainer isEmojiOpen={isEmojiOpen}>
         <PlusButtonIcon width="16px" height="16px" />
-        <ChatInput />
+        <ChatInput setIsEmojiOpen={setIsEmojiOpen} />
       </s.BottomBarContainer>
     </s.ChatContainer>
   );
