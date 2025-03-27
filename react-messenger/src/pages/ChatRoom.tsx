@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import ChatHeader from '@/components/chatroom/ChatHeader';
-import ChatInput from '@/components/chatroom/ChatInput';
-import ChatMessage from '@/components/chatroom/ChatMessage';
+import ChatHeader from '@/components/chatRoom/ChatHeader';
+import ChatInput from '@/components/chatRoom/ChatInput';
+import ChatMessage from '@/components/chatRoom/ChatMessage';
+import MyImg from '@/assets/svgs/home/ProfileImg.svg';
 import allMessages from '@/data/messages.json';
 import { formatDate } from '@/utils/formatDate';
 
@@ -20,6 +21,10 @@ export type Message = {
   messages: MessageItem[];
 };
 
+const generateRoomKey = (userId1: number, userId2: number, type: string) => {
+  return [userId1, userId2].sort((a, b) => a - b).join('-') + `-${type}`;
+};
+
 const ChatRoom = () => {
   const location = useLocation();
   const { name, profileImg, id, type } = location.state || {};
@@ -27,7 +32,7 @@ const ChatRoom = () => {
   const [currentUser, setCurrentUser] = useState({
     name: '전지연',
     id: 99,
-    profileImg: '/path/to/jeon.svg',
+    profileImg: MyImg,
   });
 
   const [targetUser, setTargetUser] = useState({ name, id, profileImg });
@@ -35,15 +40,22 @@ const ChatRoom = () => {
   const [conversationMap, setConversationMap] = useState<Record<string, MessageItem[]>>(() => {
     const map: Record<string, MessageItem[]> = {};
     (allMessages as Message[]).forEach((msg) => {
-      const key = `${msg.id}-${msg.type}`;
-      map[key] = msg.messages;
+      const userKey = generateRoomKey(99, msg.id, msg.type);
+      map[userKey] = msg.messages;
     });
     return map;
   });
 
-  const roomKey = `${id}-${type}`;
+  const roomKey = generateRoomKey(currentUser.id, targetUser.id, type);
   const [messages, setMessages] = useState<MessageItem[]>(conversationMap[roomKey] || []);
   const [input, setInput] = useState('');
+
+  const updateMessages = (message: MessageItem) => {
+    const updated = [...messages, message];
+    const key = generateRoomKey(currentUser.id, targetUser.id, type);
+    setMessages(updated);
+    setConversationMap((prev) => ({ ...prev, [key]: updated }));
+  };
 
   const handleSend = () => {
     if (!input.trim()) return;
@@ -53,9 +65,7 @@ const ChatRoom = () => {
       time: new Date().toISOString(),
       sender: currentUser.id,
     };
-    const updatedMessages = [...messages, newMessage];
-    setMessages(updatedMessages);
-    setConversationMap((prev) => ({ ...prev, [roomKey]: updatedMessages }));
+    updateMessages(newMessage);
     setInput('');
   };
 
@@ -67,17 +77,15 @@ const ChatRoom = () => {
       time: new Date().toISOString(),
       sender: currentUser.id,
     };
-    const updatedMessages = [...messages, newMessage];
-    setMessages(updatedMessages);
-    setConversationMap((prev) => ({ ...prev, [roomKey]: updatedMessages }));
+    updateMessages(newMessage);
   };
 
   const handleHeaderClick = () => {
     const prevUser = { ...currentUser };
-    const nextKey = `${prevUser.id}-${type}`;
+    const newKey = generateRoomKey(targetUser.id, prevUser.id, type);
     setCurrentUser(targetUser);
     setTargetUser(prevUser);
-    setMessages(conversationMap[nextKey] || []);
+    setMessages(conversationMap[newKey] || []);
   };
 
   let lastDate = '';
@@ -95,7 +103,7 @@ const ChatRoom = () => {
           return (
             <div key={idx}>
               {isNewDate && (
-                <div className="flex justify-center my-2 mx-4">
+                <div className="flex justify-center my-2">
                   <span className="text-caption2 text-grey-50 bg-grey-700 bg-opacity-50 px-2 rounded-[20px]">
                     {formatDate(msg.time)}
                   </span>

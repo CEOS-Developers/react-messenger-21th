@@ -1,4 +1,4 @@
-import ChatUser from '@/components/chatlist/ChatUser';
+import ChatUser from '@/components/chatList/ChatUser';
 import BottomMenu from '@/components/home/BottomMenu';
 import rawMessages from '@/data/messages.json';
 import { formatTime } from '@/utils/formatDate';

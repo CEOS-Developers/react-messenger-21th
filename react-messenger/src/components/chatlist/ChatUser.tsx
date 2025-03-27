@@ -31,7 +31,7 @@ const ChatUser = ({ profileImg, username, lastMessage, time, unread, memberCount
       </div>
 
       {typeof unread === 'number' && unread > 0 && (
-        <div className="ml-auto text-caption2 text-grey-50 bg-primary-0 rounded-full w-[20px] h-[20px] text-center">
+        <div className="flex items-center justify-center ml-auto text-caption2 text-grey-50 bg-primary-0 rounded-full w-[20px] h-[20px] text-center">
           {unread}
         </div>
       )}
