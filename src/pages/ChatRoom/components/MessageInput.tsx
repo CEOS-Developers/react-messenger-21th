@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 import Plus from '@/assets/icons/plus.svg?react';
 import Send from '@/assets/icons/send.svg?react';
@@ -9,12 +9,6 @@ export default function MessageInput({ onSubmit }: { onSubmit: (message: string)
 
 	const handleMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		setMessage(e.target.value);
-
-		// 높이 자동 조절
-		if (textareaRef.current) {
-			textareaRef.current.style.height = 'auto';
-			textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-		}
 	};
 
 	const handleSendButtonClick = () => {
@@ -25,11 +19,24 @@ export default function MessageInput({ onSubmit }: { onSubmit: (message: string)
 	const handleEnterKeyDown = (e: React.KeyboardEvent) => {
 		if (!message.trim()) return;
 
+		// shift + enter 입력 시 개행
+		if (e.shiftKey && e.key === 'Enter') return;
+
 		if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
+			e.preventDefault(); // 개행하지 않음
+
 			onSubmit(message);
 			setMessage('');
 		}
 	};
+
+	useEffect(() => {
+		// 높이 자동 조절
+		if (textareaRef.current) {
+			textareaRef.current.style.height = 'auto';
+			textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+		}
+	}, [message]);
 
 	return (
 		<div className="w-full p-3 pb-[2.625rem] border-t border-black-200 flex gap-2 items-center bg-black-000">
