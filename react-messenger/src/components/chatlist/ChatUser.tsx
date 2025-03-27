@@ -5,11 +5,12 @@ type ChatUserProps = {
   time: string;
   unread?: number;
   memberCount?: number;
+  onClick?: () => void;
 };
 
-const ChatUser = ({ profileImg, username, lastMessage, time, unread, memberCount }: ChatUserProps) => {
+const ChatUser = ({ profileImg, username, lastMessage, time, unread, memberCount, onClick }: ChatUserProps) => {
   return (
-    <div className="flex items-center px-4 py-2 relative">
+    <div className="flex items-center px-4 py-2 relative" onClick={onClick}>
       <img
         src={profileImg}
         className="w-[60px] h-[60px] mx-[3.5px] rounded-full object-cover mr-[3.5px]"

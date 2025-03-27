@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import Home from '@/pages/Home';
 import ChatList from '@/pages/ChatList';
-import Chat from '@/pages/Chat';
+import ChatRoom from '@/pages/ChatRoom';
 import Setting from '@/pages/Setting';
 import Profile from '@/pages/Profile';
 
@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/chatlist" element={<ChatList />} />
-          <Route path="/chat" element={<Chat />} />
+          <Route path="/chatroom" element={<ChatRoom />} />
           <Route path="/setting" element={<Setting />} />
           <Route path="/profile" element={<Profile />} />
         </Route>

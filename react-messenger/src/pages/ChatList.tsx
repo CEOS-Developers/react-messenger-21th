@@ -1,7 +1,8 @@
 import ChatUser from '@/components/chatlist/ChatUser';
 import BottomMenu from '@/components/home/BottomMenu';
 import rawMessages from '@/data/messages.json';
-import { connectJson } from '@/utils/connectJSON';
+import { connectJson } from '@/utils/connectJson';
+import { useNavigate } from 'react-router-dom';
 
 type Message = {
   id: number;
@@ -18,6 +19,7 @@ const messages: Message[] = rawMessages.map((msg) => ({
 }));
 
 const ChatList = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full flex flex-col bg-grey-50 pb-[100px]">
       <span className="text-head1 font-semibold text-grey-900 p-4">채팅방</span>
@@ -37,6 +39,16 @@ const ChatList = () => {
               time={chat.time}
               unread={chat.unreadCount}
               memberCount={chat.memberCount}
+              onClick={() =>
+                navigate('/chatroom', {
+                  state: {
+                    name: chat.name,
+                    profileImg: chat.profileImg,
+                    type: msg.type,
+                    id: msg.id,
+                  },
+                })
+              }
             />
           );
         })}

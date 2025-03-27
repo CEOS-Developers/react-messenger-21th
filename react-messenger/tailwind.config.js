@@ -3,15 +3,13 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
-    fontFamily: {
-      sans: ['Pretendard', 'sans-serif'],
-    },
     colors: {
       primary: {
         0: '#39D4A3',
       },
       grey: {
         50: '#FCFCFE',
+        75: '#F6F6F6',
         100: '#EBEBF0',
         200: '#E4E4EB',
         300: '#D6D5DE',
