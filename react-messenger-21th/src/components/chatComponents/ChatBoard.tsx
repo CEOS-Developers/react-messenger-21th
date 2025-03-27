@@ -22,11 +22,14 @@ const ChatBoard: React.FC = () => {
   const groupMessages = () => {
     const groupedMessages: { date: string; messages: Message[] }[] = [];
     let lastDate = '';
-    let lastTime = 0;
 
     currentChatRoom.messages.forEach((msg) => {
-      const msgDate = new Date(msg.timestamp).toLocaleDateString();
-      const msgTime = new Date(msg.timestamp).getTime();
+      const msgDate = new Date(msg.timestamp).toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long',
+      });
 
       // 날짜가 바뀌면 새로운 그룹 추가
       if (msgDate !== lastDate) {
@@ -34,15 +37,7 @@ const ChatBoard: React.FC = () => {
         lastDate = msgDate;
       }
 
-      // 1분이 지나면 새로운 메시지 그룹 추가
-      if (msgTime - lastTime > 60000 || groupedMessages.length === 0) {
-        groupedMessages[groupedMessages.length - 1].messages.push(msg);
-      } else {
-        // 같은 그룹에 추가
-        groupedMessages[groupedMessages.length - 1].messages.push(msg);
-      }
-
-      lastTime = msgTime;
+      groupedMessages[groupedMessages.length - 1].messages.push(msg);
     });
 
     return groupedMessages;
@@ -59,6 +54,23 @@ const ChatBoard: React.FC = () => {
           <DateStamp>{group.date}</DateStamp>
           {group.messages.map((msg, msgIndex) => {
             const sender = users.find((user) => user.id === msg.senderId);
+
+            const currentTime = new Date(msg.timestamp).toLocaleTimeString([], {
+              hour: '2-digit',
+              minute: '2-digit',
+            });
+
+            const nextMsg = group.messages[msgIndex + 1];
+            const nextTime = nextMsg
+              ? new Date(nextMsg.timestamp).toLocaleTimeString([], {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })
+              : null;
+
+            // 다음 메시지와 시간이 다르면, 현재 메시지에 타임스탬프 보여줌
+            const showTimestamp = currentTime !== nextTime;
+
             return (
               <ChatBubble
                 key={msgIndex}
@@ -71,6 +83,7 @@ const ChatBoard: React.FC = () => {
                   msgIndex === 0 ||
                   group.messages[msgIndex - 1].senderId !== msg.senderId
                 }
+                showTimestamp={showTimestamp} // 마지막 메시지에 표시
               />
             );
           })}

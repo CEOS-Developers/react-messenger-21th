@@ -8,6 +8,7 @@ interface ChatBubbleProps {
   isMine: boolean;
   timestamp: string;
   showProfile: boolean; // 첫 메시지인지 여부 확인
+  showTimestamp: boolean; // 같은 시간대면 타임스탬프 생략
 }
 
 const ChatBubble: React.FC<ChatBubbleProps> = ({
@@ -17,6 +18,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
   isMine,
   timestamp,
   showProfile,
+  showTimestamp, // 추가된 prop
 }) => {
   return (
     <BubbleRow isMine={isMine}>
@@ -29,12 +31,16 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
           {!isMine && showProfile && <UserName>{userName}</UserName>}
           <Bubble isMine={isMine}>{text}</Bubble>
         </MessageBlock>
-        <Timestamp isMine={isMine}>
-          {new Date(timestamp).toLocaleTimeString([], {
-            hour: '2-digit',
-            minute: '2-digit',
-          })}
-        </Timestamp>
+
+        {/* ✅ showTimestamp가 true일 때만 렌더링 */}
+        {showTimestamp && (
+          <Timestamp isMine={isMine}>
+            {new Date(timestamp).toLocaleTimeString([], {
+              hour: '2-digit',
+              minute: '2-digit',
+            })}
+          </Timestamp>
+        )}
       </MessageWrapper>
     </BubbleRow>
   );
