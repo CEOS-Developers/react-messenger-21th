@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import CloseBtn from '@/assets/svgs/profile/CloseBtn.svg';
-import SettingBtn from '@/assets/svgs/profile/SettingBtn.svg';
-import ChatMySelfBtn from '@/assets/svgs/profile/ChatMySelfBtn.svg';
-import EditBtn from '@/assets/svgs/profile/EditBtn.svg';
+import CloseBtn from '@/assets/svgs/profile/CloseBtn.svg?url';
+import SettingBtn from '@/assets/svgs/profile/SettingBtn.svg?url';
+import ChatMySelfBtn from '@/assets/svgs/profile/ChatMySelfBtn.svg?url';
+import EditBtn from '@/assets/svgs/profile/EditBtn.svg?url';
 
 const Profile = () => {
   const location = useLocation();

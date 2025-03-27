@@ -1,6 +1,6 @@
-import SearchBtn from '@/assets/svgs/home/SearchBtn.svg';
-import MoreBtn from '@/assets/svgs/home/MoreOn.svg';
-import BackBtn from '@/assets/svgs/chatroom/BackBtn.svg';
+import SearchBtn from '@/assets/svgs/home/SearchBtn.svg?url';
+import MoreBtn from '@/assets/svgs/home/MoreOn.svg?url';
+import BackBtn from '@/assets/svgs/chatroom/BackBtn.svg?url';
 import { useNavigate } from 'react-router-dom';
 
 type ChatHeaderProps = {

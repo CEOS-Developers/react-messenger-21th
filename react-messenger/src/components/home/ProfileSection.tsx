@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import ProfileImg from '@/assets/svgs/home/ProfileImg.svg';
-import BackgroundImg from '@/assets/svgs/profile/Background.svg';
+import ProfileImg from '@/assets/svgs/home/ProfileImg.svg?url';
+import BackgroundImg from '@/assets/svgs/profile/Background.svg?url';
 
 const ProfileSection = () => {
   const navigate = useNavigate();

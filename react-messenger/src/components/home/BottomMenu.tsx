@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import HomeOn from '@/assets/svgs/home/HomeOn.svg';
-import HomeOff from '@/assets/svgs/home/HomeOff.svg';
-import ChatOn from '@/assets/svgs/home/ChatOn.svg';
-import ChatOff from '@/assets/svgs/home/ChatOff.svg';
-import MoreOn from '@/assets/svgs/home/MoreOn.svg';
-import MoreOff from '@/assets/svgs/home/MoreOff.svg';
+import HomeOn from '@/assets/svgs/home/HomeOn.svg?url';
+import HomeOff from '@/assets/svgs/home/HomeOff.svg?url';
+import ChatOn from '@/assets/svgs/home/ChatOn.svg?url';
+import ChatOff from '@/assets/svgs/home/ChatOff.svg?url';
+import MoreOn from '@/assets/svgs/home/MoreOn.svg?url';
+import MoreOff from '@/assets/svgs/home/MoreOff.svg?url';
 
 const menus = [
   {

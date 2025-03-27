@@ -1,4 +1,4 @@
-import UpArrow from '@/assets/svgs/home/UpArrow.svg';
+import UpArrow from '@/assets/svgs/home/UpArrow.svg?url';
 
 type ListTitleProps = {
   title: string;

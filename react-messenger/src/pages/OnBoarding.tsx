@@ -1,4 +1,4 @@
-import Logo from '@/assets/svgs/onBoarding/Logo.svg';
+import Logo from '@/assets/svgs/onBoarding/Logo.svg?url';
 
 const OnBoarding = () => {
   return (

@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
-import PlusBtn from '@/assets/svgs/chatroom/PlusBtn.svg';
-import CameraBtn from '@/assets/svgs/chatroom/CameraBtn.svg';
-import GalleryBtn from '@/assets/svgs/chatroom/GalleryBtn.svg';
-import EmoticonBtn from '@/assets/svgs/chatroom/EmoticonBtn.svg';
-import MicrophoneBtn from '@/assets/svgs/chatroom/MicrophoneBtn.svg';
+import PlusBtn from '@/assets/svgs/chatroom/PlusBtn.svg?url';
+import CameraBtn from '@/assets/svgs/chatroom/CameraBtn.svg?url';
+import GalleryBtn from '@/assets/svgs/chatroom/GalleryBtn.svg?url';
+import EmoticonBtn from '@/assets/svgs/chatroom/EmoticonBtn.svg?url';
+import MicrophoneBtn from '@/assets/svgs/chatroom/MicrophoneBtn.svg?url';
 
 type ChatInputProps = {
   value: string;
@@ -32,7 +32,7 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
         capture="environment"
         ref={cameraInputRef}
         className="hidden"
-        onChange={(e) => {
+        onChange={(e: any) => {
           const file = e.target.files?.[0];
           if (file && onImageSend) {
             onImageSend(file);
@@ -44,7 +44,7 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
         accept="image/*"
         ref={galleryInputRef}
         className="hidden"
-        onChange={(e) => {
+        onChange={(e: any) => {
           const file = e.target.files?.[0];
           if (file && onImageSend) {
             onImageSend(file);
@@ -65,7 +65,7 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
           className="flex-1 w-[191px] border-grey-100 border-[0.5px] pr-[37px] bg-grey-75 rounded-lg p-2 outline-none text-body2 text-grey-900 placeholder:text-grey-400"
           onCompositionStart={() => setIsComposing(true)}
           onCompositionEnd={() => setIsComposing(false)}
-          onKeyDown={(e) => {
+          onKeyDown={(e: any) => {
             if (e.key === 'Enter' && !isComposing) {
               e.preventDefault();
               onSend();

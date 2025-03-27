@@ -1,9 +1,9 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import ChatHeader from '@/components/chatRoom/ChatHeader';
-import ChatInput from '@/components/chatRoom/ChatInput';
-import ChatMessage from '@/components/chatRoom/ChatMessage';
-import MyImg from '@/assets/svgs/home/ProfileImg.svg';
+import ChatHeader from '@/components/chatroom/ChatHeader';
+import ChatInput from '@/components/chatroom/ChatInput';
+import ChatMessage from '@/components/chatroom/ChatMessage';
+import MyImg from '@/assets/svgs/home/ProfileImg.svg?url';
 import allMessages from '@/data/messages.json';
 import { formatDate } from '@/utils/formatDate';
 import { Message, MessageItem } from '@/type/message';
@@ -127,7 +127,7 @@ const ChatRoom = () => {
 
       <ChatInput
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={(e: any) => setInput(e.target.value)}
         onSend={handleSend}
         onImageSend={handleImageSend}
       />

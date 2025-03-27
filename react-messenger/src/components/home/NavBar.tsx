@@ -1,7 +1,7 @@
-import Search from '@/assets/svgs/home/SearchBtn.svg';
-import Friend from '@/assets/svgs/home/FriendBtn.svg';
-import Notification from '@/assets/svgs/home/NotificationBtn.svg';
-import MoreBtn from '@/assets/svgs/home/MoreBtn.svg';
+import Search from '@/assets/svgs/home/SearchBtn.svg?url';
+import Friend from '@/assets/svgs/home/FriendBtn.svg?url';
+import Notification from '@/assets/svgs/home/NotificationBtn.svg?url';
+import MoreBtn from '@/assets/svgs/home/MoreBtn.svg?url';
 
 const NavBar = () => {
   return (
