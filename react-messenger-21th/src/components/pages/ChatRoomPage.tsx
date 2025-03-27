@@ -3,10 +3,10 @@ import * as s from '../styles/ChatRoomPageStyles';
 import ChatBoard from '../chatComponents/ChatBoard.tsx';
 import ChatInput from '../chatComponents/ChatInput.tsx';
 import styled from 'styled-components';
-import SearchButtonIcon from '../../assets/icons/SearchUpperBar.svg?react';
-import MenuButtonIcon from '../../assets/icons/Hamburger.svg?react';
-import PlusButtonIcon from '../../assets/icons/PlusNotSelected.svg?react';
-import PrevButton from '../../assets/icons/PrevButton.svg?react';
+import SearchButtonIcon from '/public/assets/icons/SearchUpperBar.svg?react';
+import MenuButtonIcon from '/public/assets/icons/Hamburger.svg?react';
+import PlusButtonIcon from '/public/assets/icons/PlusNotSelected.svg?react';
+import PrevButton from '/public/assets/icons/PrevButton.svg?react';
 
 const ChatRoomPage: React.FC = () => {
   const [isEmojiOpen, setIsEmojiOpen] = useState(false);

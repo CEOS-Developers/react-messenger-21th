@@ -8,11 +8,11 @@ export const ChatContainer = styled.div<{ isEmojiOpen: boolean }>`
   grid-template-rows: 48px 1fr ${({ isEmojiOpen }) =>
     isEmojiOpen ? '224px' : '58px'};'
   box-sizing: border-box;
-  overflow: ㅍㄷㄱvhidden;
 `;
 
 // 상단 바 (고정)
 export const UpperBarContainer = styled.div`
+  width: 375px
   height: 48px;
   display: flex;
   justify-content: space-between;
@@ -25,6 +25,7 @@ export const UpperBarContainer = styled.div`
 
 // 채팅 내용 (내부만 스크롤 가능)
 export const ChatContentsContainer = styled.div`
+  width: 375px
   min-height: 0; // 스크롤 문제 방지 (부모가 고정된 높이를 가질 때 필요)
   overflow-y: auto; // 내부에서만 스크롤 가능하게 변경
   padding: 10px;

@@ -38,12 +38,12 @@ const idForYou = uuidv4();
 const userMe: User = {
   id: idForMe,
   name: '이지후',
-  image: '/src/assets/icons/ProfileWhiteS.svg',
+  image: '/assets/icons/ProfileWhiteS.svg',
 };
 const userYou: User = {
   id: idForYou,
   name: '김서연',
-  image: '/src/assets/icons/ProfileDarkGreyS.svg',
+  image: '/assets/icons/ProfileDarkGreyS.svg',
 };
 
 // 초기 데이터

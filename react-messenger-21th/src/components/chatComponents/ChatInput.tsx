@@ -4,8 +4,8 @@ import { RootState } from '../states/store';
 import { sendMessage } from '../states/chatSlice';
 import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
-import SendMessageOn from '../../assets/icons/SendMessageOn.svg?react';
-import SendEmoticonNotSelected from '../../assets/icons/EmoticonNotSelected.svg?react';
+import SendMessageOn from '/public/assets/icons/SendMessageOn.svg?react';
+import SendEmoticonNotSelected from '/public/assets/icons/EmoticonNotSelected.svg?react';
 
 interface ChatInputProps {
   setIsEmojiOpen: React.Dispatch<React.SetStateAction<boolean>>;

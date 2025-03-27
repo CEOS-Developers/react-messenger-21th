@@ -1,6 +1,6 @@
 // src/components/styles/globalStyles.ts
 import { createGlobalStyle } from 'styled-components';
-import Pretendard from '/src/assets/fonts/Pretendard-Medium.otf';
+import Pretendard from '/assets/fonts/Pretendard-Medium.otf';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
