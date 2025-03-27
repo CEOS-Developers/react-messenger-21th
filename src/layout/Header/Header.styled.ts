@@ -13,6 +13,8 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  background: ${({ theme }) => theme.colors.Grayscale[0]};
 `;
 
 export const HeaderTitle = styled.h1`
@@ -31,7 +33,7 @@ export const HeaderOptionList = styled.ul`
 
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  gap: 1.2rem;
 `;
 
 export const HeaderOptionItem = styled.li`
