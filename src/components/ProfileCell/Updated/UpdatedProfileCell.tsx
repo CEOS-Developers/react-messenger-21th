@@ -29,6 +29,7 @@ const UpdatedProfileCell = (): JSX.Element => {
                 <ProfileImageBox
                   size={PROFILE_SIZE_LIST.updated}
                   username={profile.username}
+                  isProfileUpdated={profile.isUpdated}
                 />
                 <S.UpdatedProfileName>{profile.username}</S.UpdatedProfileName>
               </S.UpdatedProfileItemLink>
