@@ -1,9 +1,9 @@
 import Arrow from '@/assets/images/icon/Arrow.svg?react';
-import Profile from '@/assets/images/profile/ProfileMedium.svg?react';
+import Profile from '@/assets/images/profile/ProfileSmall.svg?react';
 import cn from '@/utils/cn';
 import { useState } from 'react';
 
-const ProfileList = ({ group }: { group: string }) => {
+const BirthdayProfileList = () => {
   const [isListOpen, setIsListOpen] = useState(true);
 
   const handleClickList = () => {
@@ -11,10 +11,10 @@ const ProfileList = ({ group }: { group: string }) => {
   };
 
   return (
-    <section className='flex flex-col p-4 gap-4'>
+    <section className='flex flex-col p-4 bg-blue-0 gap-4'>
       <span className='flex justify-between'>
         <span className='flex gap-1 items-center'>
-          <span className='font-cap-med text-neutral-500'>{group}</span>
+          <span className='font-cap-med text-neutral-500'>생일인 프로필</span>
           <span className='font-cap-med text-neutral-300'>3</span>
         </span>
         <Arrow
@@ -25,18 +25,18 @@ const ProfileList = ({ group }: { group: string }) => {
         />
       </span>
       {isListOpen && (
-        <span className='flex flex-col gap-3 font-body-2-med text-neutral-700'>
-          <span className='flex gap-3 text-center items-center cursor-pointer'>
+        <span className='flex gap-3'>
+          <span className='flex flex-col gap-1 text-center items-center cursor-pointer'>
             <Profile />
-            <span>과장님</span>
+            <span className='font-cap-med text-neutral-700'>신수진</span>
           </span>
-          <span className='flex gap-3 text-center items-center cursor-pointer'>
+          <span className='flex flex-col gap-1 text-center items-center cursor-pointer'>
             <Profile />
-            <span>대리님</span>
+            <span className='font-cap-med text-neutral-700'>한서정</span>
           </span>
-          <span className='flex gap-3 text-center items-center cursor-pointer'>
+          <span className='flex flex-col gap-1 text-center items-center cursor-pointer'>
             <Profile />
-            <span>팀장님</span>
+            <span className='font-cap-med text-neutral-700'>김서연</span>
           </span>
         </span>
       )}
@@ -44,4 +44,4 @@ const ProfileList = ({ group }: { group: string }) => {
   );
 };
 
-export default ProfileList;
+export default BirthdayProfileList;

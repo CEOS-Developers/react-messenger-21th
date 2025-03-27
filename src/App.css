@@ -97,21 +97,6 @@
     line-height: 145%; /* 20.3px */
     letter-spacing: -0.14px;
   }
-  .font-body-2-med {
-    font-family: var(--font-pretendard);
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 150%; /* 18px */
-  }
-  .font-body-2-med {
-    font-family: var(--font-pretendard);
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%; /* 18px */
-  }
-
   .font-cap-sb {
     font-family: var(--font-pretendard);
     font-size: 12px;
