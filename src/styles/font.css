@@ -8,6 +8,14 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'SF Pro';
+	src: url('@/assets/font/SFProSemibold.woff2') format('woff2');
+	font-display: swap;
+	font-weight: 600;
+	font-style: normal;
+}
+
 /* base typography */
 [class*='head'],
 [class*='body'],
