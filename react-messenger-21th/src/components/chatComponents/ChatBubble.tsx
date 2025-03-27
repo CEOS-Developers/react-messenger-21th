@@ -68,19 +68,21 @@ const UserName = styled.div`
   font-size: 12px;
   color: #374151;
   text-align: center;
+  margin-left: 4px;
+  margin-bottom: 4px;
 `;
 
 // 말풍선 + 시간
 const MessageBlock = styled.div<{ isMine: boolean }>`
   display: flex;
-  flex-direction: column; // 🔥 세로로 정렬!
+  flex-direction: column; // 세로로 정렬!
   align-items: ${({ isMine }) => (isMine ? 'flex-end' : 'flex-start')};
   gap: 4px;
 `;
 
 const Bubble = styled.div<{ isMine: boolean }>`
   background-color: ${({ isMine }) => (isMine ? '#D1D5DB' : '#FEFEFE')};
-  border: ${({ isMine }) => (isMine ? '1px solid #D1D5DB' : '')};
+  border: ${({ isMine }) => (isMine ? '' : '1px solid #D1D5DB')};
   color: #111827;
   border-radius: 12px;
   font-size: 14px;
@@ -90,6 +92,7 @@ const Bubble = styled.div<{ isMine: boolean }>`
 `;
 
 const Timestamp = styled.div<{ isMine: boolean }>`
+  margin: 4px;
   font-size: 10px;
   color: gray;
   text-align: ${({ isMine }) => (isMine ? 'left' : 'right')};
