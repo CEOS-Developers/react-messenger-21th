@@ -8,7 +8,7 @@ const MyProfileList = () => {
   const navigate = useNavigate();
 
   return (
-    <section className='flex px-4 py-3 justify-between align-middle self-stretch'>
+    <section className='flex mt-[51px] px-4 py-3 justify-between align-middle self-stretch'>
       <span className='flex items-center gap-4'>
         <Profile
           className='cursor-pointer'
