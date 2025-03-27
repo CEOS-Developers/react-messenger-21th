@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../states/store';
 import { switchSender } from '../states/chatSlice';
@@ -40,6 +40,19 @@ const ChatRoomPage: React.FC = () => {
     }
   };
 
+  // 채팅이 업데이트될 때마다 아래로 스크롤
+  const messages = useSelector((state: RootState) => {
+    const room = state.chat.chatRooms.find(
+      (r) => r.id === state.chat.currentChatRoomId,
+    );
+    return room?.messages ?? [];
+  });
+
+  const chatListRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    chatListRef.current?.scrollTo(0, chatListRef.current.scrollHeight);
+  }, [messages]);
+
   return (
     <s.ChatContainer>
       <s.UpperBarContainer>
@@ -61,7 +74,7 @@ const ChatRoomPage: React.FC = () => {
           <MenuButtonIcon width="12px" height="12px" />
         </RightGroup>
       </s.UpperBarContainer>
-      <s.ChatContentsContainer>
+      <s.ChatContentsContainer ref={chatListRef}>
         <ChatBoard />
       </s.ChatContentsContainer>
       <s.BottomBarContainer isEmojiOpen={isEmojiOpen}>
