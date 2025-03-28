@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import ChatHeader from '@/components/layout/header/ChatHeader';
 import ChatInput from '@/components/chatting/ChatInput';
 import RecievedMessage from '@/components/chatting/RecievedMessage';
@@ -19,6 +19,7 @@ const ChatRoomComponent: React.FC<ChatRoomProps> = ({
   chatroomData,
   setChatroomData,
 }) => {
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   const [user, setUser] = useState<number>(0);
 
   const chatroom: ChatRoom | undefined = chatroomData.find(
@@ -40,6 +41,10 @@ const ChatRoomComponent: React.FC<ChatRoomProps> = ({
   if (!chatroom) {
     setChatroomId(null);
   } else {
+    useEffect(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [chatroom]);
+
     return (
       <main className='flex flex-1 flex-col bg-neutral-0'>
         {/* 채팅 제목 */}
@@ -67,6 +72,7 @@ const ChatRoomComponent: React.FC<ChatRoomProps> = ({
               )}
             </div>
           ))}
+          <span ref={messagesEndRef}></span>
         </section>
 
         {/* 채팅 입력창 */}

@@ -6,7 +6,7 @@ export const getTodayBirthdays = (profiles: Profile[] = []) => {
   const todayDate = today.getDate();
 
   return profiles.filter((profile) => {
-    const [year, month, day] = profile.birthday.split('.').map(Number);
+    const [, month, day] = profile.birthday.split('.').map(Number);
     return month === todayMonth && day === todayDate;
   });
 };

@@ -20,7 +20,7 @@ const RecievedMessage = ({ message }: { message: ChatMessages }) => {
           {UserList[message.senderId].name}
         </div>
         <div className='flex items-end gap-1'>
-          <div className='bg-white border border-neutral-100 rounded-[4px] px-3 py-2 flex justify-center items-center font-body-2-med text-neutral-700 break-all'>
+          <div className='bg-white border border-neutral-100 rounded-[4px] px-3 py-2 flex justify-center items-center font-body-2-med text-neutral-700 whitespace-break-spaces break-all'>
             {message.text}
           </div>
           <div className='font-cap-med text-neutral-300'>

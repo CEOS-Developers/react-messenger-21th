@@ -30,7 +30,7 @@
   {
     "id": 4,
     "name": "원채영",
-    "birthday": "2003.05.18",
+    "birthday": "2003.01.01",
     "img": null,
     "type": "friend"
   },
@@ -100,7 +100,7 @@
   {
     "id": 14,
     "name": "철수",
-    "birthday": "2021.04.16",
+    "birthday": "2021.03.31",
     "img": "/src/assets/images/profileimgs/cheolsu.png",
     "type": "friend"
   }
