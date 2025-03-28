@@ -3,6 +3,8 @@ import AppBar from '../components/AppBar';
 import Search from '../components/ChatList/Search';
 import SingleChatRoom from '../components/ChatList/SingleChatRoom';
 
+import { chatRoomData } from '../assets/data';
+
 import BackArrowIcon from '../assets/back_arrow.svg?react';
 import AddChatIcon from '../assets/add_chat_room.svg?react';
 import ProfileIcon from '../assets/profile.svg?react';
@@ -23,11 +25,19 @@ const ChatList = () => {
           </div>
         }
       />
-      <section className="mt-4 flex flex-col items-center gap-1 self-stretch">
+      <section className="mt-15 mb-21 flex flex-col items-center gap-1 self-stretch">
         <Search />
         <article className="flex flex-col items-start self-stretch">
-          <SingleChatRoom />
-          <SingleChatRoom />
+          {chatRoomData.map((data, i) => (
+            <SingleChatRoom
+              key={i}
+              roomName={data.roomName}
+              participantsCount={data.participantsCount}
+              prevMessage={data.prevMessage}
+              lastMessageTime={data.lastMessageTime}
+              unReadCount={data.unReadCount}
+            />
+          ))}
         </article>
       </section>
 
