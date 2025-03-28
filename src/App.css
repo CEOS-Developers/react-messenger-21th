@@ -24,7 +24,7 @@
   --color-neutral-500: #969fbe;
   --color-neutral-400: #adb7d6;
   --color-neutral-300: #c3cbe7;
-  --color-neutral-200: #f8f9ff;
+  --color-neutral-200: #c2c9d5;
   --color-neutral-100: #d6ddf3;
   --color-neutral-0: #f7f9ff;
 
@@ -123,7 +123,7 @@
   }
 
   body {
-    @apply flex justify-center bg-gray-100;
+    @apply flex justify-center bg-gray-100 box-border;
     color: var(--color-neutral-900);
   }
 

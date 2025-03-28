@@ -3,12 +3,22 @@ import TeamChat from '@/assets/images/profile/TeamChat.svg?react';
 import Profile from '@/assets/images/profile/ProfileBig.svg?react';
 import cn from '@/utils/cn';
 import { useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
-const ChatList = ({ group }: { group: string }) => {
+interface ChatListProps {
+  group: string;
+  setChatroomId: Dispatch<SetStateAction<number | null>>;
+}
+
+const ChatList: React.FC<ChatListProps> = ({ group, setChatroomId }) => {
   const [isListOpen, setIsListOpen] = useState(true);
 
   const handleClickList = () => {
     setIsListOpen((prev: boolean) => !prev);
+  };
+
+  const handleChatRoomClick = () => {
+    setChatroomId(1);
   };
 
   return (
@@ -24,7 +34,10 @@ const ChatList = ({ group }: { group: string }) => {
       </span>
       {isListOpen && (
         <ul className='flex flex-col gap-3 font-body-2-med text-neutral-700'>
-          <li className='flex gap-3 text-center items-center cursor-pointer'>
+          <li
+            className='flex gap-3 text-center items-center cursor-pointer'
+            onClick={handleChatRoomClick}
+          >
             <TeamChat />
             <span className='flex-1 flex flex-col gap-1 text-start overflow-x-hidden'>
               <div className='font-body-2-sb text-neutral-800'>

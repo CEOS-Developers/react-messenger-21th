@@ -51,11 +51,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: (
-              <MainLayout>
-                <Chatting />
-              </MainLayout>
-            ),
+            element: <Chatting />,
           },
         ],
       },
