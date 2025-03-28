@@ -4,6 +4,7 @@ import addUserIcon from '@/assets/svgs/Header/add-user.svg?react';
 import searchIcon from '@/assets/svgs/Header/search.svg?react';
 import musicIcon from '@/assets/svgs/Header/music.svg?react';
 import settingIcon from '@/assets/svgs/Header/setting.svg?react';
+import addChatIcon from '@/assets/svgs/Header/add-chat.svg?react';
 
 const IconCommon = css`
   width: 2.4rem;
@@ -23,5 +24,9 @@ export const MusicIcon = styled(musicIcon)`
 `;
 
 export const SettingIcon = styled(settingIcon)`
+  ${IconCommon}
+`;
+
+export const AddChatIcon = styled(addChatIcon)`
   ${IconCommon}
 `;

@@ -14,7 +14,7 @@ const Header = (): JSX.Element => {
       <S.HeaderTitle>{selectedTab}</S.HeaderTitle>
       <S.HeaderNavBar>
         <S.HeaderOptionList>
-          {HEADER_OPTION_LIST.map((option) => (
+          {HEADER_OPTION_LIST[selectedTab].map((option) => (
             <S.HeaderOptionItem key={option.name}>
               <S.HeaderOptionButton>
                 <option.icon />
