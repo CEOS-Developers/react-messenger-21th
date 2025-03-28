@@ -1,5 +1,6 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
-@import "tailwindcss";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import 'tailwindcss';
+@plugin 'tailwind-scrollbar';
 
 @theme {
   /* Green 계열 */
@@ -31,7 +32,7 @@
   --color-white: #ffffff;
 
   /*폰트*/
-  --font-display: "Pretendard", "sans-serif";
+  --font-display: 'Pretendard', 'sans-serif';
 }
 
 body {

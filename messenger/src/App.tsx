@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import ChatList from './pages/ChatList';
+import Chat from './pages/Chat';
 import {
   NewsPage,
   HomePage,
@@ -7,37 +8,46 @@ import {
   SubscribePage,
   PopularPage,
 } from './pages/MockPage';
+
 function App() {
   return (
     <Routes>
       <Route
         path="/"
         element={<ChatList />}
-      ></Route>
+      />
+      <Route
+        path="/chat-list"
+        element={<ChatList />}
+      />
       <Route
         path="/chat"
-        element={<ChatList />}
-      ></Route>
-      <Route
-        path="/home"
-        element={<HomePage />}
-      ></Route>
-      <Route
-        path="/neighbor"
-        element={<NeighborPage />}
-      ></Route>
-      <Route
-        path="/subscribe"
-        element={<SubscribePage />}
-      ></Route>
-      <Route
-        path="/popular"
-        element={<PopularPage />}
-      ></Route>
+        element={<Chat />}
+      />
       <Route
         path="/news"
         element={<NewsPage />}
-      ></Route>
+      />
+      <Route
+        path="/home"
+        element={<HomePage />}
+      />
+      <Route
+        path="/neighbor"
+        element={<NeighborPage />}
+      />
+      <Route
+        path="/subscribe"
+        element={<SubscribePage />}
+      />
+      <Route
+        path="/popular"
+        element={<PopularPage />}
+      />
+      <Route
+        path="/news"
+        element={<NewsPage />}
+      />
     </Routes>
   );
 }
