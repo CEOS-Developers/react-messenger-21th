@@ -141,6 +141,7 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 8px;
+  margin-bottom: 2px;
 `;
 
 export default ChatInput;

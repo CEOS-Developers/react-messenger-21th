@@ -72,8 +72,8 @@ const ChatRoomPage: React.FC = () => {
         </CenterGroup>
 
         <RightGroup>
-          <SearchButtonIcon width="16px" height="16px" />
-          <MenuButtonIcon width="12px" height="12px" />
+          <SearchButtonIcon width="18px" height="18px" />
+          <MenuButtonIcon width="16px" height="16px" />
         </RightGroup>
       </s.UpperBarContainer>
 
@@ -104,7 +104,7 @@ export const UpperBarContainer = styled.div`
 const PlusButtonWrapper = styled.div`
   display: flex;
   align-items: flex-end;
-  margin-bottom: 8px; // 여기만 바닥에서 띄움
+  margin-bottom: 12px; // 여기만 바닥에서 띄움
 `;
 
 // 왼쪽, 가운데, 오른쪽 그룹 정렬
@@ -132,7 +132,7 @@ const PartnerInfo = styled.div`
 const RightGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
 `;
 
 const CurrentPartnersName = styled.span`
@@ -140,21 +140,21 @@ const CurrentPartnersName = styled.span`
   margin: 0px;
   color: var(--Grey-Grey09, #111827);
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%; /* 21px */
-  letter-spacing: -0.014px;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.24px;
 `;
 
 const CurrentUsersNumber = styled.span`
   color: var(--Grey-Grey04, #9ca3af);
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%; /* 21px */
-  letter-spacing: -0.014px;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.24px;
 `;
 
 export default ChatRoomPage;

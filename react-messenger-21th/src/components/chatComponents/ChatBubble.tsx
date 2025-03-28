@@ -72,7 +72,7 @@ const ProfileImage = styled.img`
 
 const UserName = styled.div`
   font-size: 12px;
-  color: #374151;
+  color: ${({ theme }) => theme.colors.grey07};
   text-align: center;
   margin-left: 4px;
   margin-bottom: 4px;
@@ -89,7 +89,7 @@ const MessageBlock = styled.div<{ isMine: boolean }>`
 const Bubble = styled.div<{ isMine: boolean }>`
   background-color: ${({ isMine }) => (isMine ? '#D1D5DB' : '#FEFEFE')};
   border: ${({ isMine }) => (isMine ? '' : '1px solid #D1D5DB')};
-  color: #111827;
+  color: ${({ theme }) => theme.colors.black};
   border-radius: 12px;
   font-size: 14px;
   max-width: 200px;
@@ -100,7 +100,7 @@ const Bubble = styled.div<{ isMine: boolean }>`
 const Timestamp = styled.div<{ isMine: boolean }>`
   margin: 4px;
   font-size: 10px;
-  color: #9ca3af;
+  color: ${({ theme }) => theme.colors.grey05};
   text-align: ${({ isMine }) => (isMine ? 'left' : 'right')};
   font-size: 10px;
   font-style: normal;

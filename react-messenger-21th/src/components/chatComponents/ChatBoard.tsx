@@ -104,9 +104,9 @@ const ChatContainer = styled.div`
 // 날짜 스탬프 스타일
 const DateStamp = styled.div`
   text-align: center;
-  font-size: 12px;
-  color: gray;
-  margin: 10px 0;
+  font-size: ${({ theme }) => theme.typography.caption1.fontSize};
+  color: ${({ theme }) => theme.colors.grey05};
+  margin-bottom: 6px;
 `;
 
 export default ChatBoard;

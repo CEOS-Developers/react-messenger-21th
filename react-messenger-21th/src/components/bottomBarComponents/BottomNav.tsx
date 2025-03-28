@@ -23,9 +23,9 @@ const BottomNav: React.FC = () => {
         selected={location.pathname === '/friends'}
       >
         {location.pathname === '/friends' ? (
-          <BFriendSelected />
+          <BFriendSelected width="67px" height="48px" />
         ) : (
-          <BFriendNotSelected />
+          <BFriendNotSelected width="67px" height="48px" />
         )}
       </NavIcon>
       <NavIcon
@@ -33,19 +33,19 @@ const BottomNav: React.FC = () => {
         selected={location.pathname === '/chat-rooms'}
       >
         {location.pathname === '/chat-rooms' ? (
-          <BChatsNotSelected />
+          <BChatsNotSelected width="67px" height="48px" />
         ) : (
-          <BChatsSelected />
+          <BChatsSelected width="67px" height="48px" />
         )}
       </NavIcon>
       <NavIcon selected={location.pathname === '/openchat'}>
-        <BOpenChatNotSelected />
+        <BOpenChatNotSelected width="67px" height="48px" />
       </NavIcon>
       <NavIcon selected={location.pathname === '/shop'}>
-        <BShoppingNotSelected />
+        <BShoppingNotSelected width="67px" height="48px" />
       </NavIcon>
       <NavIcon selected={location.pathname === '/more'}>
-        <BPlusNotSelected />
+        <BPlusNotSelected width="67px" height="48px" />
       </NavIcon>
     </NavBar>
   );
