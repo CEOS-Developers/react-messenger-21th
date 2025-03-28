@@ -10,7 +10,7 @@
     "id": 1,
     "name": "신수진",
     "birthday": "2000.07.01",
-    "img": null,
+    "img": "/src/assets/images/profileimgs/profilesample.png",
     "type": "friend"
   },
   {
@@ -24,7 +24,7 @@
     "id": 3,
     "name": "서다원",
     "birthday": "1999.05.18",
-    "img": null,
+    "img": "/src/assets/images/profileimgs/profilesample2.png",
     "type": "friend"
   },
   {
@@ -81,6 +81,27 @@
     "name": "한서정",
     "birthday": "2002.01.01",
     "img": null,
+    "type": "friend"
+  },
+  {
+    "id": 12,
+    "name": "망곰",
+    "birthday": "2021.04.07",
+    "img": "/src/assets/images/profileimgs/manggom.png",
+    "type": "friend"
+  },
+  {
+    "id": 13,
+    "name": "햄터",
+    "birthday": "2021.04.16",
+    "img": "/src/assets/images/profileimgs/hamter.png",
+    "type": "friend"
+  },
+  {
+    "id": 14,
+    "name": "철수",
+    "birthday": "2021.04.16",
+    "img": "/src/assets/images/profileimgs/cheolsu.png",
     "type": "friend"
   }
 ]

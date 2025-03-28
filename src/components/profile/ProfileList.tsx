@@ -40,7 +40,15 @@ const ProfileList = ({
               key={profile.id}
               className='flex gap-3 text-center items-center cursor-pointer'
             >
-              <ProfileImg />
+              {profile.img ? (
+                <img
+                  src={profile.img}
+                  alt=''
+                  className='w-9 h-9 rounded-[4px]'
+                />
+              ) : (
+                <ProfileImg />
+              )}
               <span>{profile.name}</span>
             </span>
           ))}

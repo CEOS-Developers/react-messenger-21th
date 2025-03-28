@@ -21,7 +21,7 @@ const MyProfile = () => {
         <span className='flex gap-3 items-center text-neutral-0'>
           <Market className='w-6 h-6 cursor-pointer' />
           <Scan className='w-6 h-6 cursor-pointer' />
-          <Settings className='w-6 h-6' cursor-pointer />
+          <Settings className='w-6 h-6 cursor-pointer' />
         </span>
       </header>
       <section className='flex flex-col gap-9 items-center'>

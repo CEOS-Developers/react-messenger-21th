@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Dispatch, SetStateAction } from 'react';
 import { ChatRoom, ChatroomList } from '@/types/types';
 import { utcToKst12 } from '@/utils/formatDate';
+import USERS from '@/constants/users.json';
 
 interface ChatListProps {
   group: string;
@@ -63,7 +64,17 @@ const ChatList: React.FC<ChatListProps> = ({
               className='flex gap-3 text-center items-center cursor-pointer'
               onClick={() => handleChatRoomClick(chatRoom.chatroomId)}
             >
-              {chatRoom.userId.length > 1 ? <TeamChat /> : <Profile />}
+              {chatRoom.userId.length > 1 ? (
+                <TeamChat />
+              ) : USERS[chatRoom.userId[0]].img ? (
+                <img
+                  src={USERS[chatRoom.userId[0]].img ?? undefined}
+                  alt=''
+                  className='w-[50px] h-[50px] rounded-[4px]'
+                />
+              ) : (
+                <Profile />
+              )}
               <span className='flex-1 flex flex-col gap-1 text-start overflow-x-hidden'>
                 <div className='font-body-2-sb text-neutral-800'>
                   {chatRoom.title}
