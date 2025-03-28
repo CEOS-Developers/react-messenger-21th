@@ -1,8 +1,11 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Body_2, Caption } from '../../styles/Typo.Styled'
 import StyledProps from '../../interface/styledProps'
 
-//isM = true
+const ChatFieldWrapper = styled.div`
+  padding: 0px 20px;
+`
+
 const DateDiv = styled.div<StyledProps>`
   color: ${({ theme }) => theme.colors.gray09};
   ${Caption}
@@ -18,19 +21,40 @@ const DateDiv = styled.div<StyledProps>`
   margin: 24px auto;
 `
 
-// $isR = true
-const ChatDiv = styled.div`
+const Icon = styled.div`
+  margin-top: 9px;
+`
+const Name = styled.div<StyledProps>`
+  color: ${({ theme }) => theme.colors.gray11};
+  ${Caption}
+`
+
+const ProfileContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`
+
+const ChatDiv = styled.div<StyledProps>`
   ${Body_2}
   color: ${({ theme }) => theme.colors.gray12};
-  background: ${({ $isMe, theme }) =>
-    $isMe ? theme.colors.mainLime : theme.colors.gray02};
   border: 1px solid ${({ theme }) => theme.colors.gray11};
-  border-radius: ${({ $isMe }) =>
-    $isMe ? '9px 0px 9px 9px' : '0px 9px 9px 9px'};
 
   max-width: 248px;
   padding: 8px;
-  ${({ $isMe }) => ($isMe ? 'margin-left: auto;' : 'margin-right: auto;')};
+  ${({ $isMe }) => ($isMe ? myChatStyle : othersChatStyle)}
 `
 
-export { DateDiv, ChatDiv }
+const myChatStyle = css`
+  background: ${({ theme }) => theme.colors.mainLime};
+  border-radius: 9px 0px 9px 9px;
+  margin-left: auto;
+`
+
+const othersChatStyle = css`
+  background: ${({ theme }) => theme.colors.gray02};
+  border-radius: 0px 9px 9px 9px;
+  margin-right: auto;
+`
+
+export { ChatFieldWrapper, DateDiv, ChatDiv, Icon, Name, ProfileContainer }
