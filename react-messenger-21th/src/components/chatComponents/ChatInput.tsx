@@ -82,13 +82,13 @@ const ChatInput: React.FC = () => {
           rows={1}
         />
         <IconWrapper>
-          <SendEmoticonNotSelected width="16px" height="16px" />
+          <SendEmoticonNotSelected width="18px" height="18px" />
           {messageInput.trim() === '' ? (
             <SearchNotSelected width="16px" height="16px" />
           ) : (
             <SendMessageOn
-              width="16px"
-              height="16px"
+              width="18px"
+              height="18px"
               onClick={handleSendMessage}
             />
           )}

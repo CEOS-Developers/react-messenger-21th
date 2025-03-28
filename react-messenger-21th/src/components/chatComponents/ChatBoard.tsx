@@ -98,7 +98,7 @@ const ChatBoard: React.FC = () => {
 const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 0 10px 10px 10px;
 `;
 
 // 날짜 스탬프 스타일
@@ -106,7 +106,7 @@ const DateStamp = styled.div`
   text-align: center;
   font-size: ${({ theme }) => theme.typography.caption1.fontSize};
   color: ${({ theme }) => theme.colors.grey05};
-  margin-bottom: 6px;
+  padding: 12px 20px 8px 20px;
 `;
 
 export default ChatBoard;

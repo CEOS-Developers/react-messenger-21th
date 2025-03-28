@@ -2,7 +2,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const FriendList: React.FC = () => {
+interface User {
+  id: string;
+  name: string;
+  image: string;
+  birthday?: Date;
+}
+
+interface Props {
+  users: User[];
+}
+
+const FriendList: React.FC<Props> = () => {
   return (
     <ListWrapper>
       <SectionTitle>친구</SectionTitle>

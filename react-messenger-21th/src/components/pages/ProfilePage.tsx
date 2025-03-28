@@ -42,7 +42,7 @@ const FriendsPage: React.FC = () => {
           </ProfileTextGroup>
           <UpdatedProfiles />
           <BirthdayProfiles users={users} />
-          <FriendList />
+          <FriendList users={users} />
         </MyProfileContainer>
       </FriendsBoard>
 
