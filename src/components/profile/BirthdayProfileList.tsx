@@ -32,7 +32,7 @@ const BirthdayProfileList = ({ profiles }: { profiles: Profile[] }) => {
           {profiles.map((profile) => (
             <li
               key={profile.id}
-              className='flex flex-col gap-1 text-center items-center cursor-pointer w-7 overflow-x-hidden'
+              className='flex flex-col gap-1 text-center items-center cursor-pointer w-fit'
             >
               {profile.img ? (
                 <img
@@ -43,8 +43,8 @@ const BirthdayProfileList = ({ profiles }: { profiles: Profile[] }) => {
               ) : (
                 <ProfileImg />
               )}
-              <span className='flex font-cap-med text-neutral-700 truncate text-start'>
-                {profile.name}
+              <span className='flex font-cap-med text-neutral-700 w-fit max-w-10 overflow-x-hidden items-start text-start'>
+                <span className='truncate'>{profile.name}</span>
               </span>
             </li>
           ))}
