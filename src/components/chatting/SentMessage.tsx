@@ -8,7 +8,7 @@ const SentMessage = ({ message }: { message: ChatMessages }) => {
         <div className='font-cap-med text-neutral-300'>
           {utcToKst24(message.timestamp)}
         </div>
-        <div className='bg-white border border-neutral-100 rounded-[4px] px-3 py-2 flex justify-center items-center font-body-2-med text-neutral-700 whitespace-break-spaces'>
+        <div className='bg-white border border-neutral-100 rounded-[4px] px-3 py-2 flex justify-center items-center font-body-2-med text-neutral-700 break-all'>
           {message.text}
         </div>
       </div>

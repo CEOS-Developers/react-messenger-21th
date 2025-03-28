@@ -2,7 +2,7 @@ export type Profile = {
   id?: number;
   name: string;
   birthday: string;
-  type?: string;
+  type?: 'friend' | 'business' | 'me';
   img: string | null;
 };
 

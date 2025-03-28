@@ -44,6 +44,7 @@ const ChatList: React.FC<ChatListProps> = ({
 
   return (
     <section className='flex flex-col px-4 py-2 gap-4'>
+      {/* 채팅방 종류, 토글 버튼 */}
       <span className='flex justify-between'>
         <span className='font-cap-med text-neutral-500'>{group}</span>
         <Arrow
@@ -53,6 +54,7 @@ const ChatList: React.FC<ChatListProps> = ({
           onClick={handleClickList}
         />
       </span>
+      {/* 채팅방 목록 */}
       {isListOpen && (
         <ul className='flex flex-col gap-3 font-body-2-med text-neutral-700'>
           {chatRoomData.map((chatRoom: ChatRoom) => (
