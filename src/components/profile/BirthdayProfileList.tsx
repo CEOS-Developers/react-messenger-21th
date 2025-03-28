@@ -16,7 +16,9 @@ const BirthdayProfileList = ({ profiles }: { profiles: Profile[] }) => {
       <span className='flex justify-between'>
         <span className='flex gap-1 items-center'>
           <span className='font-cap-med text-neutral-500'>생일인 프로필</span>
-          <span className='font-cap-med text-neutral-300'>3</span>
+          <span className='font-cap-med text-neutral-300'>
+            {profiles.length}
+          </span>
         </span>
         <Arrow
           className={cn('w-4 h-4 text-neutral-500 cursor-pointer rotate-90', {

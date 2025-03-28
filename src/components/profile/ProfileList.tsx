@@ -22,7 +22,9 @@ const ProfileList = ({
       <span className='flex justify-between'>
         <span className='flex gap-1 items-center'>
           <span className='font-cap-med text-neutral-500'>{group}</span>
-          <span className='font-cap-med text-neutral-300'>3</span>
+          <span className='font-cap-med text-neutral-300'>
+            {profiles.length}
+          </span>
         </span>
         <Arrow
           className={cn('w-4 h-4 text-neutral-500 cursor-pointer rotate-90', {
