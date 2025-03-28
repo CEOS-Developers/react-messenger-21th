@@ -29,7 +29,7 @@ const menus = [
 
 const BottomMenu = () => {
   return (
-    <div className="w-[375px] h-[86px] fixed bottom-0 shadow-bottommenu bg-grey-50">
+    <div className="w-[375px] h-[86px] sticky bottom-0 shadow-bottommenu bg-grey-50">
       <div className="flex justify-center w-full pt-3 px-4 pb-6 h-auto gap-[84px]">
         {menus.map((menu) => (
           <NavLink

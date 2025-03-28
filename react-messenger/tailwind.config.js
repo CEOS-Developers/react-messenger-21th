@@ -42,6 +42,9 @@ module.exports = {
       boxShadow: {
         bottommenu: '0 -4px 12px rgba(0, 0, 0, 0.08)',
       },
+      fontFamily: {
+        helvetica: ['Helvetica', 'Arial', 'sans-serif'],
+      },
     },
   },
   plugins: [require('tailwind-scrollbar-hide')],

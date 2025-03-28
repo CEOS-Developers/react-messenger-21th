@@ -7,6 +7,7 @@ import MyImg from '@/assets/svgs/home/ProfileImg.svg?url';
 import allMessages from '@/data/messages.json';
 import { formatDate } from '@/utils/formatDate';
 import { Message, MessageItem } from '@/type/message';
+import StatusBar from '@/components/statusbar/StatusBar';
 
 const generateRoomKey = (userId1: number, userId2: number, type: string) => {
   return [userId1, userId2].sort((a, b) => a - b).join('-') + `-${type}`;
@@ -98,8 +99,11 @@ const ChatRoom = () => {
 
   return (
     <div className="flex flex-col justify-between h-full bg-grey-100">
-      <div className="flex flex-col gap-2 p-4 overflow-y-auto flex-1 pb-[60px] h-full">
+      <div className="sticky top-0 z-10 bg-grey-100">
+        <StatusBar />
         <ChatHeader name={targetUser.name} onClick={handleHeaderClick} />
+      </div>
+      <div className="flex flex-col gap-2 p-4 pt-0 overflow-y-auto flex-1">
         {messages.map((msg, idx) => {
           const currentDate = msg.time.split('T')[0];
           const isNewDate = currentDate !== lastDate;
@@ -124,7 +128,6 @@ const ChatRoom = () => {
         })}
         <div ref={bottomRef} />
       </div>
-
       <ChatInput
         value={input}
         onChange={(e: any) => setInput(e.target.value)}

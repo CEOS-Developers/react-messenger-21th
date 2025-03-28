@@ -13,6 +13,7 @@ const ProfileSection = () => {
         profileImg: ProfileImg,
         backgroundImg: BackgroundImg,
         comment,
+        isMine: true,
       },
     });
   };

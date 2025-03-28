@@ -5,15 +5,19 @@ import { formatTime } from '@/utils/formatDate';
 import { connectJson } from '@/utils/connectJson';
 import { useNavigate } from 'react-router-dom';
 import { Message } from '@/type/message';
+import StatusBar from '@/components/statusbar/StatusBar';
 
 const ChatList = () => {
   const navigate = useNavigate();
   const messages = rawMessages as Message[];
 
   return (
-    <div className="w-full flex flex-col bg-grey-50 pb-[100px]">
-      <span className="text-head1 font-semibold text-grey-900 p-4">채팅방</span>
-      <div className="flex flex-col">
+    <div className="w-full h-full flex flex-col bg-grey-50">
+      <div className="sticky top-0 z-10 bg-grey-50">
+        <StatusBar />
+        <span className="text-head1 font-semibold text-grey-900 p-4 block">채팅방</span>
+      </div>
+      <div className="flex flex-col overflow-y-auto pb-[30px]">
         {messages.map((msg) => {
           const lastMsg = msg.messages.at(-1);
           const chat = connectJson(msg) as {

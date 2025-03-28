@@ -20,14 +20,14 @@ const Layout = () => {
         return () => clearTimeout(timer);
       }
     }
-    setHasChecked(true); // onboarding 안 봐도 체크 완료
+    setHasChecked(true);
   }, [pathname]);
 
   if (!hasChecked) return null;
 
   return (
-    <div className="w-full flex justify-center">
-      <div className="w-[375px] min-h-screen">{pathname === '/' && showOnboarding ? <Onboarding /> : <Outlet />}</div>
+    <div className="w-screen min-h-screen flex justify-center items-center overflow-hidden">
+      <div className="w-[375px] h-[812px]">{pathname === '/' && showOnboarding ? <Onboarding /> : <Outlet />}</div>
     </div>
   );
 };

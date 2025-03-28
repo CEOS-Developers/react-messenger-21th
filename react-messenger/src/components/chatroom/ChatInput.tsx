@@ -4,6 +4,7 @@ import CameraBtn from '@/assets/svgs/chatroom/CameraBtn.svg?url';
 import GalleryBtn from '@/assets/svgs/chatroom/GalleryBtn.svg?url';
 import EmoticonBtn from '@/assets/svgs/chatroom/EmoticonBtn.svg?url';
 import MicrophoneBtn from '@/assets/svgs/chatroom/MicrophoneBtn.svg?url';
+import SendBtn from '@/assets/svgs/chatroom/SendBtn.svg?url';
 
 type ChatInputProps = {
   value: string;
@@ -15,6 +16,7 @@ type ChatInputProps = {
 const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => {
   const cameraInputRef = useRef<HTMLInputElement>(null);
   const galleryInputRef = useRef<HTMLInputElement>(null);
+
   const handleCameraClick = () => {
     cameraInputRef.current?.click();
   };
@@ -24,8 +26,9 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
   };
 
   const [isComposing, setIsComposing] = useState(false);
+
   return (
-    <div className="flex items-center w-[375px] fixed bottom-0 py-2 px-4 shadow-bottommenu bg-grey-50">
+    <div className="flex items-center w-[375px] sticky bottom-0 py-2 px-4 shadow-bottommenu bg-grey-50">
       <input
         type="file"
         accept="image/*"
@@ -72,10 +75,15 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
             }
           }}
         />
-        <img src={EmoticonBtn} className="w-6 h-6 cursor-pointer absolute right-2 top-[6.5px] " />
+        <img src={EmoticonBtn} className="w-6 h-6 cursor-pointer absolute right-2 top-[6.5px]" />
       </div>
-      <img src={MicrophoneBtn} className="w-6 h-6 ml-2 cursor-pointer " />
+      {value.trim() ? (
+        <img src={SendBtn} className="w-6 h-6 ml-2 cursor-pointer" onClick={onSend} />
+      ) : (
+        <img src={MicrophoneBtn} className="w-6 h-6 ml-2 cursor-pointer" />
+      )}
     </div>
   );
 };
+
 export default ChatInput;
