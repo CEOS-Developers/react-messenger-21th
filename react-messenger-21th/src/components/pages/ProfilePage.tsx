@@ -26,7 +26,7 @@ const FriendsPage: React.FC = () => {
       <UpperBar>
         <Title>친구</Title>
         <IconGroup>
-          <SearchUpperBar width="18px" height="18px" margin-right="4px" />
+          <SearchUpperBar width="18px" height="18px" />
           <AddFriendButton width="20px" height="18.961px" />
           <MusicButton width="32px" height="32px" />
           <SettingButton width="18px" height="18px" />
@@ -93,6 +93,7 @@ const IconGroup = styled.div`
 
 const FriendsBoard = styled.div`
   background-color: ${({ theme }) => theme.colors.grey03};
+  overflow-y: auto;
 `;
 
 const BottomBar = styled.div`
