@@ -25,11 +25,14 @@ export const ChatRoomPreviewProfileWrapper = styled.div`
 `;
 
 export const ChatRoomPreviewContent = styled.div`
+  flex: 1;
+
   width: fit-content;
   height: 100%;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `;
 
 export const ChatRoomName = styled.p`
@@ -40,10 +43,8 @@ export const ChatRoomName = styled.p`
 `;
 
 export const ChatRoomLastMessage = styled.p`
-  flex-grow: 1;
-
   width: 100%;
-  height: 100%;
+  height: fit-content;
 
   ${({ theme }) => theme.fontStyles.Caption1_medium};
   font-weight: 400;
