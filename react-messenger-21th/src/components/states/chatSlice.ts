@@ -20,6 +20,10 @@ export type User = {
   id: string;
   name: string;
   image: string;
+  // 프로필 페이지 위해서 추가
+  statusMessage?: string;
+  isUpdated?: boolean;
+  birthday?: Date;
 };
 
 interface ChatState {

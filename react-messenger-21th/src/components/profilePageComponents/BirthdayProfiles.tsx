@@ -2,20 +2,49 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const BirthdayProfiles: React.FC = () => {
-  return (
-    <Section>
-      <SectionTitle>🎂 생일인 친구</SectionTitle>
-      <BirthdayItem>
-        <ProfileImage src="/assets/icons/ProfileDarkGreyS.svg" />
-        <TextGroup>
-          <Name>김서연</Name>
-          <Birthday>3월 30일</Birthday>
-        </TextGroup>
-        <GiftButton>선물하기</GiftButton>
-      </BirthdayItem>
-    </Section>
+// 타입 정의
+interface User {
+  id: string;
+  name: string;
+  image: string;
+  birthday?: Date;
+}
+
+interface Props {
+  users: User[];
+}
+
+const BirthdayProfiles: React.FC<Props> = ({ users }) => {
+  // 생일자인 유저 반환
+  const today = new Date();
+
+  const birthdayUsers = users.filter(
+    (user): user is User & { birthday: Date } => {
+      if (!user.birthday) return false;
+      return (
+        user.birthday.getMonth() === today.getMonth() &&
+        user.birthday.getDate() === today.getDate()
+      );
+    },
   );
+
+  return birthdayUsers.length > 0 ? (
+    <Section>
+      <SectionTitle>생일인 친구</SectionTitle>
+      {birthdayUsers.map((user) => (
+        <BirthdayItem key={user.id}>
+          <ProfileImage src={user.image} />
+          <TextGroup>
+            <Name>{user.name}</Name>
+            <Birthday>
+              {user.birthday.getMonth() + 1}월 {user.birthday.getDate()}일
+            </Birthday>
+          </TextGroup>
+          <GiftButton>선물하기</GiftButton>
+        </BirthdayItem>
+      ))}
+    </Section>
+  ) : null;
 };
 
 export default BirthdayProfiles;

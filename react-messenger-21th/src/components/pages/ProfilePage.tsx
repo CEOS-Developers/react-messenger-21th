@@ -41,7 +41,7 @@ const FriendsPage: React.FC = () => {
             <StatusMessage>상태메시지를 입력하세요.</StatusMessage>
           </ProfileTextGroup>
           <UpdatedProfiles />
-          <BirthdayProfiles />
+          <BirthdayProfiles users={users} />
           <FriendList />
         </MyProfileContainer>
       </FriendsBoard>
