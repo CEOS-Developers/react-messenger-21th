@@ -3,7 +3,7 @@ import ProfileExtraSmall from '@/assets/images/profile/ProfileExtraSmall.svg?rea
 import Arrow from '@/assets/images/icon/Arrow.svg?react';
 import { useNavigate } from 'react-router-dom';
 import { PATH } from '@/constants/path';
-import { ME } from '@/constants/profiles';
+import ME from '@/constants/users.json';
 
 const MyProfileList = () => {
   const navigate = useNavigate();
@@ -11,9 +11,9 @@ const MyProfileList = () => {
   return (
     <section className='flex mt-[51px] px-4 py-3 justify-between align-middle self-stretch'>
       <span className='flex items-center gap-4'>
-        {ME.img ? (
+        {ME[0].img ? (
           <img
-            src={ME.img}
+            src={ME[0].img}
             alt=''
             className='w-[50px] h-[50px] rounded-[.25rem] cursor-pointer'
             onClick={() => navigate(PATH.HOME.myProfile)}
@@ -24,7 +24,7 @@ const MyProfileList = () => {
             onClick={() => navigate(PATH.HOME.myProfile)}
           />
         )}
-        <span className='font-body-1-sb'>{ME.name}</span>
+        <span className='font-body-1-sb'>{ME[0].name}</span>
       </span>
       <span className='flex items-center gap-1 cursor-pointer'>
         <ProfileExtraSmall />
