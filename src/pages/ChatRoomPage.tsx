@@ -25,7 +25,7 @@ import add from "/image/add.svg";
 import emo from "/image/emo.svg";
 import inputBar from "/image/inputBar.svg";
 import fileInput from "/image/fileInput.svg";
-import { chatRoomAtom, userAtom, usersAtom } from "../store/message";
+import { chatRoomAtom, usersAtom } from "../store/message";
 import { useAtom } from "jotai";
 import { useEffect, useRef, useState } from "react";
 
@@ -35,8 +35,8 @@ const ChatRoomPage = () => {
   const today = new Date().toISOString().split("T")[0];
   const [input, setInput] = useState("");
   const [isMessage, setIsMessage] = useState(false);
-  const [user, setUser] = useAtom(userAtom);
   const [users] = useAtom(usersAtom);
+  const [user, setUser] = useState(chatRoom?.users[1] || users[0]);
   const days = ["일", "월", "화", "수", "목", "금", "토"];
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -80,10 +80,10 @@ const ChatRoomPage = () => {
   const changeUser = () => {
     setUser(users[1]);
     if (user.id === 1) {
-      setUser(users[1]);
+      setUser(chatRoom?.users[1] || users[1]);
     }
     if (user.id === 2) {
-      setUser(users[0]);
+      setUser(chatRoom?.users[0] || users[0]);
     }
   };
   useEffect(() => {
@@ -108,10 +108,10 @@ const ChatRoomPage = () => {
             <Link to="/chat">
               <Arrow src={arrowLeft} />
             </Link>
-            <ProfileImg src={chatRoom?.users[1].profileImg}>
+            <ProfileImg src={user.profileImg}>
               <Status />
             </ProfileImg>
-            <UserName onClick={changeUser}>{chatRoom?.users[1].name}</UserName>
+            <UserName onClick={changeUser}>{user.name}</UserName>
           </FrontItem>
         </HeaderBar>
         <ChatContents ref={containerRef}>

@@ -18,7 +18,7 @@ const FriendPage = () => {
           </SubNav>
         </Title>
       </PageHeader>
-      <Profile name="김민수" type="me" />
+      <Profile name="이주희" type="me" />
       <Divider>ChatGPT에게 물어보기</Divider>
       <AIChat>
         <Profile name="AI 챗으로 해결해보세요!" type="AI" />
