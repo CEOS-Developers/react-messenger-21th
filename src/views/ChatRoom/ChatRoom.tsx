@@ -174,7 +174,7 @@ function ChatRoom() {
           <Icons.AddGray className="w-[24px] h-[24px]" />
           <Icons.CameraGray className="w-[24px] h-[24px]" />
         </div>
-        <S.MessageInputContainer className="bg-grayscale-06 inline border border-grayscale-03">
+        <S.MessageInputContainer className="bg-grayscale-06 shadow-[inset_0_0_0_1px_theme(colors.grayscale-03)]">
           <textarea
             ref={textareaRef}
             value={text}
