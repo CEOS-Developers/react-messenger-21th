@@ -13,6 +13,7 @@ import SettingButton from '/public/assets/icons/SettingButton.svg?react';
 import UpdatedProfiles from '../profilePageComponents/UpdatedProfiles';
 import BirthdayProfiles from '../profilePageComponents/BirthdayProfiles';
 import FriendList from '../profilePageComponents/FriendList';
+import MyProfile from '../profilePageComponents/MyProfile';
 
 const FriendsPage: React.FC = () => {
   const users = useSelector((state: RootState) => state.chat.users);
@@ -35,12 +36,8 @@ const FriendsPage: React.FC = () => {
       {/* 친구 목록 등 들어갈 메인 영역 */}
       <FriendsBoard>
         <MyProfileContainer>
-          <ProfileImage src={me.image} alt="내 프로필" />
-          <ProfileTextGroup>
-            <MyName>{me.name}</MyName>
-            <StatusMessage>상태메시지를 입력하세요.</StatusMessage>
-          </ProfileTextGroup>
-          <UpdatedProfiles />
+          <MyProfile me={me} />
+          <UpdatedProfiles users={users} />
           <BirthdayProfiles users={users} />
           <FriendList users={users} />
         </MyProfileContainer>

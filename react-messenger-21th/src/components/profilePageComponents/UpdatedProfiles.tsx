@@ -2,18 +2,31 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// mock 데이터 등으로 대체해서 연결해도 되고, 추후 props로 받아도 좋아요
-const UpdatedProfiles: React.FC = () => {
+interface User {
+  id: string;
+  name: string;
+  image: string;
+  isUpdated?: boolean;
+}
+
+interface Props {
+  users: User[];
+}
+const UpdatedProfiles: React.FC<Props> = ({ users }) => {
+  const updatedUsers = users?.filter((user) => user.isUpdated) || [];
+
+  if (updatedUsers.length === 0) return null;
+
   return (
     <Section>
       <SectionTitle>업데이트된 프로필</SectionTitle>
       <ProfileList>
-        {/* 여기에 map 돌릴 예정 */}
-        <ProfileItem>
-          <ProfileImage src="/assets/icons/ProfileGreyS.svg" alt="업뎃 친구" />
-          <Name>성이름</Name>
-        </ProfileItem>
-        {/* ... */}
+        {updatedUsers.map((user) => (
+          <ProfileItem key={user.id}>
+            <ProfileImage src={user.image} />
+            <Name>{user.name}</Name>
+          </ProfileItem>
+        ))}
       </ProfileList>
     </Section>
   );
