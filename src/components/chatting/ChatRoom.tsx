@@ -19,7 +19,7 @@ const ChatRoomComponent: React.FC<ChatRoomProps> = ({
   chatroomData,
   setChatroomData,
 }) => {
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLSpanElement>(null);
   const [user, setUser] = useState<number>(0);
 
   const chatroom: ChatRoom | undefined = chatroomData.find(

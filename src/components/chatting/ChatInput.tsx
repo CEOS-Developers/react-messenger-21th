@@ -3,6 +3,7 @@ import Send from '@/assets/images/icon/Send.svg?react';
 import Smile from '@/assets/images/icon/Smile.svg?react';
 import storeMessage from '@/store/storeMessage';
 import { ChatroomList } from '@/types/types';
+import cn from '@/utils/cn';
 import { Dispatch, SetStateAction, useRef, useState } from 'react';
 
 const ChatInput = ({
@@ -12,7 +13,22 @@ const ChatInput = ({
   setChatroomData: Dispatch<SetStateAction<ChatroomList>>;
   chatroomId: number;
 }) => {
-  const textareaRef = useRef(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [isRounded, setIsRounded] = useState<boolean>(true);
+
+  const handleResizeHeight = () => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto'; // 기존 height 초기화
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+
+      if (textareaRef.current.scrollHeight > 50) {
+        setIsRounded(false);
+      } else {
+        setIsRounded(true);
+      }
+    }
+  };
+
   const [inputText, setInputText] = useState<string>('');
 
   const handleSend = () => {
@@ -32,21 +48,29 @@ const ChatInput = ({
   };
 
   return (
-    <section className='flex sticky bottom-0 bg-white w-full px-4 py-3 gap-2 items-center'>
-      <Plus className='w-6 h-6 items-center text-neutral-700 cursor-pointer' />
+    <section
+      className={cn(
+        'flex sticky bottom-0 bg-white w-full px-4 py-3 gap-2 items-center',
+        { 'items-end': !isRounded }
+      )}
+    >
+      <Plus className='w-6 h-6 items-center text-neutral-700 cursor-pointer my-2' />
       <span className='flex flex-1 relative'>
         <textarea
           ref={textareaRef}
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
+          onInput={handleResizeHeight}
           rows={1}
-          cols={1}
-          className='flex flex-1 border border-neutral-200 rounded-[50px] pl-3 pr-12 py-2 overflow-y-auto whitespace-break-spaces max-h-[11.25rem] resize-none'
+          className={cn(
+            'flex flex-1 border border-neutral-200 rounded-[3.125rem] pl-3 pr-12 py-2 overflow-y-auto whitespace-break-spaces max-h-[8.75rem] resize-none scrollbar-hide',
+            { 'rounded-[1rem]': !isRounded }
+          )}
         />
-        <Smile className='w-6 h-6 text-neutral-300 absolute top-2 right-3 cursor-pointer' />
+        <Smile className='w-6 h-6 text-neutral-300 absolute bottom-[9px] right-3 cursor-pointer' />
       </span>
       <Send
-        className='w-6 h-6 items-center text-neutral-600 cursor-pointer'
+        className='w-6 h-6 items-center text-neutral-600 cursor-pointer my-2'
         tabIndex={0}
         onClick={handleSend}
       />
