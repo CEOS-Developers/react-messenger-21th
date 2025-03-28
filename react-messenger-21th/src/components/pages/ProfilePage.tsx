@@ -10,6 +10,9 @@ import SearchNotSelected from '/public/assets/icons/SearchNotSelected.svg?react'
 import AddFriendButton from '/public/assets/icons/AddFriendButton.svg?react';
 import MusicButton from '/public/assets/icons/MusicButton.svg?react';
 import SettingButton from '/public/assets/icons/SettingButton.svg?react';
+import UpdatedProfiles from '../profilePageComponents/UpdatedProfiles';
+import BirthdayProfiles from '../profilePageComponents/BirthdayProfiles';
+import FriendList from '../profilePageComponents/FriendList';
 
 const FriendsPage: React.FC = () => {
   const users = useSelector((state: RootState) => state.chat.users);

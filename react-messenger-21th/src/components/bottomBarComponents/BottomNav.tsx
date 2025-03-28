@@ -33,9 +33,9 @@ const BottomNav: React.FC = () => {
         selected={location.pathname === '/chat-rooms'}
       >
         {location.pathname === '/chat-rooms' ? (
-          <BChatsNotSelected width="67px" height="48px" />
-        ) : (
           <BChatsSelected width="67px" height="48px" />
+        ) : (
+          <BChatsNotSelected width="67px" height="48px" />
         )}
       </NavIcon>
       <NavIcon selected={location.pathname === '/openchat'}>

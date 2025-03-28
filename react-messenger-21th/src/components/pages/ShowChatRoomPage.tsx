@@ -16,9 +16,9 @@ const ShowChatRoomPage: React.FC = () => {
       <UpperBar>
         <ChatText>채팅</ChatText>
         <RightButtons>
-          <SearchButtonIcon />
-          <PlusChatButton />
-          <SettingButtonIcon />
+          <SearchButtonIcon width="16px" height="16px" />
+          <PlusChatButton width="16px" height="14px" />
+          <SettingButtonIcon width="18px" height="18px" />
         </RightButtons>
       </UpperBar>
 
