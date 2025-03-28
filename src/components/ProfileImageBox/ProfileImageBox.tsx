@@ -1,13 +1,14 @@
 import { JSX } from 'react/jsx-runtime';
 
-import * as S from './ProfileImageBox.styled';
 import { DefaultProfileIcon } from '@/icons/Friend';
 import { getProfileColor } from '@/utils/getProfileColor';
+
+import * as S from './ProfileImageBox.styled';
 
 type ProfileImageProps = {
   size: number;
   username: string;
-  isProfileUpdated: boolean;
+  isProfileUpdated?: boolean;
 };
 
 const ProfileImageBox = ({

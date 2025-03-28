@@ -5,8 +5,8 @@ export const PROFILE_SIZE_LIST = {
   updated: 40,
   basic: 44,
   detail: 110,
-  '개인 채팅 목록 프로필': 54,
-  '그룹 채팅 목록 프로필': 22,
+  personalChat: 54,
+  groupChat: 22,
   '채팅방 내 프로필': 30,
 };
 

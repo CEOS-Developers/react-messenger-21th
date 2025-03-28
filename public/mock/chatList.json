@@ -1,0 +1,21 @@
+[
+  {
+    "roomId": "room-001",
+    "roomName": "임승민",
+    "isGroup": false,
+    "participants": [
+      {
+        "userId": "user-123",
+        "name": "임승민",
+        "profileImage": "/images/avatar-hong.png"
+      }
+    ],
+    "lastMessage": {
+      "senderId": "user-456",
+      "content": "뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데",
+      "type": "text",
+      "sentAt": "2025-03-28T12:30:00Z"
+    },
+    "unreadCount": 2
+  }
+]
