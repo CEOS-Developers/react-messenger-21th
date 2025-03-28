@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { RootState } from '../states/store';
 import styled from 'styled-components';
 import ChatRoomCard from '../showChatRoomComponents/ChatRoomCard';
