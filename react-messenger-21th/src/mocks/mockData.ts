@@ -1,12 +1,11 @@
 // mockData.ts
-import { v4 as uuidv4 } from 'uuid';
 import { User, ChatRoom } from '../components/states/chatSlice'; // 경로 확인!
 
-export const idForMe = uuidv4();
+export const idForMe = 'user-me';
 
 export const friends: User[] = [
   {
-    id: uuidv4(),
+    id: 'friend-1',
     name: '김서연',
     image: '/assets/icons/ProfileDarkGreyS.svg',
     statusMessage: 'pr 자료 만들어야 하는데...',
@@ -14,7 +13,7 @@ export const friends: User[] = [
     birthday: new Date(2005, 1, 20),
   },
   {
-    id: uuidv4(),
+    id: 'friend-2',
     name: '성이름',
     image: '/assets/icons/ProfileGreyS.svg',
     statusMessage: '저녁 모 먹지',
@@ -26,7 +25,7 @@ export const friends: User[] = [
     ),
   },
   {
-    id: uuidv4(),
+    id: 'friend-3',
     name: '강수진',
     image: '/assets/icons/ProfileWhiteS.svg',
     statusMessage: '등교하기 시러요',
@@ -34,7 +33,7 @@ export const friends: User[] = [
     birthday: new Date(2000, 10, 1),
   },
   {
-    id: uuidv4(),
+    id: 'friend-4',
     name: '이화여자대학교',
     image: '/assets/icons/ProfileDarkGreyS.svg',
     statusMessage: '오늘도 화이팅!',
@@ -44,7 +43,7 @@ export const friends: User[] = [
 ];
 
 export const me: User = {
-  id: idForMe,
+  id: 'user-me',
   name: '이지후',
   image: '/assets/icons/ProfileWhiteS.svg',
   statusMessage: '냠냠',
@@ -56,14 +55,14 @@ export const chatRooms: ChatRoom[] = [
     participants: [idForMe, friends[0].id],
     messages: [
       {
-        id: uuidv4(),
+        id: 'msg-1-1',
         senderId: friends[0].id,
         text: '안녕!',
         timestamp: new Date(2025, 2, 27).toISOString(),
         isMine: false,
       },
       {
-        id: uuidv4(),
+        id: 'msg-1-2',
         senderId: idForMe,
         text: '안녕! 반가워~',
         timestamp: new Date(2025, 2, 27).toISOString(),
@@ -76,14 +75,14 @@ export const chatRooms: ChatRoom[] = [
     participants: [idForMe, friends[1].id],
     messages: [
       {
-        id: uuidv4(),
+        id: 'msg-2-1',
         senderId: friends[1].id,
         text: '배고프당 마싯는 거 먹고 싶당',
         timestamp: new Date().toISOString(),
         isMine: false,
       },
       {
-        id: uuidv4(),
+        id: 'msg-2-2',
         senderId: friends[1].id,
         text: '긴 텍스트 시험용 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ',
         timestamp: new Date().toISOString(),
@@ -96,16 +95,16 @@ export const chatRooms: ChatRoom[] = [
     participants: [idForMe, friends[3].id],
     messages: [
       {
-        id: uuidv4(),
+        id: 'msg-3-1',
         senderId: idForMe,
-        text: '공대 셔틀 안 만들어 줘?',
+        text: '공대 셔틀 만들어주새요요',
         timestamp: new Date().toISOString(),
         isMine: true,
       },
       {
-        id: uuidv4(),
+        id: 'msg-3-2',
         senderId: friends[3].id,
-        text: '응 안 만들어 줘',
+        text: 'ㅎ.ㅎ',
         timestamp: new Date().toISOString(),
         isMine: false,
       },

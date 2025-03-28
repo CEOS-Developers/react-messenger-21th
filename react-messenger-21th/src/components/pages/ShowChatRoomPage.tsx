@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { RootState } from '../states/store';
 import styled from 'styled-components';
 import ChatRoomCard from '../showChatRoomComponents/ChatRoomCard';
@@ -12,15 +12,23 @@ const ShowChatRoomPage: React.FC = () => {
   const chatRooms = useSelector((state: RootState) => state.chat.chatRooms);
   const users = useSelector((state: RootState) => state.chat.users);
   // 고정된 채팅방 관리
-  const [pinnedRooms, setPinnedRooms] = useState<string[]>([]);
+  const [pinnedRooms, setPinnedRooms] = useState<string[]>(() => {
+    // 로컬스토리지에서 불러오기
+    const stored = localStorage.getItem('pinnedRooms');
+    return stored ? JSON.parse(stored) : [];
+  });
   const [activeRoom, setActiveRoom] = useState<string | null>(null);
 
   const handleTogglePin = (roomId: string) => {
-    setPinnedRooms((prev) =>
-      prev.includes(roomId)
+    setPinnedRooms((prev) => {
+      const updated = prev.includes(roomId)
         ? prev.filter((id) => id !== roomId)
-        : [...prev, roomId],
-    );
+        : [...prev, roomId];
+
+      // 로컬스토리지에 저장
+      localStorage.setItem('pinnedRooms', JSON.stringify(updated));
+      return updated;
+    });
   };
 
   const handleActivate = (roomId: string) => {
