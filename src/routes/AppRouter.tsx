@@ -10,7 +10,7 @@ import GlobalLayout from '@/components/layout/GlobalLayout';
 import MainLayout from '@/components/layout/MainLayout';
 import { Loading } from '@/components/loading/Loading';
 import { Chatting, Home, Market, More, OpenChatting } from '@/pages';
-import MyProfile from '@/pages/home/MYProfile';
+import MyProfile from '@/pages/home/MyProfile';
 
 const router = createBrowserRouter([
   {
