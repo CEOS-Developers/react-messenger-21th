@@ -3,6 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { idForMe } from '../../mocks/mockData'; // 내 ID 가져오기
 import { useState } from 'react'; // 토글 버튼용
+import ToggleDown from '/public/assets/icons/ToggleDown.svg?react';
+import ToggleUp from '/public/assets/icons/ToggleUp.svg?react';
 
 interface User {
   id: string;
@@ -22,22 +24,26 @@ const FriendList: React.FC<Props> = ({ users }) => {
   return (
     <ListWrapper>
       <HeaderRow>
-        <SectionTitle>친구</SectionTitle>
+        <SectionTitle>친구 {friends.length}</SectionTitle>
         <ToggleButton onClick={() => setIsOpen((prev) => !prev)}>
-          {isOpen ? '▲' : '▼'}
+          {isOpen ? (
+            <ToggleDown width="24px" height="24" />
+          ) : (
+            <ToggleUp width="24px" height="24" />
+          )}
         </ToggleButton>
       </HeaderRow>
 
       {isOpen &&
         friends.map((user) => (
           <FriendItem key={user.id}>
-            <ProfileImage src={user.image} />
             <FriendInfo>
+              <ProfileImage src={user.image} />
               <Name>{user.name}</Name>
-              <Status>
-                {user.statusMessage || '상태메시지를 입력하세요.'}
-              </Status>
             </FriendInfo>
+            <Status>
+              <StatusText>{user.statusMessage || '상태메시지'}</StatusText>
+            </Status>
           </FriendItem>
         ))}
     </ListWrapper>
@@ -48,19 +54,28 @@ export default FriendList;
 
 // 스타일
 const ListWrapper = styled.div`
-  padding: 16px 20px;
+  display: flex;
+  padding: 8px 10px;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const SectionTitle = styled.div`
   ${({ theme }) => theme.typography.caption1}
   color: ${({ theme }) => theme.colors.grey07};
-  margin-bottom: 8px;
+  ${({ theme }) => theme.typography.caption1}
+  color: ${({ theme }) => theme.colors.grey04};
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 16.8px */
+  letter-spacing: -0.012px;
 `;
 
 const HeaderRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 10px 0 10px;
 `;
 
 const ToggleButton = styled.button`
@@ -73,26 +88,65 @@ const ToggleButton = styled.button`
 
 const FriendItem = styled.div`
   display: flex;
-  align-items: center;
-  margin-bottom: 12px;
+  width: 351px;
+  padding: 10px;
+  align-items: flex-start;
+  justify-content: space-between; /* 요거 추가! */
+  gap: 10px;
 `;
 
 const ProfileImage = styled.img`
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
 `;
 
 const FriendInfo = styled.div`
-  margin-left: 12px;
+  display: flex;
+  width: auto;
+  align-items: center;
+  gap: 20px;
 `;
 
 const Name = styled.div`
-  ${({ theme }) => theme.typography.body2}
-  color: ${({ theme }) => theme.colors.grey08};
+  color: ${({ theme }) => theme.colors.grey09};
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.24px;
 `;
 
 const Status = styled.div`
-  ${({ theme }) => theme.typography.caption2}
-  color: ${({ theme }) => theme.colors.grey06};
+  margin-left: auto;
+  display: flex;
+  height: 20px;
+  padding: 4px 10px;
+  align-self: center;
+  gap: 10px;
+  border-radius: 20px;
+  border: 1px solid ${({ theme }) => theme.colors.grey04};
+  opacity: 0.5;
+  background: var(--Grey-White, #fefefe);
+`;
+
+const StatusText = styled.span`
+  display: -webkit-box;
+  max-width: 80px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  align-self: center;
+
+  overflow: hidden;
+  color: ${({ theme }) => theme.colors.grey09};
+  text-align: right;
+  text-overflow: ellipsis;
+
+  /* Caption/Caption2 */
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px; /* 150% */
+  letter-spacing: -0.15px;
 `;

@@ -52,9 +52,26 @@ const FriendsPage: React.FC = () => {
 };
 
 // 스타일
-const Container = styled.div``;
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 48px 1fr auto; // 마지막 줄을 auto로
+  box-sizing: border-box;
+`;
 
-const UpperBar = styled.div``;
+const UpperBar = styled.div`
+  position: relative;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  z-index: 100;
+`;
 
 const Title = styled.h1``;
 
@@ -62,7 +79,17 @@ const IconGroup = styled.div``;
 
 const FriendsBoard = styled.div``;
 
-const BottomBar = styled.div``;
+const BottomBar = styled.div`
+  height: auto;
+  align-items: stretch;
+  width: 100%;
+  display: flex;
+  padding: 12px 20px 12px 20px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 12px;
+`;
 
 const MyProfileContainer = styled.div``;
 

@@ -36,7 +36,7 @@ export const friends: User[] = [
   {
     id: uuidv4(),
     name: '이화여자대학교',
-    image: '/assets/icons/ProfileGreyS.svg',
+    image: '/assets/icons/ProfileDarkGreyS.svg',
     statusMessage: '오늘도 화이팅!',
     isUpdated: false,
     birthday: new Date(1886, 1, 8),
