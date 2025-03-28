@@ -15,9 +15,9 @@ const colors = {
   gray13: '#2C2D30',
   gray14: '#181A1B',
   black: '#000000',
-  mainSkyblue: 'linear-gradient(#FFFFFF, #7EDFFF)',
-  mainOrange: 'linear-gradient(#FFFFFF, #FEB985)',
-  mainPurple: 'linear-gradient(#FFFFFF, #D9B9FA)',
+  skyblue: 'linear-gradient(#FFFFFF, #7EDFFF)',
+  orange: 'linear-gradient(#FFFFFF, #FEB985)',
+  purple: 'linear-gradient(#FFFFFF, #D9B9FA)',
   mainLime: 'linear-gradient(#FFFFFF, #EAFB88)',
   chatBackground:
     'linear-gradient(#A6D0FF 0%, #FFFFFF 29%, #FFFFFF 69%, #8BC2FF 110%)',
