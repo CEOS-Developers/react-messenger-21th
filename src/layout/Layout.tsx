@@ -1,5 +1,5 @@
 import { JSX } from 'react/jsx-runtime';
-import { Outlet } from 'react-router';
+import { Location, Outlet, useLocation, useParams } from 'react-router';
 
 import Header from './Header/Header';
 import TabBar from './TabBar/TabBar';
@@ -7,15 +7,30 @@ import TabBar from './TabBar/TabBar';
 import * as S from './Layout.styled';
 
 const Layout = (): JSX.Element => {
+  const location: Location = useLocation();
+  const { roomId } = useParams();
+
+  const noHeaderTabBarRoutes = [`/chat/${roomId}`];
+
+  const isNoHeaderTabBarRoute = noHeaderTabBarRoutes.includes(
+    location.pathname
+  );
+
   return (
     <S.TopLevelContainer>
-      <Header />
+      {!isNoHeaderTabBarRoute ? (
+        <>
+          <Header />
 
-      <S.MainContent>
+          <S.MainContent>
+            <Outlet />
+          </S.MainContent>
+
+          <TabBar />
+        </>
+      ) : (
         <Outlet />
-      </S.MainContent>
-
-      <TabBar />
+      )}
     </S.TopLevelContainer>
   );
 };

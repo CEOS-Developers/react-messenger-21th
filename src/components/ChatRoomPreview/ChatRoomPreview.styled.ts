@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Link } from 'react-router';
 
-export const ChatRoomPreviewContainer = styled.a`
+export const ChatRoomPreviewContainer = styled(Link)`
   width: 100%;
   height: 8rem;
   padding: 1.2rem 2rem;

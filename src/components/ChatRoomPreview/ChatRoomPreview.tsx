@@ -18,7 +18,7 @@ const ChatRoomPreview = ({
   chatPreview,
 }: ChatRoomPreviewProps): JSX.Element => {
   return (
-    <S.ChatRoomPreviewContainer>
+    <S.ChatRoomPreviewContainer to={`${chatPreview.roomId}`}>
       <S.ChatRoomPreviewProfileWrapper>
         <ProfileImageBox
           size={PROFILE_SIZE_LIST.personalChat}
