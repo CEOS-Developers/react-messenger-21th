@@ -60,16 +60,17 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
         <img src={GalleryBtn} className="w-6 h-6" onClick={handleGalleryClick} />
       </div>
       <div className="relative">
-        <input
-          type="text"
+        <textarea
           value={value}
-          onChange={onChange}
+          onChange={(e) => onChange(e as any)} // 타입 맞추기용
           placeholder="텍스트를 입력해주세요"
-          className="flex-1 w-[191px] border-grey-100 border-[0.5px] pr-[37px] bg-grey-75 rounded-lg p-2 outline-none text-body2 text-grey-900 placeholder:text-grey-400"
+          rows={1}
+          className="flex-1 w-[191px] border-grey-100 border-[0.5px] pr-[37px] bg-grey-75 rounded-lg p-2 outline-none text-body2 text-grey-900 placeholder:text-grey-400 resize-none"
           onCompositionStart={() => setIsComposing(true)}
           onCompositionEnd={() => setIsComposing(false)}
-          onKeyDown={(e: any) => {
+          onKeyDown={(e: React.KeyboardEvent<HTMLTextAreaElement>) => {
             if (e.key === 'Enter' && !isComposing) {
+              if (e.shiftKey) return; // Shift+Enter는 줄바꿈 허용
               e.preventDefault();
               onSend();
             }

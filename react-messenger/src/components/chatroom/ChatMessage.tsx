@@ -26,7 +26,7 @@ const ChatMessage = ({ message, isMine, senderInfo }: ChatMessageProps) => {
         <div className={`flex items-end gap-1 ${isMine ? 'flex-row-reverse' : 'flex-row'}`}>
           {message.type === 'text' ? (
             <div
-              className={`max-w-[216px] shadow-bottommenu px-2 py-1 rounded-lg bg-grey-50 text-body2 text-grey-900 ${isMine ? 'rounded-tr-none' : 'rounded-tl-none'}`}
+              className={`max-w-[216px] shadow-bottommenu px-2 py-1 rounded-lg bg-grey-50 text-body2 text-grey-900 break-words whitespace-pre-line ${isMine ? 'rounded-tr-none' : 'rounded-tl-none'}`}
             >
               {message.content}
             </div>
