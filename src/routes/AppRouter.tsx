@@ -63,7 +63,7 @@ const router = createBrowserRouter([
             index: true,
             element: (
               <MainLayout>
-                <OpenChatting />
+                <Loading />
               </MainLayout>
             ),
           },
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
             index: true,
             element: (
               <MainLayout>
-                <Market />
+                <Loading />
               </MainLayout>
             ),
           },
@@ -91,7 +91,7 @@ const router = createBrowserRouter([
             index: true,
             element: (
               <MainLayout>
-                <More />
+                <Loading />
               </MainLayout>
             ),
           },
