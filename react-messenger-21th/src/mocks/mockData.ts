@@ -104,7 +104,7 @@ export const chatRooms: ChatRoom[] = [
       {
         id: 'msg-3-2',
         senderId: friends[3].id,
-        text: 'ㅎ.ㅎ',
+        text: 'ㅎ.ㅎ ~-~ ㅇㅁㅇ',
         timestamp: new Date().toISOString(),
         isMine: false,
       },

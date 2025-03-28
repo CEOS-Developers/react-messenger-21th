@@ -69,6 +69,7 @@ const ChatBoard: React.FC = () => {
               );
 
               const nextMsg = group.messages[msgIndex + 1];
+              const nextSenderId = nextMsg?.senderId;
               const nextTime = nextMsg
                 ? new Date(nextMsg.timestamp).toLocaleTimeString([], {
                     hour: '2-digit',
@@ -77,7 +78,10 @@ const ChatBoard: React.FC = () => {
                 : null;
 
               // 다음 메시지와 시간이 다르면, 현재 메시지에 타임스탬프 보여줌
-              const showTimestamp = currentTime !== nextTime;
+              const showTimestamp =
+                !nextMsg ||
+                nextSenderId !== msg.senderId ||
+                currentTime !== nextTime;
 
               return (
                 <ChatBubble
