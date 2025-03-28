@@ -32,20 +32,25 @@ const BirthdayProfiles: React.FC<Props> = ({ users }) => {
 
   return birthdayUsers.length > 0 ? (
     <Section>
-        
-      <SectionTitle>생일인 친구</SectionTitle>
-      {birthdayUsers.map((user) => (
-        <BirthdayItem key={user.id}>
-          <ProfileImage src={user.image} />
-          <TextGroup>
-            <Name>{user.name}</Name>
-            <Birthday>
-              {user.birthday.getMonth() + 1}월 {user.birthday.getDate()}일
-            </Birthday>
-          </TextGroup>
-          <GiftButton>선물하기</GiftButton>
-        </BirthdayItem>
-      ))}
+      <HeaderRow>
+        <SectionTitle>생일인 친구</SectionTitle>
+        <ToggleButton onClick={() => setIsOpen((prev) => !prev)}>
+          {isOpen ? '▲' : '▼'}
+        </ToggleButton>
+      </HeaderRow>
+      {isOpen &&
+        birthdayUsers.map((user) => (
+          <BirthdayItem key={user.id}>
+            <ProfileImage src={user.image} />
+            <TextGroup>
+              <Name>{user.name}</Name>
+              <Birthday>
+                {user.birthday.getMonth() + 1}월 {user.birthday.getDate()}일
+              </Birthday>
+            </TextGroup>
+            <GiftButton>선물하기</GiftButton>
+          </BirthdayItem>
+        ))}
     </Section>
   ) : null;
 };
@@ -55,6 +60,20 @@ export default BirthdayProfiles;
 // 스타일
 const Section = styled.div`
   padding: 16px 20px 0;
+`;
+
+const HeaderRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ToggleButton = styled.button`
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.grey06};
 `;
 
 const SectionTitle = styled.div`

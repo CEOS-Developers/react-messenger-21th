@@ -49,47 +49,55 @@ const ChatBoard: React.FC = () => {
   return (
     <ChatContainer>
       {/* 현재 선택된 채팅방 메시지에 대해 */}
-      {groupedMessages.map((group, index) => (
-        <div key={index}>
-          {/* 날짜 스탬프 출력 */}
-          <DateStamp>{group.date}</DateStamp>
-          {group.messages.map((msg, msgIndex) => {
-            const sender = users.find((user) => user.id === msg.senderId);
+      {groupedMessages.map((group, index) => {
+        // style 적용을 위해 날짜 그룹의 마지막 메시지인지 확인
+        const isLastOfGroup = index === groupedMessages.length - 1;
 
-            const currentTime = new Date(msg.timestamp).toLocaleTimeString([], {
-              hour: '2-digit',
-              minute: '2-digit',
-            });
+        return (
+          <div key={index}>
+            {/* 날짜 스탬프 출력 */}
+            <DateStamp $isLastOfGroup={isLastOfGroup}>{group.date}</DateStamp>
+            {group.messages.map((msg, msgIndex) => {
+              const sender = users.find((user) => user.id === msg.senderId);
 
-            const nextMsg = group.messages[msgIndex + 1];
-            const nextTime = nextMsg
-              ? new Date(nextMsg.timestamp).toLocaleTimeString([], {
+              const currentTime = new Date(msg.timestamp).toLocaleTimeString(
+                [],
+                {
                   hour: '2-digit',
                   minute: '2-digit',
-                })
-              : null;
+                },
+              );
 
-            // 다음 메시지와 시간이 다르면, 현재 메시지에 타임스탬프 보여줌
-            const showTimestamp = currentTime !== nextTime;
+              const nextMsg = group.messages[msgIndex + 1];
+              const nextTime = nextMsg
+                ? new Date(nextMsg.timestamp).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })
+                : null;
 
-            return (
-              <ChatBubble
-                key={msgIndex}
-                image={sender?.image || '/default-profile.svg'}
-                userName={sender?.name || ''}
-                text={msg.text}
-                isMine={msg.senderId === currentSenderId}
-                timestamp={msg.timestamp}
-                showProfile={
-                  msgIndex === 0 ||
-                  group.messages[msgIndex - 1].senderId !== msg.senderId
-                }
-                showTimestamp={showTimestamp} // 마지막 메시지에 표시
-              />
-            );
-          })}
-        </div>
-      ))}
+              // 다음 메시지와 시간이 다르면, 현재 메시지에 타임스탬프 보여줌
+              const showTimestamp = currentTime !== nextTime;
+
+              return (
+                <ChatBubble
+                  key={msgIndex}
+                  image={sender?.image || '/default-profile.svg'}
+                  userName={sender?.name || ''}
+                  text={msg.text}
+                  isMine={msg.senderId === currentSenderId}
+                  timestamp={msg.timestamp}
+                  showProfile={
+                    msgIndex === 0 ||
+                    group.messages[msgIndex - 1].senderId !== msg.senderId
+                  }
+                  showTimestamp={showTimestamp} // 마지막 메시지에 표시
+                />
+              );
+            })}
+          </div>
+        );
+      })}
     </ChatContainer>
   );
 };
@@ -102,11 +110,12 @@ const ChatContainer = styled.div`
 `;
 
 // 날짜 스탬프 스타일
-const DateStamp = styled.div`
+const DateStamp = styled.div<{ $isLastOfGroup: boolean }>`
   text-align: center;
   font-size: ${({ theme }) => theme.typography.caption1.fontSize};
   color: ${({ theme }) => theme.colors.grey05};
-  padding: 12px 20px 8px 20px;
+  padding: ${({ $isLastOfGroup }) =>
+    $isLastOfGroup ? '20px 20px 8px 20px' : '12px 20px 8px 20px'};
 `;
 
 export default ChatBoard;
