@@ -57,7 +57,7 @@ const ChatContent = () => {
         }
         rightChild={<ChatRoomIcon />}
       />
-      <ChatField chats={room.chats} member={room.member} />
+      <ChatField myId={userId} chats={room.chats} member={room.member} />
       <TextInput />
     </s.Content>
   )
