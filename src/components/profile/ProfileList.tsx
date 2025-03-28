@@ -1,9 +1,16 @@
 import Arrow from '@/assets/images/icon/Arrow.svg?react';
-import Profile from '@/assets/images/profile/ProfileMedium.svg?react';
+import ProfileImg from '@/assets/images/profile/ProfileMedium.svg?react';
 import cn from '@/utils/cn';
 import { useState } from 'react';
+import { Profile } from '@/types/types';
 
-const ProfileList = ({ group }: { group: string }) => {
+const ProfileList = ({
+  group,
+  profiles,
+}: {
+  group: string;
+  profiles: Profile[];
+}) => {
   const [isListOpen, setIsListOpen] = useState(true);
 
   const handleClickList = () => {
@@ -26,18 +33,15 @@ const ProfileList = ({ group }: { group: string }) => {
       </span>
       {isListOpen && (
         <span className='flex flex-col gap-3 font-body-2-med text-neutral-700'>
-          <span className='flex gap-3 text-center items-center cursor-pointer'>
-            <Profile />
-            <span>과장님</span>
-          </span>
-          <span className='flex gap-3 text-center items-center cursor-pointer'>
-            <Profile />
-            <span>대리님</span>
-          </span>
-          <span className='flex gap-3 text-center items-center cursor-pointer'>
-            <Profile />
-            <span>팀장님</span>
-          </span>
+          {profiles.map((profile) => (
+            <span
+              key={profile.id}
+              className='flex gap-3 text-center items-center cursor-pointer'
+            >
+              <ProfileImg />
+              <span>{profile.name}</span>
+            </span>
+          ))}
         </span>
       )}
     </section>

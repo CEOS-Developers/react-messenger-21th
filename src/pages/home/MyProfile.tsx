@@ -7,6 +7,7 @@ import ChatAlone from '@/assets/images/icon/ChatAlone.svg?react';
 import Edit from '@/assets/images/icon/Edit.svg?react';
 import Sns from '@/assets/images/icon/Sns.svg?react';
 import { useNavigate } from 'react-router-dom';
+import { ME } from '@/constants/profiles';
 
 const MyProfile = () => {
   const navigate = useNavigate();
@@ -26,10 +27,18 @@ const MyProfile = () => {
       <section className='flex flex-col gap-9 items-center'>
         <button className='flex w-[300px] h-fit py-[10px] px-3 justify-between align-middle items-center cursor-pointer rounded-[10px] border border-[#4E70DD]  bg-[rgba(153,176,251,0.40)] shadow-[0px_0px_12px_0px_rgba(255,255,255,0.25)]'>
           <div className='flex gap-4'>
-            <Profile className='w-18 h-18' />
+            {ME.img ? (
+              <img
+                src={ME.img}
+                alt=''
+                className='w-18 h-18 rounded-md cursor-pointer'
+              />
+            ) : (
+              <Profile className='w-18 h-18' />
+            )}
             <span className='flex flex-col text-start justify-center text-blue-0 gap-1'>
-              <span className='font-headline-3'>최서연</span>
-              <span className='font-body-2-med'>2002.02.07</span>
+              <span className='font-headline-3'>{ME.name}</span>
+              <span className='font-body-2-med'>{ME.birthday}</span>
             </span>
           </div>
           <Arrow className='w-6 h-6 text-neutral-0' />

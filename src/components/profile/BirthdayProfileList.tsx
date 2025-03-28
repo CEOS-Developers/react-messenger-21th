@@ -1,9 +1,10 @@
 import Arrow from '@/assets/images/icon/Arrow.svg?react';
-import Profile from '@/assets/images/profile/ProfileSmall.svg?react';
+import ProfileImg from '@/assets/images/profile/ProfileSmall.svg?react';
 import cn from '@/utils/cn';
 import { useState } from 'react';
+import { Profile } from '@/types/types';
 
-const BirthdayProfileList = () => {
+const BirthdayProfileList = ({ profiles }: { profiles: Profile[] }) => {
   const [isListOpen, setIsListOpen] = useState(true);
 
   const handleClickList = () => {
@@ -25,20 +26,27 @@ const BirthdayProfileList = () => {
         />
       </span>
       {isListOpen && (
-        <span className='flex gap-3'>
-          <span className='flex flex-col gap-1 text-center items-center cursor-pointer'>
-            <Profile />
-            <span className='font-cap-med text-neutral-700'>신수진</span>
-          </span>
-          <span className='flex flex-col gap-1 text-center items-center cursor-pointer'>
-            <Profile />
-            <span className='font-cap-med text-neutral-700'>한서정</span>
-          </span>
-          <span className='flex flex-col gap-1 text-center items-center cursor-pointer'>
-            <Profile />
-            <span className='font-cap-med text-neutral-700'>김서연</span>
-          </span>
-        </span>
+        <ul className='flex gap-3'>
+          {profiles.map((profile) => (
+            <li
+              key={profile.id}
+              className='flex flex-col gap-1 text-center items-center cursor-pointer w-7 overflow-x-hidden'
+            >
+              {profile.img ? (
+                <img
+                  src={profile.img}
+                  alt=''
+                  className='w-7 h-7 rounded-[.125rem]'
+                />
+              ) : (
+                <ProfileImg />
+              )}
+              <span className='flex font-cap-med text-neutral-700 truncate text-start'>
+                {profile.name}
+              </span>
+            </li>
+          ))}
+        </ul>
       )}
     </section>
   );
