@@ -50,7 +50,7 @@ const ChatInput = ({
   return (
     <section
       className={cn(
-        'flex sticky bottom-0 bg-white w-full px-4 py-3 gap-2 items-center',
+        'flex sticky bottom-0 bg-white w-full px-4 py-3 gap-2 items-center z-50',
         { 'items-end': !isRounded }
       )}
     >

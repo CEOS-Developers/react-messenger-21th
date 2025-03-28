@@ -15,7 +15,7 @@ const ChatHeader: React.FC<ChatHeader> = ({
   onClick,
 }) => {
   return (
-    <header className='flex sticky top-0 w-full h-fit px-4 py-3 justify-center bg-blue-0'>
+    <header className='flex sticky top-0 w-full h-fit px-4 py-3 justify-center bg-blue-0 z-50'>
       <Arrow
         className='absolute left-4 w-6 h-6 text-neutral-600 rotate-180 cursor-pointer'
         onClick={() => setChatroomId(null)}

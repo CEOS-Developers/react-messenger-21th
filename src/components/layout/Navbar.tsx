@@ -45,7 +45,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className='w-full flex font-cap-med sticky bottom-0 py-3 border-t border-gray-100 bg-white'>
+    <nav className='w-full flex font-cap-med sticky bottom-0 py-3 border-t border-gray-100 bg-white z-50'>
       {navItems.map((item) => {
         const selectedPath = location.pathname.includes(item.path);
         const IconComponent = item.icon;

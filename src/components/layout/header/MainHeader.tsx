@@ -5,7 +5,7 @@ import Settings from '@/assets/images/icon/Settings.svg?react';
 
 const MainHeader = () => {
   return (
-    <header className='flex sticky top-0 w-full h-fit justify-between px-4 py-3 bg-white'>
+    <header className='flex sticky top-0 w-full h-fit justify-between px-4 py-3 bg-white z-50'>
       <span className='font-headline-2'>친구</span>
       <span className='flex gap-3 items-center'>
         <Search className='w-6 h-6 text-neutral-600 cursor-pointer' />
