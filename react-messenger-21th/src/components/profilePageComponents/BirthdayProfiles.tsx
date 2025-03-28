@@ -90,7 +90,7 @@ const ToggleButton = styled.button`
 
 const SectionTitle = styled.div`
   ${({ theme }) => theme.typography.caption1}
-  color: ${({ theme }) => theme.colors.grey04};
+  color: ${({ theme }) => theme.colors.grey05};
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 16.8px */
@@ -138,19 +138,11 @@ const Name = styled.div`
   ${({ theme }) => theme.typography.body2}
   color: ${({ theme }) => theme.colors.grey09};
   padding-right: 4px;
+  font-size: 16px;
+  line-height: 24px; /* 150% */
 `;
 
 const Birthday = styled.div`
   ${({ theme }) => theme.typography.caption2}
-  color: ${({ theme }) => theme.colors.grey04};
-`;
-
-const GiftButton = styled.button`
-  background: ${({ theme }) => theme.colors.main};
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 500;
-  border: none;
-  cursor: pointer;
+  color: ${({ theme }) => theme.colors.grey05};
 `;

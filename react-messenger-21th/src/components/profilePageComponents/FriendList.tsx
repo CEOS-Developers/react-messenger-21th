@@ -64,7 +64,7 @@ const SectionTitle = styled.div`
   ${({ theme }) => theme.typography.caption1}
   color: ${({ theme }) => theme.colors.grey07};
   ${({ theme }) => theme.typography.caption1}
-  color: ${({ theme }) => theme.colors.grey04};
+  color: ${({ theme }) => theme.colors.grey05};
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 16.8px */
@@ -126,9 +126,8 @@ const Status = styled.div`
   align-self: center;
   gap: 10px;
   border-radius: 20px;
-  border: 1px solid ${({ theme }) => theme.colors.grey04};
-  opacity: 0.5;
-  background: var(--Grey-White, #fefefe);
+  border: 1px solid ${({ theme }) => theme.colors.main};
+  background: ${({ theme }) => theme.colors.white};
 `;
 
 const StatusText = styled.span`
@@ -139,11 +138,10 @@ const StatusText = styled.span`
   align-self: center;
 
   overflow: hidden;
-  color: ${({ theme }) => theme.colors.grey09};
+  color: ${({ theme }) => theme.colors.black};
   text-align: right;
   text-overflow: ellipsis;
 
-  /* Caption/Caption2 */
   font-size: 10px;
   font-style: normal;
   font-weight: 500;

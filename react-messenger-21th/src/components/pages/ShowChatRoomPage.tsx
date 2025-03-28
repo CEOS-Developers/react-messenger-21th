@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import { RootState } from '../states/store';
 import styled from 'styled-components';
 import ChatRoomCard from '../showChatRoomComponents/ChatRoomCard';
@@ -10,6 +11,22 @@ import SettingButtonIcon from '/public/assets/icons/SettingButton.svg?react';
 const ShowChatRoomPage: React.FC = () => {
   const chatRooms = useSelector((state: RootState) => state.chat.chatRooms);
   const users = useSelector((state: RootState) => state.chat.users);
+  // 고정된 채팅방 관리
+  const [pinnedRooms, setPinnedRooms] = useState<string[]>([]);
+  const [activeRoom, setActiveRoom] = useState<string | null>(null);
+
+  const handleTogglePin = (roomId: string) => {
+    setPinnedRooms((prev) =>
+      prev.includes(roomId)
+        ? prev.filter((id) => id !== roomId)
+        : [...prev, roomId],
+    );
+  };
+
+  const handleActivate = (roomId: string) => {
+    setActiveRoom(roomId);
+    setTimeout(() => setActiveRoom(null), 200);
+  };
 
   return (
     <ChatRoomWrapper>
@@ -24,9 +41,23 @@ const ShowChatRoomPage: React.FC = () => {
 
       <ChatRoomList>
         {/* 방 번호로 묶어 리스트 보여주기 */}
-        {chatRooms.map((room) => (
-          <ChatRoomCard key={room.id} room={room} users={users} />
-        ))}
+        {[...chatRooms] // 또는 chatRooms.slice()
+          .sort((a, b) => {
+            const aPinned = pinnedRooms.includes(a.id);
+            const bPinned = pinnedRooms.includes(b.id);
+            return Number(bPinned) - Number(aPinned);
+          })
+          .map((room) => (
+            <ChatRoomCard
+              key={room.id}
+              room={room}
+              users={users}
+              isPinned={pinnedRooms.includes(room.id)}
+              isActive={activeRoom === room.id}
+              onTogglePin={handleTogglePin}
+              onActivate={handleActivate}
+            />
+          ))}
       </ChatRoomList>
 
       <BottomBarContainer>
@@ -72,8 +103,28 @@ const UpperBar = styled.div`
   z-index: 100;
 `;
 
-const ChatText = styled.span``;
+const ChatText = styled.span`
+  flex: 1 0 0;
+  color: ${({ theme }) => theme.colors.grey09};
 
-const RightButtons = styled.div``;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 27px; /* 150% */
+  letter-spacing: -0.27px;
+`;
 
-const ChatRoomList = styled.div``;
+const RightButtons = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+const ChatRoomList = styled.div`
+  display: flex;
+  padding-top: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  background-color: ${({ theme }) => theme.colors.grey03};
+`;

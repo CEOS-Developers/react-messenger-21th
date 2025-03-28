@@ -6,7 +6,7 @@ import { idForMe } from '../../mocks/mockData'; // 내 ID 가져오기
 import { User } from '../states/chatSlice'; // 유저 타입명 가져오기
 import styled from 'styled-components';
 import BottomNav from '../bottomBarComponents/BottomNav';
-import SearchNotSelected from '/public/assets/icons/SearchNotSelected.svg?react';
+import SearchUpperBar from '/public/assets/icons/SearchUpperBar.svg?react';
 import AddFriendButton from '/public/assets/icons/AddFriendButton.svg?react';
 import MusicButton from '/public/assets/icons/MusicButton.svg?react';
 import SettingButton from '/public/assets/icons/SettingButton.svg?react';
@@ -26,9 +26,9 @@ const FriendsPage: React.FC = () => {
       <UpperBar>
         <Title>친구</Title>
         <IconGroup>
-          <SearchNotSelected width="18px" height="18px" />
-          <AddFriendButton width="18px" height="18px" />
-          <MusicButton width="18px" height="18px" />
+          <SearchUpperBar width="18px" height="18px" margin-right="4px" />
+          <AddFriendButton width="20px" height="18.961px" />
+          <MusicButton width="32px" height="32px" />
           <SettingButton width="18px" height="18px" />
         </IconGroup>
       </UpperBar>
@@ -73,11 +73,27 @@ const UpperBar = styled.div`
   z-index: 100;
 `;
 
-const Title = styled.h1``;
+const Title = styled.div`
+  flex: 1 0 0;
+  color: ${({ theme }) => theme.colors.grey09};
 
-const IconGroup = styled.div``;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 27px; /* 150% */
+  letter-spacing: -0.27px;
+`;
 
-const FriendsBoard = styled.div``;
+const IconGroup = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+`;
+
+const FriendsBoard = styled.div`
+  background-color: ${({ theme }) => theme.colors.grey03};
+`;
 
 const BottomBar = styled.div`
   height: auto;
@@ -92,13 +108,5 @@ const BottomBar = styled.div`
 `;
 
 const MyProfileContainer = styled.div``;
-
-const ProfileImage = styled.img``;
-
-const ProfileTextGroup = styled.div``;
-
-const MyName = styled.div``;
-
-const StatusMessage = styled.div``;
 
 export default FriendsPage;

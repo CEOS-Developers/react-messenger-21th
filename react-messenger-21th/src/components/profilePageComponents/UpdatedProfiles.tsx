@@ -19,7 +19,7 @@ const UpdatedProfiles: React.FC<Props> = ({ users }) => {
 
   return (
     <Section>
-      <SectionTitle>업데이트된 프로필</SectionTitle>
+      <SectionTitle>업데이트한 프로필 {updatedUsers.length}</SectionTitle>
       <ProfileList>
         {updatedUsers.map((user) => (
           <ProfileItem key={user.id}>
@@ -35,36 +35,54 @@ const UpdatedProfiles: React.FC<Props> = ({ users }) => {
 export default UpdatedProfiles;
 
 // 스타일
-const Section = styled.div`
-  padding: 16px 20px 0;
-`;
+const Section = styled.div``;
 
 const SectionTitle = styled.div`
   ${({ theme }) => theme.typography.caption1}
-  color: ${({ theme }) => theme.colors.grey06};
-  margin-bottom: 8px;
+  color: ${({ theme }) => theme.colors.grey05};
+  display: flex;
+  padding: 8px 20px 4px 20px;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 16.8px */
+  letter-spacing: -0.012px;
 `;
 
 const ProfileList = styled.div`
   display: flex;
+  padding: 8px 20px;
+  align-items: center;
   gap: 12px;
-  overflow-x: auto;
+  align-self: stretch;
 `;
 
 const ProfileItem = styled.div`
   display: flex;
+  width: 44px;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
 `;
 
 const ProfileImage = styled.img`
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  aspect-ratio: 1/1;
 `;
 
 const Name = styled.div`
   ${({ theme }) => theme.typography.caption2}
-  color: ${({ theme }) => theme.colors.grey07};
-  margin-top: 4px;
+  color: ${({ theme }) => theme.colors.grey09};
+  align-self: stretch;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 16.8px */
+  letter-spacing: -0.012px;
 `;
