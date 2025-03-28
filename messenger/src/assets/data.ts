@@ -70,3 +70,154 @@ export const chatRoomData = [
     unReadCount: 2,
   },
 ];
+
+export const chatMock = {
+  chatRoomId: 101,
+  myId: 1,
+  //그룹 채팅방을 고려해서 상대방은 배열 형태
+  opponents: [
+    {
+      userId: 2,
+      name: '김오스',
+      profileImageUrl: '',
+    },
+  ],
+  chat: [
+    {
+      isMe: false,
+      senderId: 2,
+      text: '안녕하세요!',
+      timestamp: '2025-03-12T22:20:00.000Z',
+      isRead: true,
+    },
+    {
+      isMe: true,
+      senderId: 1,
+      text: '안녕하세요~ 오스님!',
+      timestamp: '2025-03-12T22:21:15.000Z',
+      isRead: true,
+    },
+    {
+      isMe: false,
+      senderId: 2,
+      text: '혹시 오늘 카페 일정 괜찮으세요?',
+      timestamp: '2025-03-12T22:22:00.000Z',
+      isRead: true,
+    },
+    {
+      isMe: true,
+      senderId: 1,
+      text: '네 괜찮아요! 3시쯤 어때요?',
+      timestamp: '2025-03-12T22:22:45.000Z',
+      isRead: true,
+    },
+    {
+      isMe: false,
+      senderId: 2,
+      text: '좋습니다 😊 장소는 언제나처럼 뚜레쥬르 앞이죠?좋습니다 😊 장소는 언제나처럼 뚜레쥬르 앞이죠?좋습니다 😊 장소는 언제나처럼 뚜레쥬르 앞이죠?좋습니다 😊 장소는 언제나처럼 뚜레쥬르 앞이죠?',
+      timestamp: '2025-03-12T22:23:30.000Z',
+      isRead: true,
+    },
+    {
+      isMe: true,
+      senderId: 1,
+      text: '네 맞아요\n거기서 봬요!',
+      timestamp: '2025-03-12T22:24:00.000Z',
+      isRead: true,
+    },
+    {
+      isMe: false,
+      senderId: 2,
+      text: '내일 발표 자료 공유해 주실 수 있나요?',
+      timestamp: '2025-03-12T22:25:20.000Z',
+      isRead: true,
+    },
+    {
+      isMe: true,
+      senderId: 1,
+      text: '지금 바로 드릴게요! 잠시만요.',
+      timestamp: '2025-03-12T22:25:55.000Z',
+      isRead: true,
+    },
+    {
+      isMe: true,
+      senderId: 1,
+      text: '[발표자료_최종.pdf]',
+      timestamp: '2025-03-12T22:26:10.000Z',
+      isRead: false,
+    },
+    {
+      isMe: false,
+      senderId: 2,
+      text: '오! 감사합니다. 바로 확인해볼게요~',
+      timestamp: '2025-03-12T22:27:00.000Z',
+      isRead: true,
+    },
+    {
+      isMe: false,
+      senderId: 2,
+      text: '오! 감사합니다. 바로 확인해볼게요~',
+      timestamp: '2025-03-12T22:27:00.000Z',
+      isRead: true,
+    },
+    {
+      isMe: false,
+      senderId: 2,
+      text: '오! 감사합니다. 바로 확인해볼게요~',
+      timestamp: '2025-03-12T22:27:00.000Z',
+      isRead: true,
+    },
+    {
+      isMe: false,
+      senderId: 2,
+      text: '오! 감사합니다. 바로 확인해볼게요~',
+      timestamp: '2025-03-12T22:27:00.000Z',
+      isRead: true,
+    },
+  ],
+};
+
+export const groupChatRoomMock = {
+  chatRoomId: 2001,
+  name: '프로젝트 A조',
+  participants: [
+    {
+      userId: 1,
+      name: '김오스',
+      profileImageUrl: '/images/user1.png',
+    },
+    {
+      userId: 2,
+      name: '박하늘',
+      profileImageUrl: '/images/user2.png',
+    },
+    {
+      userId: 3,
+      name: '이준서',
+      profileImageUrl: '/images/user3.png',
+    },
+  ],
+  messages: [
+    {
+      id: 101,
+      senderId: 1,
+      text: '안녕하세요 다들!',
+      timestamp: '2025-03-12T22:10:00.000Z',
+      readBy: [2],
+    },
+    {
+      id: 102,
+      senderId: 2,
+      text: '오 안녕하세요~',
+      timestamp: '2025-03-12T22:11:00.000Z',
+      readBy: [1, 3],
+    },
+    {
+      id: 103,
+      senderId: 3,
+      text: '오늘 회의 언제 하죠?',
+      timestamp: '2025-03-12T22:12:00.000Z',
+      readBy: [],
+    },
+  ],
+};

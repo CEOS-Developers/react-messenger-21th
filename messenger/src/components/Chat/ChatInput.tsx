@@ -16,7 +16,7 @@ const ChatInput = () => {
     }
   };
   return (
-    <div className="fixed bottom-0 flex h-auto w-full flex-col items-start gap-2.5 border-t-1 border-t-gray-100 bg-white px-5 pt-2 pb-13">
+    <div className="flex h-auto w-full flex-col items-start gap-2.5 border-t-1 border-t-gray-100 bg-white px-5 pt-2 pb-13">
       <div className="flex min-h-6 items-start justify-between gap-2 self-stretch">
         <AddIcon />
         <EmojiIcon />

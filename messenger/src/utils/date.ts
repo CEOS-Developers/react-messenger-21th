@@ -26,3 +26,13 @@ export const formatDate = (date: string) => {
     return monthDay;
   }
 };
+
+export const formatChatTime = (isoString: string) => {
+  const date = new Date(isoString);
+
+  return date.toLocaleTimeString('ko-KR', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+  });
+};
