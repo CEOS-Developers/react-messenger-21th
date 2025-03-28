@@ -8,6 +8,7 @@ import { userData } from '../../assets/data/user.json'
 import { chatRoomData } from '../../assets/data/chatRoom.json'
 import { User } from '../../interface/User'
 import { ChatRoom } from '../../interface/ChatRoom'
+import ChatField from './ChatField'
 
 const ROOM_ID = '550e8400-e29b-41d4-a716-446655440000'
 
@@ -56,7 +57,7 @@ const ChatContent = () => {
         }
         rightChild={<ChatRoomIcon />}
       />
-      <div>말풍선1, 말풍선2, ...</div>
+      <ChatField chats={room.chats} member={room.member} />
       <TextInput />
     </s.Content>
   )
