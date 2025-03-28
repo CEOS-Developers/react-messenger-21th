@@ -122,8 +122,15 @@
     background-repeat: no-repeat;
   }
 
+  .scrollbar-hide {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scrollbar-width: none;
+  }
+
   body {
-    @apply flex justify-center bg-gray-100 box-border overflow-y-hidden;
+    @apply flex justify-center bg-gray-100 box-border;
     color: var(--color-neutral-900);
   }
 

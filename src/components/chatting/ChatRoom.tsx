@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import ChatHeader from '@/components/layout/header/ChatHeader';
 import ChatInput from '@/components/chatting/ChatInput';
 import RecievedMessage from '@/components/chatting/RecievedMessage';
