@@ -1,6 +1,7 @@
 // src/components/friendsComponents/BirthdayProfiles.tsx
 import React from 'react';
 import styled from 'styled-components';
+import { useState } from 'react'; // 토글 버튼용
 
 // 타입 정의
 interface User {
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const BirthdayProfiles: React.FC<Props> = ({ users }) => {
+  const [isOpen, setIsOpen] = useState(true); // 기본값: 토글 오픈
   // 생일자인 유저 반환
   const today = new Date();
 
@@ -30,6 +32,7 @@ const BirthdayProfiles: React.FC<Props> = ({ users }) => {
 
   return birthdayUsers.length > 0 ? (
     <Section>
+        
       <SectionTitle>생일인 친구</SectionTitle>
       {birthdayUsers.map((user) => (
         <BirthdayItem key={user.id}>
