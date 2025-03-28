@@ -33,10 +33,10 @@ function ChatRoom() {
   useEffect(() => {
     const userDB = loadDB();
     if (!db) {
-      saveDB(userDB);
-      setDB(userDB);
-    } else {
+      saveDB(dbData);
       setDB(dbData);
+    } else {
+      setDB(userDB);
     }
   }, []);
 
