@@ -1,6 +1,7 @@
 import { ChatMessages } from '@/types/types';
 import UserList from '@/constants/users.json';
 import ProfileImg from '@/assets/images/profile/ProfileMedium.svg?react';
+import { utcToKst24 } from '@/utils/formatDate';
 
 const RecievedMessage = ({ message }: { message: ChatMessages }) => {
   return (
@@ -19,7 +20,7 @@ const RecievedMessage = ({ message }: { message: ChatMessages }) => {
             {message.text}
           </div>
           <div className='font-cap-med text-neutral-300'>
-            {message.timestamp}
+            {utcToKst24(message.timestamp)}
           </div>
         </div>
       </div>

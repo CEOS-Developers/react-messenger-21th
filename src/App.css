@@ -127,6 +127,10 @@
     color: var(--color-neutral-900);
   }
 
+  *:focus {
+    outline: none;
+  }
+
   @keyframes flash {
     0% {
       background-color: var(--color-blue-300);

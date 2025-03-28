@@ -4,16 +4,11 @@ import HamburgerBar from '@/assets/images/icon/HamburgerBar.svg?react';
 import { Dispatch, SetStateAction } from 'react';
 
 interface ChatHeader {
-  chatroomId: number;
   setChatroomId: Dispatch<SetStateAction<number | null>>;
   title: string;
 }
 
-const ChatHeader: React.FC<ChatHeader> = ({
-  chatroomId,
-  setChatroomId,
-  title,
-}) => {
+const ChatHeader: React.FC<ChatHeader> = ({ setChatroomId, title }) => {
   return (
     <header className='flex absolute w-full h-fit px-4 py-3 justify-center'>
       <Arrow

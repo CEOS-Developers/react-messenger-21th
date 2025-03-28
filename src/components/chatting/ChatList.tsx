@@ -5,6 +5,7 @@ import cn from '@/utils/cn';
 import { useState } from 'react';
 import { Dispatch, SetStateAction } from 'react';
 import { ChatRoom, ChatroomList } from '@/types/types';
+import { utcToKst12 } from '@/utils/formatDate';
 
 interface ChatListProps {
   group: string;
@@ -25,6 +26,20 @@ const ChatList: React.FC<ChatListProps> = ({
 
   const handleChatRoomClick = (id: number) => {
     setChatroomId(id);
+  };
+
+  const getLastChatMessageText = (chatRoom: ChatRoom) => {
+    const lastChat = chatRoom.chats?.[chatRoom.chats.length - 1];
+    const lastMessage =
+      lastChat?.chatMessages[lastChat.chatMessages.length - 1];
+    return lastMessage ? lastMessage.text : '';
+  };
+
+  const getLastChatMessageTime = (chatRoom: ChatRoom) => {
+    const lastChat = chatRoom.chats?.[chatRoom.chats.length - 1];
+    const lastMessage =
+      lastChat?.chatMessages[lastChat.chatMessages.length - 1];
+    return lastMessage ? utcToKst12(lastMessage.timestamp) : '';
   };
 
   return (
@@ -52,20 +67,11 @@ const ChatList: React.FC<ChatListProps> = ({
                   {chatRoom.title}
                 </div>
                 <div className='font-body-2-med text-neutral-500 truncate'>
-                  {chatRoom.chats?.length > 0
-                    ? chatRoom.chats[chatRoom.chats.length - 1].chatMessages[
-                        chatRoom.chats[chatRoom.chats.length - 1].chatMessages
-                          .length - 1
-                      ]?.text
-                    : ''}
+                  {getLastChatMessageText(chatRoom)}
                 </div>
               </span>
               <span className='font-cap-med text-neutral-300'>
-                {chatRoom.chats?.length > 0 &&
-                  chatRoom.chats[chatRoom.chats.length - 1].chatMessages[
-                    chatRoom.chats[chatRoom.chats.length - 1].chatMessages
-                      .length - 1
-                  ]?.timestamp}
+                {getLastChatMessageTime(chatRoom)}
               </span>
             </li>
           ))}
