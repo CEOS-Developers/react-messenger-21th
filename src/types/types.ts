@@ -24,6 +24,7 @@ export type ChatRoom = {
   userId: number[];
   type: 'friend' | 'business' | 'me';
   img: string | null;
+  unread?: number;
   chats: Chats[] | [];
 };
 

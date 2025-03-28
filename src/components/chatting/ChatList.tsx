@@ -7,6 +7,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { ChatRoom, ChatroomList } from '@/types/types';
 import { utcToKst12 } from '@/utils/formatDate';
 import USERS from '@/constants/users.json';
+import ChattingAlert from '@/components/chatting/ChattingAlert';
 
 interface ChatListProps {
   group: string;
@@ -83,8 +84,11 @@ const ChatList: React.FC<ChatListProps> = ({
                   {getLastChatMessageText(chatRoom)}
                 </div>
               </span>
-              <span className='font-cap-med text-neutral-300'>
-                {getLastChatMessageTime(chatRoom)}
+              <span className='flex flex-col items-end gap-2'>
+                <span className='font-cap-med text-neutral-300'>
+                  {getLastChatMessageTime(chatRoom)}
+                </span>
+                {chatRoom.unread && <ChattingAlert count={chatRoom.unread} />}
               </span>
             </li>
           ))}
