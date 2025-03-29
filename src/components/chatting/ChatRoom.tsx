@@ -76,7 +76,11 @@ const ChatRoomComponent: React.FC<ChatRoomProps> = ({
         </section>
 
         {/* 채팅 입력창 */}
-        <ChatInput setChatroomData={setChatroomData} chatroomId={chatroomId} />
+        <ChatInput
+          setChatroomData={setChatroomData}
+          chatroomId={chatroomId}
+          user={user}
+        />
       </main>
     );
   }

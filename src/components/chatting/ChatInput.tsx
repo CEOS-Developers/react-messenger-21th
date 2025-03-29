@@ -9,9 +9,11 @@ import { Dispatch, SetStateAction, useRef, useState } from 'react';
 const ChatInput = ({
   setChatroomData,
   chatroomId,
+  user,
 }: {
   setChatroomData: Dispatch<SetStateAction<ChatroomList>>;
   chatroomId: number;
+  user: number;
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [isRounded, setIsRounded] = useState<boolean>(true);
@@ -35,7 +37,7 @@ const ChatInput = ({
     if (inputText.trim() !== '') {
       const newMessage = {
         chatroomId: chatroomId,
-        senderId: 0,
+        senderId: user,
         text: inputText,
       };
 
