@@ -1,6 +1,11 @@
 import * as s from './ContentHeader.Styled'
 
-const ContentHeader = ({ leftChild, rightChild }) => {
+interface ContentHeaderProps {
+  leftChild: React.ReactNode
+  rightChild: React.ReactNode
+}
+
+const ContentHeader = ({ leftChild, rightChild }: ContentHeaderProps) => {
   return (
     <s.HeaderDiv>
       {leftChild}

@@ -29,34 +29,50 @@ const ChatContent = () => {
     setUser(curUser || null)
 
     const curRoom = chatRoomData.find((room) => room.chatRoomId === ROOM_ID)
-    setRoom(curRoom || null)
+    if (curRoom) {
+      setRoom({
+        ...curRoom,
+        chats: Object.fromEntries(
+          Object.entries(curRoom.chats).map(([date, messages]) => [
+            date,
+            messages ?? [],
+          ])
+        ),
+      })
+    } else {
+      setRoom(null)
+    }
 
-    const savedChats = curRoom?.chats
-    setChats(savedChats)
+    const savedChats = curRoom?.chats ?? {}
+    setChats(savedChats || null)
   }, [])
 
   /* userId가 바뀌면 다시 user를 가져옴 */
   useEffect(() => {
     const curUser = userData.find((user) => user.id === userId)
-    setUser(curUser)
+    setUser(curUser || null)
   }, [userId])
 
   /* ChatTitle에 표시할 나를 제외한 채팅 참가자들의 이름을 가져옴 */
   const getChatPartnerName = () => {
+    if (!room) return
     const memberId = room.member.filter((id: number) => id !== userId)
     return memberId.map(
-      (id: number) => userData.find((user) => user.id === id)?.name
+      (id: number) =>
+        userData.find((user) => user.id === id)?.name || '알 수 없음'
     )
   }
 
   /* ChatTitle의 멤버의 이름을 클릭하면 사용자가 바뀌는 이벤트 */
   const handleClickMemberName = () => {
+    if (!room) return
     const memberId = room.member.filter((id: number) => id !== userId)
     setUserId(memberId[0])
   }
 
   /* 채팅 참가자 정보를 객체로 가져옴 */
   const getChatPartnerData = () => {
+    if (!room) return
     const memberId = room.member.filter((id: number) => id !== userId)
 
     const partnerData = memberId.reduce((acc, id) => {
@@ -73,6 +89,7 @@ const ChatContent = () => {
   }
 
   const onSubmitChat = (input: string) => {
+    if (!chats) return
     const date = new Date()
     const formattedDate = formatDateForData(date)
 
@@ -96,13 +113,17 @@ const ChatContent = () => {
         leftChild={
           <ChatTitle
             roomName={room.roomName}
-            member={getChatPartnerName()}
+            member={getChatPartnerName() || ['알 수 없음']}
             handleClickMemberName={handleClickMemberName}
           />
         }
         rightChild={<ChatRoomIcon />}
       />
-      <ChatField myId={userId} chats={chats} member={getChatPartnerData()} />
+      <ChatField
+        myId={userId}
+        chats={chats || {}}
+        member={getChatPartnerData() || {}}
+      />
       <TextInput onSubmit={onSubmitChat} />
     </s.ChatContentWrapper>
   )

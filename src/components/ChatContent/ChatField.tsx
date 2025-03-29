@@ -63,7 +63,8 @@ const ChatField = ({ myId, chats, member }: ChatFieldProps) => {
 
   /* 채팅 하단 스크롤 */
   useEffect(() => {
-    chatWrapperRef.current.scrollTop = chatWrapperRef.current.scrollHeight
+    if (chatWrapperRef.current)
+      chatWrapperRef.current.scrollTop = chatWrapperRef.current.scrollHeight
   }, [chats, myId])
 
   return (

@@ -2,7 +2,7 @@ import Back from '../../assets/Icons/Header/back.svg?react'
 import * as s from './ChatTitle.Styled'
 
 interface ChatTitleProps {
-  roomName: string
+  roomName: string | null
   member: string[]
   handleClickMemberName: () => void
 }

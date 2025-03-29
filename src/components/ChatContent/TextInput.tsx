@@ -26,8 +26,9 @@ const TextInput = ({ onSubmit }: TextInputProps) => {
   }, [text])
 
   const onClickSendIcon = () => {
+    if (text === '') return
     onSubmit(text)
-    inputRef.current.textContent = ''
+    if (inputRef.current) inputRef.current.textContent = ''
     setText('')
   }
 
