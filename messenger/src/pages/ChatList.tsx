@@ -28,7 +28,6 @@ const ChatList = () => {
 
   //앱 초기 진입시 한번만 실행
   useEffect(() => {
-    localStorage.setItem('current-user', JSON.stringify(user));
     chatMockList.forEach((chatRoom) => {
       const key = `chat-room-${chatRoom.chatRoomId}`;
       const alreadyExists = localStorage.getItem(key);
@@ -37,6 +36,10 @@ const ChatList = () => {
         localStorage.setItem(key, JSON.stringify(chatRoom.chat));
       }
     });
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('current-user', JSON.stringify(user));
   }, []);
 
   return (
@@ -67,6 +70,7 @@ const ChatList = () => {
               unReadCount={data.unReadCount}
               roomId={data.roomId}
               currentUser={user.userId}
+              participant={data.participant}
             />
           ))}
         </article>

@@ -1,12 +1,11 @@
-import { useLayoutEffect, useRef, useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import AppBar from '../components/AppBar';
 import ChatInput from '../components/Chat/ChatInput';
 import ChatMessage from '../components/Chat/SingleChatBubble';
 
 import { users } from '../assets/data';
-
 import { formatChatTime } from '../utils/date';
 
 import BackArrowIcon from '../assets/back_arrow.svg?react';
@@ -21,43 +20,47 @@ interface SingleChatProps {
 
 const Chat = () => {
   const location = useLocation();
-  const { roomId } = location.state || {};
+  const { roomId, participant } = location.state || {};
 
   const [chatList, setChatList] = useState<SingleChatProps[]>([]);
   const [user, setUser] = useState(users[0]);
 
-  useEffect(() => {
-    //로컬에 저장된 현재 유저 아이디 가져오기
-    const savedUser = localStorage.getItem('current-user');
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
-    //로컬에 저장된 채팅 리스트 가져오기
+  // 현재 유저 설정 (최초 1회)
+  useEffect(() => {
+    const savedUser = localStorage.getItem('current-user');
     if (savedUser) {
-      const userParsed = JSON.parse(savedUser);
-      setUser(userParsed);
+      setUser(JSON.parse(savedUser));
+    } else {
+      localStorage.setItem('current-user', JSON.stringify(user));
     }
   }, []);
 
-  const chatContainerRef = useRef<HTMLDivElement>(null);
+  // 상대방 유저 계산
+  const opponentId = participant?.find((id: number) => id !== user.userId);
+  const opponentUser = users.find((u) => u.userId === opponentId);
 
-  //페이지 진입 시 localStorage 데[이터 불러오기, 스크롤
-  // useEffect로 하면 랜더링 되기 전 실행 되서 채팅리스트 끝까진ㄴ
+  // roomId나 user가 바뀌면 채팅 불러오기 + 스크롤
   useLayoutEffect(() => {
-    //채팅 불러오기
+    if (!roomId || !user) return;
+
     const savedChat = localStorage.getItem(`chat-room-${roomId}`);
     if (savedChat) {
       const chatParsed = JSON.parse(savedChat);
       setChatList(chatParsed);
-      // 스크롤 이동
-      setTimeout(() => {
-        chatContainerRef.current?.scrollTo({
-          top: chatContainerRef.current.scrollHeight,
-          behavior: 'auto', // 초기 진입이므로 부드럽게 말고 바로 이동
-        });
-      }, 0);
     }
-  }, []);
 
-  //메세지 전송
+    setTimeout(() => {
+      chatContainerRef.current?.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: 'auto',
+      });
+    }, 0);
+  }, [roomId, user]);
+
+  // 메시지 전송
   const handleSend = (text: string) => {
     const newMessage = {
       senderName: user.name,
@@ -70,7 +73,6 @@ const Chat = () => {
     setChatList(updated);
     localStorage.setItem(`chat-room-${roomId}`, JSON.stringify(updated));
 
-    // 자동 스크롤
     setTimeout(() => {
       chatContainerRef.current?.scrollTo({
         top: chatContainerRef.current.scrollHeight,
@@ -79,37 +81,46 @@ const Chat = () => {
     }, 0);
   };
 
+  // 타이틀 클릭 시 유저 전환
+  const handleSwitchUser = () => {
+    const nextUserId = participant.find((id: number) => id !== user.userId);
+    const nextUser = users.find((u) => u.userId === nextUserId);
+    if (nextUser) {
+      localStorage.setItem('current-user', JSON.stringify(nextUser));
+      setUser(nextUser);
+    }
+  };
+
   return (
     <div className="flex h-screen flex-col">
       <AppBar
         type="gradient"
-        title="이름"
+        title={opponentUser?.name || '상대방 없음'}
         subtitle="카페 이름"
         leftIcon={<BackArrowIcon />}
         rightIcon={
-          <div
-            className={`absolute top-1/2 right-0 flex shrink-0 -translate-x-1 -translate-y-1/2 items-center justify-between`}
-          >
+          <div className="absolute top-1/2 right-0 flex -translate-x-1 -translate-y-1/2 items-center">
             <MenuIcon />
           </div>
         }
+        onTitleClick={handleSwitchUser}
+        onLeftClick={() => navigate('/')}
       />
+
       <section
         ref={chatContainerRef}
         className="flex w-[100vw] flex-1 flex-col gap-[14px] overflow-y-auto pt-15 pb-4"
       >
-        {chatList?.map((data, i) => {
-          return (
-            <ChatMessage
-              key={i}
-              isMe={data.senderName === user.name}
-              text={data.text}
-              timestamp={formatChatTime(data.timestamp)}
-              isRead={false}
-              senderName={data.senderName || '알 수 없음'}
-            />
-          );
-        })}
+        {chatList.map((data, i) => (
+          <ChatMessage
+            key={i}
+            isMe={data.senderName === user.name}
+            text={data.text}
+            timestamp={formatChatTime(data.timestamp)}
+            isRead={data.isRead}
+            senderName={data.senderName}
+          />
+        ))}
       </section>
 
       <ChatInput onSend={handleSend} />

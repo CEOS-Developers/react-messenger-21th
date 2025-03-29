@@ -10,6 +10,7 @@ interface SingleChatRoomProps {
   unReadCount: number;
   roomId: number;
   currentUser: number;
+  participant: number[];
 }
 
 const SingleChatRoom = ({
@@ -19,6 +20,7 @@ const SingleChatRoom = ({
   lastMessageTime,
   unReadCount,
   roomId,
+  participant,
 }: SingleChatRoomProps) => {
   const navigate = useNavigate();
 
@@ -26,7 +28,7 @@ const SingleChatRoom = ({
     <div
       onClick={() =>
         navigate(`/chat/${roomId}`, {
-          state: { roomId: roomId },
+          state: { roomId: roomId, participant: participant },
         })
       }
       className="grid w-full grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-x-2 border-b border-b-gray-100 px-5 py-3"

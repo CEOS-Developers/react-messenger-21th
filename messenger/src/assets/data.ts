@@ -1,6 +1,7 @@
 export const chatRoomData = [
   {
-    roomId: 101, // chatMock.chatRoomId
+    roomId: 101,
+    participant: [1, 2],
     roomName: '채팅 테스트 데이터 1',
     participantsCount: 2,
     prevMessage: ['1마지막 배포 언제야?', '2오늘 회의 어땠어?'],
@@ -8,16 +9,17 @@ export const chatRoomData = [
     unReadCount: 2,
   },
   {
-    roomId: 202, // chatMock2.chatRoomId
-    roomName: '박오스',
+    roomId: 202,
+    participant: [1, 3],
+    roomName: '채팅 데이터 2',
     participantsCount: 2,
     prevMessage: ['1번째 최근 채팅', '2번째 최근 채팅'],
     lastMessageTime: '2025-03-28T03:15:00Z',
     unReadCount: 5,
   },
-  // 그 외 나머지 방들은 아직 mock 없음, roomId만 부여
   {
     roomId: 301,
+    participant: [1, 3],
     roomName: '세오스',
     participantsCount: 2,
     prevMessage: ['리액트 훅 정리해봤어', '다음 주 주제는?'],
@@ -26,6 +28,7 @@ export const chatRoomData = [
   },
   {
     roomId: 302,
+    participant: [1, 2],
     roomName: '이오스',
     participantsCount: 2,
     prevMessage: ['저녁 뭐 먹을래?', '엄마가 오늘 늦으신대'],
@@ -34,6 +37,7 @@ export const chatRoomData = [
   },
   {
     roomId: 303,
+    participant: [1, 3],
     roomName: '일오스',
     participantsCount: 2,
     prevMessage: ['UI 수정했어요', '프로토타입 확인해주세요'],
@@ -42,6 +46,7 @@ export const chatRoomData = [
   },
   {
     roomId: 304,
+    participant: [1, 2, 3],
     roomName: '축구팀 단톡',
     participantsCount: 3,
     prevMessage: ['모임 언제 할까?', '다음 경기장 잡았어'],
@@ -50,6 +55,7 @@ export const chatRoomData = [
   },
   {
     roomId: 305,
+    participant: [1, 2, 3, 4, 5, 6, 7],
     roomName: '졸업준비위원회',
     participantsCount: 7,
     prevMessage: ['단체복 사이즈 입력해줘', '졸업사진 언제 찍지?'],
@@ -58,6 +64,7 @@ export const chatRoomData = [
   },
   {
     roomId: 306,
+    participant: [1, 2, 3, 4, 5],
     roomName: '여행 가자!',
     participantsCount: 5,
     prevMessage: ['숙소 예약했어', '맛집 리스트 공유함'],
@@ -66,6 +73,7 @@ export const chatRoomData = [
   },
   {
     roomId: 307,
+    participant: Array.from({ length: 20 }, (_, i) => i + 1),
     roomName: '회사 공지방',
     participantsCount: 20,
     prevMessage: ['3월 근태 마감 안내', '연차 입력 부탁드립니다'],
@@ -74,6 +82,7 @@ export const chatRoomData = [
   },
   {
     roomId: 308,
+    participant: [1, 2, 3, 4, 5, 6, 7, 8],
     roomName: '동아리방',
     participantsCount: 8,
     prevMessage: ['총회는 언제?', '간식 뭐 사올까?'],
