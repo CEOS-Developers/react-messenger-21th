@@ -1,0 +1,122 @@
+{
+  "userData": [
+    {
+      "id": 0,
+      "name": "김영서",
+      "profileMessage": "ceos frontend dev 21 yeongseo kim",
+      "profileColor": "skyblue",
+      "joinedRooms": [],
+      "friends": [1, 2],
+      "profileImgUrl": "",
+      "snsUrl": "https://www.instagram.com/yzzzzszz"
+    },
+    {
+      "id": 1,
+      "name": "yeeun",
+      "profileMessage": "see you on the other side",
+      "profileColor": "orange",
+      "joinedRooms": [
+        {
+          "chatRoomId": "550e8400-e29b-41d4-a716-446655440000",
+          "lastSeenTime": 1742768880921
+        },
+        {
+          "chatRoomId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "lastSeenTime": 1742390390000
+        }
+      ],
+      "friends": [0, 1, 2, 3, 4, 5, 6, 7],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 2,
+      "name": "ceos",
+      "profileMessage": "see you on the other side",
+      "profileColor": "skyblue",
+      "joinedRooms": [],
+      "friends": [0, 1, 2, 3, 4, 5, 6, 7],
+      "profileImgUrl": "",
+      "snsUrl": "https://www.instagram.com/ceos.sinchon/?hl=zh-cn"
+    },
+    {
+      "id": 4,
+      "name": "고다연",
+      "profileMessage": "🍀",
+      "profileColor": "purple",
+      "joinedRooms": [],
+      "friends": [1, 2, 3, 4, 5, 6, 7],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 5,
+      "name": "강나연",
+      "profileMessage": "skyblue",
+      "profileColor": "",
+      "joinedRooms": [],
+      "friends": [1, 2, 3, 4, 5, 6, 7],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 6,
+      "name": "김채원",
+      "profileMessage": "🦔🦔🦔",
+      "profileColor": "purple",
+      "joinedRooms": [],
+      "friends": [1, 2, 3, 4, 5, 6, 7],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 7,
+      "name": "이채현",
+      "profileMessage": "",
+      "profileColor": "skyblue",
+      "joinedRooms": [
+        {
+          "chatRoomId": "550e8400-e29b-41d4-a716-446655440000",
+          "lastSeenTime": 1742768881054
+        },
+        {
+          "chatRoomId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "lastSeenTime": 1742382765000
+        }
+      ],
+      "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 8,
+      "name": "김민지",
+      "profileMessage": "",
+      "profileColor": "orange",
+      "joinedRooms": [
+        {
+          "chatRoomId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "lastSeenTime": 1742429440000
+        }
+      ],
+      "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 9,
+      "name": "이예린",
+      "profileMessage": "",
+      "profileColor": "skyblue",
+      "joinedRooms": [
+        {
+          "chatRoomId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "lastSeenTime": 1742429440000
+        }
+      ],
+      "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    }
+  ]
+}
