@@ -7,7 +7,6 @@ interface ChatMessageProps {
   timestamp: string;
   isRead?: boolean;
   senderName?: string;
-  profileImageUrl?: string;
 }
 
 const ChatMessage: React.FC<ChatMessageProps> = ({
@@ -16,7 +15,6 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
   timestamp,
   isRead = false,
   senderName,
-  profileImageUrl,
 }) => {
   return (
     <div
@@ -25,15 +23,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
       {/* (상대방) 채팅  프로필 && 상대방 이름*/}
       {!isMe && (
         <div className="mr-1.5 flex items-center">
-          {profileImageUrl ? (
-            <img
-              src={profileImageUrl}
-              alt="profile"
-              className="h-10 w-10"
-            />
-          ) : (
-            <ProfileIcon className="h-10 w-10 rounded-full" />
-          )}
+          <ProfileIcon className="h-10 w-10 rounded-full" />
         </div>
       )}
 

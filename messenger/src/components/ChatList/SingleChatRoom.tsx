@@ -1,5 +1,6 @@
 import ProfileIcon from '../../assets/profile.svg?react';
 import { formatDate } from '../../utils/date';
+import { useNavigate } from 'react-router-dom';
 
 interface SingleChatRoomProps {
   roomName: string;
@@ -7,6 +8,8 @@ interface SingleChatRoomProps {
   prevMessage: string[];
   lastMessageTime: string;
   unReadCount: number;
+  roomId: number;
+  currentUser: number;
 }
 
 const SingleChatRoom = ({
@@ -15,9 +18,19 @@ const SingleChatRoom = ({
   prevMessage,
   lastMessageTime,
   unReadCount,
+  roomId,
 }: SingleChatRoomProps) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="grid w-full grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-x-2 border-b border-b-gray-100 px-5 py-3">
+    <div
+      onClick={() =>
+        navigate(`/chat/${roomId}`, {
+          state: { roomId: roomId },
+        })
+      }
+      className="grid w-full grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-x-2 border-b border-b-gray-100 px-5 py-3"
+    >
       <div className="col-start-1 col-end-2 row-start-1 row-end-3">
         <ProfileIcon className="h-full w-full" />
       </div>

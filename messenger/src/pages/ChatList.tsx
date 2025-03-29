@@ -1,15 +1,44 @@
+import { useEffect, useState } from 'react';
+
 import NavBar from '../components/NavBar';
 import AppBar from '../components/AppBar';
 import Search from '../components/ChatList/Search';
 import SingleChatRoom from '../components/ChatList/SingleChatRoom';
 
-import { chatRoomData } from '../assets/data';
+import { chatRoomData, users, chatMockList } from '../assets/data';
 
 import BackArrowIcon from '../assets/back_arrow.svg?react';
 import AddChatIcon from '../assets/add_chat_room.svg?react';
 import ProfileIcon from '../assets/profile.svg?react';
 
 const ChatList = () => {
+  const [user, setUser] = useState(users[0]);
+
+  useEffect(() => {
+    //로컬에 저장된 현재 유저 아이디 가져오기
+    // const savedUser = localStorage.getItem('current-user');
+    // //로컬에 저장된 채팅 리스트 가져오기
+    // if (savedUser) {
+    //   const parsed = JSON.parse(savedUser);
+    //   setUser(parsed);
+    // } else {
+    //   localStorage.setItem('current-user', JSON.stringify(user));
+    // }
+  }, []);
+
+  //앱 초기 진입시 한번만 실행
+  useEffect(() => {
+    localStorage.setItem('current-user', JSON.stringify(user));
+    chatMockList.forEach((chatRoom) => {
+      const key = `chat-room-${chatRoom.chatRoomId}`;
+      const alreadyExists = localStorage.getItem(key);
+
+      if (!alreadyExists) {
+        localStorage.setItem(key, JSON.stringify(chatRoom.chat));
+      }
+    });
+  }, []);
+
   return (
     <>
       <AppBar
@@ -28,14 +57,16 @@ const ChatList = () => {
       <section className="mt-15 mb-21 flex flex-col items-center gap-1 self-stretch">
         <Search />
         <article className="flex flex-col items-start self-stretch">
-          {chatRoomData.map((data, i) => (
+          {chatRoomData.map((data) => (
             <SingleChatRoom
-              key={i}
+              key={data.roomId}
               roomName={data.roomName}
               participantsCount={data.participantsCount}
               prevMessage={data.prevMessage}
               lastMessageTime={data.lastMessageTime}
               unReadCount={data.unReadCount}
+              roomId={data.roomId}
+              currentUser={user.userId}
             />
           ))}
         </article>

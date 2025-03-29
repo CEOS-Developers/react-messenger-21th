@@ -21,7 +21,7 @@ function App() {
         element={<ChatList />}
       />
       <Route
-        path="/chat"
+        path="/chat/:roomId"
         element={<Chat />}
       />
       <Route
