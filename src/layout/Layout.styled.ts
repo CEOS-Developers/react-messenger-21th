@@ -3,8 +3,10 @@ import styled from 'styled-components';
 export const TopLevelContainer = styled.div`
   position: relative;
 
-  width: 375px;
-  height: 812px;
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  margin: 0 auto;
 
   background: ${({ theme }) => theme.colors.Grayscale[0]};
 
