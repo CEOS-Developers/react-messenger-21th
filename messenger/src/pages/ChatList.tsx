@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import NavBar from '../components/NavBar';
 import AppBar from '../components/AppBar';
@@ -12,7 +12,7 @@ import AddChatIcon from '../assets/add_chat_room.svg?react';
 import ProfileIcon from '../assets/profile.svg?react';
 
 const ChatList = () => {
-  const [user, setUser] = useState(users[0]);
+  const user = users[0];
 
   useEffect(() => {
     //로컬에 저장된 현재 유저 아이디 가져오기
