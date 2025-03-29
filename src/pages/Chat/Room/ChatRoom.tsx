@@ -1,5 +1,5 @@
 import { JSX } from 'react/jsx-runtime';
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 
 import { CHAT_TEXTAREA_MAX_HEIGHT } from '@/constants/Chat';
@@ -7,11 +7,18 @@ import { CHAT_TEXTAREA_MAX_HEIGHT } from '@/constants/Chat';
 import * as I from '@/icons/Chat';
 import { SearchIcon } from '@/icons/Header';
 
+import ChatMessage from '@/components/ChatMessage/ChatMessage';
+
+import { useChatMessage } from '@/hooks/useChat';
 import { useAutoResizeTextarea } from '@/hooks/useAutoResizeTextarea';
+
 import { useChatPreviewList } from '@/stores/useChatPreviewList';
-// import { useChatMessageByRoom } from '@/stores/useChatMessageByRoom';
+import { useChatMessageByRoom } from '@/stores/useChatMessageByRoom';
+
+import { sortMessageByDate } from '@/utils/sortMessageByDate';
 
 import * as S from './ChatRoom.styled';
+import { ChatRoomMessage } from '@/schemas/chatRoomMessage';
 
 const ChatRoom = (): JSX.Element => {
   const chatInputRef = useRef<HTMLTextAreaElement | null>(null);
@@ -23,13 +30,20 @@ const ChatRoom = (): JSX.Element => {
 
   const { roomId } = useParams();
 
+  // 채팅 메세지 목록 가져오기
+  useChatMessage(roomId ?? '');
+
   const { chatPreviewList } = useChatPreviewList();
-  // const { chatMessageByRoom } = useChatMessageByRoom();
+  const { chatMessageByRoom } = useChatMessageByRoom();
+
+  // 채팅 메세지 목록 정렬 (시간 순서)
+  const sortChatMessageByDate: ChatRoomMessage[] = useMemo(() => {
+    return sortMessageByDate(chatMessageByRoom);
+  }, [chatMessageByRoom]);
 
   const selectedChatRoom = chatPreviewList.find(
     (chatRoom) => chatRoom.roomId === roomId
   );
-  // const chatRoomMessages = chatMessageByRoom[roomId ?? ''];
 
   const handleSendMessage = () => {
     console.log('보낸 메세지: ', chatInputValue);
@@ -70,7 +84,23 @@ const ChatRoom = (): JSX.Element => {
       </S.ChatRoomHeaderSection>
 
       {/* 채팅 메세지 섹션 */}
-      <S.ChatRoomMessageSection></S.ChatRoomMessageSection>
+      <S.ChatRoomMessageSection>
+        <S.ChatMessageBoxWrapper>
+          {sortChatMessageByDate?.map((message, index) => {
+            const prevMessage = sortChatMessageByDate[index - 1];
+            const isSameSenderAsPrevious =
+              prevMessage?.senderId === message.senderId;
+
+            return (
+              <ChatMessage
+                key={message.messageId}
+                message={message}
+                showSenderInfo={!isSameSenderAsPrevious}
+              />
+            );
+          })}
+        </S.ChatMessageBoxWrapper>
+      </S.ChatRoomMessageSection>
 
       {/* 채팅 입력 섹션 */}
       <S.ChatRoomInputSection>

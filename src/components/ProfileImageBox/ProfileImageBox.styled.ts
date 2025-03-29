@@ -1,8 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ProfileImageBoxContainer = styled.div<{
   $size: number;
   $isProfileUpdated: boolean;
+  $showSenderInfo: boolean;
 }>`
   width: ${({ $size }) => $size}px;
   height: ${({ $size }) => $size}px;
@@ -16,6 +17,12 @@ export const ProfileImageBoxContainer = styled.div<{
   align-items: center;
 
   overflow: hidden;
+
+  ${({ $showSenderInfo }) =>
+    !$showSenderInfo &&
+    css`
+      opacity: 0;
+    `}
 `;
 
 export const ProfileImage = styled.img`

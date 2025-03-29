@@ -10,7 +10,7 @@ export const formatDate = () => {
   return formattedToday;
 };
 
-export const formatLastMessageTime = (lastMessageTime: string) => {
+export const formatMessageTime = (lastMessageTime: string) => {
   if (!lastMessageTime) return '';
 
   const date = parseISO(lastMessageTime);

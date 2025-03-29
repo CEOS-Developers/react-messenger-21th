@@ -7,7 +7,7 @@ export const PROFILE_SIZE_LIST = {
   detail: 110,
   personalChat: 50,
   groupChat: 22,
-  chatRoom: 30,
+  chatRoom: 36,
 };
 
 export const PROFILE_DETAIL_SUB_OPTION_LIST = [

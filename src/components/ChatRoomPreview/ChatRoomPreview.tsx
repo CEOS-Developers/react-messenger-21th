@@ -6,7 +6,7 @@ import { ChatPreview } from '@/schemas/chatPreview';
 
 import ProfileImageBox from '../ProfileImageBox/ProfileImageBox';
 
-import { formatLastMessageTime } from '@/utils/formatDate';
+import { formatMessageTime } from '@/utils/formatDate';
 
 import * as S from './ChatRoomPreview.styled';
 
@@ -33,7 +33,7 @@ const ChatRoomPreview = ({
       </S.ChatRoomPreviewProfileWrapper>
       <S.LastMessageTimeUnReadCountWrapper>
         <S.LastMessageTime>
-          {formatLastMessageTime(lastMessage?.sentAt)}
+          {formatMessageTime(lastMessage?.sentAt)}
         </S.LastMessageTime>
         <S.UnReadCount>{unreadCount}</S.UnReadCount>
       </S.LastMessageTimeUnReadCountWrapper>

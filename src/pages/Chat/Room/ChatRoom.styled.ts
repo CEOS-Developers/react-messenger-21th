@@ -71,6 +71,15 @@ export const ChatRoomMessageSection = styled.section`
   padding: 7.8rem 2rem 0;
 `;
 
+export const ChatMessageBoxWrapper = styled.div`
+  width: 100%;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+`;
+
 // 채팅방 입력 섹션
 export const ChatRoomInputSection = styled.section`
   position: absolute;

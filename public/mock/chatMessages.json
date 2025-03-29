@@ -3,26 +3,34 @@
     {
       "messageId": "msg-001",
       "senderId": "user-002",
-      "senderName": "나",
+      "senderName": "김철흥",
       "content": "안녕! 잘 지냈어?",
       "type": "text",
       "sentAt": "2025-03-28T12:00:00Z"
     },
     {
+      "messageId": "msg-003",
+      "senderId": "user-002",
+      "senderName": "김철흥",
+      "content": "오늘 점심은 치킨이야!",
+      "type": "text",
+      "sentAt": "2025-03-28T12:15:00Z"
+    },
+    {
       "messageId": "msg-002",
       "senderId": "user-001",
-      "senderName": "홍길동",
+      "senderName": "임승민",
       "content": "응! 점심은?",
       "type": "text",
       "sentAt": "2025-03-28T12:10:00Z"
     },
     {
-      "messageId": "msg-003",
-      "senderId": "user-002",
-      "senderName": "나",
-      "content": "오늘 점심은 치킨이야!",
+      "messageId": "msg-004",
+      "senderId": "user-001",
+      "senderName": "임승민",
+      "content": "너 누군데 ㅋㅋ",
       "type": "text",
-      "sentAt": "2025-03-28T12:15:00Z"
+      "sentAt": "2025-03-28T12:30:00Z"
     }
   ]
 }

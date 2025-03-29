@@ -16,44 +16,6 @@
       "type": "text",
       "sentAt": "2025-03-28T12:30:00Z"
     },
-    "unreadCount": 2
-  },
-  {
-    "roomId": "room-002",
-    "roomName": "김지원",
-    "isGroup": false,
-    "participants": [
-      {
-        "userId": "user-123",
-        "name": "임승민",
-        "profileImage": "/images/avatar-hong.png"
-      }
-    ],
-    "lastMessage": {
-      "senderId": "user-456",
-      "content": "내 심장의 색깔은 블랙",
-      "type": "text",
-      "sentAt": "2025-03-28T12:30:00Z"
-    },
-    "unreadCount": 20
-  },
-  {
-    "roomId": "room-003",
-    "roomName": "나상혁",
-    "isGroup": false,
-    "participants": [
-      {
-        "userId": "user-123",
-        "name": "임승민",
-        "profileImage": "/images/avatar-hong.png"
-      }
-    ],
-    "lastMessage": {
-      "senderId": "user-456",
-      "content": "뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데뭐하는데",
-      "type": "text",
-      "sentAt": "2025-03-28T12:30:00Z"
-    },
-    "unreadCount": 200
+    "unreadCount": 1
   }
 ]

@@ -9,12 +9,14 @@ type ProfileImageProps = {
   size: number;
   username: string;
   isProfileUpdated?: boolean;
+  showSenderInfo?: boolean;
 };
 
 const ProfileImageBox = ({
   size,
   username,
   isProfileUpdated = false,
+  showSenderInfo = true,
 }: ProfileImageProps): JSX.Element => {
   const bgColor = getProfileColor(username);
 
@@ -22,6 +24,7 @@ const ProfileImageBox = ({
     <S.ProfileImageBoxContainer
       $size={size}
       $isProfileUpdated={isProfileUpdated}
+      $showSenderInfo={showSenderInfo}
     >
       <DefaultProfileIcon $size={size} $bgColor={bgColor} />
 
