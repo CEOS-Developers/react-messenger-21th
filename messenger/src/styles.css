@@ -1,0 +1,113 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import 'tailwindcss';
+@plugin 'tailwind-scrollbar';
+
+@theme {
+  /* Green 계열 */
+  --color-green-100: #92f6a9;
+  --color-green-200: #5ae587;
+  --color-green-300: #34cc72;
+  --color-green-400: #01ab59;
+
+  /* Gradient는 배경 이미지 유틸리티에서 직접 사용 */
+  --color-green-gradient:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%),
+    linear-gradient(90deg, #5ae587 0%, #16bbc5 100%);
+
+  /* 기타 색상 */
+  --color-blue: #067a80;
+  --color-red: #ff6d6d;
+
+  /* 그레이 계열 */
+  --color-black: #17171b;
+  --color-gray-900: #30363e;
+  --color-gray-800: #424b56;
+  --color-gray-700: #525e6c;
+  --color-gray-600: #708194;
+  --color-gray-500: #8694a3;
+  --color-gray-400: #9ca7b5;
+  --color-gray-300: #b8c1ca;
+  --color-gray-200: #d4d9df;
+  --color-gray-100: #eff0f1;
+  --color-white: #ffffff;
+
+  /*폰트*/
+  --font-display: 'Pretendard', 'sans-serif';
+}
+
+body {
+  @apply font-sans;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #f5f5f5;
+}
+
+/* 모바일 기기 크기 (iPhone 14 기준) */
+#root {
+  width: 390px;
+  height: 844px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  overflow: hidden;
+  position: relative;
+}
+
+@layer components {
+  .headline-1 {
+    font-size: 24px;
+    line-height: 140%;
+    letter-spacing: -0.01em;
+    font-weight: 700; /* Bold */
+  }
+
+  .headline-2 {
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: -0.01em;
+    font-weight: 600; /* SemiBold */
+  }
+
+  .subtitle-1 {
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0em;
+    font-weight: 600; /* SemiBold */
+  }
+
+  .subtitle-2 {
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 0.0025em;
+    font-weight: 600; /* SemiBold */
+  }
+
+  .body-1 {
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0em;
+    font-weight: 400; /* Regular */
+  }
+
+  .body-2 {
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0.0025em;
+    font-weight: 400; /* Regular */
+  }
+
+  .caption-1 {
+    font-size: 12px;
+    line-height: 140%;
+    letter-spacing: 0.005em;
+    font-weight: 500; /* Medium */
+  }
+
+  .caption-2 {
+    font-size: 12px;
+    line-height: 140%;
+    letter-spacing: 0.005em;
+    font-weight: 400; /* Regular */
+  }
+}
