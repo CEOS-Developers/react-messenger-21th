@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
+import StyledProps from '../../interface/StyledProps'
 import { Body_2, Caption, ChatTime } from '../../styles/Typo.Styled'
-import StyledProps from '../../interface/styledProps'
 
 const ChatFieldWrapper = styled.div`
   padding: 0px 20px;

@@ -1,7 +1,17 @@
 import Back from '../../assets/Icons/Header/back.svg?react'
 import * as s from './ChatTitle.Styled'
 
-const ChatTitle = ({ roomName, member, handleClickMemberName }) => {
+interface ChatTitleProps {
+  roomName: string
+  member: string[]
+  handleClickMemberName: () => void
+}
+
+const ChatTitle = ({
+  roomName,
+  member,
+  handleClickMemberName,
+}: ChatTitleProps) => {
   return (
     <s.ChatTitleContainer>
       <Back />

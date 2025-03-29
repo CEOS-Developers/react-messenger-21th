@@ -7,7 +7,11 @@ import {
 } from '../../assets/Icons/TextInput'
 import * as s from './TextInput.Styled'
 
-const TextInput = ({ onSubmit }) => {
+interface TextInputProps {
+  onSubmit: (input: string) => void
+}
+
+const TextInput = ({ onSubmit }: TextInputProps) => {
   const inputRef = useRef<HTMLDivElement | null>(null)
   const [text, setText] = useState('')
   const [isComposing, setIsComposing] = useState(false)

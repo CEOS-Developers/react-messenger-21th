@@ -1,6 +1,6 @@
 import styled from 'styled-components'
+import StyledProps from '../../interface/StyledProps'
 import { Body_1 } from '../../styles/Typo.Styled'
-import StyledProps from '../../interface/styledProps'
 
 const TextFieldWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.white};

@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react'
-import { Content } from '../common/Common.Styled'
+
+import * as s from './ChatContent.Styled'
 import ContentHeader from '../common/ContentHeader'
 import ChatTitle from './ChatTitle'
 import TextInput from './TextInput'
 import ChatField from './ChatField'
 import { ChatRoomIcon } from '../../assets/Icons/Header'
+
 import { userData } from '../../assets/data/user.json'
 import { chatRoomData } from '../../assets/data/chatRoom.json'
+
 import { User } from '../../interface/User'
 import { ChatRoom, Chats } from '../../interface/ChatRoom'
 import { Chat } from '../../interface/Chat'
+
 import { formatDateForData } from '../../utils/format'
-import * as s from './ChatContent.Styled'
 
 const ROOM_ID = '550e8400-e29b-41d4-a716-446655440000'
 
@@ -20,7 +23,6 @@ const ChatContent = () => {
   const [user, setUser] = useState<User | null>(null)
   const [room, setRoom] = useState<ChatRoom | null>(null)
   const [chats, setChats] = useState<Chats | null>(null)
-  // const s = { Content }
 
   useEffect(() => {
     const curUser = userData.find((user) => user.id === userId)
@@ -70,7 +72,7 @@ const ChatContent = () => {
     return partnerData
   }
 
-  const onSubmitChat = (input) => {
+  const onSubmitChat = (input: string) => {
     const date = new Date()
     const formattedDate = formatDateForData(date)
 

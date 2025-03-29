@@ -1,6 +1,6 @@
 import styled from 'styled-components'
+import StyledProps from '../../interface/StyledProps'
 import { Body_2 } from '../../styles/Typo.Styled'
-import StyledProps from '../../interface/styledProps'
 
 /* 전체 컨테이너 */
 const Container = styled.div`

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import StyledProps from '../../interface/styledProps'
+import StyledProps from '../../interface/StyledProps'
 import { Headline3, Subhead } from '../../styles/Typo.Styled'
 
 const ChatTitleContainer = styled.div`

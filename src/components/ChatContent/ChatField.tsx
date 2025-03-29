@@ -1,10 +1,13 @@
 import { useEffect, useRef } from 'react'
+
 import * as s from './ChatField.Styled'
 import { ProfileMedium } from '../../assets/Icons/Profile'
 import PeoplesMedium from '../../assets/Icons/Profile/Peoples-medium.svg?react'
-import { formatDate, formatTime } from '../../utils/format'
 
-const getFriendProfile = (color, name) => {
+import { formatDate, formatTime } from '../../utils/format'
+import { Chats } from '../../interface/ChatRoom'
+
+const getFriendProfile = (color: string, name: string) => {
   return (
     <s.ProfileContainer>
       <ProfileMedium color={color}>
@@ -25,7 +28,19 @@ const getDateDiv = (date: string, dateIdx: number) => {
   )
 }
 
-const ChatField = ({ myId, chats, member }) => {
+interface ChatFieldProps {
+  myId: number
+  chats: Chats
+  member: Record<
+    number,
+    {
+      name: string
+      profileColor: string
+    }
+  >
+}
+
+const ChatField = ({ myId, chats, member }: ChatFieldProps) => {
   const dateChatPair = Object.entries(chats)
 
   const lastSenderRef = useRef<number | null>(null)
@@ -56,7 +71,7 @@ const ChatField = ({ myId, chats, member }) => {
       {dateChatPair.map(([date, chat], dateIdx) => (
         <div key={date}>
           {getDateDiv(date, dateIdx)}
-          {chat.map(({ id, content, sender }, chatIdx) => {
+          {chat.map(({ id, content, sender }, chatIdx: number) => {
             const isMe = sender === myId //sender와 내 id가 같은가?
             const isLastSender = determineLastSender(sender)
             const isLastMessage = chatIdx === chat.length - 1

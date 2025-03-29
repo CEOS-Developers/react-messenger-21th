@@ -1,6 +1,6 @@
 import Clock from './Clock'
+import StyledProps from '../../interface/StyledProps'
 import { StatusDiv, StatusItem, HomeBarDiv, BlackBar } from './Common.Styled'
-import StyledProps from '../../interface/styledProps'
 import statusGroup from '../../assets/Icons/statusGroup.svg'
 
 const StatusBar = ({ $isTransparent }: StyledProps) => {

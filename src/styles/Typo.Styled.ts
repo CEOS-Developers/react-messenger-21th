@@ -1,5 +1,5 @@
 import { css } from 'styled-components'
-import StyledProps from '../interface/styledProps'
+import StyledProps from '../interface/StyledProps'
 
 const fontWeight = {
   Bold: '700',
