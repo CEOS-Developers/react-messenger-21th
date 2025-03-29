@@ -21,7 +21,7 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="fixed right-0 bottom-0 left-0 flex h-[5.25rem] items-start justify-center gap-[2.0625rem] bg-white px-5 pt-2 pb-0 shadow-[0px_-10px_20px_0px_rgba(0,0,0,0.03)]">
+    <nav className="absolute right-0 bottom-0 left-0 flex h-[5.25rem] items-start justify-center gap-[2.0625rem] bg-white px-5 pt-2 pb-0 shadow-[0px_-10px_20px_0px_rgba(0,0,0,0.03)]">
       {navItems.map((item, i) => (
         <button
           key={i}

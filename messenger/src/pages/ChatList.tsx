@@ -43,7 +43,7 @@ const ChatList = () => {
   }, []);
 
   return (
-    <>
+    <div className="h-full w-full">
       <AppBar
         type="white"
         title="채팅"
@@ -77,7 +77,7 @@ const ChatList = () => {
       </section>
 
       <NavBar />
-    </>
+    </div>
   );
 };
 export default ChatList;

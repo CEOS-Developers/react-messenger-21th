@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfileIcon from '../../assets/profile.svg?react';
+import HeartIcon from '../../assets/heart.svg?react';
 
 interface ChatMessageProps {
   isMe: boolean;
@@ -7,6 +8,8 @@ interface ChatMessageProps {
   timestamp: string;
   isRead?: boolean;
   senderName?: string;
+  isLiked: boolean;
+  onDoubleClick?: () => void;
 }
 
 const ChatMessage: React.FC<ChatMessageProps> = ({
@@ -15,6 +18,8 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
   timestamp,
   isRead = false,
   senderName,
+  isLiked,
+  onDoubleClick,
 }) => {
   return (
     <div
@@ -38,6 +43,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
 
         {/*  채팅 버블*/}
         <div
+          onDoubleClick={onDoubleClick}
           className={`relative rounded-xl px-3 py-1.5 text-sm leading-[150%] font-normal tracking-[0.035px] break-words whitespace-pre-line text-black ${
             isMe
               ? 'rounded-br-[2px] bg-green-200'
@@ -45,6 +51,13 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
           }`}
         >
           {text}
+          {isLiked && (
+            <div
+              className={`absolute bottom-[-5px] ${isMe ? 'left-1' : 'right-1'}`}
+            >
+              <HeartIcon className="text-red" />
+            </div>
+          )}
         </div>
       </div>
 

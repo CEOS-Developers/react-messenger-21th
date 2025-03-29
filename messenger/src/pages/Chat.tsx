@@ -16,6 +16,7 @@ interface SingleChatProps {
   text: string;
   timestamp: string;
   isRead: boolean;
+  isLiked: boolean;
 }
 
 const Chat = () => {
@@ -67,6 +68,7 @@ const Chat = () => {
       text,
       timestamp: new Date().toISOString(),
       isRead: false,
+      isLiked: false,
     };
 
     const updated = [...chatList, newMessage];
@@ -90,9 +92,17 @@ const Chat = () => {
       setUser(nextUser);
     }
   };
+  //더블탭 좋아요
+  const handleToggleLike = (index: number) => {
+    console.log('asdf');
+    const updated = [...chatList];
+    updated[index].isLiked = !updated[index].isLiked;
+    setChatList(updated);
+    localStorage.setItem(`chat-room-${roomId}`, JSON.stringify(updated));
+  };
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-full w-full flex-col">
       <AppBar
         type="gradient"
         title={opponentUser?.name || '상대방 없음'}
@@ -109,7 +119,7 @@ const Chat = () => {
 
       <section
         ref={chatContainerRef}
-        className="flex w-[100vw] flex-1 flex-col gap-[14px] overflow-y-auto pt-15 pb-4"
+        className="flex w-full flex-1 flex-col gap-[14px] overflow-y-auto pt-15 pb-4"
       >
         {chatList.map((data, i) => (
           <ChatMessage
@@ -119,6 +129,8 @@ const Chat = () => {
             timestamp={formatChatTime(data.timestamp)}
             isRead={data.isRead}
             senderName={data.senderName}
+            isLiked={data.isLiked}
+            onDoubleClick={() => handleToggleLike(i)}
           />
         ))}
       </section>
