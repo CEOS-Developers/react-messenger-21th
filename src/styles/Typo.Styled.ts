@@ -57,4 +57,20 @@ const Caption = css<StyledProps>`
   letter-spacing: calc(-0.1% * 12px);
 `
 
-export { Headline1, Headline2, Headline3, Subhead, Body_1, Body_2, Caption }
+const ChatTime = css`
+  font-weight: ${fontWeight.Medium};
+  font-size: 10px;
+  line-height: 140%;
+  letter-spacing: calc(-0.1% * 10px);
+`
+
+export {
+  Headline1,
+  Headline2,
+  Headline3,
+  Subhead,
+  Body_1,
+  Body_2,
+  Caption,
+  ChatTime,
+}

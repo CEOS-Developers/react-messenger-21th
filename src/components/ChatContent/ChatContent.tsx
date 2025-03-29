@@ -26,21 +26,41 @@ const ChatContent = () => {
     setRoom(curRoom || null)
   }, [])
 
+  /* userId가 바뀌면 다시 user를 가져옴 */
   useEffect(() => {
     const curUser = userData.find((user) => user.id === userId)
     setUser(curUser)
   }, [userId])
 
-  const getMember = () => {
+  /* ChatTitle에 표시할 나를 제외한 채팅 참가자들의 이름을 가져옴 */
+  const getChatPartnerName = () => {
     const memberId = room.member.filter((id: number) => id !== userId)
     return memberId.map(
       (id: number) => userData.find((user) => user.id === id)?.name
     )
   }
 
+  /* ChatTitle의 멤버의 이름을 클릭하면 사용자가 바뀌는 이벤트 */
   const handleClickMemberName = () => {
     const memberId = room.member.filter((id: number) => id !== userId)
     setUserId(memberId[0])
+  }
+
+  /* 채팅 참가자 정보를 객체로 가져옴 */
+  const getChatPartnerData = () => {
+    const memberId = room.member.filter((id: number) => id !== userId)
+
+    const partnerData = memberId.reduce((acc, id) => {
+      const user = userData.find((user) => user.id === id)
+      if (user) {
+        acc[id] = {
+          name: user.name,
+          profileColor: user.profileColor,
+        }
+      }
+      return acc
+    }, {} as Record<number, { name: string; profileColor: string }>)
+    return partnerData
   }
 
   if (!room || !user) return <div>Loading...</div>
@@ -51,13 +71,17 @@ const ChatContent = () => {
         leftChild={
           <ChatTitle
             roomName={room.roomName}
-            member={getMember()}
+            member={getChatPartnerName()}
             handleClickMemberName={handleClickMemberName}
           />
         }
         rightChild={<ChatRoomIcon />}
       />
-      <ChatField myId={userId} chats={room.chats} member={room.member} />
+      <ChatField
+        myId={userId}
+        chats={room.chats}
+        member={getChatPartnerData()}
+      />
       <TextInput />
     </s.Content>
   )

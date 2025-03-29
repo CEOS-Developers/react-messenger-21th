@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useRef } from 'react'
 import * as s from './ChatField.Styled'
 import { ProfileMedium } from '../../assets/Icons/Profile'
 import PeoplesMedium from '../../assets/Icons/Profile/Peoples-medium.svg?react'
+import { formatDate, formatTime } from '../../utils/format'
 
 const getFriendProfile = (color, name) => {
   return (
@@ -16,57 +17,75 @@ const getFriendProfile = (color, name) => {
   )
 }
 
+const getDateDiv = (date: string, dateIdx: number) => {
+  return dateIdx === 0 ? (
+    <s.FirstDateDiv $isM={true}>{formatDate(date)}</s.FirstDateDiv>
+  ) : (
+    <s.DateDiv $isM={true}>{formatDate(date)}</s.DateDiv>
+  )
+}
+
 const ChatField = ({ myId, chats, member }) => {
-  const [lastSender, setLastSender] = useState(null)
-  const [lastSentTime, setLastSentTime] = useState(null)
   const dateChatPair = Object.entries(chats)
 
-  const formatDate = (date: string): string => {
-    const dateObj = new Date(date)
-    const formattedDate = dateObj.toLocaleDateString('ko-KR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      weekday: 'long',
-    })
-    return formattedDate
-  }
-
-  const formatTime = (time: number): string => {
-    const dateObj = new Date(time)
-    const formattedTime = dateObj.toLocaleString('ko-KR', {
-      hour: 'numeric',
-      minute: 'numeric',
-      hour12: true,
-    })
-    return formattedTime
-  }
+  const lastSenderRef = useRef<number | null>(null)
 
   const determineLastSender = (sender: number): boolean => {
-    const isLastSender = sender === lastSender
-    setLastSender(sender)
+    const isLastSender = sender === lastSenderRef.current
+    lastSenderRef.current = sender
     return isLastSender
   }
 
-  const determineSentSameTime = (time: number): boolean => {
-    const minuteTimestamp = Math.floor(time / 60000) //ms단위 타임스탬프 -> 분 단위 타임스탬프로 변환
-    const isSentSameTime = minuteTimestamp === lastSentTime
-    setLastSentTime(minuteTimestamp)
-    return isSentSameTime
+  const determineSentSameTime = (
+    curTime: number,
+    nextTime: number
+  ): boolean => {
+    const curMinuteTimestamp = Math.floor(curTime / 60000)
+    const nextMinuteTimestamp = Math.floor(nextTime / 60000)
+    return curMinuteTimestamp === nextMinuteTimestamp
   }
 
   return (
     <s.ChatFieldWrapper>
-      {dateChatPair.map(([date, chat]) => (
-        <div>
-          <s.DateDiv $isM={true}>{formatDate(date)}</s.DateDiv>
-          {chat.map(({ id, content, sender }) => (
-            <s.ChatDiv $isR={true} $isMe={sender === myId ? true : false}>
-              <div>
-                {formatTime(id)}, {sender}, {content}
-              </div>
-            </s.ChatDiv>
-          ))}
+      {dateChatPair.map(([date, chat], dateIdx) => (
+        <div key={date}>
+          {getDateDiv(date, dateIdx)}
+          {chat.map(({ id, content, sender }, chatIdx) => {
+            const isMe = sender === myId //sender와 내 id가 같은가?
+            const isLastSender = determineLastSender(sender)
+            const isLastMessage = chatIdx === chat.length - 1
+            const isNextSender =
+              !isLastMessage && sender === chat[chatIdx + 1].sender
+            const isSentSameTime =
+              isNextSender && determineSentSameTime(id, chat[chatIdx + 1].id)
+            const souldDisplayTime =
+              isLastMessage || !isNextSender || !isSentSameTime
+            return (
+              <s.ChatContainer key={id}>
+                {!isMe && isLastSender
+                  ? null
+                  : member[sender]
+                  ? getFriendProfile(
+                      member[sender].profileColor,
+                      member[sender].name
+                    )
+                  : null}
+                <s.ChatBubbleContainer
+                  $isMe={isMe}
+                  $souldDisplayTime={souldDisplayTime}>
+                  {isMe && souldDisplayTime ? (
+                    <s.TimeDiv>{formatTime(id)}</s.TimeDiv>
+                  ) : null}
+                  <s.ChatDiv $isR={true} $isMe={isMe}>
+                    <div>{content}</div>
+                  </s.ChatDiv>
+                  {!isMe && souldDisplayTime ? (
+                    <s.TimeDiv>{formatTime(id)}</s.TimeDiv>
+                  ) : null}
+                </s.ChatBubbleContainer>
+              </s.ChatContainer>
+            )
+          })}
         </div>
       ))}
     </s.ChatFieldWrapper>
