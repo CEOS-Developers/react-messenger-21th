@@ -17,25 +17,25 @@ interface ChatRoomPreviewProps {
 const ChatRoomPreview = ({
   chatPreview,
 }: ChatRoomPreviewProps): JSX.Element => {
+  const { roomId, roomName, lastMessage, unreadCount } = chatPreview;
+
   return (
-    <S.ChatRoomPreviewContainer to={`${chatPreview.roomId}`}>
+    <S.ChatRoomPreviewContainer to={`${roomId}`}>
       <S.ChatRoomPreviewProfileWrapper>
         <ProfileImageBox
           size={PROFILE_SIZE_LIST.personalChat}
-          username={chatPreview.roomName}
+          username={roomName}
         />
         <S.ChatRoomPreviewContent>
           <S.ChatRoomName>{chatPreview.roomName}</S.ChatRoomName>
-          <S.ChatRoomLastMessage>
-            {chatPreview.lastMessage.content}
-          </S.ChatRoomLastMessage>
+          <S.ChatRoomLastMessage>{lastMessage.content}</S.ChatRoomLastMessage>
         </S.ChatRoomPreviewContent>
       </S.ChatRoomPreviewProfileWrapper>
       <S.LastMessageTimeUnReadCountWrapper>
         <S.LastMessageTime>
-          {formatLastMessageTime(chatPreview.lastMessage?.sentAt)}
+          {formatLastMessageTime(lastMessage?.sentAt)}
         </S.LastMessageTime>
-        <S.UnReadCount>{chatPreview.unreadCount}</S.UnReadCount>
+        <S.UnReadCount>{unreadCount}</S.UnReadCount>
       </S.LastMessageTimeUnReadCountWrapper>
     </S.ChatRoomPreviewContainer>
   );

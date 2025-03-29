@@ -1,0 +1,1 @@
+export const CHAT_TEXTAREA_MAX_HEIGHT = 150;

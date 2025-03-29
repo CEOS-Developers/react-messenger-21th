@@ -38,6 +38,17 @@ const GlobalStyle = createGlobalStyle`
         cursor: pointer;
     }
 
+    input {
+        border: none;
+        outline: none;
+    }
+
+    textarea {
+        resize: none;
+        border: none;
+        outline: none;
+    }
+
     a {
         text-decoration: none;
         color: inherit;
