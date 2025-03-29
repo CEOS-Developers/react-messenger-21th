@@ -22,7 +22,7 @@ const AppBar = ({
 }: AppBarProps) => {
   return (
     <div
-      className={`fixed top-0 flex h-11 w-screen items-center border-b px-5 py-2.5 ${
+      className={`fixed top-0 z-2 flex h-11 w-screen items-center border-b px-5 py-2.5 ${
         type === 'white'
           ? 'border-b-gray-100 bg-white text-black'
           : 'text-white [background:var(--Green-gradient,linear-gradient(0deg,rgba(0,0,0,0.10)_0%,rgba(0,0,0,0.10)_100%),linear-gradient(90deg,#5AE587_0%,#16BBC5_100%))]'

@@ -22,7 +22,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
     >
       {/* (상대방) 채팅  프로필 && 상대방 이름*/}
       {!isMe && (
-        <div className="mr-1.5 flex items-center">
+        <div className="mr-1.5 flex items-start">
           <ProfileIcon className="h-10 w-10 rounded-full" />
         </div>
       )}
@@ -38,7 +38,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
 
         {/*  채팅 버블*/}
         <div
-          className={`rounded-xl px-3 py-1.5 text-sm leading-[150%] font-normal tracking-[0.035px] break-words whitespace-pre-line text-black ${
+          className={`relative rounded-xl px-3 py-1.5 text-sm leading-[150%] font-normal tracking-[0.035px] break-words whitespace-pre-line text-black ${
             isMe
               ? 'rounded-br-[2px] bg-green-200'
               : 'rounded-tl-[2px] bg-gray-100'
