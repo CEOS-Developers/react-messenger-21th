@@ -10,7 +10,7 @@ import { Chats } from '../../interface/ChatRoom'
 const getFriendProfile = (color: string, name: string) => {
   return (
     <s.ProfileContainer>
-      <ProfileMedium color={color}>
+      <ProfileMedium $color={color}>
         <s.Icon>
           <PeoplesMedium />
         </s.Icon>

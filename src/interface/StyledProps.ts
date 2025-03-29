@@ -4,4 +4,5 @@ export default interface StyledProps {
   $isTransparent?: boolean
   $isMe?: boolean
   $souldDisplayTime?: boolean
+  $color?: string
 }
