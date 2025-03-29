@@ -57,14 +57,14 @@ const ChatList = () => {
           </div>
         }
       />
-      <section className="mt-15 mb-21 flex flex-col items-center gap-1 self-stretch">
+      <section className="mt-15 mb-21 flex flex-col items-center gap-1 self-stretch overflow-scroll">
         <Search />
         <article className="flex flex-col items-start self-stretch">
           {chatRoomData.map((data) => (
             <SingleChatRoom
               key={data.roomId}
               roomName={data.roomName}
-              participantsCount={data.participantsCount}
+              participantsCount={data.participant.length}
               prevMessage={data.prevMessage}
               lastMessageTime={data.lastMessageTime}
               unReadCount={data.unReadCount}

@@ -43,16 +43,28 @@ const Chat = () => {
   const opponentId = participant?.find((id: number) => id !== user.userId);
   const opponentUser = users.find((u) => u.userId === opponentId);
 
-  // roomId나 user가 바뀌면 채팅 불러오기 + 스크롤
+  // roomId나 user가 바뀌면 채팅 불러오기 + 스크롤 + 안읽음 읽음으로 바꾸기
   useLayoutEffect(() => {
     if (!roomId || !user) return;
 
     const savedChat = localStorage.getItem(`chat-room-${roomId}`);
     if (savedChat) {
-      const chatParsed = JSON.parse(savedChat);
-      setChatList(chatParsed);
+      const parsedChat = JSON.parse(savedChat);
+
+      //읽음 처리: 상대방이 보낸 isRead: false → true
+      const updatedChat = parsedChat.map((msg: SingleChatProps) => {
+        if (msg.senderName !== user.name && !msg.isRead) {
+          return { ...msg, isRead: true };
+        }
+        return msg;
+      });
+
+      // 채팅 상태 저장
+      setChatList(updatedChat);
+      localStorage.setItem(`chat-room-${roomId}`, JSON.stringify(updatedChat));
     }
 
+    //스크롤 아래로 이동
     setTimeout(() => {
       chatContainerRef.current?.scrollTo({
         top: chatContainerRef.current.scrollHeight,

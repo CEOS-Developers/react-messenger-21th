@@ -41,7 +41,9 @@ const SingleChatRoom = ({
           {roomName}
         </span>
         {participantsCount > 2 && (
-          <span className="font-semibold text-gray-200">2</span>
+          <span className="font-semibold text-gray-200">
+            {participantsCount}
+          </span>
         )}
       </div>
 
