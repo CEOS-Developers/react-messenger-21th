@@ -3,12 +3,15 @@ import { Content } from '../common/Common.Styled'
 import ContentHeader from '../common/ContentHeader'
 import ChatTitle from './ChatTitle'
 import TextInput from './TextInput'
+import ChatField from './ChatField'
 import { ChatRoomIcon } from '../../assets/Icons/Header'
 import { userData } from '../../assets/data/user.json'
 import { chatRoomData } from '../../assets/data/chatRoom.json'
 import { User } from '../../interface/User'
-import { ChatRoom } from '../../interface/ChatRoom'
-import ChatField from './ChatField'
+import { ChatRoom, Chats } from '../../interface/ChatRoom'
+import { Chat } from '../../interface/Chat'
+import { formatDateForData } from '../../utils/format'
+import * as s from './ChatContent.Styled'
 
 const ROOM_ID = '550e8400-e29b-41d4-a716-446655440000'
 
@@ -16,7 +19,8 @@ const ChatContent = () => {
   const [userId, setUserId] = useState(1)
   const [user, setUser] = useState<User | null>(null)
   const [room, setRoom] = useState<ChatRoom | null>(null)
-  const s = { Content }
+  const [chats, setChats] = useState<Chats | null>(null)
+  // const s = { Content }
 
   useEffect(() => {
     const curUser = userData.find((user) => user.id === userId)
@@ -24,6 +28,9 @@ const ChatContent = () => {
 
     const curRoom = chatRoomData.find((room) => room.chatRoomId === ROOM_ID)
     setRoom(curRoom || null)
+
+    const savedChats = curRoom?.chats
+    setChats(savedChats)
   }, [])
 
   /* userId가 바뀌면 다시 user를 가져옴 */
@@ -63,10 +70,26 @@ const ChatContent = () => {
     return partnerData
   }
 
+  const onSubmitChat = (input) => {
+    const date = new Date()
+    const formattedDate = formatDateForData(date)
+
+    const newChat: Chat = {
+      id: date.getTime(),
+      sender: userId,
+      content: input,
+    }
+
+    setChats({
+      ...chats,
+      [formattedDate]: [...(chats[formattedDate] || []), newChat],
+    })
+  }
+
   if (!room || !user) return <div>Loading...</div>
 
   return (
-    <s.Content>
+    <s.ChatContentWrapper>
       <ContentHeader
         leftChild={
           <ChatTitle
@@ -77,13 +100,9 @@ const ChatContent = () => {
         }
         rightChild={<ChatRoomIcon />}
       />
-      <ChatField
-        myId={userId}
-        chats={room.chats}
-        member={getChatPartnerData()}
-      />
-      <TextInput />
-    </s.Content>
+      <ChatField myId={userId} chats={chats} member={getChatPartnerData()} />
+      <TextInput onSubmit={onSubmitChat} />
+    </s.ChatContentWrapper>
   )
 }
 export default ChatContent

@@ -7,7 +7,7 @@ import {
 } from '../../assets/Icons/TextInput'
 import * as s from './TextInput.Styled'
 
-const TextInput = () => {
+const TextInput = ({ onSubmit }) => {
   const inputRef = useRef<HTMLDivElement | null>(null)
   const [text, setText] = useState('')
   const [isComposing, setIsComposing] = useState(false)
@@ -21,6 +21,22 @@ const TextInput = () => {
     setIsComposing(isComposing)
   }, [text])
 
+  const onClickSendIcon = () => {
+    onSubmit(text)
+    inputRef.current.textContent = ''
+    setText('')
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter') {
+      if (e.shiftKey) return
+      else {
+        e.preventDefault()
+        onClickSendIcon()
+      }
+    }
+  }
+
   return (
     <s.TextFieldWrapper>
       <s.LeftIcon>
@@ -33,12 +49,17 @@ const TextInput = () => {
             contentEditable="true"
             $isM={true}
             onInput={handleInput}
+            onKeyDown={handleKeyDown}
           />
           <FaceIcon width={24} style={{ display: 'flex' }} />
         </s.InputContainer>
       </s.TextFieldContainer>
       <s.RightIcon>
-        {isComposing ? <SendIcon /> : <MicrophoneIcon />}
+        {isComposing ? (
+          <SendIcon onClick={onClickSendIcon} />
+        ) : (
+          <MicrophoneIcon />
+        )}
       </s.RightIcon>
     </s.TextFieldWrapper>
   )

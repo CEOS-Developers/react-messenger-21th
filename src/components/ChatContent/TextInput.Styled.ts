@@ -6,7 +6,6 @@ const TextFieldWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   padding: 10px 12px;
 
-  min-height: 36px;
   max-height: 104px;
 
   display: flex;

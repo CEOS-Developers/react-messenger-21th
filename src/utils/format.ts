@@ -19,4 +19,13 @@ const formatTime = (time: number): string => {
   return formattedTime
 }
 
-export { formatDate, formatTime }
+const formatDateForData = (dateObj: Date): string => {
+  const formattedDate = dateObj.toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
+  return formattedDate.replace(/\./g, '-')
+}
+
+export { formatDate, formatTime, formatDateForData }

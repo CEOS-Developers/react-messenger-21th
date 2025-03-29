@@ -4,6 +4,12 @@ import StyledProps from '../../interface/styledProps'
 
 const ChatFieldWrapper = styled.div`
   padding: 0px 20px;
+  max-height: 626px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 const ChatContainer = styled.div`

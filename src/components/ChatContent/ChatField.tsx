@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import * as s from './ChatField.Styled'
 import { ProfileMedium } from '../../assets/Icons/Profile'
 import PeoplesMedium from '../../assets/Icons/Profile/Peoples-medium.svg?react'
@@ -29,6 +29,7 @@ const ChatField = ({ myId, chats, member }) => {
   const dateChatPair = Object.entries(chats)
 
   const lastSenderRef = useRef<number | null>(null)
+  const chatWrapperRef = useRef<HTMLDivElement | null>(null)
 
   const determineLastSender = (sender: number): boolean => {
     const isLastSender = sender === lastSenderRef.current
@@ -45,8 +46,13 @@ const ChatField = ({ myId, chats, member }) => {
     return curMinuteTimestamp === nextMinuteTimestamp
   }
 
+  /* 채팅 하단 스크롤 */
+  useEffect(() => {
+    chatWrapperRef.current.scrollTop = chatWrapperRef.current.scrollHeight
+  }, [chats, myId])
+
   return (
-    <s.ChatFieldWrapper>
+    <s.ChatFieldWrapper ref={chatWrapperRef}>
       {dateChatPair.map(([date, chat], dateIdx) => (
         <div key={date}>
           {getDateDiv(date, dateIdx)}
