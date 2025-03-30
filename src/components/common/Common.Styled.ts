@@ -22,4 +22,9 @@ const Content = styled.div`
   justify-content: space-between;
 `
 
-export { Container, Content }
+const EventIcon = styled.div`
+  cursor: pointer;
+  display: flex;
+`
+
+export { Container, Content, EventIcon }

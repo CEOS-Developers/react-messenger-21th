@@ -5,6 +5,7 @@ import statusGroup from '../../assets/Icons/statusGroup.svg'
 import * as tab from '../../assets/Icons/NavigationBar'
 import { useNavigate } from 'react-router'
 import { NavRole } from '../../utils/constants'
+import { EventIcon } from './Common.Styled'
 
 const StatusBar = ({ $isTransparent }: StyledProps) => {
   return (
@@ -36,12 +37,12 @@ const NavigationBar = ({ select }: NavigationBarProps) => {
   return (
     <s.NavBarDiv>
       <s.NavIconDiv>
-        <s.EventIcon onClick={() => nav('/')}>
+        <EventIcon onClick={() => nav('/')}>
           {select === NavRole.HOME ? <tab.HomeSelect /> : <tab.Home />}
-        </s.EventIcon>
-        <s.EventIcon onClick={() => nav('/chatList')}>
+        </EventIcon>
+        <EventIcon onClick={() => nav('/chatList')}>
           {select === NavRole.CHAT_LIST ? <tab.ChatSelect /> : <tab.Chat />}
-        </s.EventIcon>
+        </EventIcon>
         <tab.Call />
       </s.NavIconDiv>
       <HomeBar $isTransparent={true} />

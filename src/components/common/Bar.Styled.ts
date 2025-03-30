@@ -50,16 +50,4 @@ const NavIconDiv = styled.div`
   gap: 88.5px;
 `
 
-const EventIcon = styled.div`
-  cursor: pointer;
-`
-
-export {
-  StatusDiv,
-  StatusItem,
-  HomeBarDiv,
-  BlackBar,
-  NavBarDiv,
-  NavIconDiv,
-  EventIcon,
-}
+export { StatusDiv, StatusItem, HomeBarDiv, BlackBar, NavBarDiv, NavIconDiv }
