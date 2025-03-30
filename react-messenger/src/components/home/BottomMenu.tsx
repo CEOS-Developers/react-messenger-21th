@@ -9,7 +9,7 @@ import MoreOff from '@/assets/svgs/home/MoreOff.svg?url';
 const menus = [
   {
     name: '홈',
-    path: '/',
+    path: '/home',
     iconOn: HomeOn,
     iconOff: HomeOff,
   },

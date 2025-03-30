@@ -19,8 +19,7 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    onChange(e); // 기존 props.onChange 호출
-
+    onChange(e);
     const textarea = textareaRef.current;
     if (textarea) {
       textarea.style.height = 'auto'; // 높이 초기화
@@ -66,9 +65,15 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
         }}
       />
       <div className="flex gap-4 w-[122px]">
-        <img src={PlusBtn} className="w-6 h-6" />
-        <img src={CameraBtn} className="w-6 h-6" onClick={handleCameraClick} />
-        <img src={GalleryBtn} className="w-6 h-6" onClick={handleGalleryClick} />
+        <button>
+          <img src={PlusBtn} className="w-6 h-6" />
+        </button>
+        <button onClick={handleCameraClick}>
+          <img src={CameraBtn} className="w-6 h-6" />
+        </button>
+        <button onClick={handleGalleryClick}>
+          <img src={GalleryBtn} className="w-6 h-6" />
+        </button>
       </div>
       <div className="relative">
         <textarea
