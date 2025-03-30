@@ -45,7 +45,13 @@ const ChatInput = ({
       const storedData = localStorage.getItem('chatrooms'); // 로컬 스토리지에서 꺼냄
       const chatroomsData = storedData ? JSON.parse(storedData) : []; // JSON을 객체로 변환
       setChatroomData(chatroomsData);
+
+      // 입력 완료 후 입력 필드 초기화 및 재조정
       setInputText('');
+      if (textareaRef.current) {
+        textareaRef.current.style.height = 'auto';
+        setIsRounded(true);
+      }
     }
   };
 
