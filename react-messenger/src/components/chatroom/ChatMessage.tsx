@@ -15,7 +15,7 @@ type ChatMessageProps = {
 const ChatMessage = ({ message, isMine, senderInfo }: ChatMessageProps) => {
   return (
     <div className={`flex items-start ${isMine ? 'justify-end' : 'justify-start'} w-full`}>
-      <div className="flex items-center gap-2 mb-1">
+      <div className="flex items-center gap-2 mb-1 shrink-0">
         {!isMine && (
           <img src={senderInfo.profileImg} alt={senderInfo.name} className="w-12 h-12 rounded-full object-cover" />
         )}
@@ -34,7 +34,7 @@ const ChatMessage = ({ message, isMine, senderInfo }: ChatMessageProps) => {
             <img
               src={message.content}
               alt="uploaded"
-              className={`w-auto max-w-[280px] h-[140px] object-cover rounded-lg ${isMine ? 'rounded-tr-none' : 'rounded-tl-none'}`}
+              className={`w-auto max-w-[230px] h-[140px] object-cover rounded-lg ${isMine ? 'rounded-tr-none' : 'rounded-tl-none'}`}
             />
           )}
           <span className="text-caption2 text-grey-400">{formatTime(message.time)}</span>
