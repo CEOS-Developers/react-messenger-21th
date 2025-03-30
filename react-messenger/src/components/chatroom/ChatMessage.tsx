@@ -34,7 +34,7 @@ const ChatMessage = ({ message, isMine, senderInfo }: ChatMessageProps) => {
             <img
               src={message.content}
               alt="uploaded"
-              className={`w-auto h-[140px] object-cover rounded-lg ${isMine ? 'rounded-tr-none' : 'rounded-tl-none'}`}
+              className={`w-auto max-w-[280px] h-[140px] object-cover rounded-lg ${isMine ? 'rounded-tr-none' : 'rounded-tl-none'}`}
             />
           )}
           <span className="text-caption2 text-grey-400">{formatTime(message.time)}</span>
