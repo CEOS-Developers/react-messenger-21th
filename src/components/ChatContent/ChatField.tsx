@@ -44,12 +44,20 @@ const ChatField = ({ myId, chats, member }: ChatFieldProps) => {
   const dateChatPair = Object.entries(chats)
 
   const lastSenderRef = useRef<number | null>(null)
+  const lastSentTimeRef = useRef<number | null>(null)
   const chatWrapperRef = useRef<HTMLDivElement | null>(null)
 
   const determineLastSender = (sender: number): boolean => {
     const isLastSender = sender === lastSenderRef.current
     lastSenderRef.current = sender
     return isLastSender
+  }
+
+  const determineLastMsgSentSameTime = (curTime: number): boolean => {
+    const curMinuteTimestamp = Math.floor(curTime / 60000)
+    const isLastMsgSentSameTime = curMinuteTimestamp === lastSentTimeRef.current
+    lastSentTimeRef.current = curMinuteTimestamp
+    return isLastMsgSentSameTime
   }
 
   const determineSentSameTime = (
@@ -75,6 +83,7 @@ const ChatField = ({ myId, chats, member }: ChatFieldProps) => {
           {chat.map(({ id, content, sender }, chatIdx: number) => {
             const isMe = sender === myId //sender와 내 id가 같은가?
             const isLastSender = determineLastSender(sender)
+            const isLastMsgSentSameTime = determineLastMsgSentSameTime(id)
             const isLastMessage = chatIdx === chat.length - 1
             const isNextSender =
               !isLastMessage && sender === chat[chatIdx + 1].sender
@@ -84,13 +93,13 @@ const ChatField = ({ myId, chats, member }: ChatFieldProps) => {
               isLastMessage || !isNextSender || !isSentSameTime
             return (
               <s.ChatContainer key={id}>
-                {!isMe && isLastSender
-                  ? null
-                  : member[sender]
-                  ? getFriendProfile(
-                      member[sender].profileColor,
-                      member[sender].name
-                    )
+                {!isMe && (!isLastSender || !isLastMsgSentSameTime)
+                  ? member[sender]
+                    ? getFriendProfile(
+                        member[sender].profileColor,
+                        member[sender].name
+                      )
+                    : null
                   : null}
                 <s.ChatBubbleContainer
                   $isMe={isMe}
