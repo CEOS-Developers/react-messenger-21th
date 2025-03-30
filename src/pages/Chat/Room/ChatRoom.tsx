@@ -52,6 +52,8 @@ const ChatRoom = (): JSX.Element => {
   );
 
   const handleSendMessage = () => {
+    if (chatInputValue.trim() === '') return;
+
     const newMessage = {
       messageId: `msg-${Date.now()}`,
       senderId: MY_USER_INFO.userId,
@@ -96,6 +98,7 @@ const ChatRoom = (): JSX.Element => {
       <S.ChatRoomHeaderSection>
         <S.BackToChatRoomLink to={'/chat'}>
           <I.BackArrowIcon />
+          <S.TotalUnreadCount>1</S.TotalUnreadCount>
         </S.BackToChatRoomLink>
         <S.ChatRoomName>{selectedChatRoom?.roomName}</S.ChatRoomName>
         <S.ChatRoomHeaderOptions>

@@ -9,7 +9,7 @@ import sendIcon from '@/assets/svgs/Chat/send.svg?react';
 
 export const BackArrowIcon = styled(backArrowIcon)`
   width: 1.2rem;
-  height: 2rem;
+  height: 1.8rem;
 `;
 
 export const HamburgerIcon = styled(hamburgerIcon)`

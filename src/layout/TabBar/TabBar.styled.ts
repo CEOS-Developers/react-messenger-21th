@@ -9,9 +9,13 @@ export const TabBarContainer = styled.nav`
 
   width: 100%;
   height: 80px;
-  padding: 0.8rem 3rem 3.2rem;
+  padding: 0.8rem 4.2rem 3.2rem;
 
   background: #fbfbfb;
+
+  @media (max-width: 375px) {
+    padding: 0.8rem 3rem 3.2rem;
+  }
 `;
 
 export const TabBarList = styled.ul`

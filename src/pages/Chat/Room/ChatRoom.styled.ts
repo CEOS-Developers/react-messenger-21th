@@ -26,6 +26,12 @@ export const ChatRoomHeaderSection = styled.section`
   background: ${({ theme }) => theme.colors.Grayscale[200]};
 `;
 
+export const TotalUnreadCount = styled.span`
+  ${({ theme }) => theme.fontStyles.Body1_medium}
+  font-weight: 400;
+  color: ${({ theme }) => theme.colors.Grayscale[1000]};
+`;
+
 export const ChatRoomName = styled.h1`
   position: absolute;
   top: 50%;
@@ -44,10 +50,11 @@ const OptionButtonLinkStyle = css`
 `;
 
 export const BackToChatRoomLink = styled(Link)`
-  width: 2.4rem;
-  height: 2.4rem;
+  width: fit-content;
+  height: fit-content;
 
   ${OptionButtonLinkStyle}
+  gap: 0.6rem;
 `;
 
 export const ChatRoomHeaderOptionButton = styled.button`
