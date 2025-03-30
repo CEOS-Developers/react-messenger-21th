@@ -1,27 +1,38 @@
 import Clock from './Clock'
 import StyledProps from '../../interface/StyledProps'
-import { StatusDiv, StatusItem, HomeBarDiv, BlackBar } from './Common.Styled'
+import * as s from './Bar.Styled'
 import statusGroup from '../../assets/Icons/statusGroup.svg'
+import { TabCall, TabChat, TabHome } from '../../assets/Icons/NavigationBar'
 
 const StatusBar = ({ $isTransparent }: StyledProps) => {
   return (
-    <StatusDiv $isTransparent={$isTransparent}>
-      <StatusItem>
+    <s.StatusDiv $isTransparent={$isTransparent}>
+      <s.StatusItem>
         <Clock />
-      </StatusItem>
-      <StatusItem>
+      </s.StatusItem>
+      <s.StatusItem>
         <img src={statusGroup} />
-      </StatusItem>
-    </StatusDiv>
+      </s.StatusItem>
+    </s.StatusDiv>
   )
 }
 
 const HomeBar = ({ $isTransparent }: StyledProps) => {
   return (
-    <HomeBarDiv $isTransparent={$isTransparent}>
-      <BlackBar />
-    </HomeBarDiv>
+    <s.HomeBarDiv $isTransparent={$isTransparent}>
+      <s.BlackBar />
+    </s.HomeBarDiv>
   )
 }
 
-export { StatusBar, HomeBar }
+const NavigationBar = () => {
+  return (
+    <s.NavBarDiv>
+      <TabHome />
+      <TabChat />
+      <TabCall />
+    </s.NavBarDiv>
+  )
+}
+
+export { StatusBar, HomeBar, NavigationBar }
