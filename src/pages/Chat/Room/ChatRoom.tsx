@@ -2,23 +2,24 @@ import { JSX } from 'react/jsx-runtime';
 import { useMemo, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 
-import { CHAT_TEXTAREA_MAX_HEIGHT } from '@/constants/Chat';
+import { CHAT_TEXTAREA_MAX_HEIGHT, MY_USER_INFO } from '@/constants/Chat';
 
-import * as I from '@/icons/Chat';
-import { SearchIcon } from '@/icons/Header';
-
-import ChatMessage from '@/components/ChatMessage/ChatMessage';
+import { ChatMessageType } from '@/types/Chat';
 
 import { useChatMessage } from '@/hooks/useChat';
 import { useAutoResizeTextarea } from '@/hooks/useAutoResizeTextarea';
 
 import { useChatPreviewList } from '@/stores/useChatPreviewList';
 import { useChatMessageByRoom } from '@/stores/useChatMessageByRoom';
+import { ChatRoomMessage } from '@/schemas/chatRoomMessage';
 
 import { sortMessageByDate } from '@/utils/sortMessageByDate';
 
+import * as I from '@/icons/Chat';
+import { SearchIcon } from '@/icons/Header';
+import ChatMessage from '@/components/ChatMessage/ChatMessage';
+
 import * as S from './ChatRoom.styled';
-import { ChatRoomMessage } from '@/schemas/chatRoomMessage';
 
 const ChatRoom = (): JSX.Element => {
   const chatInputRef = useRef<HTMLTextAreaElement | null>(null);
@@ -29,24 +30,37 @@ const ChatRoom = (): JSX.Element => {
   useAutoResizeTextarea(chatInputRef, chatInputValue, CHAT_TEXTAREA_MAX_HEIGHT);
 
   const { roomId } = useParams();
+  const safeRoomId = roomId ?? '';
 
-  // 채팅 메세지 목록 가져오기
-  useChatMessage(roomId ?? '');
+  // roomId에 해당하는 채팅 메세지 목록 가져오기
+  useChatMessage(safeRoomId);
 
   const { chatPreviewList } = useChatPreviewList();
-  const { chatMessageByRoom } = useChatMessageByRoom();
+  const { messagesByRoom, sendMessage } = useChatMessageByRoom(); // 렌더링 시 roomId에 해당하는 채팅 메세지 목록 가져오기
 
   // 채팅 메세지 목록 정렬 (시간 순서)
   const sortChatMessageByDate: ChatRoomMessage[] = useMemo(() => {
-    return sortMessageByDate(chatMessageByRoom);
-  }, [chatMessageByRoom]);
+    const messages = messagesByRoom[safeRoomId] || [];
+    return sortMessageByDate(messages);
+  }, [messagesByRoom, safeRoomId]);
 
   const selectedChatRoom = chatPreviewList.find(
     (chatRoom) => chatRoom.roomId === roomId
   );
 
   const handleSendMessage = () => {
-    console.log('보낸 메세지: ', chatInputValue);
+    const newMessage = {
+      messageId: `msg-${Date.now()}`,
+      senderId: MY_USER_INFO.userId,
+      senderName: MY_USER_INFO.userName,
+      content: chatInputValue,
+      type: 'text' as ChatMessageType,
+      sentAt: new Date().toISOString(),
+    };
+
+    // 메세지 전송
+    sendMessage(safeRoomId, newMessage);
+
     setChatInputValue('');
   };
 

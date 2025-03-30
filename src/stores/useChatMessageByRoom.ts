@@ -1,16 +1,26 @@
 import { create } from 'zustand';
-import { ChatRoomMessage } from '@/schemas/chatRoomMessage';
+import { ChatRoomMessage, MessagesByRoom } from '@/schemas/chatRoomMessage';
 
 interface ChatMessageByRoom {
-  selectedChatRoomId: string;
-  setSelectedChatRoomId: (selectedChatRoomId: string) => void;
-  chatMessageByRoom: ChatRoomMessage[];
-  setChatMessageByRoom: (chatMessageByRoom: ChatRoomMessage[]) => void;
+  messagesByRoom: MessagesByRoom;
+  loadMessages: (roomId: string, message: ChatRoomMessage[]) => void;
+  sendMessage: (roomId: string, message: ChatRoomMessage) => void;
 }
 
 export const useChatMessageByRoom = create<ChatMessageByRoom>((set) => ({
-  selectedChatRoomId: '',
-  setSelectedChatRoomId: (selectedChatRoomId) => set({ selectedChatRoomId }),
-  chatMessageByRoom: [] as ChatRoomMessage[],
-  setChatMessageByRoom: (chatMessageByRoom) => set({ chatMessageByRoom }),
+  messagesByRoom: {},
+  loadMessages: (roomId, messages) =>
+    set((state) => ({
+      messagesByRoom: {
+        ...state.messagesByRoom,
+        [roomId]: messages,
+      },
+    })),
+  sendMessage: (roomId, message) =>
+    set((state) => ({
+      messagesByRoom: {
+        ...state.messagesByRoom,
+        [roomId]: [...(state.messagesByRoom[roomId] || []), message],
+      },
+    })),
 }));

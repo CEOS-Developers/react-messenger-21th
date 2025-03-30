@@ -23,19 +23,21 @@ export const useChat = () => {
 };
 
 export const useChatMessage = (roomId: string) => {
-  const { setChatMessageByRoom } = useChatMessageByRoom();
+  const { loadMessages } = useChatMessageByRoom();
 
   useEffect(() => {
     const fetchChatMessage = async () => {
       try {
         const response = await axios.get('/mock/chatMessages.json');
         const chatMessageByRoom = response.data;
-        setChatMessageByRoom(chatMessageByRoom[roomId]);
+
+        // 채팅방 메세지 목록 저장
+        loadMessages(roomId, chatMessageByRoom[roomId]);
       } catch (error) {
         console.error('채팅방 메세지 Fetch 실패:', error);
       }
     };
 
     fetchChatMessage();
-  }, [roomId, setChatMessageByRoom]);
+  }, [roomId, loadMessages]);
 };
