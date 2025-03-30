@@ -27,7 +27,7 @@ const BirthdayProfileList = ({ profiles }: { profiles: Profile[] }) => {
           onClick={handleClickList}
         />
       </span>
-      {isListOpen && (
+      {profiles.length !== 0 && isListOpen && (
         <ul className='flex gap-3'>
           {profiles.map((profile) => (
             <li
