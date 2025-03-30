@@ -38,11 +38,28 @@ const BlackBar = styled.div`
 
 const NavBarDiv = styled.div`
   background-color: ${({ theme }) => theme.colors.gray01};
-  height: 54px;
+`
+
+const NavIconDiv = styled.div`
+  padding-top: 8px;
   border-top: 1px solid ${({ theme }) => theme.colors.gray08};
+  height: calc(54px - 9px);
 
   display: flex;
   justify-content: center;
   gap: 88.5px;
 `
-export { StatusDiv, StatusItem, HomeBarDiv, BlackBar, NavBarDiv }
+
+const EventIcon = styled.div`
+  cursor: pointer;
+`
+
+export {
+  StatusDiv,
+  StatusItem,
+  HomeBarDiv,
+  BlackBar,
+  NavBarDiv,
+  NavIconDiv,
+  EventIcon,
+}

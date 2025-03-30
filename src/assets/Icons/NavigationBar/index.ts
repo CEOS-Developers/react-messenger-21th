@@ -1,15 +1,8 @@
-import TabCall from './tabCall.svg?react'
-import TabCallSelect from './tabCallSelect.svg?react'
-import TabChat from './tabChat.svg?react'
-import TabChatSelect from './tabChatSelect.svg?react'
-import TabHome from './tabHome.svg?react'
-import TabHomeSelect from './tabHomeSelect.svg?react'
+import Call from './tabCall.svg?react'
+import CallSelect from './tabCallSelect.svg?react'
+import Chat from './tabChat.svg?react'
+import ChatSelect from './tabChatSelect.svg?react'
+import Home from './tabHome.svg?react'
+import HomeSelect from './tabHomeSelect.svg?react'
 
-export {
-  TabCall,
-  TabCallSelect,
-  TabChat,
-  TabChatSelect,
-  TabHome,
-  TabHomeSelect,
-}
+export { Call, CallSelect, Chat, ChatSelect, Home, HomeSelect }

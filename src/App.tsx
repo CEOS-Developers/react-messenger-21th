@@ -7,6 +7,8 @@ import GlobalStyle from './styles/GlobalStyle.ts'
 
 /** pages */
 import ChatRoom from './pages/ChatRoom.tsx'
+import FriendsList from './pages/FriendsList.tsx'
+import ChatList from './pages/ChatList.tsx'
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Routes>
-          <Route path="/" element={<ChatRoom />} />
+          <Route path="/" element={<FriendsList />} />
+          <Route path="/chatlist" element={<ChatList />} />
+          <Route path="/room" element={<ChatRoom />} />
         </Routes>
       </ThemeProvider>
     </>

@@ -2,7 +2,9 @@ import Clock from './Clock'
 import StyledProps from '../../interface/StyledProps'
 import * as s from './Bar.Styled'
 import statusGroup from '../../assets/Icons/statusGroup.svg'
-import { TabCall, TabChat, TabHome } from '../../assets/Icons/NavigationBar'
+import * as tab from '../../assets/Icons/NavigationBar'
+import { useNavigate } from 'react-router'
+import { NavRole } from '../../utils/constants'
 
 const StatusBar = ({ $isTransparent }: StyledProps) => {
   return (
@@ -25,12 +27,24 @@ const HomeBar = ({ $isTransparent }: StyledProps) => {
   )
 }
 
-const NavigationBar = () => {
+type NavigationBarProps = {
+  select: NavRole
+}
+
+const NavigationBar = ({ select }: NavigationBarProps) => {
+  const nav = useNavigate()
   return (
     <s.NavBarDiv>
-      <TabHome />
-      <TabChat />
-      <TabCall />
+      <s.NavIconDiv>
+        <s.EventIcon onClick={() => nav('/')}>
+          {select === NavRole.HOME ? <tab.HomeSelect /> : <tab.Home />}
+        </s.EventIcon>
+        <s.EventIcon onClick={() => nav('/chatList')}>
+          {select === NavRole.CHAT_LIST ? <tab.ChatSelect /> : <tab.Chat />}
+        </s.EventIcon>
+        <tab.Call />
+      </s.NavIconDiv>
+      <HomeBar $isTransparent={true} />
     </s.NavBarDiv>
   )
 }
