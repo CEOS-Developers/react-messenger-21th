@@ -24,8 +24,7 @@ const ChatBubbleContainer = styled.div<StyledProps>`
   align-items: end;
   gap: 4px;
   align-self: ${({ $isMe }) => ($isMe ? 'flex-end' : 'flex-start')};
-  margin-bottom: ${({ $souldDisplayTime }) =>
-    $souldDisplayTime ? '20px' : '8px'};
+  margin-bottom: ${({ $needBigMargin }) => ($needBigMargin ? '16px' : '8px')};
 `
 
 const DateDiv = styled.div<StyledProps>`
