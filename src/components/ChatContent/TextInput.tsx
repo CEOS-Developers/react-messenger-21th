@@ -33,8 +33,15 @@ const TextInput = ({ onSubmit }: TextInputProps) => {
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    /* 한글 두 번 입력 방지 */
+    if (e.nativeEvent.isComposing) return
+
+    /**
+     * shift+enter 또는 ctr+enter는 줄바꿈
+     * enter 단독 입력은 제출
+     */
     if (e.key === 'Enter') {
-      if (e.shiftKey) return
+      if (e.shiftKey || e.ctrlKey) return
       else {
         e.preventDefault()
         onClickSendIcon()
