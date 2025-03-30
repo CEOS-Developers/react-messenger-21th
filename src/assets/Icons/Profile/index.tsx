@@ -1,30 +1,49 @@
-import styled from 'styled-components'
-import StyledProps from '../../../interface/StyledProps'
-// import PeoplesBig from './Peoples-big.svg?react'
-// import PeoplesDefault from './Peoples-default.svg?react'
-// import PeoplesMini from './Peoples-mini.svg?react'
+import * as s from './index.Styled'
+import BigIcon from './Peoples-big.svg?react'
+import DefaultIcon from './Peoples-default.svg?react'
+import MediumIcon from './Peoples-medium.svg?react'
+import MiniIcon from './Peoples-mini.svg?react'
 
-// const ProfileBig = styled.div`
-//   width: 102px;
-//   height: 102px;
-//   border-radius: 100%;
-//   border: 1.4px solid ${({ theme }) => theme.colors.gray13}
-//   background: ${({ color }) => color}
+type ProfileProps = {
+  color: string
+}
 
-//   display: flex;
-//   justify-content: center;
-// `
+const ProfileBig = ({ color }: ProfileProps) => {
+  return (
+    <s.ProfileBig $color={color}>
+      <s.PeopleMargin $margin={30}>
+        <BigIcon />
+      </s.PeopleMargin>
+    </s.ProfileBig>
+  )
+}
 
-const ProfileMedium = styled.div<StyledProps>`
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  border: 1.4px solid ${({ theme }) => theme.colors.gray13};
-  background: ${({ $color, theme }) => theme.colors[$color || 'skyblue']};
+const ProfileDefault = ({ color }: ProfileProps) => {
+  return (
+    <s.ProfileDefault $color={color}>
+      <DefaultIcon />
+    </s.ProfileDefault>
+  )
+}
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
+const ProfileMedium = ({ color }: ProfileProps) => {
+  return (
+    <s.ProfileMedium $color={color}>
+      <s.PeopleMargin $margin={9}>
+        <MediumIcon />
+      </s.PeopleMargin>
+    </s.ProfileMedium>
+  )
+}
 
-export { ProfileMedium }
+const ProfileMini = ({ color }: ProfileProps) => {
+  return (
+    <s.ProfileMini $color={color}>
+      <s.PeopleMargin $margin={1}>
+        <MiniIcon width={10} height={11.11} />
+      </s.PeopleMargin>
+    </s.ProfileMini>
+  )
+}
+
+export { ProfileBig, ProfileDefault, ProfileMedium, ProfileMini }

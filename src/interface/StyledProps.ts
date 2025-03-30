@@ -6,4 +6,5 @@ export default interface StyledProps {
   $souldDisplayTime?: boolean
   $needBigMargin?: boolean
   $color?: string
+  $margin?: number
 }

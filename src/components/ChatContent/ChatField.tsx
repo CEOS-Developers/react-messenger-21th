@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 
 import * as s from './ChatField.Styled'
 import { ProfileMedium } from '../../assets/Icons/Profile'
-import PeoplesMedium from '../../assets/Icons/Profile/Peoples-medium.svg?react'
 
 import { formatDate, formatTime } from '../../utils/format'
 import { Chats } from '../../interface/ChatRoom'
@@ -10,11 +9,7 @@ import { Chats } from '../../interface/ChatRoom'
 const getFriendProfile = (color: string, name: string) => {
   return (
     <s.ProfileContainer>
-      <ProfileMedium $color={color}>
-        <s.Icon>
-          <PeoplesMedium />
-        </s.Icon>
-      </ProfileMedium>
+      <ProfileMedium color={color} />
       <s.Name $isM={true}>{name}</s.Name>
     </s.ProfileContainer>
   )
