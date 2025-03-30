@@ -1,5 +1,5 @@
 import { JSX } from 'react/jsx-runtime';
-import { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 
 import { CHAT_TEXTAREA_MAX_HEIGHT, MY_USER_INFO } from '@/constants/Chat';
@@ -14,15 +14,18 @@ import { useChatMessageByRoom } from '@/stores/useChatMessageByRoom';
 import { ChatRoomMessage } from '@/schemas/chatRoomMessage';
 
 import { sortMessageByDate } from '@/utils/sortMessageByDate';
+import { isSameDate, isSameTimeGroup } from '@/utils/formatDate';
 
 import * as I from '@/icons/Chat';
 import { SearchIcon } from '@/icons/Header';
 import ChatMessage from '@/components/ChatMessage/ChatMessage';
+import ChatDate from '@/components/ChatDate/ChatDate';
 
 import * as S from './ChatRoom.styled';
 
 const ChatRoom = (): JSX.Element => {
   const chatInputRef = useRef<HTMLTextAreaElement | null>(null);
+  const chatEndRef = useRef<HTMLDivElement | null>(null);
   const [chatInputValue, setChatInputValue] = useState<string>('');
   const [isComposing, setIsComposing] = useState<boolean>(false);
 
@@ -75,6 +78,14 @@ const ChatRoom = (): JSX.Element => {
     e.preventDefault();
   };
 
+  useEffect(() => {
+    localStorage.setItem('chatMessages', JSON.stringify(messagesByRoom));
+  }, [messagesByRoom]);
+
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [sortChatMessageByDate]);
+
   return (
     <S.ChatRoomContainer
       initial={{ x: '100%', opacity: 0 }}
@@ -102,15 +113,30 @@ const ChatRoom = (): JSX.Element => {
         <S.ChatMessageBoxWrapper>
           {sortChatMessageByDate?.map((message, index) => {
             const prevMessage = sortChatMessageByDate[index - 1];
+            const nextMessage = sortChatMessageByDate[index + 1];
+
             const isSameSenderAsPrevious =
               prevMessage?.senderId === message.senderId;
 
+            const showDateLabel =
+              index === 0 || !isSameDate(prevMessage?.sentAt, message.sentAt);
+
+            const isLastInTimeGroup =
+              !nextMessage ||
+              nextMessage.senderId !== message.senderId ||
+              !isSameTimeGroup(nextMessage.sentAt, message.sentAt);
+
             return (
-              <ChatMessage
-                key={message.messageId}
-                message={message}
-                showSenderInfo={!isSameSenderAsPrevious}
-              />
+              <React.Fragment key={message.messageId}>
+                {showDateLabel && <ChatDate date={message.sentAt} />}
+                <ChatMessage
+                  message={message}
+                  showSenderInfo={!isSameSenderAsPrevious}
+                  showTime={isLastInTimeGroup}
+                  isLastMessage={index === sortChatMessageByDate.length - 1}
+                  chatEndRef={chatEndRef}
+                />
+              </React.Fragment>
             );
           })}
         </S.ChatMessageBoxWrapper>

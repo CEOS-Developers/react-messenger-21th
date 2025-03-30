@@ -60,4 +60,6 @@ export const ChatMessageTime = styled.p`
   ${({ theme }) => theme.fontStyles.Caption2}
   font-weight: 400;
   color: ${({ theme }) => theme.colors.Grayscale[500]};
+
+  white-space: nowrap;
 `;

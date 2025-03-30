@@ -6,6 +6,7 @@ import { PROFILE_SIZE_LIST } from '@/constants/Profile';
 import { ChatRoomMessage } from '@/schemas/chatRoomMessage';
 
 import { formatMessageTime } from '@/utils/formatDate';
+import { renderMessage } from '@/utils/renderMessage';
 
 import ProfileImageBox from '../ProfileImageBox/ProfileImageBox';
 
@@ -14,11 +15,17 @@ import * as S from './ChatMessage.styled';
 type ChatMessageProps = {
   message: ChatRoomMessage;
   showSenderInfo?: boolean;
+  showTime?: boolean;
+  isLastMessage?: boolean;
+  chatEndRef?: React.RefObject<HTMLDivElement | null>;
 };
 
 const ChatMessage = ({
   message,
   showSenderInfo,
+  showTime,
+  isLastMessage,
+  chatEndRef,
 }: ChatMessageProps): JSX.Element => {
   const { senderName, senderId, content, type, sentAt } = message;
 
@@ -26,10 +33,15 @@ const ChatMessage = ({
 
   if (type === 'text' && isMyMessage) {
     return (
-      <S.ChatMessageWrapper $isMyMessage={true}>
+      <S.ChatMessageWrapper
+        $isMyMessage={true}
+        ref={isLastMessage ? chatEndRef : null}
+      >
         <S.ChatMessageContainer>
-          <S.ChatMessageBox>{content}</S.ChatMessageBox>
-          <S.ChatMessageTime>{formatMessageTime(sentAt)}</S.ChatMessageTime>
+          {showTime && (
+            <S.ChatMessageTime>{formatMessageTime(sentAt)}</S.ChatMessageTime>
+          )}
+          <S.ChatMessageBox>{renderMessage(content)}</S.ChatMessageBox>
         </S.ChatMessageContainer>
       </S.ChatMessageWrapper>
     );
@@ -51,7 +63,9 @@ const ChatMessage = ({
           )}
           <S.ChatMessageContainer>
             <S.ChatMessageBox>{content}</S.ChatMessageBox>
-            <S.ChatMessageTime>{formatMessageTime(sentAt)}</S.ChatMessageTime>
+            {showTime && (
+              <S.ChatMessageTime>{formatMessageTime(sentAt)}</S.ChatMessageTime>
+            )}
           </S.ChatMessageContainer>
         </S.SenderInfoContainer>
       </S.ChatMessageSenderWrapper>

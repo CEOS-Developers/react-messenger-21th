@@ -22,6 +22,8 @@ export const ChatRoomHeaderSection = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  background: ${({ theme }) => theme.colors.Grayscale[200]};
 `;
 
 export const ChatRoomName = styled.h1`
@@ -67,8 +69,14 @@ export const ChatRoomHeaderOptions = styled.div`
 // 채팅방 메시지 섹션
 export const ChatRoomMessageSection = styled.section`
   width: 100%;
-  height: fit-content;
-  padding: 7.8rem 2rem 0;
+  height: 100vh;
+  padding: 6.2rem 2rem 7rem;
+
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const ChatMessageBoxWrapper = styled.div`
