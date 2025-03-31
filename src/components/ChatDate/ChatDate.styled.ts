@@ -4,6 +4,7 @@ export const ChatDateContainer = styled.div`
   width: 100%;
   height: fit-content;
   margin-top: 1.6rem;
+  margin-bottom: 0.4rem;
 
   display: flex;
   justify-content: center;

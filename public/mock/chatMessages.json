@@ -31,6 +31,14 @@
       "content": "너 누군데 ㅋㅋ",
       "type": "text",
       "sentAt": "2025-03-28T12:30:00Z"
+    },
+    {
+      "messageId": "msg-005",
+      "senderId": "user-001",
+      "senderName": "임승민",
+      "content": "헤어지자",
+      "type": "text",
+      "sentAt": "2025-03-28T12:32:00Z"
     }
   ]
 }

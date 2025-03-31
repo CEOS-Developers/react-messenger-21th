@@ -92,7 +92,7 @@ export const ChatMessageBoxWrapper = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 0.6rem;
 `;
 
 // 채팅방 입력 섹션
