@@ -1,17 +1,18 @@
 import { ChatListIcon } from '../../assets/Icons/Header'
-import { Content } from '../common/Common.Styled'
 import ContentHeader from '../common/ContentHeader'
 import * as s from './ChatListContent.Styled'
+import ChatListViewer from './ChatListViewer'
 
 const ChatListContent = () => {
   return (
-    <Content>
+    <s.CLContent>
       <ContentHeader
         $isTransparent={true}
         leftChild={<s.Title>대화</s.Title>}
         rightChild={<ChatListIcon />}
       />
-    </Content>
+      <ChatListViewer />
+    </s.CLContent>
   )
 }
 

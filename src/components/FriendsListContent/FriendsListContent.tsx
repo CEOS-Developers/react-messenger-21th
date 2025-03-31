@@ -1,12 +1,12 @@
 import { HomeIcon } from '../../assets/Icons/Header'
 import { ProfileDefault } from '../../assets/Icons/Profile'
-import { Content } from '../common/Common.Styled'
 import * as s from './FriendsListContent.Styled'
 import ContentHeader from '../common/ContentHeader'
+import FriendsViewer from './FriendsViewer'
 
 const FriendsListContent = () => {
   return (
-    <Content>
+    <s.FLContent>
       <s.HeaderWrapper>
         <ContentHeader
           $isTransparent={true}
@@ -19,8 +19,8 @@ const FriendsListContent = () => {
           rightChild={<HomeIcon />}
         />
       </s.HeaderWrapper>
-      FriendsListContent
-    </Content>
+      <FriendsViewer />
+    </s.FLContent>
   )
 }
 

@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 import { Body_1 } from '../../styles/Typo.Styled'
 import StyledProps from '../../interface/StyledProps'
+import { Content } from '../common/Common.Styled'
+
+const FLContent = styled(Content)`
+  gap: 8px;
+`
 
 const HeaderWrapper = styled.div`
   padding: 4px 0;
@@ -17,4 +22,4 @@ const Name = styled.div<StyledProps>`
   color: ${({ theme }) => theme.colors.gray13};
 `
 
-export { HeaderWrapper, UserProfileContainer, Name }
+export { FLContent, HeaderWrapper, UserProfileContainer, Name }

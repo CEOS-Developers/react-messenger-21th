@@ -27,4 +27,14 @@ const EventIcon = styled.div`
   display: flex;
 `
 
-export { Container, Content, EventIcon }
+const ScrollDiv = styled.div`
+  flex-grow: 1;
+  padding: 0px 20px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
+
+export { Container, Content, EventIcon, ScrollDiv }
