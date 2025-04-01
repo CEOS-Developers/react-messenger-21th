@@ -23,7 +23,7 @@ const SingleChatRoom = ({
   participant,
 }: SingleChatRoomProps) => {
   const navigate = useNavigate();
-
+  // 제목 오버플로우
   return (
     <div
       onClick={() =>
@@ -31,12 +31,12 @@ const SingleChatRoom = ({
           state: { roomId: roomId, participant: participant },
         })
       }
-      className="grid w-full grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-x-2 border-b border-b-gray-100 px-5 py-3"
+      className="grid w-full grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-x-2 overflow-hidden border-b border-b-gray-100 px-5 py-3"
     >
-      <div className="col-start-1 col-end-2 row-start-1 row-end-3">
+      <div className="col-start-1 col-end-2 row-start-1 row-end-3 h-13 w-13">
         <ProfileIcon className="h-full w-full" />
       </div>
-      <div className="col-start-2 col-end-3 row-start-1 row-end-2 flex gap-1">
+      <div className="col-start-2 col-end-3 row-start-1 row-end-2 flex gap-1 overflow-hidden">
         <span className="overflow-hidden font-semibold text-ellipsis whitespace-nowrap text-black">
           {roomName}
         </span>

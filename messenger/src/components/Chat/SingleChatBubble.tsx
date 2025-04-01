@@ -63,7 +63,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({
 
       {/* 읽음 여부, 시간 */}
       <div
-        className={`flex min-w-fit flex-col ${isMe ? 'mr-1 items-end' : 'ml-1 items-start'} justify-end text-xs text-gray-400`}
+        className={`flex min-w-fit flex-col ${isMe ? 'mr-1 items-end' : 'ml-1 items-start'} justify-end text-xs text-gray-300`}
       >
         <span>{isMe ? (isRead ? '읽음' : '안 읽음') : ''}</span>
         <span>{timestamp}</span>
