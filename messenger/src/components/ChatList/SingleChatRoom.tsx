@@ -33,8 +33,23 @@ const SingleChatRoom = ({
       }
       className="grid w-full grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-x-2 overflow-hidden border-b border-b-gray-100 px-5 py-3"
     >
-      <div className="col-start-1 col-end-2 row-start-1 row-end-3 h-13 w-13">
-        <ProfileIcon className="h-full w-full" />
+      <div className="col-start-1 col-end-2 row-start-1 row-end-3 flex h-13 w-13 flex-wrap justify-center">
+        {participant.length <= 2 ? (
+          <ProfileIcon className="h-full w-full" />
+        ) : participant.length === 3 ? (
+          <>
+            <ProfileIcon className="h-auto w-auto" />
+            <ProfileIcon className="h-auto w-auto" />
+            <ProfileIcon className="h-auto w-auto" />
+          </>
+        ) : (
+          <>
+            <ProfileIcon className="h-auto w-auto" />
+            <ProfileIcon className="h-auto w-auto" />
+            <ProfileIcon className="h-auto w-auto" />
+            <ProfileIcon className="h-auto w-auto" />
+          </>
+        )}
       </div>
       <div className="col-start-2 col-end-3 row-start-1 row-end-2 flex gap-1 overflow-hidden">
         <span className="overflow-hidden font-semibold text-ellipsis whitespace-nowrap text-black">
@@ -60,7 +75,7 @@ const SingleChatRoom = ({
         )}
       </div>
 
-      <span className="col-start-3 col-end-4 row-start-1 row-end-2 overflow-hidden text-right text-xs leading-[140%] font-normal tracking-[0.06px] text-ellipsis whitespace-nowrap text-gray-200">
+      <span className="col-start-3 col-end-4 row-start-1 row-end-2 self-center overflow-hidden text-right text-xs leading-[140%] font-normal tracking-[0.06px] text-ellipsis whitespace-nowrap text-gray-200">
         {formatDate(lastMessageTime)}
       </span>
       {unReadCount > 0 && (
