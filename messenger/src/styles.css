@@ -2,6 +2,8 @@
 @import 'tailwindcss';
 @plugin 'tailwind-scrollbar';
 
+@tailwind utilities;
+
 @theme {
   /* Green 계열 */
   --color-green-100: #92f6a9;
@@ -55,59 +57,35 @@ body {
 }
 
 @layer components {
-  .headline-1 {
-    font-size: 24px;
-    line-height: 140%;
-    letter-spacing: -0.01em;
-    font-weight: 700; /* Bold */
+  .h1 {
+    @apply text-[60px] leading-[140%] font-bold tracking-[-0.01em];
   }
 
-  .headline-2 {
-    font-size: 20px;
-    line-height: 140%;
-    letter-spacing: -0.01em;
-    font-weight: 600; /* SemiBold */
+  .h2 {
+    @apply text-[20px] leading-[140%] font-semibold tracking-[-0.01em];
   }
 
-  .subtitle-1 {
-    font-size: 16px;
-    line-height: 140%;
-    letter-spacing: 0em;
-    font-weight: 600; /* SemiBold */
+  .s1 {
+    @apply text-[16px] leading-[140%] font-semibold tracking-[0em];
   }
 
-  .subtitle-2 {
-    font-size: 14px;
-    line-height: 140%;
-    letter-spacing: 0.0025em;
-    font-weight: 600; /* SemiBold */
+  .s2 {
+    @apply text-[14px] leading-[140%] font-semibold tracking-[0.0025em];
   }
 
-  .body-1 {
-    font-size: 16px;
-    line-height: 150%;
-    letter-spacing: 0em;
-    font-weight: 400; /* Regular */
+  .b1 {
+    @apply text-[16px] leading-[150%] font-normal tracking-[0em];
   }
 
-  .body-2 {
-    font-size: 14px;
-    line-height: 150%;
-    letter-spacing: 0.0025em;
-    font-weight: 400; /* Regular */
+  .b2 {
+    @apply text-[14px] leading-[150%] font-normal tracking-[0.0025em];
   }
 
-  .caption-1 {
-    font-size: 12px;
-    line-height: 140%;
-    letter-spacing: 0.005em;
-    font-weight: 500; /* Medium */
+  .c1 {
+    @apply text-[12px] leading-[140%] font-medium tracking-[0.005em];
   }
 
-  .caption-2 {
-    font-size: 12px;
-    line-height: 140%;
-    letter-spacing: 0.005em;
-    font-weight: 400; /* Regular */
+  .c2 {
+    @apply text-[12px] leading-[140%] font-normal tracking-[0.005em];
   }
 }

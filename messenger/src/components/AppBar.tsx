@@ -42,14 +42,8 @@ const AppBar = ({
           onClick={onTitleClick}
           className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center"
         >
-          <span className="cursor-pointer text-center text-base leading-[140%] font-semibold">
-            {title}
-          </span>
-          {subtitle && (
-            <span className="-mt-1 text-xs font-normal tracking-[0.06px]">
-              {subtitle}
-            </span>
-          )}
+          <span className="s2 cursor-pointer text-center">{title}</span>
+          {subtitle && <span className="c2 -mt-1">{subtitle}</span>}
         </div>
 
         {/* 오른쪽 아이콘 */}
