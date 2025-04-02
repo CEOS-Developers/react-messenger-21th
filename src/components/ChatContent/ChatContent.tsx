@@ -15,11 +15,13 @@ import { ChatRoom, Chats } from '../../interface/ChatRoom'
 import { Chat } from '../../interface/Chat'
 
 import { formatDateForData } from '../../utils/format'
+import { useSetUserId, useUserId } from '../../contexts/UserIdContext'
 
 const ROOM_ID = '550e8400-e29b-41d4-a716-446655440000'
 
 const ChatContent = () => {
-  const [userId, setUserId] = useState(1)
+  const userId = useUserId()
+  const setUserId = useSetUserId()
   const [user, setUser] = useState<User | null>(null)
   const [room, setRoom] = useState<ChatRoom | null>(null)
   const [chats, setChats] = useState<Chats | null>(null)

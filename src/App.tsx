@@ -9,17 +9,20 @@ import GlobalStyle from './styles/GlobalStyle.ts'
 import ChatRoom from './pages/ChatRoom.tsx'
 import FriendsList from './pages/FriendsList.tsx'
 import ChatList from './pages/ChatList.tsx'
+import { UserIdProvider } from './contexts/UserIdContext.tsx'
 
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Routes>
-          <Route path="/" element={<FriendsList />} />
-          <Route path="/chatlist" element={<ChatList />} />
-          <Route path="/room" element={<ChatRoom />} />
-        </Routes>
+        <UserIdProvider>
+          <Routes>
+            <Route path="/" element={<FriendsList />} />
+            <Route path="/chatlist" element={<ChatList />} />
+            <Route path="/room" element={<ChatRoom />} />
+          </Routes>
+        </UserIdProvider>
       </ThemeProvider>
     </>
   )
