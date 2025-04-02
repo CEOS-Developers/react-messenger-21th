@@ -8,6 +8,6 @@ interface TabBarOption {
 
 export const useTabBarOption = create<TabBarOption>((set) => ({
   selectedTab:
-    (localStorage.getItem('selectedTab') as TabBarOptionList) || '친구',
+    (sessionStorage.getItem('selectedTab') as TabBarOptionList) || '친구',
   setSelectedTab: (tab) => set({ selectedTab: tab }),
 }));

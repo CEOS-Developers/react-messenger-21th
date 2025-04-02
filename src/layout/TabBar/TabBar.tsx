@@ -17,7 +17,7 @@ const TabBar = (): JSX.Element => {
       top: 0,
     });
 
-    localStorage.setItem('selectedTab', tabName);
+    sessionStorage.setItem('selectedTab', tabName);
   };
 
   return (

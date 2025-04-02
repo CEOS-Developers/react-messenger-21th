@@ -13,6 +13,8 @@ export const TabBarContainer = styled.nav`
 
   background: #fbfbfb;
 
+  box-shadow: 0px -2px 24px 0px rgba(5, 5, 5, 0.09);
+
   @media (max-width: 375px) {
     padding: 0.8rem 3rem 3.2rem;
   }
