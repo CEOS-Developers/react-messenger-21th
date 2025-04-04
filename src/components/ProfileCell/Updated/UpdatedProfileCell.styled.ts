@@ -46,8 +46,16 @@ export const UpdatedProfileItemLink = styled.a`
 `;
 
 export const UpdatedProfileName = styled.p`
+  width: 100%;
+  height: fit-content;
+  text-align: center;
+
   ${({ theme }) => theme.fontStyles.Caption1_medium}
   color: ${({ theme }) => theme.colors.Grayscale[1000]};
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   user-select: none;
 `;
