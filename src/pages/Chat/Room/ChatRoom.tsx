@@ -1,6 +1,7 @@
 import { JSX } from 'react/jsx-runtime';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams } from 'react-router';
+import { v4 as uuidv4 } from 'uuid';
 
 import { CHAT_TEXTAREA_MAX_HEIGHT, MY_USER_INFO } from '@/constants/Chat';
 
@@ -55,7 +56,7 @@ const ChatRoom = (): JSX.Element => {
     if (chatInputValue.trim() === '') return;
 
     const newMessage = {
-      messageId: `msg-${Date.now()}`,
+      messageId: uuidv4(),
       senderId: MY_USER_INFO.userId,
       senderName: MY_USER_INFO.userName,
       content: chatInputValue,
@@ -81,8 +82,10 @@ const ChatRoom = (): JSX.Element => {
   };
 
   useEffect(() => {
-    localStorage.setItem('chatMessages', JSON.stringify(messagesByRoom));
-  }, [messagesByRoom]);
+    if (messagesByRoom[safeRoomId]?.length > 0) {
+      localStorage.setItem('chatMessages', JSON.stringify(messagesByRoom));
+    }
+  }, [messagesByRoom, safeRoomId]);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });

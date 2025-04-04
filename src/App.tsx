@@ -16,6 +16,10 @@ function App() {
           <Route index element={<ChatList />} />
           <Route path=":roomId" element={<ChatRoom />} />
         </Route>
+
+        <Route path="open-chat" element={<div>Open Chat</div>} />
+        <Route path='shop' element={<div>Shop</div>} />
+        <Route path='more' element={<div>More</div>} />
       </Route>
     </Routes>
   );

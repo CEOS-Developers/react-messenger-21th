@@ -17,7 +17,17 @@ export const PROFILE_DETAIL_SUB_OPTION_LIST = [
 ];
 
 export const PROFILE_DETAIL_MAIN_OPTION_LIST = [
-  { id: 1, icon: I.ChatIcon, name: '1:1 채팅' },
-  { id: 2, icon: I.LinkIcon, name: 'SNS 링크' },
-  { id: 3, icon: I.SettingIconMain, name: '설정' },
+  {
+    id: 1,
+    icon: I.ChatIcon,
+    name: '1:1 채팅',
+    type: 'chat',
+  },
+  {
+    id: 2,
+    icon: I.LinkIcon,
+    name: 'SNS 링크',
+    type: 'sns',
+  },
+  { id: 3, icon: I.SettingIconMain, name: '설정', type: 'settings' },
 ];

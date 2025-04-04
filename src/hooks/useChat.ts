@@ -26,6 +26,14 @@ export const useChatMessage = (roomId: string) => {
   const { loadMessages } = useChatMessageByRoom();
 
   useEffect(() => {
+    const savedMessages = localStorage.getItem('chatMessages');
+    const parsedMessages = JSON.parse(savedMessages || '{}');
+
+    if (parsedMessages[roomId]) {
+      loadMessages(roomId, parsedMessages[roomId]);
+      return;
+    }
+
     const fetchChatMessage = async () => {
       try {
         const response = await axios.get('/mock/chatMessages.json');
