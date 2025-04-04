@@ -1,6 +1,6 @@
 import { JSX } from 'react/jsx-runtime';
 
-import { UserProfile } from '@/types/Profile';
+import { UserProfile } from '@/schemas/userProfile';
 
 import * as S from './FriendPageSubTitle.styled';
 

@@ -1,13 +1,18 @@
 import { JSX } from 'react/jsx-runtime';
+import { useNavigate } from 'react-router';
 
 import * as C from '@/constants/Profile';
+import { MY_USER_INFO } from '@/constants/Chat';
 
-import { CancelIcon } from '@/icons/Profile';
+import { UserProfile } from '@/schemas/userProfile';
+
+import * as I from '@/icons/Profile';
 import ProfileImageBox from '../ProfileImageBox/ProfileImageBox';
 
-import { UserProfile } from '@/types/Profile';
-
 import { useProfileOpen } from '@/stores/useProfileOpen';
+import { useTabBarOption } from '@/stores/useTabBarOption';
+
+import { generateChatRoomId } from '@/utils/generateRoomId';
 
 import * as S from './ProfileDetail.styled';
 
@@ -16,7 +21,35 @@ type ProfileDetailProps = {
 };
 
 const ProfileDetail = ({ userProfile }: ProfileDetailProps): JSX.Element => {
+  const navigate = useNavigate();
+
   const { closeProfile } = useProfileOpen();
+  const { setSelectedTab } = useTabBarOption();
+
+  const handlePersonalChatClick = () => {
+    // 내 userId와 상대방 userId를 사용해 개인 채팅방 생성
+    const myUserId = MY_USER_INFO.userId;
+    const targetUserId = userProfile.userId;
+
+    if (!targetUserId) {
+      console.error('상대방의 userId가 없습니다.');
+      return;
+    }
+
+    const roomId = generateChatRoomId(myUserId, targetUserId);
+
+    // 프로필 상세보기 닫은 후 채팅방으로 이동
+    closeProfile();
+
+    // 2초 후에 채팅방으로 이동
+    setTimeout(() => {
+      navigate(`chat/room=${roomId}`);
+
+      // selectedTab 상태 업데이트
+      setSelectedTab('채팅');
+      sessionStorage.setItem('selectedTab', '채팅');
+    }, 300);
+  };
 
   return (
     <S.ProfileDetailContainer
@@ -27,7 +60,7 @@ const ProfileDetail = ({ userProfile }: ProfileDetailProps): JSX.Element => {
     >
       <S.ProfileDetailHeaderSection>
         <S.ProfileDetailOptionButton onClick={closeProfile}>
-          <CancelIcon />
+          <I.CancelIcon />
         </S.ProfileDetailOptionButton>
         <S.ProfileDetailSubOptionList>
           {C.PROFILE_DETAIL_SUB_OPTION_LIST.map((option) => (
@@ -48,14 +81,30 @@ const ProfileDetail = ({ userProfile }: ProfileDetailProps): JSX.Element => {
         <S.ProfileUsername>{userProfile.username}</S.ProfileUsername>
         <S.ProfileDetailMainOptionSection>
           <S.ProfileDetailMainOptionList>
-            {C.PROFILE_DETAIL_MAIN_OPTION_LIST.map((option) => (
-              <S.ProfileDetailOptionItem key={option.id}>
-                <S.ProfileDetailOptionLink>
-                  <option.icon />
-                  {option.name}
-                </S.ProfileDetailOptionLink>
-              </S.ProfileDetailOptionItem>
-            ))}
+            <S.ProfileDetailOptionItem>
+              <S.ProfileDetailOptionLink onClick={handlePersonalChatClick}>
+                <I.ChatIcon />
+                1:1 채팅
+              </S.ProfileDetailOptionLink>
+            </S.ProfileDetailOptionItem>
+
+            <S.ProfileDetailOptionItem>
+              <S.ProfileDetailOptionLink
+                href={userProfile.snsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <I.LinkIcon />
+                SNS 링크
+              </S.ProfileDetailOptionLink>
+            </S.ProfileDetailOptionItem>
+
+            <S.ProfileDetailOptionItem>
+              <S.ProfileDetailOptionLink>
+                <I.SettingIconMain />
+                설정
+              </S.ProfileDetailOptionLink>
+            </S.ProfileDetailOptionItem>
           </S.ProfileDetailMainOptionList>
         </S.ProfileDetailMainOptionSection>
       </S.ProfileDetailMainSection>

@@ -1,25 +1,32 @@
 import { JSX } from 'react/jsx-runtime';
 
-import { friendProfileList } from '@/mock/friendProfile';
-
 import { PROFILE_SIZE_LIST } from '@/constants/Profile';
 
 import FriendPageSubTitle from '@/components/FriendPageSubTitle/FriendPageSubTitle';
 import ProfileImageBox from '@/components/ProfileImageBox/ProfileImageBox';
 
 import { useProfileOpen } from '@/stores/useProfileOpen';
+import { useFriendListStore } from '@/stores/useFriendListStore';
+
+import { useFriendList } from '@/hooks/useFriendList';
 
 import * as S from './FriendProfileCell.styled';
 
 const FriendProfileCell = (): JSX.Element => {
   const { openProfile } = useProfileOpen();
 
+  // 친구 리스트 불러오기
+  useFriendList();
+
+  // 친구 리스트 상태 관리
+  const { friendList } = useFriendListStore();
+
   return (
     <S.FriendProfileCellWrapper>
-      <FriendPageSubTitle subTitle="친구" friendList={friendProfileList} />
+      <FriendPageSubTitle subTitle="친구" friendList={friendList} />
       <S.FriendProfileCellSection>
         <S.FriendProfileCellList>
-          {friendProfileList.map((profile) => (
+          {friendList.map((profile) => (
             <S.FriendProfileCellItem key={profile.userId}>
               <S.FriendProfileCellItemLink onClick={() => openProfile(profile)}>
                 <ProfileImageBox

@@ -1,6 +1,5 @@
 import { create } from 'zustand';
-
-import { UserProfile } from '@/types/Profile';
+import { UserProfile } from '@/schemas/userProfile';
 
 interface ProfileOpen {
   isProfileOpen: boolean;
@@ -15,11 +14,12 @@ export const useProfileOpen = create<ProfileOpen>((set) => ({
     userId: null,
     username: '',
     profileImage: '',
+    snsUrl: '',
   },
   openProfile: (userProfile) => set({ isProfileOpen: true, userProfile }),
   closeProfile: () =>
     set({
       isProfileOpen: false,
-      userProfile: { userId: null, username: '', profileImage: '' },
+      userProfile: { userId: null, username: '', profileImage: '', snsUrl: '' },
     }),
 }));

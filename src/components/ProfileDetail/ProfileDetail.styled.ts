@@ -45,7 +45,7 @@ export const ProfileDetailOptionButton = styled.button`
 `;
 
 export const ProfileDetailOptionLink = styled.a`
-  width: fit-content;
+  width: 5.6rem;
   height: fit-content;
 
   display: flex;
