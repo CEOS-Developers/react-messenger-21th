@@ -7,4 +7,5 @@ export default interface StyledProps {
   $needBigMargin?: boolean
   $color?: string
   $margin?: number
+  $isOpen?: boolean
 }
