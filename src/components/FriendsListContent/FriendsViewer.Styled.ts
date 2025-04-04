@@ -5,4 +5,10 @@ const Wrapper = styled(ScrollDiv)`
   max-height: 614px;
 `
 
-export { Wrapper }
+const List = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`
+
+export { Wrapper, List }

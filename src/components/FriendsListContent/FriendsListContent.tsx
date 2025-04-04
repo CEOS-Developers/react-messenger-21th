@@ -3,8 +3,31 @@ import { ProfileDefault } from '../../assets/Icons/Profile'
 import * as s from './FriendsListContent.Styled'
 import ContentHeader from '../common/ContentHeader'
 import FriendsViewer from './FriendsViewer'
+import { useUserStore } from '../../stores/useUserStore'
+import { useEffect } from 'react'
+import { userData } from '../../assets/data/user.json'
+import { defaultUser } from '../../assets/data/defaultUser'
 
 const FriendsListContent = () => {
+  const userId = 1
+  const { user, setUser } = useUserStore()
+
+  useEffect(() => {
+    const userObj = userData.find((user) => user.id === userId) ?? defaultUser
+    setUser(userObj)
+  }, [])
+
+  const friendsData = user.friends
+    .map((id) => {
+      const friend = userData.find((user) => user.id === id)
+      if (!friend) return null
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { friends, joinedRooms, ...rest } = friend
+      return rest
+    })
+    .filter((friend) => friend !== null)
+
   return (
     <s.FLContent>
       <s.HeaderWrapper>
@@ -12,14 +35,14 @@ const FriendsListContent = () => {
           $isTransparent={true}
           leftChild={
             <s.UserProfileContainer>
-              <ProfileDefault color="skyblue" />
-              <s.Name>yeeun</s.Name>
+              <ProfileDefault color={user.profileColor} />
+              <s.Name>{user.name}</s.Name>
             </s.UserProfileContainer>
           }
           rightChild={<HomeIcon />}
         />
       </s.HeaderWrapper>
-      <FriendsViewer />
+      <FriendsViewer friendsData={friendsData} />
     </s.FLContent>
   )
 }
