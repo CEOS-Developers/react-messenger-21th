@@ -20,7 +20,7 @@ const ChatRoomPreview = ({
   const { roomId, roomName, lastMessage, unreadCount } = chatPreview;
 
   return (
-    <S.ChatRoomPreviewContainer to={`${roomId}`}>
+    <S.ChatRoomPreviewContainer to={`room-${roomId}`}>
       <S.ChatRoomPreviewProfileWrapper>
         <ProfileImageBox
           size={PROFILE_SIZE_LIST.personalChat}

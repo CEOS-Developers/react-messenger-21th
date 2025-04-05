@@ -46,9 +46,10 @@ const ChatRoom = (): JSX.Element => {
 
   // 채팅방 이름을 가져오기 위한 채팅방 검색
   const selectedChatRoomMetaData = chatPreviewList.find(
-    (chatRoom) => chatRoom.roomId === roomId
+    (chatRoom) => `room-${chatRoom.roomId}` === `${roomId}`
   );
 
+  // 채팅방 이름
   const chatRoomName = selectedChatRoomMetaData
     ? selectedChatRoomMetaData.roomName
     : initialChatPreview.roomName;
@@ -183,6 +184,7 @@ const ChatRoom = (): JSX.Element => {
         <S.ChatRoomInputForm onSubmit={handleSendChatMessage}>
           <S.ChatTextareaContainer>
             <S.ChatTextarea
+              autoFocus={true}
               ref={chatInputRef}
               rows={1}
               placeholder="메세지를 입력하세요."
