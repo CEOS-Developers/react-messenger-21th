@@ -36,9 +36,33 @@ export const ChatRoomPreviewContent = styled.div`
   justify-content: center;
 `;
 
-export const ChatRoomName = styled.p`
+export const MyChatRoomNameContainer = styled.div`
+  width: fit-content;
+  height: fit-content;
   margin-bottom: 0.2rem;
 
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+`;
+
+export const MyChatRoomIndicator = styled.div`
+  width: 1.8rem;
+  height: 1.8rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  ${({ theme }) => theme.fontStyles.Caption2}
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.Grayscale[0]};
+  background-color: ${({ theme }) => theme.colors.Grayscale[900]};
+`;
+
+export const ChatRoomName = styled.p`
   ${({ theme }) => theme.fontStyles.Body1_medium};
   color: ${({ theme }) => theme.colors.Grayscale[1000]};
 `;

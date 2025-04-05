@@ -9,6 +9,8 @@ import ProfileImageBox from '../ProfileImageBox/ProfileImageBox';
 import { formatMessageTime } from '@/utils/formatDate';
 
 import * as S from './ChatRoomPreview.styled';
+import { generateChatRoomId } from '@/utils/generateRoomId';
+import { MY_USER_INFO } from '@/constants/User';
 
 interface ChatRoomPreviewProps {
   chatPreview: ChatPreview;
@@ -19,6 +21,12 @@ const ChatRoomPreview = ({
 }: ChatRoomPreviewProps): JSX.Element => {
   const { roomId, roomName, lastMessage, unreadCount } = chatPreview;
 
+  const myChatRoomId = generateChatRoomId(
+    MY_USER_INFO.userId,
+    MY_USER_INFO.userId
+  );
+  const isMyChatRoom = roomId === myChatRoomId;
+
   return (
     <S.ChatRoomPreviewContainer to={`room-${roomId}`}>
       <S.ChatRoomPreviewProfileWrapper>
@@ -27,7 +35,11 @@ const ChatRoomPreview = ({
           username={roomName}
         />
         <S.ChatRoomPreviewContent>
-          <S.ChatRoomName>{chatPreview.roomName}</S.ChatRoomName>
+          <S.MyChatRoomNameContainer>
+            {isMyChatRoom && <S.MyChatRoomIndicator>나</S.MyChatRoomIndicator>}
+            <S.ChatRoomName>{chatPreview.roomName}</S.ChatRoomName>
+          </S.MyChatRoomNameContainer>
+
           <S.ChatRoomLastMessage>{lastMessage.content}</S.ChatRoomLastMessage>
         </S.ChatRoomPreviewContent>
       </S.ChatRoomPreviewProfileWrapper>

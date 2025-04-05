@@ -2,7 +2,7 @@ import { JSX } from 'react/jsx-runtime';
 import { useNavigate } from 'react-router';
 
 import * as C from '@/constants/Profile';
-import { MY_USER_INFO } from '@/constants/Chat';
+import { MY_USER_INFO } from '@/constants/User';
 
 import { UserProfile } from '@/schemas/userProfile';
 
@@ -23,6 +23,9 @@ type ProfileDetailProps = {
 
 const ProfileDetail = ({ userProfile }: ProfileDetailProps): JSX.Element => {
   const navigate = useNavigate();
+
+  // 현재 프로필이 내 프로필인지 확인
+  const isMyProfile = MY_USER_INFO.userId === userProfile.userId;
 
   const { closeProfile } = useProfileOpen();
   const { setSelectedTab } = useTabBarOption();
@@ -114,7 +117,7 @@ const ProfileDetail = ({ userProfile }: ProfileDetailProps): JSX.Element => {
             <S.ProfileDetailOptionItem>
               <S.ProfileDetailOptionLink onClick={handlePersonalChatClick}>
                 <I.ChatIcon />
-                1:1 채팅
+                {isMyProfile ? '나와의 채팅' : '1:1 채팅'}
               </S.ProfileDetailOptionLink>
             </S.ProfileDetailOptionItem>
 
@@ -132,7 +135,7 @@ const ProfileDetail = ({ userProfile }: ProfileDetailProps): JSX.Element => {
             <S.ProfileDetailOptionItem>
               <S.ProfileDetailOptionLink>
                 <I.SettingIconMain />
-                설정
+                {isMyProfile ? '프로필 편집' : '설정'}
               </S.ProfileDetailOptionLink>
             </S.ProfileDetailOptionItem>
           </S.ProfileDetailMainOptionList>

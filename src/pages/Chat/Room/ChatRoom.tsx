@@ -3,7 +3,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import { v4 as uuidv4 } from 'uuid';
 
-import { CHAT_TEXTAREA_MAX_HEIGHT, MY_USER_INFO } from '@/constants/Chat';
+import { CHAT_TEXTAREA_MAX_HEIGHT } from '@/constants/Chat';
+import { MY_USER_INFO } from '@/constants/User';
 
 import { ChatMessageType } from '@/types/Chat';
 

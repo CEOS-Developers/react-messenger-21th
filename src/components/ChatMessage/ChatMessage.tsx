@@ -1,6 +1,6 @@
 import { JSX } from 'react/jsx-runtime';
 
-import { MY_USER_INFO } from '@/constants/Chat';
+import { MY_USER_INFO } from '@/constants/User';
 import { PROFILE_SIZE_LIST } from '@/constants/Profile';
 
 import { ChatRoomMessage } from '@/schemas/chatRoomMessage';
