@@ -1,20 +1,25 @@
 import { JSX } from 'react/jsx-runtime';
 
-import { birthdayProfileList } from '@/mock/birthdayProfile';
-
 import { PROFILE_SIZE_LIST } from '@/constants/Profile';
 
 import FriendPageSubTitle from '@/components/FriendPageSubTitle/FriendPageSubTitle';
 import ProfileImageBox from '@/components/ProfileImageBox/ProfileImageBox';
+import GiftButton from '@/components/Button/Gift/GiftButton';
 
+import { UserProfile } from '@/schemas/userProfile';
 import { useProfileOpen } from '@/stores/useProfileOpen';
 
 import { formatDate } from '@/utils/formatDate';
 
 import * as S from './BirthdayProfileCell.styled';
-import GiftButton from '@/components/Button/Gift/GiftButton';
 
-const BirthdayProfileCell = (): JSX.Element => {
+type BirthdayProfileCellProps = {
+  birthdayFriendList: UserProfile[];
+};
+
+const BirthdayProfileCell = ({
+  birthdayFriendList,
+}: BirthdayProfileCellProps): JSX.Element => {
   const todayDate = formatDate();
 
   const { openProfile } = useProfileOpen();
@@ -23,11 +28,11 @@ const BirthdayProfileCell = (): JSX.Element => {
     <S.BirthdayProfileCellContainer>
       <FriendPageSubTitle
         subTitle="생일인 친구"
-        friendList={birthdayProfileList}
+        friendList={birthdayFriendList}
       />
       <S.BirthdayProfileSection>
         <S.BirthdayProfileCellList>
-          {birthdayProfileList.map((profile) => (
+          {birthdayFriendList.map((profile) => (
             <S.BirthdayProfileCellItem key={profile.userId}>
               <S.BirthdayProfileCellItemLink
                 onClick={() => openProfile(profile)}
