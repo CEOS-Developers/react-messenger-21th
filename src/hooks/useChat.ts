@@ -10,9 +10,24 @@ export const useChat = () => {
   useEffect(() => {
     const fetchChatList = async () => {
       try {
+        const storedChatPreviewList = localStorage.getItem('chatPreviewList');
+
+        if (storedChatPreviewList) {
+          setChatPreviewList(JSON.parse(storedChatPreviewList));
+          return;
+        }
+
+        // 채팅방 목록 Mock Data 가져오기
         const response = await axios.get('/mock/chatList.json');
         const chatPreviewList = response.data;
+
         setChatPreviewList(chatPreviewList);
+
+        // 채팅방 목록(Initial Data)을 로컬 스토리지에 저장
+        localStorage.setItem(
+          'chatPreviewList',
+          JSON.stringify(chatPreviewList)
+        );
       } catch (error) {
         console.error('채팅방 목록 Fetch 실패:', error);
       }
