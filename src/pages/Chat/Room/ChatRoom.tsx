@@ -45,8 +45,12 @@ const ChatRoom = (): JSX.Element => {
   useChatMessage(safeRoomId);
 
   const { messagesByRoom, sendMessage } = useChatMessageByRoom();
-  const { initialChatPreview, setInitalChatPreview, chatPreviewList } =
-    useChatPreviewList();
+  const {
+    initialChatPreview,
+    setInitalChatPreview,
+    chatPreviewList,
+    setChatPreviewList,
+  } = useChatPreviewList();
 
   // 채팅방 이름을 가져오기 위한 채팅방 검색
   const selectedChatRoomMetaData = chatPreviewList.find(
@@ -95,6 +99,28 @@ const ChatRoom = (): JSX.Element => {
 
     // 메세지 전송
     sendMessage(safeRoomId, newMessage);
+
+    // lastMessage 업데이트 (채팅방 존재 여부 확인 후 채팅방 메타데이터 업데이트)
+    if (selectedChatRoomMetaData) {
+      const updatedChatPreview: ChatPreview = {
+        ...selectedChatRoomMetaData,
+        lastMessage: newMessage,
+      };
+
+      // roomId에 해당하는 존재하는 객체의 lastMessage 필드 값만 변경
+      const updatedChatPreviewList = chatPreviewList.map((chatPreview) =>
+        chatPreview.roomId === updatedChatPreview.roomId
+          ? updatedChatPreview
+          : chatPreview
+      );
+
+      setChatPreviewList(updatedChatPreviewList);
+
+      localStorage.setItem(
+        'chatPreviewList',
+        JSON.stringify(updatedChatPreviewList)
+      );
+    }
 
     // 채팅 입력창 초기화
     setChatInputValue('');
