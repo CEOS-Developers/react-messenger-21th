@@ -16,8 +16,11 @@ const ChatList = (): JSX.Element => {
     <>
       {chatPreviewList.length > 0 ? (
         <S.ChatListContainer>
-          {chatPreviewList.map((chat) => (
-            <ChatRoomPreview key={chat.roomId} chatPreview={chat} />
+          {chatPreviewList.map((chatPreview) => (
+            <ChatRoomPreview
+              key={chatPreview.roomId}
+              chatPreview={chatPreview}
+            />
           ))}
         </S.ChatListContainer>
       ) : (

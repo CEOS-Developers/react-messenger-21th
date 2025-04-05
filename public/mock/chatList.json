@@ -14,10 +14,10 @@
       "messageId": "message-123",
       "senderId": "user-456",
       "senderName": "임승민",
-      "content": "너 누군데 ㅋㅋ",
+      "content": "헤어지자",
       "type": "text",
       "sentAt": "2025-03-28T12:30:00Z"
     },
-    "unreadCount": 1
+    "unreadCount": 2
   }
 ]

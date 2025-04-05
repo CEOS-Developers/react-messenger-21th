@@ -77,7 +77,6 @@ const ChatRoom = (): JSX.Element => {
       const newChatRoomMetaData = {
         ...initialChatPreview,
         lastMessage: newMessage,
-        unreadCount: 1, //  메세지 전송 시, 읽지 않은 메세지 개수 1 증가
       };
 
       // 채팅방 메타데이터 전역 상태 변경

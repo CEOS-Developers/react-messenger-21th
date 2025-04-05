@@ -35,7 +35,7 @@ const ChatRoomPreview = ({
         <S.LastMessageTime>
           {formatMessageTime(lastMessage?.sentAt)}
         </S.LastMessageTime>
-        <S.UnReadCount>{unreadCount}</S.UnReadCount>
+        {unreadCount !== 0 && <S.UnReadCount>{unreadCount}</S.UnReadCount>}
       </S.LastMessageTimeUnReadCountWrapper>
     </S.ChatRoomPreviewContainer>
   );

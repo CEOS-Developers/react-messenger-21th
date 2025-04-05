@@ -64,11 +64,12 @@ export const ChatRoomLastMessage = styled.p`
 export const LastMessageTimeUnReadCountWrapper = styled.div`
   width: fit-content;
   height: 100%;
+  padding-top: 0.8rem;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: flex-end;
+  gap: 0.6rem;
 `;
 
 export const LastMessageTime = styled.p`
