@@ -8,7 +8,6 @@ import MultiProfileButton from '@/components/Button/MultiProfile/MultiProfileBut
 
 import { useProfileOpen } from '@/stores/useProfileOpen';
 
-
 import * as S from './MyProfileCell.styled';
 
 type MyProfileCellProps = {
@@ -21,13 +20,15 @@ const MyProfileCell = ({
   const { openProfile } = useProfileOpen();
 
   return (
-    <S.MyProfileCellContainer onClick={() => openProfile(MY_USER_INFO)}>
-      <S.MyProfileInfoSection>
-        <ProfileImageBox size={PROFILE_SIZE_LIST.my} username={profileName} />
-        <S.MyProfileName>{profileName}</S.MyProfileName>
-      </S.MyProfileInfoSection>
-      <MultiProfileButton />
-    </S.MyProfileCellContainer>
+    <S.MyProfileCellWrapper>
+      <S.MyProfileCellContainer onClick={() => openProfile(MY_USER_INFO)}>
+        <S.MyProfileInfoSection>
+          <ProfileImageBox size={PROFILE_SIZE_LIST.my} username={profileName} />
+          <S.MyProfileName>{profileName}</S.MyProfileName>
+        </S.MyProfileInfoSection>
+        <MultiProfileButton />
+      </S.MyProfileCellContainer>
+    </S.MyProfileCellWrapper>
   );
 };
 

@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const MyProfileCellWrapper = styled.section`
+  width: 100%;
+  height: fit-content;
+  padding-bottom: 0.8rem;
+`;
+
 export const MyProfileCellContainer = styled.a`
   position: relative;
 
