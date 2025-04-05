@@ -3,17 +3,31 @@ import { MultipleProfile, ProfileDefault } from '../../assets/Icons/Profile'
 import { formatTime } from '../../utils/format'
 import { userData } from '../../assets/data/user.json'
 import { useUserStore } from '../../stores/useUserStore'
+import { ChatRoom } from '../../interface/ChatRoom'
+import getUnreadCount from '../../utils/getUnreadCount'
 
-const RoomItem = ({ chatRoomId, roomName, member, chats }) => {
-  const unreadCount = '2'
+interface RoomItemProps extends ChatRoom {
+  lastSeenTime: number
+}
 
+const RoomItem = ({
+  chatRoomId,
+  roomName,
+  member,
+  chats,
+  lastSeenTime,
+}: RoomItemProps) => {
   const { user } = useUserStore()
   const memberIds = member.filter((memberId: number) => memberId !== user.id)
 
-  const memberNames = memberIds.map(
-    (memberId: number) =>
-      userData.find((user) => user.id === memberId)?.name || '알 수 없음'
-  )
+  const determinedRoomName =
+    roomName ??
+    memberIds
+      .map(
+        (memberId: number) =>
+          userData.find((user) => user.id === memberId)?.name || '알 수 없음'
+      )
+      .join(', ')
 
   const memberColors = memberIds
     .slice(0, 4)
@@ -24,6 +38,8 @@ const RoomItem = ({ chatRoomId, roomName, member, chats }) => {
 
   const lastChatKey = Object.keys(chats).slice(-1)[0]
   const lastChat = chats[lastChatKey][chats[lastChatKey].length - 1]
+
+  const unreadCount = getUnreadCount(chats, lastSeenTime)
   return (
     <s.Wapper>
       <s.Container>
@@ -36,7 +52,7 @@ const RoomItem = ({ chatRoomId, roomName, member, chats }) => {
         <s.TextContainer>
           <div>
             <s.TitleContainer>
-              <s.Name>{roomName ?? memberNames.join(', ')}</s.Name>
+              <s.Name>{determinedRoomName}</s.Name>
               <s.MemCount>
                 {member.length > 2 ? member.length : null}
               </s.MemCount>
@@ -45,7 +61,9 @@ const RoomItem = ({ chatRoomId, roomName, member, chats }) => {
           </div>
           <s.TimeContainer $isM={true}>
             <s.Time>{formatTime(lastChat.id)}</s.Time>
-            <s.BlackCircle>{unreadCount}</s.BlackCircle>
+            {unreadCount > 0 ? (
+              <s.BlackCircle>{unreadCount}</s.BlackCircle>
+            ) : null}
           </s.TimeContainer>
         </s.TextContainer>
       </s.Container>

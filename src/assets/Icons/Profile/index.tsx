@@ -49,8 +49,8 @@ const ProfileMini = ({ color }: ProfileProps) => {
 const MultipleProfile = ({ colors }: { colors: string[] }) => {
   return (
     <s.Profile2by2>
-      {colors.map((color) => (
-        <ProfileMini color={color} />
+      {colors.map((color, idx) => (
+        <ProfileMini key={idx} color={color} />
       ))}
     </s.Profile2by2>
   )

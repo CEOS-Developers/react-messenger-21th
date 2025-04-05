@@ -2,7 +2,7 @@ import SearchBox from '../common/SearchBox'
 import * as s from './ChatListViewer.Styled'
 import { chatRoomData } from '../../assets/data/chatRoom.json'
 import { useUserStore } from '../../stores/useUserStore'
-import RoomItem from './roomItem'
+import RoomItem from './RoomItem'
 
 const ChatListViewer = () => {
   const { user } = useUserStore()
@@ -19,7 +19,14 @@ const ChatListViewer = () => {
       <SearchBox />
       <s.List>
         {rooms.map(
-          (room) => room && <RoomItem key={room.chatRoomId} {...room} />
+          (room, idx) =>
+            room && (
+              <RoomItem
+                key={room.chatRoomId}
+                {...room}
+                lastSeenTime={user.joinedRooms[idx].lastSeenTime}
+              />
+            )
         )}
       </s.List>
     </s.Wrapper>
