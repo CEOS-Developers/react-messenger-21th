@@ -14,6 +14,7 @@ import { useChatMessageByRoom } from '@/stores/useChatMessageByRoom';
 import { useChatPreviewList } from '@/stores/useChatPreviewList';
 
 import { ChatRoomMessage } from '@/schemas/chatRoomMessage';
+import { ChatPreview } from '@/schemas/chatPreview';
 
 import { sortMessageByDate } from '@/utils/sortMessageByDate';
 import { isSameDate, isSameTimeGroup } from '@/utils/formatDate';
@@ -30,6 +31,8 @@ const ChatRoom = (): JSX.Element => {
   const chatEndRef = useRef<HTMLDivElement | null>(null);
   const [chatInputValue, setChatInputValue] = useState<string>('');
   const [isComposing, setIsComposing] = useState<boolean>(false);
+
+  const [totalUnreadCount, setTotalUnreadCount] = useState<number>(0);
 
   // Textarea 자동 크기 조절
   useAutoResizeTextarea(chatInputRef, chatInputValue, CHAT_TEXTAREA_MAX_HEIGHT);
@@ -117,6 +120,23 @@ const ChatRoom = (): JSX.Element => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [sortChatMessageByDate]);
 
+  // 안 읽은 총 메세지 수 계산 로직 (초기 렌더링 시 - 실시간성 반영 x)
+  useEffect(() => {
+    const storedChatPreviewList = localStorage.getItem('chatPreviewList');
+    if (storedChatPreviewList) {
+      const parsedChatPreviewList = JSON.parse(storedChatPreviewList);
+
+      const totalUnreadCount = parsedChatPreviewList.reduce(
+        (acc: number, chatRoom: ChatPreview) => {
+          return acc + chatRoom.unreadCount;
+        },
+        0
+      );
+
+      setTotalUnreadCount(totalUnreadCount);
+    }
+  }, []);
+
   return (
     <S.ChatRoomContainer
       initial={{ x: '100%', opacity: 0 }}
@@ -127,7 +147,7 @@ const ChatRoom = (): JSX.Element => {
       <S.ChatRoomHeaderSection>
         <S.BackToChatRoomLink to={'/chat'}>
           <I.BackArrowIcon />
-          <S.TotalUnreadCount>1</S.TotalUnreadCount>
+          <S.TotalUnreadCount>{totalUnreadCount}</S.TotalUnreadCount>
         </S.BackToChatRoomLink>
         <S.ChatRoomName>{chatRoomName}</S.ChatRoomName>
         <S.ChatRoomHeaderOptions>
