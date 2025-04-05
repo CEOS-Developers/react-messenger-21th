@@ -10,6 +10,7 @@ export const updatedProfileList: UpdatedProfile[] = [
     username: '유경',
     profileImage: '',
     snsUrl: 'https://www.instagram.com/',
+    birthday: '1999-01-01',
     isUpdated: true,
   },
   {
@@ -17,6 +18,7 @@ export const updatedProfileList: UpdatedProfile[] = [
     username: '봉윤',
     profileImage: '',
     snsUrl: 'https://www.instagram.com/',
+    birthday: '1999-01-01',
     isUpdated: true,
   },
   {
@@ -24,6 +26,7 @@ export const updatedProfileList: UpdatedProfile[] = [
     username: '옥유진',
     profileImage: '',
     snsUrl: 'https://www.instagram.com/',
+    birthday: '1999-01-01',
     isUpdated: false,
   },
   {
@@ -31,6 +34,7 @@ export const updatedProfileList: UpdatedProfile[] = [
     username: 'Kyusun',
     profileImage: '',
     snsUrl: 'https://www.instagram.com/',
+    birthday: '1999-01-01',
     isUpdated: true,
   },
   {
@@ -38,6 +42,7 @@ export const updatedProfileList: UpdatedProfile[] = [
     username: '승표',
     profileImage: '',
     snsUrl: 'https://www.instagram.com/',
+    birthday: '1999-01-01',
     isUpdated: false,
   },
   {
@@ -45,6 +50,7 @@ export const updatedProfileList: UpdatedProfile[] = [
     username: '구자용',
     profileImage: '',
     snsUrl: 'https://www.instagram.com/',
+    birthday: '1999-01-01',
     isUpdated: true,
   },
   {
@@ -52,6 +58,7 @@ export const updatedProfileList: UpdatedProfile[] = [
     username: '이지원',
     profileImage: '',
     snsUrl: 'https://www.instagram.com/',
+    birthday: '1999-01-01',
     isUpdated: true,
   },
   {
@@ -59,6 +66,7 @@ export const updatedProfileList: UpdatedProfile[] = [
     username: '박시원',
     profileImage: '',
     snsUrl: 'https://www.instagram.com/',
+    birthday: '1999-01-01',
     isUpdated: false,
   },
   {
@@ -66,6 +74,7 @@ export const updatedProfileList: UpdatedProfile[] = [
     username: '김예진',
     profileImage: '',
     snsUrl: 'https://www.instagram.com/',
+    birthday: '1999-01-01',
     isUpdated: true,
   },
   {
@@ -73,6 +82,7 @@ export const updatedProfileList: UpdatedProfile[] = [
     username: '김서영',
     profileImage: '',
     snsUrl: 'https://www.instagram.com/',
+    birthday: '1999-01-01',
     isUpdated: true,
   },
   {
@@ -80,6 +90,7 @@ export const updatedProfileList: UpdatedProfile[] = [
     username: '일킥 김예희(m)',
     profileImage: '',
     snsUrl: 'https://www.instagram.com/',
+    birthday: '1999-01-01',
     isUpdated: true,
   },
 ];

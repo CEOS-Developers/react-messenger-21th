@@ -15,11 +15,18 @@ export const useProfileOpen = create<ProfileOpen>((set) => ({
     username: '',
     profileImage: '',
     snsUrl: '',
+    birthday: '',
   },
   openProfile: (userProfile) => set({ isProfileOpen: true, userProfile }),
   closeProfile: () =>
     set({
       isProfileOpen: false,
-      userProfile: { userId: null, username: '', profileImage: '', snsUrl: '' },
+      userProfile: {
+        userId: null,
+        username: '',
+        profileImage: '',
+        snsUrl: '',
+        birthday: '',
+      },
     }),
 }));
