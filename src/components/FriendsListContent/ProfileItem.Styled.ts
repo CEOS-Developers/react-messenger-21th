@@ -20,10 +20,12 @@ const TextContainer = styled.div`
 
 const Name = styled.p<StyledProps>`
   ${Body_1}
+  color: ${({ theme }) => theme.colors.gray13};
 `
 
 const Message = styled.p<StyledProps>`
   ${Body_2}
+  color: ${({ theme }) => theme.colors.gray12};
   padding-bottom: 10px;
 `
 

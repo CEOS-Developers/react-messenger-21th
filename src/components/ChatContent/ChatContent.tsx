@@ -17,7 +17,7 @@ import { Chat } from '../../interface/Chat'
 import { formatDateForData } from '../../utils/format'
 import { useSetUserId, useUserId } from '../../contexts/UserIdContext'
 
-const ROOM_ID = '550e8400-e29b-41d4-a716-446655440000'
+const ROOM_ID = 0
 
 const ChatContent = () => {
   const userId = useUserId()

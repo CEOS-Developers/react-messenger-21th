@@ -39,4 +39,18 @@ const PeopleMargin = styled.div<StyledProps>`
   margin-top: ${({ $margin }) => $margin}px;
 `
 
-export { ProfileBig, ProfileDefault, ProfileMedium, ProfileMini, PeopleMargin }
+const Profile2by2 = styled.div`
+  height: 46px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+`
+
+export {
+  ProfileBig,
+  ProfileDefault,
+  ProfileMedium,
+  ProfileMini,
+  PeopleMargin,
+  Profile2by2,
+}

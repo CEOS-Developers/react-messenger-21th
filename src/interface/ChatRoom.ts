@@ -1,7 +1,7 @@
 import { UserId } from './User'
 import { Chat } from './Chat'
 
-export type ChatRoomId = string
+export type ChatRoomId = number
 
 export type Chats = {
   [key: string]: Chat[]

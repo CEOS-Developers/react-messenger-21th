@@ -3,4 +3,11 @@ import { ScrollDiv } from '../common/Common.Styled'
 
 const Wrapper = styled(ScrollDiv)``
 
-export { Wrapper }
+const List = styled.div`
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`
+
+export { Wrapper, List }

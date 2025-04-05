@@ -17,11 +17,19 @@
       "profileColor": "orange",
       "joinedRooms": [
         {
-          "chatRoomId": "550e8400-e29b-41d4-a716-446655440000",
+          "chatRoomId": 0,
           "lastSeenTime": 1742768880921
         },
         {
-          "chatRoomId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "chatRoomId": 1,
+          "lastSeenTime": 1742390390000
+        },
+        {
+          "chatRoomId": 2,
+          "lastSeenTime": 1742390390000
+        },
+        {
+          "chatRoomId": 3,
           "lastSeenTime": 1742390390000
         }
       ],
@@ -86,11 +94,11 @@
       "profileColor": "skyblue",
       "joinedRooms": [
         {
-          "chatRoomId": "550e8400-e29b-41d4-a716-446655440000",
+          "chatRoomId": 0,
           "lastSeenTime": 1742768881054
         },
         {
-          "chatRoomId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "chatRoomId": 1,
           "lastSeenTime": 1742382765000
         }
       ],
@@ -105,7 +113,7 @@
       "profileColor": "orange",
       "joinedRooms": [
         {
-          "chatRoomId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "chatRoomId": 1,
           "lastSeenTime": 1742429440000
         }
       ],
@@ -120,7 +128,7 @@
       "profileColor": "skyblue",
       "joinedRooms": [
         {
-          "chatRoomId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "chatRoomId": 1,
           "lastSeenTime": 1742429440000
         }
       ],

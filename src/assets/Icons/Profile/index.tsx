@@ -46,4 +46,20 @@ const ProfileMini = ({ color }: ProfileProps) => {
   )
 }
 
-export { ProfileBig, ProfileDefault, ProfileMedium, ProfileMini }
+const MultipleProfile = ({ colors }: { colors: string[] }) => {
+  return (
+    <s.Profile2by2>
+      {colors.map((color) => (
+        <ProfileMini color={color} />
+      ))}
+    </s.Profile2by2>
+  )
+}
+
+export {
+  ProfileBig,
+  ProfileDefault,
+  ProfileMedium,
+  ProfileMini,
+  MultipleProfile,
+}
