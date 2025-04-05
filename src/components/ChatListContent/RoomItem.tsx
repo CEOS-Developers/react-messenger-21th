@@ -1,4 +1,5 @@
 import * as s from './RoomItem.Styled'
+import { useNavigate } from 'react-router'
 import { MultipleProfile, ProfileDefault } from '../../assets/Icons/Profile'
 import { formatTime } from '../../utils/format'
 import { userData } from '../../assets/data/user.json'
@@ -17,6 +18,7 @@ const RoomItem = ({
   chats,
   lastSeenTime,
 }: RoomItemProps) => {
+  const nav = useNavigate()
   const { user } = useUserStore()
   const memberIds = member.filter((memberId: number) => memberId !== user.id)
 
@@ -41,7 +43,7 @@ const RoomItem = ({
 
   const unreadCount = getUnreadCount(chats, lastSeenTime)
   return (
-    <s.Wapper>
+    <s.Wapper onClick={() => nav(`/room/${chatRoomId}`)}>
       <s.Container>
         {member.length === 2 ? (
           <ProfileDefault color={memberColors[0]} />

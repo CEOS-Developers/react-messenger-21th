@@ -20,7 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<FriendsList />} />
             <Route path="/chatlist" element={<ChatList />} />
-            <Route path="/room" element={<ChatRoom />} />
+            <Route path="/room:id" element={<ChatRoom />} />
           </Routes>
         </UserIdProvider>
       </ThemeProvider>

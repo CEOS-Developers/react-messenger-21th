@@ -4,6 +4,7 @@ import StyledProps from '../../interface/StyledProps'
 
 const Wapper = styled.div`
   height: 72px;
+  cursor: pointer;
 `
 
 const Container = styled.div`
