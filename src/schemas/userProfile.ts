@@ -11,7 +11,7 @@ export type UserProfileWithoutId = z.infer<typeof userProfileWithoutId>;
 export const userProfile = z.object({
   userId: z.nullable(z.string().uuid()),
   username: z.string(),
-  profileImage: z.string(),
+  profileImage: z.nullable(z.string().url()),
   snsUrl: z.string(),
 });
 

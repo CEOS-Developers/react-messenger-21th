@@ -10,8 +10,9 @@ import { ChatMessageType } from '@/types/Chat';
 import { useChatMessage } from '@/hooks/useChat';
 import { useAutoResizeTextarea } from '@/hooks/useAutoResizeTextarea';
 
-import { useChatPreviewList } from '@/stores/useChatPreviewList';
 import { useChatMessageByRoom } from '@/stores/useChatMessageByRoom';
+import { useChatPreviewList } from '@/stores/useChatPreviewList';
+
 import { ChatRoomMessage } from '@/schemas/chatRoomMessage';
 
 import { sortMessageByDate } from '@/utils/sortMessageByDate';
@@ -39,8 +40,18 @@ const ChatRoom = (): JSX.Element => {
   // roomId에 해당하는 채팅 메세지 목록 가져오기
   useChatMessage(safeRoomId);
 
-  const { chatPreviewList } = useChatPreviewList();
-  const { messagesByRoom, sendMessage } = useChatMessageByRoom(); // 렌더링 시 roomId에 해당하는 채팅 메세지 목록 가져오기
+  const { messagesByRoom, sendMessage } = useChatMessageByRoom();
+  const { initialChatPreview, setInitalChatPreview, chatPreviewList } =
+    useChatPreviewList();
+
+  // 채팅방 이름을 가져오기 위한 채팅방 검색
+  const selectedChatRoomMetaData = chatPreviewList.find(
+    (chatRoom) => chatRoom.roomId === roomId
+  );
+
+  const chatRoomName = selectedChatRoomMetaData
+    ? selectedChatRoomMetaData.roomName
+    : initialChatPreview.roomName;
 
   // 채팅 메세지 목록 정렬 (시간 순서)
   const sortChatMessageByDate: ChatRoomMessage[] = useMemo(() => {
@@ -48,25 +59,40 @@ const ChatRoom = (): JSX.Element => {
     return sortMessageByDate(messages);
   }, [messagesByRoom, safeRoomId]);
 
-  const selectedChatRoom = chatPreviewList.find(
-    (chatRoom) => chatRoom.roomId === roomId
-  );
-
   const handleSendMessage = () => {
     if (chatInputValue.trim() === '') return;
 
     const newMessage = {
       messageId: uuidv4(),
       senderId: MY_USER_INFO.userId,
-      senderName: MY_USER_INFO.userName,
+      senderName: MY_USER_INFO.username,
       content: chatInputValue,
       type: 'text' as ChatMessageType,
       sentAt: new Date().toISOString(),
     };
 
+    if (!selectedChatRoomMetaData) {
+      // roomId에 해당하는 채팅방 메타데이터 및 채팅 메세지 데이터 생성
+      const newChatRoomMetaData = {
+        ...initialChatPreview,
+        lastMessage: newMessage,
+        unreadCount: 1, //  메세지 전송 시, 읽지 않은 메세지 개수 1 증가
+      };
+
+      // 채팅방 메타데이터 전역 상태 변경
+      setInitalChatPreview(newChatRoomMetaData);
+
+      // 채팅방 메타데이터 로컬 스토리지에 저장
+      localStorage.setItem(
+        'chatPreviewList',
+        JSON.stringify([...chatPreviewList, newChatRoomMetaData])
+      );
+    }
+
     // 메세지 전송
     sendMessage(safeRoomId, newMessage);
 
+    // 채팅 입력창 초기화
     setChatInputValue('');
   };
 
@@ -103,7 +129,7 @@ const ChatRoom = (): JSX.Element => {
           <I.BackArrowIcon />
           <S.TotalUnreadCount>1</S.TotalUnreadCount>
         </S.BackToChatRoomLink>
-        <S.ChatRoomName>{selectedChatRoom?.roomName}</S.ChatRoomName>
+        <S.ChatRoomName>{chatRoomName}</S.ChatRoomName>
         <S.ChatRoomHeaderOptions>
           <S.ChatRoomHeaderOptionButton>
             <SearchIcon />

@@ -6,12 +6,14 @@
     "participants": [
       {
         "userId": "user-123",
-        "name": "임승민",
-        "profileImage": "/images/avatar-hong.png"
+        "username": "임승민",
+        "profileImage": null
       }
     ],
     "lastMessage": {
+      "messageId": "message-123",
       "senderId": "user-456",
+      "senderName": "임승민",
       "content": "너 누군데 ㅋㅋ",
       "type": "text",
       "sentAt": "2025-03-28T12:30:00Z"

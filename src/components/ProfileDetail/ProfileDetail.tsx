@@ -11,6 +11,7 @@ import ProfileImageBox from '../ProfileImageBox/ProfileImageBox';
 
 import { useProfileOpen } from '@/stores/useProfileOpen';
 import { useTabBarOption } from '@/stores/useTabBarOption';
+import { useChatPreviewList } from '@/stores/useChatPreviewList';
 
 import { generateChatRoomId } from '@/utils/generateRoomId';
 
@@ -25,6 +26,7 @@ const ProfileDetail = ({ userProfile }: ProfileDetailProps): JSX.Element => {
 
   const { closeProfile } = useProfileOpen();
   const { setSelectedTab } = useTabBarOption();
+  const { setInitalChatPreview } = useChatPreviewList();
 
   const handlePersonalChatClick = () => {
     // 내 userId와 상대방 userId를 사용해 개인 채팅방 생성
@@ -41,11 +43,39 @@ const ProfileDetail = ({ userProfile }: ProfileDetailProps): JSX.Element => {
     // 프로필 상세보기 닫은 후 채팅방으로 이동
     closeProfile();
 
-    // 2초 후에 채팅방으로 이동
-    setTimeout(() => {
-      navigate(`chat/room=${roomId}`);
+    // 채팅방 MetaData 전역 상태 변경
+    setInitalChatPreview({
+      roomId: roomId,
+      roomName: userProfile.username,
+      isGroup: false, // 1:1 채팅방이므로 false
+      participants: [
+        {
+          userId: MY_USER_INFO.userId,
+          username: MY_USER_INFO.username,
+          profileImage: MY_USER_INFO.profileImage,
+        },
+        {
+          userId: targetUserId,
+          username: userProfile.username,
+          profileImage: userProfile.profileImage,
+        },
+      ],
+      lastMessage: {
+        messageId: '',
+        senderId: '',
+        senderName: '',
+        content: '',
+        type: 'text',
+        sentAt: '',
+      },
+      unreadCount: 0,
+    });
 
-      // selectedTab 상태 업데이트
+    // 0.3초 후에 채팅방으로 이동
+    setTimeout(() => {
+      navigate(`chat/room-${roomId}`);
+
+      // selectedTab 상태 업데이트 (리팩토링 필요!)
       setSelectedTab('채팅');
       sessionStorage.setItem('selectedTab', '채팅');
     }, 300);
