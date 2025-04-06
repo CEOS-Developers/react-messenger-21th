@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { useParams } from 'react-router'
+
 import {
   AddIcon,
   MicrophoneIcon,
@@ -7,11 +9,14 @@ import {
 } from '../../assets/Icons/TextInput'
 import * as s from './TextInput.Styled'
 
-interface TextInputProps {
-  onSubmit: (input: string) => void
-}
+import { useUserStore } from '../../stores/useUserStore'
+import { useChatRoomStore } from '../../stores/useChatRoomStore'
+import { Chat } from '../../interface/Chat'
 
-const TextInput = ({ onSubmit }: TextInputProps) => {
+const TextInput = () => {
+  const { id } = useParams() //roomId
+  const { user } = useUserStore()
+  const { addChat } = useChatRoomStore()
   const inputRef = useRef<HTMLDivElement | null>(null)
   const [text, setText] = useState('')
   const [isComposing, setIsComposing] = useState(false)
@@ -24,6 +29,16 @@ const TextInput = ({ onSubmit }: TextInputProps) => {
     const isComposing = text === '' ? false : true
     setIsComposing(isComposing)
   }, [text])
+
+  const onSubmit = (text: string) => {
+    const newChat: Chat = {
+      id: Date.now(),
+      sender: user.id,
+      content: text,
+    }
+
+    addChat(Number(id), newChat)
+  }
 
   const onClickSendIcon = () => {
     if (text === '') return

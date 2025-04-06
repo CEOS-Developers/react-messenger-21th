@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import * as s from './ChatContent.Styled'
 import ContentHeader from '../common/ContentHeader'
 import ChatTitle from './ChatTitle'
@@ -9,17 +7,12 @@ import { ChatRoomIcon } from '../../assets/Icons/Header'
 
 import { userData } from '../../assets/data/user.json'
 
-import { Chat } from '../../interface/Chat'
-
-import { formatDateForData } from '../../utils/format'
 import { useLocation } from 'react-router'
 import { useUserStore } from '../../stores/useUserStore'
 
 const ChatContent = () => {
-  const { roomName, memberIds, memberCount, chatData } =
-    useLocation().state ?? {}
-  const { user, setUser } = useUserStore()
-  const [chats, setChats] = useState(chatData)
+  const { roomName, memberIds, memberCount } = useLocation().state ?? {}
+  const { setUser } = useUserStore()
 
   /* ChatTitle의 멤버의 이름을 클릭하면 사용자가 바뀌는 이벤트 */
   const handleClickMemberName = () => {
@@ -45,23 +38,6 @@ const ChatContent = () => {
     {}
   )
 
-  const onSubmitChat = (input: string) => {
-    if (!chats) return
-    const date = new Date()
-    const formattedDate = formatDateForData(date)
-
-    const newChat: Chat = {
-      id: date.getTime(),
-      sender: user.id,
-      content: input,
-    }
-
-    setChats({
-      ...chats,
-      [formattedDate]: [...(chats[formattedDate] || []), newChat],
-    })
-  }
-
   return (
     <s.ChatContentWrapper>
       <ContentHeader
@@ -74,8 +50,8 @@ const ChatContent = () => {
         }
         rightChild={<ChatRoomIcon />}
       />
-      <ChatField myId={user.id} chats={chats} member={partnerData} />
-      <TextInput onSubmit={onSubmitChat} />
+      <ChatField member={partnerData} />
+      <TextInput />
     </s.ChatContentWrapper>
   )
 }
