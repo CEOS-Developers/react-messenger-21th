@@ -11,8 +11,11 @@ import { useLocation } from 'react-router'
 import { useUserStore } from '../../stores/useUserStore'
 
 const ChatContent = () => {
-  const { roomName, memberIds, memberCount } = useLocation().state ?? {}
-  const { setUser } = useUserStore()
+  const { member } = useLocation().state ?? {}
+  const { user, setUser } = useUserStore()
+
+  /* 나를 제외한 멤버들의 Id 배열 */
+  const memberIds = member.filter((memberId: number) => memberId !== user.id)
 
   /* ChatTitle의 멤버의 이름을 클릭하면 사용자가 바뀌는 이벤트 */
   const handleClickMemberName = () => {
@@ -43,8 +46,7 @@ const ChatContent = () => {
       <ContentHeader
         leftChild={
           <ChatTitle
-            roomName={roomName}
-            memberCount={memberCount}
+            memberIds={memberIds}
             handleClickMemberName={handleClickMemberName}
           />
         }

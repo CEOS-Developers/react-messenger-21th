@@ -6,6 +6,7 @@ import { userData } from '../../assets/data/user.json'
 import { useUserStore } from '../../stores/useUserStore'
 import { ChatRoom } from '../../interface/ChatRoom'
 import getUnreadCount from '../../utils/getUnreadCount'
+import getRoomName from '../../utils/getRoomName'
 
 interface RoomItemProps extends ChatRoom {
   lastSeenTime: number
@@ -24,14 +25,7 @@ const RoomItem = ({
   const memberCount = member.length
   const memberIds = member.filter((memberId: number) => memberId !== user.id)
 
-  const determinedRoomName =
-    roomName ??
-    memberIds
-      .map(
-        (memberId: number) =>
-          userData.find((user) => user.id === memberId)?.name || '알 수 없음'
-      )
-      .join(', ')
+  const determinedRoomName = roomName ?? getRoomName(memberIds)
 
   const memberColors = memberIds
     .slice(0, 4)
@@ -49,10 +43,9 @@ const RoomItem = ({
       onClick={() =>
         nav(`/room/${chatRoomId}`, {
           state: {
-            roomName: determinedRoomName,
-            memberIds,
+            roomName,
+            member,
             memberCount,
-            chatData: chats,
           },
         })
       }>
