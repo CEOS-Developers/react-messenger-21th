@@ -3,19 +3,11 @@ import { ProfileDefault } from '../../assets/Icons/Profile'
 import * as s from './FriendsListContent.Styled'
 import ContentHeader from '../common/ContentHeader'
 import FriendsViewer from './FriendsViewer'
-import { useUserStore } from '../../stores/useUserStore'
-import { useEffect } from 'react'
 import { userData } from '../../assets/data/user.json'
-import { defaultUser } from '../../assets/data/defaultUser'
+import { useUserStore } from '../../stores/useUserStore'
 
 const FriendsListContent = () => {
-  const userId = 1
-  const { user, setUser } = useUserStore()
-
-  useEffect(() => {
-    const userObj = userData.find((user) => user.id === userId) ?? defaultUser
-    setUser(userObj)
-  }, [])
+  const { user } = useUserStore()
 
   const friendsData = user.friends
     .map((id) => {

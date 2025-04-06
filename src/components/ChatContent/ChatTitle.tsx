@@ -1,24 +1,25 @@
+import { useNavigate } from 'react-router'
 import Back from '../../assets/Icons/Header/back.svg?react'
 import * as s from './ChatTitle.Styled'
-
-interface ChatTitleProps {
-  roomName: string | null
-  member: string[]
-  handleClickMemberName: () => void
-}
+import { EventIcon } from '../common/Common.Styled'
 
 const ChatTitle = ({
   roomName,
-  member,
+  memberCount,
   handleClickMemberName,
-}: ChatTitleProps) => {
+}: {
+  roomName: string
+  memberCount: number
+  handleClickMemberName: () => void
+}) => {
+  const nav = useNavigate()
   return (
     <s.ChatTitleContainer>
-      <Back />
-      <s.ChatName onClick={handleClickMemberName}>
-        {roomName ?? member.join(', ')}
-      </s.ChatName>
-      <s.MemberNum>{member.length > 1 ? member.length + 1 : ''}</s.MemberNum>
+      <EventIcon onClick={() => nav(-1)}>
+        <Back />
+      </EventIcon>
+      <s.ChatName onClick={handleClickMemberName}>{roomName}</s.ChatName>
+      <s.MemberNum>{memberCount > 2 ? memberCount : null}</s.MemberNum>
     </s.ChatTitleContainer>
   )
 }

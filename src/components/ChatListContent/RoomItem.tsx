@@ -20,6 +20,8 @@ const RoomItem = ({
 }: RoomItemProps) => {
   const nav = useNavigate()
   const { user } = useUserStore()
+
+  const memberCount = member.length
   const memberIds = member.filter((memberId: number) => memberId !== user.id)
 
   const determinedRoomName =
@@ -43,9 +45,19 @@ const RoomItem = ({
 
   const unreadCount = getUnreadCount(chats, lastSeenTime)
   return (
-    <s.Wapper onClick={() => nav(`/room/${chatRoomId}`)}>
+    <s.Wapper
+      onClick={() =>
+        nav(`/room/${chatRoomId}`, {
+          state: {
+            roomName: determinedRoomName,
+            memberIds,
+            memberCount,
+            chatData: chats,
+          },
+        })
+      }>
       <s.Container>
-        {member.length === 2 ? (
+        {memberCount === 2 ? (
           <ProfileDefault color={memberColors[0]} />
         ) : (
           <MultipleProfile colors={memberColors} />
@@ -55,9 +67,7 @@ const RoomItem = ({
           <div>
             <s.TitleContainer>
               <s.Name>{determinedRoomName}</s.Name>
-              <s.MemCount>
-                {member.length > 2 ? member.length : null}
-              </s.MemCount>
+              <s.MemCount>{memberCount > 2 ? memberCount : null}</s.MemCount>
             </s.TitleContainer>
             <s.Message $isR={true}>{lastChat.content}</s.Message>
           </div>

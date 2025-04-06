@@ -3,6 +3,7 @@ import StyledProps from '../../interface/StyledProps'
 import { Body_2, Caption, ChatTime } from '../../styles/Typo.Styled'
 
 const ChatFieldWrapper = styled.div`
+  flex-grow: 1;
   padding: 0px 20px;
   max-height: 626px;
   overflow: auto;

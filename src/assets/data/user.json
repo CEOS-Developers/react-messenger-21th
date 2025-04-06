@@ -3,10 +3,10 @@
     {
       "id": 0,
       "name": "김영서",
-      "profileMessage": "ceos frontend dev 21 yeongseo kim",
+      "profileMessage": "CEOS frontend developer yeongseo kim",
       "profileColor": "skyblue",
       "joinedRooms": [],
-      "friends": [1, 2],
+      "friends": [1, 2, 10, 11, 12, 13, 14, 15, 16, 17, 18],
       "profileImgUrl": "",
       "snsUrl": "https://www.instagram.com/yzzzzszz"
     },
@@ -70,8 +70,8 @@
     {
       "id": 5,
       "name": "강나연",
-      "profileMessage": "skyblue",
-      "profileColor": "",
+      "profileMessage": "",
+      "profileColor": "skyblue",
       "joinedRooms": [],
       "friends": [1, 2, 3, 4, 6, 7],
       "profileImgUrl": "",
@@ -133,6 +133,141 @@
         }
       ],
       "friends": [1, 2, 3, 4, 5, 6, 7, 8],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 10,
+      "name": "경서",
+      "profileMessage": "봄이야",
+      "profileColor": "purple",
+      "joinedRooms": [
+        {
+          "chatRoomId": 1,
+          "lastSeenTime": 1742429440000
+        }
+      ],
+      "friends": [0],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 11,
+      "name": "KyoungSeo",
+      "profileMessage": "칵테일 사랑",
+      "profileColor": "skyblue",
+      "joinedRooms": [
+        {
+          "chatRoomId": 1,
+          "lastSeenTime": 1742429440000
+        }
+      ],
+      "friends": [0],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 12,
+      "name": "임한별",
+      "profileMessage": "사랑하지 않아서 그랬어",
+      "profileColor": "orange",
+      "joinedRooms": [
+        {
+          "chatRoomId": 1,
+          "lastSeenTime": 1742429440000
+        }
+      ],
+      "friends": [0],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 13,
+      "name": "JENNIE",
+      "profileMessage": "Love Hangover",
+      "profileColor": "skyblue",
+      "joinedRooms": [
+        {
+          "chatRoomId": 1,
+          "lastSeenTime": 1742429440000
+        }
+      ],
+      "friends": [0],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 14,
+      "name": "임재현",
+      "profileMessage": "내 삶의 반",
+      "profileColor": "orange",
+      "joinedRooms": [
+        {
+          "chatRoomId": 1,
+          "lastSeenTime": 1742429440000
+        }
+      ],
+      "friends": [0],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 15,
+      "name": "임재현",
+      "profileMessage": "비의 랩소디",
+      "profileColor": "skyblue",
+      "joinedRooms": [
+        {
+          "chatRoomId": 1,
+          "lastSeenTime": 1742429440000
+        }
+      ],
+      "friends": [0],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 16,
+      "name": "임재현",
+      "profileMessage": "사랑에 연습이 있었다면",
+      "profileColor": "purple",
+      "joinedRooms": [
+        {
+          "chatRoomId": 1,
+          "lastSeenTime": 1742429440000
+        }
+      ],
+      "friends": [0],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 17,
+      "name": "임재현",
+      "profileMessage": "조금 취했어",
+      "profileColor": "skyblue",
+      "joinedRooms": [
+        {
+          "chatRoomId": 1,
+          "lastSeenTime": 1742429440000
+        }
+      ],
+      "friends": [0],
+      "profileImgUrl": "",
+      "snsUrl": ""
+    },
+    {
+      "id": 18,
+      "name": "케이시",
+      "profileMessage": "늦은 밤 헤어지긴 너무 아쉬워",
+      "profileColor": "orange",
+      "joinedRooms": [
+        {
+          "chatRoomId": 1,
+          "lastSeenTime": 1742429440000
+        }
+      ],
+      "friends": [0],
       "profileImgUrl": "",
       "snsUrl": ""
     }

@@ -9,6 +9,11 @@ const ChatTitleContainer = styled.div`
 
 const ChatName = styled.h1`
   ${Headline3}
+  max-width: 189px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
   color: ${({ theme }) => theme.colors.gray13};
   padding-left: 8px;
   padding-right: 6px;
