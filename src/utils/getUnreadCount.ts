@@ -1,9 +1,9 @@
 import { Chat } from '../interface/Chat'
 
-export default function getUnreadCount(
+const getUnreadCount = (
   chats: Record<string, Chat[]>,
   lastSeenTime: number
-): number {
+): number => {
   let count = 0
 
   const sortedDates = Object.keys(chats).sort((a, b) => b.localeCompare(a))
@@ -19,3 +19,5 @@ export default function getUnreadCount(
 
   return count
 }
+
+export default getUnreadCount
