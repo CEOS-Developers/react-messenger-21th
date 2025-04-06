@@ -21,7 +21,8 @@ const colors = {
   mainLime: 'linear-gradient(#FFFFFF, #EAFB88)',
   chatBackground:
     'linear-gradient(#A6D0FF 0%, #FFFFFF 29%, #FFFFFF 69%, #8BC2FF 110%)',
-  profileBackground: 'linear-gradient(#FFFFFF, #92C6FF)',
+  profileBackground:
+    'linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34)), linear-gradient(#ffffff, #92c6ff);',
 }
 
 const phoneGrid = {

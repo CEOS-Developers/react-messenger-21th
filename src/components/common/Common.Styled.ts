@@ -13,6 +13,10 @@ const Container = styled.div`
   box-shadow: 0 0 8px #9aa6b230;
 `
 
+const ProfileContainer = styled(Container)`
+  background-image: ${({ theme }) => theme.colors.profileBackground};
+`
+
 /* 헤더, 푸터 제외한 모든 영역을 가질 컴포넌트 */
 const Content = styled.div`
   flex-grow: 1;
@@ -37,4 +41,4 @@ const ScrollDiv = styled.div`
   }
 `
 
-export { Container, Content, EventIcon, ScrollDiv }
+export { Container, ProfileContainer, Content, EventIcon, ScrollDiv }

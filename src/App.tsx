@@ -22,6 +22,7 @@ import { useChatRoomStore } from './stores/useChatRoomStore.ts'
 
 /** types */
 import { ChatRoom as ChatRoomType } from './interface/ChatRoom.ts'
+import ProfilePage from './pages/ProfilePage.tsx'
 
 function App() {
   const userId = 1
@@ -49,6 +50,7 @@ function App() {
         <GlobalStyle />
         <Routes>
           <Route path="/" element={<FriendsList />} />
+          <Route path="/profile/:id" element={<ProfilePage />} />
           <Route path="/chatlist" element={<ChatList />} />
           <Route path="/room/:id" element={<ChatRoom />} />
         </Routes>
