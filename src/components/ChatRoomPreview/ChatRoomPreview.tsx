@@ -25,6 +25,8 @@ const ChatRoomPreview = ({
     MY_USER_INFO.userId,
     MY_USER_INFO.userId
   );
+
+  // 현재 채팅방이 내 채팅방인지 확인
   const isMyChatRoom = roomId === myChatRoomId;
 
   return (

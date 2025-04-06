@@ -1,4 +1,4 @@
-import { format, parseISO } from 'date-fns';
+import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
 export const formatDate = () => {
@@ -13,10 +13,35 @@ export const formatDate = () => {
 export const formatMessageTime = (lastMessageTime: string) => {
   if (!lastMessageTime) return '';
 
-  const date = parseISO(lastMessageTime);
-  const formattedDate = format(date, 'a h:mm', { locale: ko });
+  const sentDate = new Date(lastMessageTime);
+  const today = new Date();
 
-  return formattedDate;
+  // 자정 기준 (0시 0분 0초)
+  const todayStart = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  );
+
+  const sentStart = new Date(
+    sentDate.getFullYear(),
+    sentDate.getMonth(),
+    sentDate.getDate()
+  );
+
+  const diffInMilliseconds = todayStart.getTime() - sentStart.getTime();
+
+  const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+
+  if (diffInDays === 0) {
+    return format(sentDate, 'a h:mm', { locale: ko });
+  }
+
+  if (diffInDays === 1) {
+    return '어제';
+  }
+
+  return `${sentDate.getMonth() + 1}월 ${sentDate.getDate()}일`;
 };
 
 export const formatMessageDate = (isoDate: string) => {
