@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router'
 import { ProfileDefault } from '../../assets/Icons/Profile'
 import * as s from './ProfileItem.Styled'
 
@@ -12,8 +13,9 @@ const ProfileItem = ({
   profileMessage: string
   profileColor: string
 }) => {
+  const nav = useNavigate()
   return (
-    <s.Wapper>
+    <s.Wapper onClick={() => nav(`/profile/${id}`)}>
       <s.Container>
         <ProfileDefault color={profileColor} />
         <s.TextContainer>
