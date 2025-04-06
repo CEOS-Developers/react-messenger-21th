@@ -33,7 +33,7 @@ export const HeaderOptionList = styled.ul`
 
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
 `;
 
 export const HeaderOptionItem = styled.li`

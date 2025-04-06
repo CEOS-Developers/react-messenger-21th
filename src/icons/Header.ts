@@ -8,7 +8,7 @@ import addChatIcon from '@/assets/svgs/Header/add-chat.svg?react';
 
 const IconCommon = css`
   width: 2.4rem;
-  height: fit-content;
+  height: 2.4rem;
 `;
 
 export const AddUserIcon = styled(addUserIcon)`
@@ -17,6 +17,15 @@ export const AddUserIcon = styled(addUserIcon)`
 
 export const SearchIcon = styled(searchIcon)`
   ${IconCommon}
+`;
+
+export const SearchIconSmall = styled(searchIcon)`
+  width: 1.6rem;
+  height: 1.6rem;
+
+  path {
+    stroke: ${({ theme }) => theme.colors.Grayscale[600]};
+  }
 `;
 
 export const MusicIcon = styled(musicIcon)`

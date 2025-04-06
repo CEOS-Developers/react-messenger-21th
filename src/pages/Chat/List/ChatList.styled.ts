@@ -1,4 +1,10 @@
 import styled from 'styled-components';
+import { motion } from 'motion/react';
+
+export const SearchBarAnimationBox = styled(motion.div)`
+  width: 100%;
+  height: fit-content;
+`;
 
 export const ChatListContainer = styled.div`
   width: 100%;
