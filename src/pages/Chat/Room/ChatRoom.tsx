@@ -17,7 +17,7 @@ import { useChatPreviewList } from '@/stores/useChatPreviewList';
 import { ChatRoomMessage } from '@/schemas/chatRoomMessage';
 import { ChatPreview } from '@/schemas/chatPreview';
 
-import { sortMessageByDate } from '@/utils/sortMessageByDate';
+import { sortMessageByDate } from '@/utils/sort/sortMessageByDate';
 import { isSameDate, isSameTimeGroup } from '@/utils/formatDate';
 
 import * as I from '@/icons/Chat';

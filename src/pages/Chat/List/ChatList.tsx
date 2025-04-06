@@ -8,6 +8,8 @@ import { useHeaderOption } from '@/stores/useHeaderOption';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import ChatRoomPreview from '@/components/ChatRoomPreview/ChatRoomPreview';
 
+import { sortChatRoomByTime } from '@/utils/sort/sortChatRoomByDate';
+
 import * as S from './ChatList.styled';
 
 const ChatList = (): JSX.Element => {
@@ -25,7 +27,7 @@ const ChatList = (): JSX.Element => {
       </AnimatePresence>
       {chatPreviewList.length > 0 ? (
         <S.ChatListContainer>
-          {chatPreviewList.map((chatPreview) => (
+          {sortChatRoomByTime(chatPreviewList).map((chatPreview) => (
             <ChatRoomPreview
               key={chatPreview.roomId}
               chatPreview={chatPreview}
