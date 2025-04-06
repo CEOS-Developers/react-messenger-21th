@@ -1,25 +1,24 @@
-import SearchBox from '../common/SearchBox'
+/** ui */
 import * as s from './ChatListViewer.Styled'
-import { chatRoomData } from '../../assets/data/chatRoom.json'
-import { useUserStore } from '../../stores/useUserStore'
+import SearchBox from '../common/SearchBox'
 import RoomItem from './RoomItem'
+
+/** global states */
+import { useUserStore } from '../../stores/useUserStore'
+import { useChatRoomStore } from '../../stores/useChatRoomStore'
+
+import { ChatRoom } from '../../interface/ChatRoom'
 
 const ChatListViewer = () => {
   const { user } = useUserStore()
-
-  const rooms = user.joinedRooms.map((joinedRoom) => {
-    const joinedRoomData = chatRoomData.find(
-      (roomData) => roomData.chatRoomId === joinedRoom.chatRoomId
-    )
-    if (joinedRoomData) return joinedRoomData
-  })
+  const { chatRoom } = useChatRoomStore()
 
   return (
     <s.Wrapper>
       <SearchBox />
       <s.List>
-        {rooms.map(
-          (room, idx) =>
+        {chatRoom?.map(
+          (room: ChatRoom, idx: number) =>
             room && (
               <RoomItem
                 key={room.chatRoomId}
