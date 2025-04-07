@@ -20,7 +20,7 @@ const RoomItem = ({
   lastSeenTime,
 }: RoomItemProps) => {
   const nav = useNavigate()
-  const { user } = useUserStore()
+  const { user, updateLastSeenTime } = useUserStore()
 
   const memberCount = member.length
   const memberIds = member.filter((memberId: number) => memberId !== user.id)
@@ -38,17 +38,21 @@ const RoomItem = ({
   const lastChat = chats[lastChatKey][chats[lastChatKey].length - 1]
 
   const unreadCount = getUnreadCount(chats, lastSeenTime)
+
+  const chatRoomClickHandler = () => {
+    updateLastSeenTime(chatRoomId)
+
+    return nav(`/room/${chatRoomId}`, {
+      state: {
+        roomName,
+        member,
+        memberCount,
+      },
+    })
+  }
+
   return (
-    <s.Wapper
-      onClick={() =>
-        nav(`/room/${chatRoomId}`, {
-          state: {
-            roomName,
-            member,
-            memberCount,
-          },
-        })
-      }>
+    <s.Wapper onClick={chatRoomClickHandler}>
       <s.Container>
         {memberCount === 2 ? (
           <ProfileDefault color={memberColors[0]} />
