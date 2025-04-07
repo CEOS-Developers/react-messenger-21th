@@ -7,8 +7,8 @@ import ContentHeader from '../common/ContentHeader'
 import { EventIcon } from '../common/Common.Styled'
 import FriendsViewer from './FriendsViewer'
 
-import { userData } from '../../assets/data/user.json'
 import { useUserStore } from '../../stores/useUserStore'
+import findUser from '../../utils/findUser'
 
 const FriendsListContent = () => {
   const { user } = useUserStore()
@@ -16,7 +16,7 @@ const FriendsListContent = () => {
 
   const friendsData = user.friends
     .map((id) => {
-      const friend = userData.find((user) => user.id === id)
+      const friend = findUser(id)
       if (!friend) return null
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -24,6 +24,7 @@ const FriendsListContent = () => {
       return rest
     })
     .filter((friend) => friend !== null)
+    .sort((a, b) => a.name.localeCompare(b.name, 'ko-KR'))
 
   return (
     <s.FLContent>
