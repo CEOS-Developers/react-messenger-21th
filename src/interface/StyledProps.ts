@@ -8,4 +8,5 @@ export default interface StyledProps {
   $color?: string
   $margin?: number
   $isOpen?: boolean
+  $isNextSender?: boolean
 }

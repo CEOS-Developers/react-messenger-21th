@@ -108,7 +108,8 @@ const ChatField = ({ member }: ChatFieldProps) => {
                   : null}
                 <s.ChatBubbleContainer
                   $isMe={isMe}
-                  $needBigMargin={(!isMe || !isNextSender) && souldDisplayTime}>
+                  $needBigMargin={(!isMe || !isNextSender) && souldDisplayTime}
+                  $isNextSender={isNextSender}>
                   {isMe && souldDisplayTime ? (
                     <s.TimeDiv>{formatTime(id)}</s.TimeDiv>
                   ) : null}

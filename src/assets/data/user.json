@@ -270,6 +270,21 @@
       "friends": [0],
       "profileImgUrl": "",
       "snsUrl": ""
+    },
+    {
+      "id": 19,
+      "name": "오정세",
+      "profileMessage": "",
+      "profileColor": "purple",
+      "joinedRooms": [
+        {
+          "chatRoomId": 1,
+          "lastSeenTime": 1744015104224
+        }
+      ],
+      "friends": [1, 2, 3, 4, 5, 6, 7, 9],
+      "profileImgUrl": "",
+      "snsUrl": ""
     }
   ]
 }
