@@ -12,16 +12,10 @@ import { useUserStore } from '../../stores/useUserStore'
 
 const ChatContent = () => {
   const { member } = useLocation().state ?? {}
-  const { user, setUser } = useUserStore()
+  const { user } = useUserStore()
 
   /* 나를 제외한 멤버들의 Id 배열 */
   const memberIds = member.filter((memberId: number) => memberId !== user.id)
-
-  /* ChatTitle의 멤버의 이름을 클릭하면 사용자가 바뀌는 이벤트 */
-  const handleClickMemberName = () => {
-    const targetUser = userData.find((user) => user.id === memberIds[0])
-    if (targetUser) setUser(targetUser)
-  }
 
   /* 채팅 참가자 정보 객체 */
   const partnerData = memberIds.reduce(
@@ -44,12 +38,7 @@ const ChatContent = () => {
   return (
     <s.ChatContentWrapper>
       <ContentHeader
-        leftChild={
-          <ChatTitle
-            memberIds={memberIds}
-            handleClickMemberName={handleClickMemberName}
-          />
-        }
+        leftChild={<ChatTitle memberIds={memberIds} />}
         rightChild={<ChatRoomIcon />}
       />
       <ChatField member={partnerData} />

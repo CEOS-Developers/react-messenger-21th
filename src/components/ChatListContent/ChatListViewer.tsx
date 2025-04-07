@@ -23,7 +23,7 @@ const ChatListViewer = () => {
               <RoomItem
                 key={room.chatRoomId}
                 {...room}
-                lastSeenTime={user.joinedRooms[idx].lastSeenTime}
+                lastSeenTime={user.joinedRooms[idx]?.lastSeenTime}
               />
             )
         )}
