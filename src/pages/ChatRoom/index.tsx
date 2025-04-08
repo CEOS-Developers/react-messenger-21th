@@ -10,9 +10,10 @@ import type { MessageDto, UserDto } from './dto';
 
 import MessageInput from './components/MessageInput';
 import MessageContainer from './components/MessageContainer';
+import { useParams } from 'react-router-dom';
 
 export default function ChatRoom() {
-	const chatRoomId = 1;
+	const { chatRoomId } = useParams();
 
 	const [currentUserId, setCurrentUserId] = useState(3);
 	const [messages, setMessages] = useState<MessageDto[]>([]);
@@ -28,7 +29,7 @@ export default function ChatRoom() {
 
 	// 초기 데이터 페칭
 	useEffect(() => {
-		const response = getAllMessages(chatRoomId);
+		const response = getAllMessages(Number(chatRoomId) ?? -1);
 
 		setJoinedUsers(response.joinedUsers);
 		setMessages(response.messages);

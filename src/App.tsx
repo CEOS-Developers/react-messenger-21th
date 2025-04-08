@@ -10,7 +10,7 @@ function App() {
 		<Frame>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<ChatRoom />} />
+					<Route path="/chatroom/:chatRoomId" element={<ChatRoom />} />
 				</Routes>
 			</BrowserRouter>
 		</Frame>
