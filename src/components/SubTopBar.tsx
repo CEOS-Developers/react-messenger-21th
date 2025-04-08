@@ -8,7 +8,7 @@ import Menu from '@/assets/icons/menu.svg?react';
 import HeaderButton from './HeaderButton';
 import { useNavigate } from 'react-router-dom';
 
-export default function TopBar({ content, onClickContent }: { content: string; onClickContent?: () => void }) {
+export default function SubTopBar({ content, onClickContent }: { content: string; onClickContent?: () => void }) {
 	const nav = useNavigate();
 	// const pathname = useLocation().pathname;
 	// const opacity = pathname.split('/').includes('chatroom') ? 0.3 : 0.1;

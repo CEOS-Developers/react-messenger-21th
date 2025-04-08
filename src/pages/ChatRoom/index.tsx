@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { getAllMessages } from '@/apis/getAllMessages';
 import { createMessagesByUsers } from '@/utils/createMessagesByUsers';
 import { createOtherUserContent } from '@/utils/createOtherUserContent';
-import TopBar from '@/components/TopBar';
+import SubTopBar from '@/components/SubTopBar';
 
 import type { messagesByUserDto } from '@/utils/dto';
 import type { MessageDto, UserDto } from './dto';
@@ -56,7 +56,7 @@ export default function ChatRoom() {
 
 	return (
 		<div className="relative grow flex flex-col bg-black-200 rounded-b-4xl">
-			<TopBar content={otherUserContent} onClickContent={handleTopBarContentClick} />
+			<SubTopBar content={otherUserContent} onClickContent={handleTopBarContentClick} />
 			<MessageContainer messagesByUsers={messagesByUsers} currentUserId={currentUserId} />
 			<MessageInput onSubmit={handleMessageSubmit} />
 		</div>
