@@ -1,8 +1,7 @@
-@import url('./theme.css');
 @import url('./font.css');
 @import 'tailwindcss';
 
-:root {
+@theme {
 	--color-main-400: #177bff;
 	--color-main-300: #98c4ff;
 	--color-main-200: #e8f2ff;
@@ -18,20 +17,20 @@
 	--color-black-100: #f0f3f6;
 	--color-black-000: #ffffff; /* white */
 
-	--profile-blue-200: #98c4ff; /* 프로필 진한 색 */
-	--profile-blue-100: #e8f2ff; /* 프로필 연한 색 */
+	--color-profile-blue-200: #98c4ff; /* 프로필 진한 색 */
+	--color-profile-blue-100: #e8f2ff; /* 프로필 연한 색 */
 
-	--profile-yellow-200: #ffe28b;
-	--profile-yellow-100: #fff9e8;
+	--color-profile-yellow-200: #ffe28b;
+	--color-profile-yellow-100: #fff9e8;
 
-	--profile-purple-200: #ad9bff;
-	--profile-purple-100: #f6f4ff;
+	--color-profile-purple-200: #ad9bff;
+	--color-profile-purple-100: #f6f4ff;
 
-	--profile-pink-200: #ff98f6;
-	--profile-pink-100: #fff0fe;
+	--color-profile-pink-200: #ff98f6;
+	--color-profile-pink-100: #fff0fe;
 
-	--profile-orange-200: #ffb898;
-	--profile-orange-100: #fff2ec;
+	--color-profile-orange-200: #ffb898;
+	--color-profile-orange-100: #fff2ec;
 }
 
 #root {
