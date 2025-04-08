@@ -8,5 +8,5 @@ export interface MessageDto {
 export interface UserDto {
 	id: number;
 	name: string;
-	color: string;
+	color: 'blue' | 'purple' | 'yellow' | 'pink' | 'orange';
 }
