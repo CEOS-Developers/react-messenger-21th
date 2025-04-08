@@ -1,3 +1,9 @@
+import NavBar from '@/components/NavBar';
+
 export default function ChatList() {
-	return <div></div>;
+	return (
+		<div>
+			<NavBar />
+		</div>
+	);
 }
