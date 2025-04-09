@@ -1,9 +1,12 @@
+import { useEffect, useState } from 'react'
+import Hangul from 'hangul-js'
+
 import * as s from './FriendsViewer.Styled'
 import SearchBox from '../common/SearchBox'
-import { User } from '../../interface/User'
 import ProfileItem from './ProfileItem'
 import ToggleBox from './ToggleBox'
-import { useState } from 'react'
+
+import { User } from '../../interface/User'
 
 const FriendsViewer = ({
   friendsData,
@@ -12,9 +15,27 @@ const FriendsViewer = ({
 }) => {
   const [groupOpen, setGroupOpen] = useState(true)
   const [friendsOpen, setFriendsOpen] = useState(true)
+
+  const [searchText, setSearchText] = useState('')
+
+  /* 사용자가 검색어를 입력하면 가려진 목록 자동으로 열기 */
+  useEffect(() => {
+    if (searchText) {
+      setGroupOpen(true)
+      setFriendsOpen(true)
+    }
+  }, [searchText])
+
+  /* 이름 검색 */
+  const filteredFriends = friendsData.filter((friend) => {
+    const disassembled = Hangul.disassemble(friend.name).join('')
+    const inputDisassembled = Hangul.disassemble(searchText).join('')
+    return disassembled.includes(inputDisassembled)
+  })
+
   return (
     <s.Wrapper>
-      <SearchBox />
+      <SearchBox searchText={searchText} setSearchText={setSearchText} />
       <ToggleBox
         text="그룹"
         length={2}
@@ -29,7 +50,7 @@ const FriendsViewer = ({
       />
       <s.List>
         {friendsOpen &&
-          friendsData.map((friend) => (
+          filteredFriends.map((friend) => (
             <ProfileItem key={friend.id} {...friend} />
           ))}
       </s.List>
