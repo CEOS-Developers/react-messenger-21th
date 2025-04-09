@@ -39,8 +39,8 @@ const ProfileMedium = ({ color }: ProfileProps) => {
 const ProfileMini = ({ color }: ProfileProps) => {
   return (
     <s.ProfileMini $color={color}>
-      <s.PeopleMargin $margin={1}>
-        <MiniIcon width={10} height={11.11} />
+      <s.PeopleMargin $margin={2}>
+        <MiniIcon />
       </s.PeopleMargin>
     </s.ProfileMini>
   )

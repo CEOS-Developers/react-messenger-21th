@@ -31,7 +31,8 @@ const ProfileMedium = styled(ProfileCommonStyle)`
 const ProfileMini = styled(ProfileCommonStyle)`
   width: 22px;
   height: 22px;
-  border: 0.78px solid ${({ theme }) => theme.colors.gray13};
+  border: 1.2px solid ${({ theme }) => theme.colors.gray13};
+
   align-items: center;
 `
 

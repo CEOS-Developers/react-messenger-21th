@@ -31,6 +31,10 @@
         {
           "chatRoomId": 3,
           "lastSeenTime": 1742390390000
+        },
+        {
+          "chatRoomId": 4,
+          "lastSeenTime": 1742390390000
         }
       ],
       "friends": [0, 2, 3, 4, 5, 6, 7],
