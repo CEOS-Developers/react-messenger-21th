@@ -14,7 +14,7 @@ const ToggleBox = ({
   setClosed: (state: boolean) => void
 }) => {
   return (
-    <s.Container onClick={() => setClosed(!isOpen)} $isOpen={isOpen}>
+    <s.Container onClick={() => setClosed(!isOpen)}>
       <s.TextContainer>
         {text} {length}
       </s.TextContainer>
