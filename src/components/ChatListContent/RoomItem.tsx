@@ -1,16 +1,20 @@
-import * as s from './RoomItem.Styled'
 import { useNavigate } from 'react-router'
+
+import * as s from './RoomItem.Styled'
 import { MultipleProfile, ProfileDefault } from '../../assets/Icons/Profile'
-import { formatTime } from '../../utils/format'
-import { userData } from '../../assets/data/user.json'
+
 import { useUserStore } from '../../stores/useUserStore'
 import { ChatRoom } from '../../interface/ChatRoom'
-import getUnreadCount from '../../utils/getUnreadCount'
+import { Chat } from '../../interface/Chat'
+
+import findUser from '../../utils/findUser'
 import getRoomName from '../../utils/getRoomName'
-import getDateYMD from '../../utils/getDateYMD'
+import getUnreadCount from '../../utils/getUnreadCount'
+import getLastChatTime from '../../utils/getLastChatTime'
 
 interface RoomItemProps extends ChatRoom {
   lastSeenTime: number
+  lastChat: Chat
 }
 
 const RoomItem = ({
@@ -19,6 +23,7 @@ const RoomItem = ({
   member,
   chats,
   lastSeenTime,
+  lastChat,
 }: RoomItemProps) => {
   const nav = useNavigate()
   const { user, updateLastSeenTime } = useUserStore()
@@ -30,29 +35,9 @@ const RoomItem = ({
 
   const memberColors = memberIds
     .slice(0, 4)
-    .map(
-      (memberId: number) =>
-        userData.find((user) => user.id === memberId)?.profileColor || 'gray02'
-    )
+    .map((memberId: number) => findUser(memberId)?.profileColor || 'gray02')
 
-  const lastChatKey = Object.keys(chats).slice(-1)[0]
-  const lastChat = chats[lastChatKey][chats[lastChatKey].length - 1]
-  const getLastChatTime = (timestamp: number) => {
-    const [todayY, todayM, todayD] = getDateYMD(new Date())
-    const [year, month, date] = getDateYMD(new Date(timestamp))
-
-    if (todayD === date && todayM === month && todayY === year)
-      return formatTime(timestamp)
-    else {
-      const [yesterY, yesterM, yesterD] = getDateYMD(
-        new Date(todayY, todayM, todayD - 1)
-      )
-      if (yesterD === date && yesterM === month && yesterY === year)
-        return '어제'
-      else return `${month + 1}월 ${date}일`
-    }
-  }
-
+  const lastChatTime = getLastChatTime(lastChat.id)
   const unreadCount = getUnreadCount(chats, lastSeenTime)
 
   const chatRoomClickHandler = () => {
@@ -85,7 +70,7 @@ const RoomItem = ({
             <s.Message $isR={true}>{lastChat.content}</s.Message>
           </div>
           <s.TimeContainer $isM={true}>
-            <s.Time>{getLastChatTime(lastChat.id)}</s.Time>
+            <s.Time>{lastChatTime}</s.Time>
             {unreadCount > 0 ? (
               <s.BlackCircle>{unreadCount}</s.BlackCircle>
             ) : null}

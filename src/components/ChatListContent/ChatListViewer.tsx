@@ -7,25 +7,29 @@ import RoomItem from './RoomItem'
 import { useUserStore } from '../../stores/useUserStore'
 import { useChatRoomStore } from '../../stores/useChatRoomStore'
 
-import { ChatRoom } from '../../interface/ChatRoom'
-
 const ChatListViewer = () => {
   const { user } = useUserStore()
   const { chatRoom } = useChatRoomStore()
+
+  const sortedChatRoom = chatRoom
+    ?.map((room) => {
+      const chats = room.chats
+      const lastChatKey = Object.keys(chats).slice(-1)[0]
+      const lastChat = chats[lastChatKey][chats[lastChatKey].length - 1]
+      const lastSeenTime =
+        user.joinedRooms.find((r) => r.chatRoomId === room.chatRoomId)
+          ?.lastSeenTime ?? 0
+
+      return { ...room, lastChat, lastSeenTime }
+    })
+    .sort((a, b) => b.lastChat.id - a.lastChat.id)
 
   return (
     <s.Wrapper>
       <SearchBox />
       <s.List>
-        {chatRoom?.map(
-          (room: ChatRoom, idx: number) =>
-            room && (
-              <RoomItem
-                key={room.chatRoomId}
-                {...room}
-                lastSeenTime={user.joinedRooms[idx]?.lastSeenTime}
-              />
-            )
+        {sortedChatRoom?.map(
+          (room) => room && <RoomItem key={room.chatRoomId} {...room} />
         )}
       </s.List>
     </s.Wrapper>
