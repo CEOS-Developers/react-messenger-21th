@@ -35,7 +35,7 @@ const DateDiv = styled.div<StyledProps>`
 
   width: 138px;
   height: 24px;
-  border-radius: 12px;
+  border-radius: 2px;
   border: 1px solid ${({ theme }) => theme.colors.gray07};
 
   display: flex;
@@ -74,12 +74,12 @@ const ChatDiv = styled.div<StyledProps>`
 
 const myChatStyle = css`
   background: ${({ theme }) => theme.colors.mainLime};
-  border-radius: 9px 0px 9px 9px;
+  border-radius: 4px 0px 4px 4px;
 `
 
 const othersChatStyle = css`
   background: ${({ theme }) => theme.colors.gray02};
-  border-radius: 0px 9px 9px 9px;
+  border-radius: 0px 4px 4px 4px;
   margin-left: 30px;
 `
 

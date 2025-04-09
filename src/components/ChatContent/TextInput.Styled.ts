@@ -16,7 +16,7 @@ const TextFieldContainer = styled.div`
   color: ${({ theme }) => theme.colors.gray14};
   background-color: ${({ theme }) => theme.colors.gray02};
   border: 1px solid ${({ theme }) => theme.colors.gray05};
-  border-radius: 20px;
+  border-radius: 2px;
 
   width: 286px;
   min-height: 36px;

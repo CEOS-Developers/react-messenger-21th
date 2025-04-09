@@ -20,7 +20,7 @@ const ChatTitle = ({ memberIds }: { memberIds: number[] }) => {
   return (
     <s.ChatTitleContainer>
       <EventIcon onClick={() => nav(-1)}>
-        <Back />
+        <Back width={24} />
       </EventIcon>
       <EventIcon>
         <s.ChatName onClick={handleClickRoomName}>

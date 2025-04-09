@@ -44,6 +44,11 @@ const Profile2by2 = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1px;
+
+  & > *:nth-child(3):nth-last-child(1) {
+    grid-column: span 2;
+    justify-self: center;
+  }
 `
 
 export {
