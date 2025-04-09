@@ -28,6 +28,7 @@ const Message = styled.p<StyledProps>`
   ${Body_2}
   color: ${({ theme }) => theme.colors.gray12};
   padding-bottom: 10px;
+  min-height: 21px;
 `
 
 export { Wapper, Container, TextContainer, Name, Message }
