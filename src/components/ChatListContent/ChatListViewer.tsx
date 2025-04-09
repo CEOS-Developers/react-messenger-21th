@@ -1,3 +1,6 @@
+import { useState } from 'react'
+// import Hangul from 'hangul-js'
+
 /** ui */
 import * as s from './ChatListViewer.Styled'
 import SearchBox from '../common/SearchBox'
@@ -10,6 +13,7 @@ import { useChatRoomStore } from '../../stores/useChatRoomStore'
 const ChatListViewer = () => {
   const { user } = useUserStore()
   const { chatRoom } = useChatRoomStore()
+  const [searchText, setSearchText] = useState('')
 
   const sortedChatRoom = chatRoom
     ?.map((room) => {
@@ -26,7 +30,7 @@ const ChatListViewer = () => {
 
   return (
     <s.Wrapper>
-      <SearchBox />
+      <SearchBox searchText={searchText} setSearchText={setSearchText} />
       <s.List>
         {sortedChatRoom?.map(
           (room) => room && <RoomItem key={room.chatRoomId} {...room} />
