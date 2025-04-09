@@ -14,8 +14,8 @@ import { useChatRoomStore } from '../../stores/useChatRoomStore'
 import { Chat } from '../../interface/Chat'
 
 const TextInput = () => {
-  const { id } = useParams() //roomId
-  const { user } = useUserStore()
+  const roomId = Number(useParams().id)
+  const { user, updateLastSeenTime } = useUserStore()
   const { addChat } = useChatRoomStore()
   const inputRef = useRef<HTMLDivElement | null>(null)
   const [text, setText] = useState('')
@@ -37,7 +37,8 @@ const TextInput = () => {
       content: text,
     }
 
-    addChat(Number(id), newChat)
+    addChat(roomId, newChat)
+    updateLastSeenTime(roomId)
   }
 
   const onClickSendIcon = () => {
