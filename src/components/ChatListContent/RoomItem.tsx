@@ -7,6 +7,7 @@ import { useUserStore } from '../../stores/useUserStore'
 import { ChatRoom } from '../../interface/ChatRoom'
 import getUnreadCount from '../../utils/getUnreadCount'
 import getRoomName from '../../utils/getRoomName'
+import getDateYMD from '../../utils/getDateYMD'
 
 interface RoomItemProps extends ChatRoom {
   lastSeenTime: number
@@ -36,6 +37,21 @@ const RoomItem = ({
 
   const lastChatKey = Object.keys(chats).slice(-1)[0]
   const lastChat = chats[lastChatKey][chats[lastChatKey].length - 1]
+  const getLastChatTime = (timestamp: number) => {
+    const [todayY, todayM, todayD] = getDateYMD(new Date())
+    const [year, month, date] = getDateYMD(new Date(timestamp))
+
+    if (todayD === date && todayM === month && todayY === year)
+      return formatTime(timestamp)
+    else {
+      const [yesterY, yesterM, yesterD] = getDateYMD(
+        new Date(todayY, todayM, todayD - 1)
+      )
+      if (yesterD === date && yesterM === month && yesterY === year)
+        return '어제'
+      else return `${month + 1}월 ${date}일`
+    }
+  }
 
   const unreadCount = getUnreadCount(chats, lastSeenTime)
 
@@ -69,7 +85,7 @@ const RoomItem = ({
             <s.Message $isR={true}>{lastChat.content}</s.Message>
           </div>
           <s.TimeContainer $isM={true}>
-            <s.Time>{formatTime(lastChat.id)}</s.Time>
+            <s.Time>{getLastChatTime(lastChat.id)}</s.Time>
             {unreadCount > 0 ? (
               <s.BlackCircle>{unreadCount}</s.BlackCircle>
             ) : null}
