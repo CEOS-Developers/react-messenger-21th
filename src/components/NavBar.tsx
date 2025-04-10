@@ -30,6 +30,7 @@ export default function NavBar() {
 		<div className="grow h-[5.875rem] flex justify-between px-[4.25rem] py-4 bg-black-000 border-t border-black-200 rounded-b-4xl">
 			{tabs.map((tab) => (
 				<button
+					key={tab.content}
 					onClick={() => nav(tab.href)}
 					className={clsx(
 						'w-9 h-12 flex flex-col items-center justify-between caption1-medium',
