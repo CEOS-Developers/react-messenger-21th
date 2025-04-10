@@ -1,0 +1,126 @@
+[
+	{
+		"chatRoomId": 1,
+		"chatRoomName": null,
+		"joinedUsers": [
+			{
+				"id": 1,
+				"name": "임이솔",
+				"color": "blue"
+			},
+			{
+				"id": 2,
+				"name": "김진현",
+				"color": "purple"
+			},
+			{
+				"id": 3,
+				"name": "하은지",
+				"color": "blue"
+			},
+			{
+				"id": 4,
+				"name": "송아영",
+				"color": "yellow"
+			}
+		],
+		"latestMessage": {
+			"id": "4",
+			"content": "난 오늘 무릎이 아파,,",
+			"createdAt": "2025-03-25T17:20:00",
+			"fromUser": {
+				"id": 3,
+				"name": "하은지",
+				"color": "blue"
+			}
+		}
+	},
+	{
+		"chatRoomId": 2,
+		"chatRoomName": "행복하자~!~!",
+		"joinedUsers": [
+			{
+				"id": 1,
+				"name": "임이솔",
+				"color": "blue"
+			},
+			{
+				"id": 2,
+				"name": "김진현",
+				"color": "purple"
+			},
+			{
+				"id": 3,
+				"name": "하은지",
+				"color": "blue"
+			}
+		],
+		"latestMessage": {
+			"id": "4",
+			"content": "안녕하세요, 반갑습니다 :)",
+			"createdAt": "2025-03-25T11:28:00",
+			"fromUser": {
+				"id": 3,
+				"name": "하은지",
+				"color": "blue"
+			}
+		}
+	},
+	{
+		"chatRoomId": 17,
+		"chatRoomName": null,
+		"joinedUsers": [
+			{
+				"id": 3,
+				"name": "하은지",
+				"color": "blue"
+			},
+			{
+				"id": 4,
+				"name": "송아영",
+				"color": "yellow"
+			}
+		],
+		"latestMessage": {
+			"id": "1",
+			"content": "지금 뭐해??? 지금 여진이랑 같이 놀러 갈 건데",
+			"createdAt": "2025-03-23T14:33:00",
+			"fromUser": {
+				"id": 4,
+				"name": "송아영",
+				"color": "yellow"
+			}
+		}
+	},
+	{
+		"chatRoomId": 4,
+		"chatRoomName": null,
+		"joinedUsers": [
+			{
+				"id": 1,
+				"name": "임이솔",
+				"color": "blue"
+			},
+			{
+				"id": 2,
+				"name": "김진현",
+				"color": "purple"
+			},
+			{
+				"id": 3,
+				"name": "하은지",
+				"color": "blue"
+			}
+		],
+		"latestMessage": {
+			"id": "4",
+			"content": "안녕하세요, 반갑습니다 :)",
+			"createdAt": "2025-03-25T11:28:00",
+			"fromUser": {
+				"id": 3,
+				"name": "하은지",
+				"color": "blue"
+			}
+		}
+	}
+]
