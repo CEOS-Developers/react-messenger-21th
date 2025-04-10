@@ -16,15 +16,15 @@ export default function DefaultProfile({
 }) {
 	const size = isMyProfile ? 30 : 27;
 	return (
-		<button
+		<div
 			className={clsx(
-				'flex justify-center items-center border border-black-100 rounded-full',
+				'flex justify-center items-center mx-auto border rounded-full cursor-pointer',
 				isMyProfile ? 'w-11 h-11' : 'w-9 h-9',
 				hasBorder ? 'border-black-100' : 'border-black-000',
 				bgColor,
 			)}
 		>
 			{profileImgUrl ? <div></div> : <Profile width={size} height={size} className={pathColor} />}
-		</button>
+		</div>
 	);
 }
