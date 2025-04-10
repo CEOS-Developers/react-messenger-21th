@@ -1,7 +1,9 @@
 import type { UserDto } from '@/pages/ChatRoom/dto';
+import { CURRENT_USER_ID } from './constants';
 
-export const createOtherUserContent = (otherUsers: UserDto[] | null) => {
-	if (otherUsers === null) return '';
+export const createOtherUserContent = (joinedUsers: UserDto[]) => {
+	const otherUsers = joinedUsers.filter((user) => user.id !== CURRENT_USER_ID);
+	if (otherUsers.length === 0) return joinedUsers[0].name; // 내 이름 (나와의 채팅)
 
 	const names = otherUsers.map((user) => user.name);
 	const sortedUsers = names.sort((a, b) => a.localeCompare(b));

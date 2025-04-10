@@ -24,8 +24,7 @@ export default function ChatRoom() {
 	// 상대방 필터링
 	const joinedUserIds = joinedUsers.map((user) => user.id);
 	const currentUser = joinedUsers.find((user) => user.id === currentUserId)!;
-	const otherUsers = joinedUsers.filter((user) => user.id !== currentUserId);
-	const otherUserContent = createOtherUserContent(otherUsers || null);
+	const otherUserContent = createOtherUserContent(joinedUsers);
 
 	// 초기 데이터 페칭
 	useEffect(() => {
