@@ -1,7 +1,33 @@
 [
 	{
-		"chatRoomId": 1,
+		"chatRoomId": 21,
 		"chatRoomName": null,
+		"joinedUsers": [
+			{
+				"id": 3,
+				"name": "하은지",
+				"color": "blue"
+			},
+			{
+				"id": 2,
+				"name": "김진현",
+				"color": "blue"
+			}
+		],
+		"latestMessage": {
+			"id": "1",
+			"content": "지금 뭐해??? 지금 여진이랑 같이 놀러 갈 건데",
+			"createdAt": "2025-04-01T18:13:00",
+			"fromUser": {
+				"id": 2,
+				"name": "김진현",
+				"color": "blue"
+			}
+		}
+	},
+	{
+		"chatRoomId": 31,
+		"chatRoomName": "0411",
 		"joinedUsers": [
 			{
 				"id": 1,
@@ -27,6 +53,63 @@
 		"latestMessage": {
 			"id": "4",
 			"content": "난 오늘 무릎이 아파,,",
+			"createdAt": "2025-03-25T17:20:00",
+			"fromUser": {
+				"id": 3,
+				"name": "하은지",
+				"color": "blue"
+			}
+		}
+	},
+	{
+		"chatRoomId": 11,
+		"chatRoomName": null,
+		"joinedUsers": [
+			{
+				"id": 3,
+				"name": "하은지",
+				"color": "blue"
+			},
+			{
+				"id": 5,
+				"name": "김민지",
+				"color": "orange"
+			}
+		],
+		"latestMessage": {
+			"id": "1",
+			"content": "지금 뭐해??? 지금 여진이랑 같이 놀러 갈 건데",
+			"createdAt": "2025-04-01T18:13:00",
+			"fromUser": {
+				"id": 5,
+				"name": "김민지",
+				"color": "orange"
+			}
+		}
+	},
+	{
+		"chatRoomId": 51,
+		"chatRoomName": "열한시오십구분",
+		"joinedUsers": [
+			{
+				"id": 6,
+				"name": "김다인",
+				"color": "pink"
+			},
+			{
+				"id": 3,
+				"name": "하은지",
+				"color": "blue"
+			},
+			{
+				"id": 5,
+				"name": "김민지",
+				"color": "orange"
+			}
+		],
+		"latestMessage": {
+			"id": "4",
+			"content": "이제 양치해야지",
 			"createdAt": "2025-03-25T17:20:00",
 			"fromUser": {
 				"id": 3,
@@ -89,6 +172,42 @@
 				"id": 4,
 				"name": "송아영",
 				"color": "yellow"
+			}
+		}
+	},
+	{
+		"chatRoomId": 22,
+		"chatRoomName": null,
+		"joinedUsers": [
+			{
+				"id": 1,
+				"name": "임이솔",
+				"color": "blue"
+			},
+			{
+				"id": 2,
+				"name": "김진현",
+				"color": "purple"
+			},
+			{
+				"id": 3,
+				"name": "하은지",
+				"color": "blue"
+			},
+			{
+				"id": 4,
+				"name": "송아영",
+				"color": "yellow"
+			}
+		],
+		"latestMessage": {
+			"id": "4",
+			"content": "난 오늘 무릎이 아파,,",
+			"createdAt": "2025-03-25T17:20:00",
+			"fromUser": {
+				"id": 3,
+				"name": "하은지",
+				"color": "blue"
 			}
 		}
 	},

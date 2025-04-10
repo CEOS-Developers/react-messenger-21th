@@ -18,5 +18,15 @@
 		"id": 4,
 		"name": "송아영",
 		"color": "yellow"
+	},
+	{
+		"id": 5,
+		"name": "김민지",
+		"color": "orange"
+	},
+	{
+		"id": 6,
+		"name": "김다인",
+		"color": "pink"
 	}
 ]
