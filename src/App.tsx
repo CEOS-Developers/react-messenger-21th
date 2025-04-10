@@ -11,6 +11,7 @@ import ChatRoom from './pages/ChatRoom.tsx'
 import FriendsList from './pages/FriendsList.tsx'
 import ChatList from './pages/ChatList.tsx'
 import ProfilePage from './pages/ProfilePage.tsx'
+import MemberList from './pages/MemberList.tsx'
 
 import setUserAndChatRoom from './utils/setUserAndChatRoom.ts'
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/profile/:id" element={<ProfilePage />} />
           <Route path="/chatlist" element={<ChatList />} />
           <Route path="/room/:id" element={<ChatRoom />} />
+          <Route path="/room/:id/members" element={<MemberList />} />
         </Routes>
       </ThemeProvider>
     </>

@@ -5,6 +5,9 @@ import People from './people-plus.svg?react'
 import Image from './image.svg?react'
 import List from './list.svg?react'
 import Setting from './setting.svg?react'
+import Back from './back.svg?react'
+import { EventIcon } from '../../../components/common/Common.Styled'
+import { useNavigate } from 'react-router'
 
 const HomeIcon = () => {
   return (
@@ -28,11 +31,11 @@ const ChatListIcon = () => {
 }
 
 const ChatRoomIcon = () => {
+  const nav = useNavigate()
   return (
-    <IconGroup>
+    <EventIcon onClick={() => nav('./members')}>
       <List />
-      <Setting />
-    </IconGroup>
+    </EventIcon>
   )
 }
 
@@ -42,9 +45,18 @@ const ProfileIcon = () => (
   </IconGroup>
 )
 
+const BackIcon = () => {
+  const nav = useNavigate()
+  return (
+    <EventIcon onClick={() => nav(-1)}>
+      <Back />
+    </EventIcon>
+  )
+}
+
 const IconGroup = styled.div`
   display: flex;
   gap: 12px;
 `
 
-export { HomeIcon, ChatListIcon, ChatRoomIcon, ProfileIcon }
+export { HomeIcon, ChatListIcon, ChatRoomIcon, ProfileIcon, BackIcon }
