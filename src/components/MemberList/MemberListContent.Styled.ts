@@ -38,6 +38,7 @@ const MemberItem = styled.li`
   gap: 12px;
 
   align-items: center;
+  cursor: pointer;
 `
 
 const MemberList = styled.ol`
