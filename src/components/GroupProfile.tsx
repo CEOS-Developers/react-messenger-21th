@@ -5,7 +5,10 @@ export default function GroupProfile({ bgColors, pathColors }: { bgColors: strin
 
 	return (
 		<div className="relative">
-			<div className={`w-6 h-6 flex justify-center items-center rounded-full cursor-pointer ${bgColors[0]}`}>
+			<div
+				className={`absolute -top-[0.1875rem] -left-[0.1875rem] w-[1.875rem] h-[1.875rem] flex justify-center items-center
+				border-[0.1875rem] border-black-000 rounded-full cursor-pointer ${bgColors[0]}`}
+			>
 				<Profile width={size} height={size} className={pathColors[0]} />
 			</div>
 			<div

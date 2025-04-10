@@ -22,8 +22,9 @@ export default function ChatItem({
 
 	return (
 		<button
+			disabled={chatRoomId !== 1}
 			onClick={() => nav(`/chatroom/${chatRoomId}`)}
-			className="grow py-[0.875rem] px-5 grid grid-cols-[42px_1fr_auto] gap-2.5"
+			className="grow py-[0.875rem] px-5 grid grid-cols-[42px_1fr_auto] gap-2.5 hover:bg-black-100 transition-colors"
 		>
 			<ChatRoomImg joinedUsers={joinedUsers} />
 			<div className="flex flex-col justify-between gap-2 overflow-hidden">
