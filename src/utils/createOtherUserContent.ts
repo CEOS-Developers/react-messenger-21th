@@ -2,6 +2,8 @@ import type { UserDto } from '@/pages/ChatRoom/dto';
 import { CURRENT_USER_ID } from './constants';
 
 export const createOtherUserContent = (joinedUsers: UserDto[]) => {
+	if (joinedUsers.length === 0) return ''; // 데이터 페칭 전 예외처리
+
 	const otherUsers = joinedUsers.filter((user) => user.id !== CURRENT_USER_ID);
 	if (otherUsers.length === 0) return joinedUsers[0].name; // 내 이름 (나와의 채팅)
 

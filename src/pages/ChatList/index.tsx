@@ -21,6 +21,7 @@ export default function ChatList() {
 				{chatRoomList?.map((chatRoom) => (
 					<ChatItem
 						key={chatRoom.chatRoomId}
+						chatRoomId={chatRoom.chatRoomId}
 						chatRoomName={chatRoom.chatRoomName}
 						joinedUsers={chatRoom.joinedUsers}
 						content={chatRoom.latestMessage.content}

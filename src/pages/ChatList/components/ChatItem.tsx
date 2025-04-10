@@ -2,22 +2,29 @@ import { UserDto } from '@/pages/ChatRoom/dto';
 import { createOtherUserContent } from '@/utils/createOtherUserContent';
 import { formatCreatedAt } from '@/utils/formatCreatedAt';
 import ChatRoomImg from './ChatRoomImg';
+import { useNavigate } from 'react-router-dom';
 
 export default function ChatItem({
-	joinedUsers,
+	chatRoomId,
 	chatRoomName,
+	joinedUsers,
 	content,
 	createdAt,
 }: {
-	joinedUsers: UserDto[];
+	chatRoomId: number;
 	chatRoomName: string | null;
+	joinedUsers: UserDto[];
 	content: string;
 	createdAt: string;
 }) {
 	const title = chatRoomName || createOtherUserContent(joinedUsers);
+	const nav = useNavigate();
 
 	return (
-		<button className="grow py-[0.875rem] px-5 grid grid-cols-[42px_1fr_auto] gap-2.5">
+		<button
+			onClick={() => nav(`/chatroom/${chatRoomId}`)}
+			className="grow py-[0.875rem] px-5 grid grid-cols-[42px_1fr_auto] gap-2.5"
+		>
 			<ChatRoomImg joinedUsers={joinedUsers} />
 			<div className="flex flex-col justify-between gap-2 overflow-hidden">
 				<div className="text-left body2-semibold">{title}</div>
