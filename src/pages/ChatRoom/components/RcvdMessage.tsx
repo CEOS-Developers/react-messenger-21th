@@ -1,11 +1,11 @@
 import RcvdArrow from '@/assets/icons/rcvdArrow.svg?react';
-import Profile from '@/assets/icons/profile.svg?react';
 
 import { getProfileColor } from '@/utils/getProfileColor';
 import { formatCreatedAt } from '@/utils/formatCreatedAt';
 import type { messagesByUserDto } from '@/utils/dto';
 
 import Message from './Message';
+import DefaultProfile from '@/components/DefaultProfile';
 
 export default function RcvdMessage({ fromUser, messages }: messagesByUserDto) {
 	const profileBackgroundColor = getProfileColor('background', fromUser.color);
@@ -13,11 +13,7 @@ export default function RcvdMessage({ fromUser, messages }: messagesByUserDto) {
 
 	return (
 		<div className="flex gap-3 py-2.5">
-			<button
-				className={`w-9 h-9 flex justify-center items-center border border-black-100 rounded-full ${profileBackgroundColor}`}
-			>
-				<Profile width={27} height={27} className={profilePathColor} />
-			</button>
+			<DefaultProfile bgColor={profileBackgroundColor} pathColor={profilePathColor} />
 
 			<div className="flex flex-col gap-2">
 				<div className="caption1-medium">{fromUser.name}</div>
