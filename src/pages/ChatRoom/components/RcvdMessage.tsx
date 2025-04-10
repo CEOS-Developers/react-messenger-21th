@@ -17,22 +17,18 @@ export default function RcvdMessage({ fromUser, messages }: messagesByUserDto) {
 
 			<div className="flex flex-col gap-2">
 				<div className="caption1-medium">{fromUser.name}</div>
-				{messages.map(({ id, createdAt, content, isTimeVisible }, index) => {
-					const formattedCreatedAt = formatCreatedAt(new Date(createdAt));
+				{messages.map(({ id, createdAt, content, isTimeVisible }, index) => (
+					<div className="flex" key={id}>
+						<Message isReceived={true}>
+							{index === 0 && <RcvdArrow className="absolute top-[0.1563rem] -left-2" />}
+							{content}
+						</Message>
 
-					return (
-						<div className="flex" key={id}>
-							<Message isReceived={true}>
-								{index === 0 && <RcvdArrow className="absolute top-[0.1563rem] -left-2" />}
-								{content}
-							</Message>
-
-							{isTimeVisible && (
-								<div className="ml-1.5 mt-auto caption2-regular text-black-500">{formattedCreatedAt}</div>
-							)}
-						</div>
-					);
-				})}
+						{isTimeVisible && (
+							<div className="ml-1.5 mt-auto caption2-regular text-black-500">{formatCreatedAt(createdAt)}</div>
+						)}
+					</div>
+				))}
 			</div>
 		</div>
 	);
