@@ -1,23 +1,33 @@
 import styled from 'styled-components'
-import { Caption } from '../../styles/Typo.Styled'
+import { Body_2 } from '../../styles/Typo.Styled'
 import StyledProps from '../../interface/StyledProps'
 
-const Wrapper = styled.div``
+const ColumnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
-const Section = styled.div`
-  border-top: 1px solid ${({ theme }) => theme.colors.gray04};
-  padding: 20px 0;
+const Wrapper = styled(ColumnContainer)`
+  gap: 8px;
+`
+
+const Section = styled(ColumnContainer)`
+  gap: 4px;
+`
+
+const ChatContainer = styled(ColumnContainer)`
+  gap: 16px;
 `
 
 const Keyword = styled.div<StyledProps>`
-  ${Caption}
-  color: ${({ theme }) => theme.colors.gray09};
-  padding-bottom: 10px;
+  ${Body_2}
+  color: ${({ theme }) => theme.colors.gray12};
+  padding: 10px 0px;
 `
 
 const Result = styled.div<StyledProps>`
-  ${Caption}
-  color: ${({ theme }) => theme.colors.gray07};
+  ${Body_2}
+  color: ${({ theme }) => theme.colors.gray12};
 `
 
-export { Wrapper, Section, Keyword, Result }
+export { Wrapper, Section, ChatContainer, Keyword, Result }

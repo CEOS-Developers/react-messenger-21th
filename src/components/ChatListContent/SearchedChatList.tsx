@@ -20,48 +20,42 @@ const SearchedChatList = ({
 }) => {
   const { user } = useUserStore()
 
-  const filteredByRoomName = sortedChatRoom?.filter((room: RoomItemProps) => {
-    /* room name filter */
-    if (!room.roomName) return false
-    const disassembled = Hangul.disassemble(room.roomName).join('')
-    const inputDisassembled = Hangul.disassemble(searchText).join('')
-    return disassembled.includes(inputDisassembled)
-  })
-
-  const filteredByMemberName = sortedChatRoom?.filter((room: RoomItemProps) => {
+  const filteredRoom = sortedChatRoom?.filter((room: RoomItemProps) => {
     /* member name filter */
     const memberIds = room.member.filter((memberId) => memberId !== user.id)
     const memberNames = getAllMemberName(memberIds)
-    const disassembled = Hangul.disassemble(memberNames).join('')
+    let disassembled = Hangul.disassemble(memberNames).join('')
     const inputDisassembled = Hangul.disassemble(searchText).join('')
+    const result = disassembled.includes(inputDisassembled)
+    if (result) return true
+    if (!room.roomName) return false
+
+    /* room name filter */
+    disassembled = Hangul.disassemble(room.roomName).join('')
     return disassembled.includes(inputDisassembled)
   })
+
   return (
-    <div>
+    <s.Wrapper>
       <s.Section>
-        <s.Keyword $isM={true}>채팅방 이름 검색 결과</s.Keyword>
-        {filteredByRoomName.length === 0 ? (
+        <s.Keyword $isM={true}>채팅방</s.Keyword>
+        {filteredRoom.length === 0 ? (
           <s.Result $isM={true}>검색 결과가 없습니다.</s.Result>
         ) : (
-          filteredByRoomName.map(
-            (room: RoomItemProps) =>
-              room && <RoomItem key={room.chatRoomId} {...room} />
-          )
+          <s.ChatContainer>
+            {filteredRoom.map(
+              (room: RoomItemProps) =>
+                room && <RoomItem key={room.chatRoomId} {...room} />
+            )}
+          </s.ChatContainer>
         )}
       </s.Section>
 
       <s.Section>
-        <s.Keyword $isM={true}>친구 이름 검색 결과</s.Keyword>
-        {filteredByMemberName.length === 0 ? (
-          <s.Result $isM={true}>검색 결과가 없습니다.</s.Result>
-        ) : (
-          filteredByMemberName.map(
-            (room: RoomItemProps) =>
-              room && <RoomItem key={room.chatRoomId} {...room} />
-          )
-        )}
+        <s.Keyword $isM={true}>메시지</s.Keyword>
+        <s.Result $isM={true}>검색 결과가 없습니다.</s.Result>
       </s.Section>
-    </div>
+    </s.Wrapper>
   )
 }
 
