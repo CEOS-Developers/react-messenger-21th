@@ -32,7 +32,7 @@ export default function ChatRoomImg({ joinedUsers }: { joinedUsers: UserDto[] })
 		const isActive = targetUsers[0].isActive;
 
 		return (
-			<div>
+			<div className="flex justify-center">
 				<DefaultProfile bgColor={bgColor} pathColor={pathColor} hasBorder={false} isActive={isActive} />
 			</div>
 		);

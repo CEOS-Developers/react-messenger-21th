@@ -31,7 +31,7 @@ export default function ChatList() {
 					))}
 				</div>
 				<Divider />
-				<div className="flex flex-col">
+				<div className="flex flex-col pb-2.5">
 					{chatRoomList?.map((chatRoom) => (
 						<ChatItem
 							key={chatRoom.chatRoomId}

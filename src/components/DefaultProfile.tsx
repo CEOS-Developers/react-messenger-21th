@@ -20,9 +20,9 @@ export default function DefaultProfile({
 	return (
 		<div
 			className={clsx(
-				'relative flex justify-center items-center mx-auto border rounded-full cursor-pointer',
+				'relative flex justify-center items-center border rounded-full',
 				isMyProfile ? 'w-11 h-11' : 'w-9 h-9',
-				hasBorder ? 'border-black-100' : 'border-black-000',
+				hasBorder ? 'border-black-100' : 'border-transparent',
 				bgColor,
 			)}
 		>
