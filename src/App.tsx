@@ -14,6 +14,7 @@ import ProfilePage from './pages/ProfilePage.tsx'
 import MemberList from './pages/MemberList.tsx'
 
 import setUserAndChatRoom from './utils/setUserAndChatRoom.ts'
+import MemberSelection from './pages/MemberSelection.tsx'
 
 function App() {
   const userId = 1
@@ -32,6 +33,10 @@ function App() {
           <Route path="/chatlist" element={<ChatList />} />
           <Route path="/room/:id" element={<ChatRoom />} />
           <Route path="/room/:id/members" element={<MemberList />} />
+          <Route
+            path="/room/:id/members/selection"
+            element={<MemberSelection />}
+          />
         </Routes>
       </ThemeProvider>
     </>

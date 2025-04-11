@@ -9,4 +9,5 @@ export default interface StyledProps {
   $margin?: number
   $isOpen?: boolean
   $isNextSender?: boolean
+  $isActive?: boolean
 }

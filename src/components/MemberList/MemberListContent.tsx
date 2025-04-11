@@ -6,11 +6,13 @@ import {
   ProfileDefault,
 } from '../../assets/Icons/Profile'
 import { useChatRoomStore } from '../../stores/useChatRoomStore'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { getMemberArray } from '../../utils/getMemberList'
 import getRoomName from '../../utils/getRoomName'
+import MemberItem from '../MemberItem/MemberItem'
 
 const MemberListContent = () => {
+  const nav = useNavigate()
   const { user } = useUserStore()
   const { chatRoom } = useChatRoomStore()
   const roomId = Number(useParams().id)
@@ -53,22 +55,37 @@ const MemberListContent = () => {
             <Plus />
             <s.MemberName>친구 초대하기</s.MemberName>
           </s.MemberItem>
-          <s.MemberItem key={user.id}>
+          <s.MemberItem
+            onClick={() => nav(`/profile/${user.id}`)}
+            key={user.id}>
             <ProfileDefault color={user.profileColor} />
             <s.MemberName>{user.name}</s.MemberName>
             <s.MeTag $isM={true}>나</s.MeTag>
           </s.MemberItem>
           {memberData?.map((member) => (
-            <s.MemberItem key={member.id}>
-              <ProfileDefault color={member.profileColor} />
-              <s.MemberName>{member.name}</s.MemberName>
-            </s.MemberItem>
+            <MemberItem
+              id={member.id}
+              key={member.id}
+              name={member.name}
+              profileColor={member.profileColor}
+              onClick={(id) => nav(`/profile/${id}`)}
+            />
           ))}
         </s.MemberList>
       </s.Section>
 
       <s.Section>
-        <s.Button $isM={true}>유저 변경하기</s.Button>
+        <s.Button
+          $isM={true}
+          onClick={() =>
+            nav('./selection', {
+              state: {
+                memberData,
+              },
+            })
+          }>
+          유저 변경하기
+        </s.Button>
         <s.OutButton $isM={true}>채팅방 나가기</s.OutButton>
       </s.Section>
     </s.Wrapper>

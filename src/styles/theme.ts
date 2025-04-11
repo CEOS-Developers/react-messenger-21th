@@ -20,6 +20,7 @@ const colors = {
   purple: 'linear-gradient(#FFFFFF, #D9B9FA)',
   mainLime: 'linear-gradient(#FFFFFF, #EAFB88)',
   red: '#FF5757',
+  blue: '#528EFF',
   chatBackground:
     'linear-gradient(#A6D0FF 0%, #FFFFFF 29%, #FFFFFF 69%, #8BC2FF 110%)',
   profileBackground:
