@@ -52,6 +52,11 @@ const Profile2by2 = styled.div`
   }
 `
 
+const Profile2by2Default = styled(Profile2by2)`
+  height: auto;
+  width: auto;
+`
+
 export {
   ProfileBig,
   ProfileDefault,
@@ -59,4 +64,5 @@ export {
   ProfileMini,
   PeopleMargin,
   Profile2by2,
+  Profile2by2Default,
 }

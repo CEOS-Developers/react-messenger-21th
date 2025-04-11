@@ -3,6 +3,7 @@ import { Body_1, Body_2, Headline3, Subhead } from '../../styles/Typo.Styled'
 import StyledProps from '../../interface/StyledProps'
 
 const Wrapper = styled.div`
+  height: 710px;
   flex-grow: 1;
   padding: 24px 20px 20px 20px;
   background-color: ${({ theme }) => theme.colors.gray03};
@@ -18,14 +19,31 @@ const Section = styled.div`
   gap: 16px;
 `
 
+const RoomNameSection = styled(Section)`
+  justify-content: center;
+  align-items: center;
+`
+
 const RoomName = styled.h1`
   ${Headline3}
   color: ${({ theme }) => theme.colors.gray13};
 `
 
+const MemberCount = styled.span<StyledProps>`
+  ${Subhead}
+  color: ${({ theme }) => theme.colors.gray10};
+`
+
 const MemberNum = styled.h2<StyledProps>`
   ${Body_2}
   color: ${({ theme }) => theme.colors.black};
+`
+
+const TitleContainer = styled.div`
+  display: flex;
+  gap: 6px;
+
+  align-items: center;
 `
 
 const MemberName = styled.p<StyledProps>`
@@ -45,6 +63,12 @@ const MemberList = styled.ol`
   display: flex;
   flex-direction: column;
   gap: 18px;
+
+  height: 305px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 const Button = styled.button<StyledProps>`
@@ -81,7 +105,10 @@ const MeTag = styled.div<StyledProps>`
 export {
   Wrapper,
   Section,
+  RoomNameSection,
   RoomName,
+  MemberCount,
+  TitleContainer,
   MemberNum,
   MemberName,
   MemberItem,

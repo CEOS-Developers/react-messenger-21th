@@ -56,10 +56,21 @@ const MultipleProfile = ({ colors }: { colors: string[] }) => {
   )
 }
 
+const MultipleProfileDefault = ({ colors }: { colors: string[] }) => {
+  return (
+    <s.Profile2by2Default>
+      {colors.map((color, idx) => (
+        <ProfileDefault key={idx} color={color} />
+      ))}
+    </s.Profile2by2Default>
+  )
+}
+
 export {
   ProfileBig,
   ProfileDefault,
   ProfileMedium,
   ProfileMini,
   MultipleProfile,
+  MultipleProfileDefault,
 }
