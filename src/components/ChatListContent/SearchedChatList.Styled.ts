@@ -28,6 +28,7 @@ const Keyword = styled.div<StyledProps>`
 const Result = styled.div<StyledProps>`
   ${Body_2}
   color: ${({ theme }) => theme.colors.gray12};
+  align-self: center;
 `
 
 export { Wrapper, Section, ChatContainer, Keyword, Result }
