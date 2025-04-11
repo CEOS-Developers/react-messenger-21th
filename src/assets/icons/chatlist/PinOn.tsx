@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 const SvgPinOn = (props: SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}>
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 24 24" {...props}>
     <path
       stroke="#6DE67B"
       strokeWidth={1.1}
