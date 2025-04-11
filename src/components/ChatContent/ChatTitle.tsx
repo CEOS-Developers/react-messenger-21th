@@ -15,6 +15,7 @@ const ChatTitle = ({ memberIds }: { memberIds: number[] }) => {
   /* ChatTitle의 멤버의 이름을 클릭하면 사용자가 바뀌는 이벤트 */
   const handleClickRoomName = () => {
     if (!isGroupChat) return setUserAndChatRoom(memberIds[0])
+    nav('./members')
   }
 
   return (
