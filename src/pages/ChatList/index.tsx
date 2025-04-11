@@ -5,15 +5,20 @@ import { useEffect, useState } from 'react';
 import { ChatRoomDto, getChatRoomList } from '@/apis/getChatRoomList';
 import RecentActiveFriend from '@/components/RecentActiveFriend';
 import Divider from '@/components/Divider';
+import { UserDto } from '../ChatRoom/dto';
+import { getRecentActiveFriends } from '@/apis/getRecentActiveFriends';
 
 export default function ChatList() {
-	const [chatRoomList, setChatRoomList] = useState<ChatRoomDto[]>();
+	const [chatRoomList, setChatRoomList] = useState<ChatRoomDto[]>([]);
+	const [friends, setFriends] = useState<UserDto[]>([]);
 
 	// 초기 데이터 페칭
 	useEffect(() => {
-		const response = getChatRoomList();
+		const chatRoomListResponse = getChatRoomList();
+		const friendsResponse = getRecentActiveFriends();
 
-		setChatRoomList(response);
+		setChatRoomList(chatRoomListResponse);
+		setFriends(friendsResponse);
 	}, []);
 
 	return (
@@ -21,13 +26,9 @@ export default function ChatList() {
 			<MainTopBar content="채팅" />
 			<div className=" h-[38.5rem] overflow-scroll no-scrollbar">
 				<div className="px-5 py-2.5 flex gap-2 overflow-scroll no-scrollbar">
-					<RecentActiveFriend />
-					<RecentActiveFriend />
-					<RecentActiveFriend />
-					<RecentActiveFriend />
-					<RecentActiveFriend />
-					<RecentActiveFriend />
-					<RecentActiveFriend />
+					{friends.map((friend) => (
+						<RecentActiveFriend key={friend.id} {...friend} />
+					))}
 				</div>
 				<Divider />
 				<div className="flex flex-col">

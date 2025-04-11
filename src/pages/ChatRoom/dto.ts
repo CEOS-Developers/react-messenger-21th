@@ -9,4 +9,6 @@ export interface UserDto {
 	id: number;
 	name: string;
 	color: 'blue' | 'purple' | 'yellow' | 'pink' | 'orange';
+	isActive: boolean;
+	lastActiveAt: string;
 }

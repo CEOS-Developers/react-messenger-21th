@@ -7,24 +7,34 @@ export default function DefaultProfile({
 	isMyProfile = false,
 	hasBorder = true,
 	profileImgUrl,
+	isActive,
 }: {
 	bgColor: string;
 	pathColor: string;
 	isMyProfile?: boolean;
 	hasBorder?: boolean;
 	profileImgUrl?: string;
+	isActive?: boolean;
 }) {
 	const size = isMyProfile ? 30 : 27;
 	return (
 		<div
 			className={clsx(
-				'flex justify-center items-center mx-auto border rounded-full cursor-pointer',
+				'relative flex justify-center items-center mx-auto border rounded-full cursor-pointer',
 				isMyProfile ? 'w-11 h-11' : 'w-9 h-9',
 				hasBorder ? 'border-black-100' : 'border-black-000',
 				bgColor,
 			)}
 		>
 			{profileImgUrl ? <div></div> : <Profile width={size} height={size} className={pathColor} />}
+			{isActive !== undefined && (
+				<div
+					className={clsx(
+						'absolute right-0.5 -bottom-0.5 w-2.5 h-2.5 border-2 border-black-50 rounded-full',
+						isActive ? 'bg-main-400' : 'bg-black-400',
+					)}
+				></div>
+			)}
 		</div>
 	);
 }
