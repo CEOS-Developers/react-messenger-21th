@@ -6,12 +6,16 @@
 			{
 				"id": 3,
 				"name": "하은지",
-				"color": "blue"
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
 			},
 			{
 				"id": 2,
 				"name": "김진현",
-				"color": "blue"
+				"color": "blue",
+				"isActive": false,
+				"lastActiveAt": "2025-04-10T23:11:00"
 			}
 		],
 		"latestMessage": {
@@ -21,7 +25,9 @@
 			"fromUser": {
 				"id": 2,
 				"name": "김진현",
-				"color": "blue"
+				"color": "blue",
+				"isActive": false,
+				"lastActiveAt": "2025-04-10T23:11:00"
 			}
 		}
 	},
@@ -32,22 +38,30 @@
 			{
 				"id": 1,
 				"name": "임이솔",
-				"color": "blue"
+				"color": "blue",
+				"isActive": false,
+				"lastActiveAt": "2025-03-31T17:19:00"
 			},
 			{
 				"id": 2,
 				"name": "김진현",
-				"color": "purple"
+				"color": "purple",
+				"isActive": false,
+				"lastActiveAt": "2025-04-10T23:11:00"
 			},
 			{
 				"id": 3,
 				"name": "하은지",
-				"color": "blue"
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
 			},
 			{
 				"id": 4,
 				"name": "송아영",
-				"color": "yellow"
+				"color": "yellow",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T15:19:00"
 			}
 		],
 		"latestMessage": {
@@ -57,7 +71,9 @@
 			"fromUser": {
 				"id": 3,
 				"name": "하은지",
-				"color": "blue"
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
 			}
 		}
 	},
@@ -68,12 +84,16 @@
 			{
 				"id": 3,
 				"name": "하은지",
-				"color": "blue"
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
 			},
 			{
 				"id": 5,
 				"name": "김민지",
-				"color": "orange"
+				"color": "orange",
+				"isActive": false,
+				"lastActiveAt": "2025-03-25T15:19:00"
 			}
 		],
 		"latestMessage": {
@@ -83,7 +103,9 @@
 			"fromUser": {
 				"id": 5,
 				"name": "김민지",
-				"color": "orange"
+				"color": "orange",
+				"isActive": false,
+				"lastActiveAt": "2025-03-25T15:19:00"
 			}
 		}
 	},
@@ -94,17 +116,23 @@
 			{
 				"id": 6,
 				"name": "김다인",
-				"color": "pink"
+				"color": "pink",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:46:00"
 			},
 			{
 				"id": 3,
 				"name": "하은지",
-				"color": "blue"
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
 			},
 			{
 				"id": 5,
 				"name": "김민지",
-				"color": "orange"
+				"color": "orange",
+				"isActive": false,
+				"lastActiveAt": "2025-03-25T15:19:00"
 			}
 		],
 		"latestMessage": {
@@ -114,7 +142,9 @@
 			"fromUser": {
 				"id": 3,
 				"name": "하은지",
-				"color": "blue"
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
 			}
 		}
 	},
@@ -125,17 +155,23 @@
 			{
 				"id": 1,
 				"name": "임이솔",
-				"color": "blue"
+				"color": "blue",
+				"isActive": false,
+				"lastActiveAt": "2025-03-31T17:19:00"
 			},
 			{
 				"id": 2,
 				"name": "김진현",
-				"color": "purple"
+				"color": "purple",
+				"isActive": false,
+				"lastActiveAt": "2025-04-10T23:11:00"
 			},
 			{
 				"id": 3,
 				"name": "하은지",
-				"color": "blue"
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
 			}
 		],
 		"latestMessage": {
@@ -145,7 +181,9 @@
 			"fromUser": {
 				"id": 3,
 				"name": "하은지",
-				"color": "blue"
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
 			}
 		}
 	},
@@ -156,12 +194,16 @@
 			{
 				"id": 3,
 				"name": "하은지",
-				"color": "blue"
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
 			},
 			{
 				"id": 4,
 				"name": "송아영",
-				"color": "yellow"
+				"color": "yellow",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T15:19:00"
 			}
 		],
 		"latestMessage": {
@@ -171,7 +213,9 @@
 			"fromUser": {
 				"id": 4,
 				"name": "송아영",
-				"color": "yellow"
+				"color": "yellow",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T15:19:00"
 			}
 		}
 	},
@@ -182,22 +226,30 @@
 			{
 				"id": 1,
 				"name": "임이솔",
-				"color": "blue"
+				"color": "blue",
+				"isActive": false,
+				"lastActiveAt": "2025-03-31T17:19:00"
 			},
 			{
 				"id": 2,
 				"name": "김진현",
-				"color": "purple"
+				"color": "purple",
+				"isActive": false,
+				"lastActiveAt": "2025-04-10T23:11:00"
 			},
 			{
 				"id": 3,
 				"name": "하은지",
-				"color": "blue"
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
 			},
 			{
 				"id": 4,
 				"name": "송아영",
-				"color": "yellow"
+				"color": "yellow",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T15:19:00"
 			}
 		],
 		"latestMessage": {
@@ -207,7 +259,9 @@
 			"fromUser": {
 				"id": 3,
 				"name": "하은지",
-				"color": "blue"
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
 			}
 		}
 	},
@@ -218,17 +272,23 @@
 			{
 				"id": 1,
 				"name": "임이솔",
-				"color": "blue"
+				"color": "blue",
+				"isActive": false,
+				"lastActiveAt": "2025-03-31T17:19:00"
 			},
 			{
 				"id": 2,
 				"name": "김진현",
-				"color": "purple"
+				"color": "purple",
+				"isActive": false,
+				"lastActiveAt": "2025-04-10T23:11:00"
 			},
 			{
 				"id": 3,
 				"name": "하은지",
-				"color": "blue"
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
 			}
 		],
 		"latestMessage": {
@@ -238,7 +298,41 @@
 			"fromUser": {
 				"id": 3,
 				"name": "하은지",
-				"color": "blue"
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
+			}
+		}
+	},
+	{
+		"chatRoomId": 49,
+		"chatRoomName": null,
+		"joinedUsers": [
+			{
+				"id": 6,
+				"name": "김다인",
+				"color": "pink",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:46:00"
+			},
+			{
+				"id": 3,
+				"name": "하은지",
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
+			}
+		],
+		"latestMessage": {
+			"id": "4",
+			"content": "안녕하세요, 반갑습니다 :)",
+			"createdAt": "2025-03-25T11:28:00",
+			"fromUser": {
+				"id": 3,
+				"name": "하은지",
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
 			}
 		}
 	}
