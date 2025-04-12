@@ -42,7 +42,7 @@ const ProfileContent = () => {
         {isMine ? (
           <MyProfleAction />
         ) : (
-          <FriendProfleAction snsUrl={curUser.snsUrl} />
+          <FriendProfleAction snsUrl={curUser.snsUrl} id={userId} />
         )}
       </s.MainContent>
     </s.Container>

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router'
+import { useLocation, useParams } from 'react-router'
 
 import {
   AddIcon,
@@ -14,9 +14,12 @@ import { useChatRoomStore } from '../../stores/useChatRoomStore'
 import { Chat } from '../../interface/Chat'
 
 const TextInput = () => {
+  const { member } = useLocation().state ?? {}
   const roomId = Number(useParams().id)
-  const { user, updateLastSeenTime } = useUserStore()
-  const { addChat } = useChatRoomStore()
+
+  const { user, updateLastSeenTime, enterChatRoom } = useUserStore()
+  const { chatRoomRef, addChat, createChatRoom } = useChatRoomStore()
+
   const inputRef = useRef<HTMLDivElement | null>(null)
   const [text, setText] = useState('')
   const [isComposing, setIsComposing] = useState(false)
@@ -37,6 +40,10 @@ const TextInput = () => {
       content: text,
     }
 
+    if (chatRoomRef === roomId) {
+      createChatRoom(roomId, member)
+      enterChatRoom(roomId)
+    }
     addChat(roomId, newChat)
     updateLastSeenTime(roomId)
   }

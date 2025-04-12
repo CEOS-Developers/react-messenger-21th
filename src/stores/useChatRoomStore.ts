@@ -5,14 +5,18 @@ import { formatDateForData } from '../utils/format'
 
 interface ChatRoomState {
   chatRoom: ChatRoom[] | null
+  chatRoomRef: number
   setChatRoom: (chatRooms: ChatRoom[]) => void
   addChat: (roomId: number, newChat: Chat) => void
 
   removeChatRoom: (roomId: number) => void
+  createChatRoom: (roomId: number, members: number[]) => void
+  addMember: (roomId: number, memberId: number) => void
 }
 
 export const useChatRoomStore = create<ChatRoomState>((set) => ({
   chatRoom: null,
+  chatRoomRef: 5,
   setChatRoom: (chatRooms) => set({ chatRoom: chatRooms }),
   addChat: (roomId, newChat) => {
     set((state) => {
@@ -49,6 +53,46 @@ export const useChatRoomStore = create<ChatRoomState>((set) => ({
       const updatedChatRooms = state.chatRoom.filter(
         (room) => room.chatRoomId !== roomId
       )
+
+      return {
+        chatRoom: updatedChatRooms,
+      }
+    })
+  },
+  createChatRoom: (roomId, members) => {
+    set((state) => {
+      if (!state.chatRoom) return state
+
+      const newRoom = {
+        chatRoomId: roomId,
+        roomName: null,
+        member: [...members],
+        chats: {},
+      }
+
+      state.chatRoomRef += 1
+
+      return {
+        chatRoom: [...state.chatRoom, newRoom],
+      }
+    })
+  },
+  addMember: (roomId, memberId) => {
+    set((state) => {
+      if (!state.chatRoom) return state
+
+      const updatedChatRooms = state.chatRoom.map((room) => {
+        if (room.chatRoomId !== roomId) return room
+
+        const newMemberIds = room.member.includes(memberId)
+          ? room.member
+          : [...room.member, memberId]
+
+        return {
+          ...room,
+          member: newMemberIds,
+        }
+      })
 
       return {
         chatRoom: updatedChatRooms,

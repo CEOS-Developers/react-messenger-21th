@@ -8,6 +8,10 @@ import Chat from '../../assets/Icons/ProfileAction/chat.svg?react'
 import Phonecall from '../../assets/Icons/ProfileAction/phonecall.svg?react'
 import Instagram from '../../assets/Icons/ProfileAction/instagram.svg?react'
 import { EventIcon } from '../common/Common.Styled'
+import { getRoomId } from '../../utils/getRoomId'
+import { useNavigate } from 'react-router'
+import { useUserStore } from '../../stores/useUserStore'
+import { useChatRoomStore } from '../../stores/useChatRoomStore'
 
 const MyProfleAction = () => {
   return (
@@ -18,10 +22,24 @@ const MyProfleAction = () => {
     </s.Container>
   )
 }
-const FriendProfleAction = ({ snsUrl }: { snsUrl: string }) => {
+const FriendProfleAction = ({ snsUrl, id }: { snsUrl: string; id: number }) => {
+  const nav = useNavigate()
+  const { user } = useUserStore()
+  const { chatRoomRef } = useChatRoomStore()
+
+  const onClickChatIconHander = () => {
+    let roomId = getRoomId(id)
+    if (roomId === undefined) roomId = chatRoomRef
+    return nav(`/room/${roomId}`, {
+      state: {
+        member: [user.id, id],
+        memberCount: 2,
+      },
+    })
+  }
   return (
     <s.Container>
-      <EventIcon>
+      <EventIcon onClick={onClickChatIconHander}>
         <Chat />
       </EventIcon>
       <Phonecall />

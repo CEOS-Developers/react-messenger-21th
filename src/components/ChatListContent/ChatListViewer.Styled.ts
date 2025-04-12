@@ -1,7 +1,13 @@
 import styled from 'styled-components'
 import { ScrollDiv } from '../common/Common.Styled'
 
-const Wrapper = styled(ScrollDiv)``
+const Wrapper = styled(ScrollDiv)`
+  height: 610px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
 
 const List = styled.div`
   padding-top: 24px;
