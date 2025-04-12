@@ -6,6 +6,7 @@ interface UserState {
   user: User
   setUser: (user: User) => void
   updateLastSeenTime: (roomId: number) => void
+  leaveChatRoom: (roomId: number) => void
 }
 
 export const useUserStore = create<UserState>((set) => ({
@@ -23,6 +24,22 @@ export const useUserStore = create<UserState>((set) => ({
           lastSeenTime: Date.now(),
         }
       })
+
+      return {
+        user: {
+          ...state.user,
+          joinedRooms: updatedJoinedRooms,
+        },
+      }
+    })
+  },
+  leaveChatRoom: (roomId) => {
+    set((state) => {
+      if (!state.user) return state
+
+      const updatedJoinedRooms = state.user.joinedRooms.filter(
+        (room) => room.chatRoomId !== roomId
+      )
 
       return {
         user: {

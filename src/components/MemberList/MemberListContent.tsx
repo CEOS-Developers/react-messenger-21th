@@ -13,8 +13,8 @@ import MemberItem from '../MemberItem/MemberItem'
 
 const MemberListContent = () => {
   const nav = useNavigate()
-  const { user } = useUserStore()
-  const { chatRoom } = useChatRoomStore()
+  const { user, leaveChatRoom } = useUserStore()
+  const { chatRoom, removeChatRoom } = useChatRoomStore()
   const roomId = Number(useParams().id)
   const room = chatRoom?.find((room) => room.chatRoomId === roomId)
   const memberIds = room?.member.filter(
@@ -37,6 +37,13 @@ const MemberListContent = () => {
     'gray04',
     'gray04',
   ]
+
+  const onClickOutButton = () => {
+    if (!window.confirm('정말 나가시겠습니까?')) return
+    leaveChatRoom(roomId)
+    removeChatRoom(roomId)
+    nav('/chatList', { replace: true })
+  }
   return (
     <s.Wrapper>
       <s.RoomNameSection>
@@ -86,7 +93,9 @@ const MemberListContent = () => {
           }>
           유저 변경하기
         </s.Button>
-        <s.OutButton $isM={true}>채팅방 나가기</s.OutButton>
+        <s.OutButton $isM={true} onClick={onClickOutButton}>
+          채팅방 나가기
+        </s.OutButton>
       </s.Section>
     </s.Wrapper>
   )

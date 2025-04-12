@@ -6,8 +6,9 @@ import { formatDateForData } from '../utils/format'
 interface ChatRoomState {
   chatRoom: ChatRoom[] | null
   setChatRoom: (chatRooms: ChatRoom[]) => void
-
   addChat: (roomId: number, newChat: Chat) => void
+
+  removeChatRoom: (roomId: number) => void
 }
 
 export const useChatRoomStore = create<ChatRoomState>((set) => ({
@@ -35,6 +36,19 @@ export const useChatRoomStore = create<ChatRoomState>((set) => ({
           chats: updatedChats,
         }
       })
+
+      return {
+        chatRoom: updatedChatRooms,
+      }
+    })
+  },
+  removeChatRoom: (roomId) => {
+    set((state) => {
+      if (!state.chatRoom) return state
+
+      const updatedChatRooms = state.chatRoom.filter(
+        (room) => room.chatRoomId !== roomId
+      )
 
       return {
         chatRoom: updatedChatRooms,
