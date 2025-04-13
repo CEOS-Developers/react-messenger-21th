@@ -1,0 +1,89 @@
+@import 'tailwindcss';
+
+@layer utilities {
+  .font-Headline1 {
+    font-weight: var(--font-weight-bold);
+    font-size: 28px;
+    line-height: 155%;
+    letter-spacing: -0.028px;
+  }
+  .font-Headline2 {
+    font-weight: var(--font-weight-bold);
+    font-size: 24px;
+    line-height: 155%;
+    letter-spacing: -0.024px;
+  }
+  .font-Headline3 {
+    font-weight: var(--font-weight-semibold);
+    font-size: 20px;
+    line-height: 155%;
+    letter-spacing: -0.02px;
+  }
+
+  .font-Subhead {
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: -0.018px;
+  }
+  .font-Subhead-b {
+    @apply font-Subhead;
+    font-weight: var(--font-weight-bold);
+  }
+  .font-Subhead-m {
+    @apply font-Subhead;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .font-Body-1 {
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.016px;
+  }
+  .font-Body-1-b {
+    @apply font-Body-1;
+    font-weight: var(--font-weight-bold);
+  }
+  .font-Body-1-m {
+    @apply font-Body-1;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .font-Body-2 {
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: -0.014px;
+  }
+  .font-Body-2-b {
+    @apply font-Body-2;
+    font-weight: var(--font-weight-bold);
+  }
+  .font-Body-2-m {
+    @apply font-Body-2;
+    font-weight: var(--font-weight-medium);
+  }
+  .font-Body-2-r {
+    @apply font-Body-2;
+    font-weight: var(--font-weight-regular);
+  }
+
+  .font-Caption {
+    font-size: 12px;
+    line-height: 140%;
+    letter-spacing: -0.012px;
+  }
+  .font-Caption-b {
+    @apply font-Caption;
+    font-weight: var(--font-weight-bold);
+  }
+  .font-Caption-m {
+    @apply font-Caption;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .font-ChatTime {
+    font-weight: var(--font-weight-medium);
+    font-size: 10px;
+    line-height: 140%;
+    letter-spacing: -0.01px;
+  }
+}

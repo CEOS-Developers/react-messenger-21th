@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+@import './theme.css';
+@import './typography.css';
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url('@/assets/font/PretendardVariable.woff2') format('woff2-variations');
+}
+
+body {
+  font-family: 'Pretendard', sans-serif;
+  color: var(--color-gray13);
+}

@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+
+@layer theme {
+  :root {
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-gray01: #f8f9fb;
+    --color-gray02: #f3f5fa;
+    --color-gray03: #eeeff2;
+    --color-gray04: #dddfe5;
+    --color-gray05: #cacdd4;
+    --color-gray06: #b1b4bc;
+    --color-gray07: #9c9ea5;
+    --color-gray08: #7e8085;
+    --color-gray09: #717377;
+    --color-gray10: #5e6064;
+    --color-gray11: #505154;
+    --color-gray12: #3c3e41;
+    --color-gray13: #2c2d30;
+    --color-gray14: #181a1b;
+
+    --color-red: #ff5757;
+    --color-blue: #528eff;
+
+    --color-skyblue: linear-gradient(#ffffff, #7edfff);
+    --color-orange: linear-gradient(#ffffff, #feb985);
+    --color-purple: linear-gradient(#ffffff, #d9b9fa);
+    --color-mainLime: linear-gradient(#ffffff, #eafb88);
+
+    --color-chatBackground: linear-gradient(
+      #a6d0ff 0%,
+      #ffffff 29%,
+      #ffffff 69%,
+      #8bc2ff 110%
+    );
+    --color-profileBackground:
+      linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34)),
+      linear-gradient(#ffffff, #92c6ff);
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+  }
+}

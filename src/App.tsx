@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 import theme from './styles/theme.ts'
 import GlobalStyle from './styles/GlobalStyle.ts'
+import '@/styles/global.css'
 
 /** pages */
 import ChatRoom from '@/pages/ChatRoom.tsx'
