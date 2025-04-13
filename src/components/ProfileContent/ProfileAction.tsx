@@ -1,12 +1,12 @@
 import * as s from './ProfileAction.Styled'
 
-import Edit from '../../assets/Icons/ProfileAction/edit.svg?react'
-import Keep from '../../assets/Icons/ProfileAction/keep.svg?react'
-import Star from '../../assets/Icons/ProfileAction/star.svg?react'
+import Edit from '@/assets/Icons/ProfileAction/edit.svg?react'
+import Keep from '@/assets/Icons/ProfileAction/keep.svg?react'
+import Star from '@/assets/Icons/ProfileAction/star.svg?react'
 
-import Chat from '../../assets/Icons/ProfileAction/chat.svg?react'
-import Phonecall from '../../assets/Icons/ProfileAction/phonecall.svg?react'
-import Instagram from '../../assets/Icons/ProfileAction/instagram.svg?react'
+import Chat from '@/assets/Icons/ProfileAction/chat.svg?react'
+import Phonecall from '@/assets/Icons/ProfileAction/phonecall.svg?react'
+import Instagram from '@/assets/Icons/ProfileAction/instagram.svg?react'
 import { EventIcon } from '../common/Common.Styled'
 import { getRoomId } from '../../utils/getRoomId'
 import { useNavigate } from 'react-router'

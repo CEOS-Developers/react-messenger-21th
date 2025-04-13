@@ -7,11 +7,11 @@ import theme from './styles/theme.ts'
 import GlobalStyle from './styles/GlobalStyle.ts'
 
 /** pages */
-import ChatRoom from './pages/ChatRoom.tsx'
-import FriendsList from './pages/FriendsList.tsx'
-import ChatList from './pages/ChatList.tsx'
-import ProfilePage from './pages/ProfilePage.tsx'
-import MemberList from './pages/MemberList.tsx'
+import ChatRoom from '@/pages/ChatRoom.tsx'
+import FriendsList from '@/pages/FriendsList.tsx'
+import ChatList from '@/pages/ChatList.tsx'
+import ProfilePage from '@/pages/ProfilePage.tsx'
+import MemberList from '@/pages/MemberList.tsx'
 
 import setUserAndChatRoom from './utils/setUserAndChatRoom.ts'
 import MemberSelection from './pages/MemberSelection.tsx'
