@@ -3,8 +3,8 @@ import Layout from '@/views/Layout';
 import Home from '@/views/Home/Home';
 import ChatList from '@/components/chat/ChatList/ChatList';
 import ChatRoom from '@/components/chat/ChatRoom/ChatRoom';
-import Call from '@/views/Call/Call';
-import Plus from '@/views/Plus/Plus';
+import Call from '@/components/call/Call';
+import Plus from '@/components/plus/Plus';
 
 const router = createBrowserRouter([
   {
