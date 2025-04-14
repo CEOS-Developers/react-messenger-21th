@@ -14,14 +14,14 @@ function ChatList() {
       <S.ChatGroup>
         {pinnedChats.length > 0 &&
           sortChatsByLastMessage(pinnedChats).map(([chatId, room]) => (
-            <ChatItem chatId={chatId} room={room} isPinned={true} onTogglePin={onTogglePin} />
+            <ChatItem key={chatId} chatId={chatId} room={room} isPinned={true} onTogglePin={onTogglePin} />
           ))}
       </S.ChatGroup>
       {pinnedChats.length > 0 && <div className="h-[4px] bg-grayscale-05" />}
       <S.ChatGroup>
         {normalChats.length > 0 &&
           sortChatsByLastMessage(normalChats).map(([chatId, room]) => (
-            <ChatItem chatId={chatId} room={room} isPinned={false} />
+            <ChatItem key={chatId} chatId={chatId} room={room} isPinned={false} />
           ))}
       </S.ChatGroup>
     </S.ChatListWrapper>

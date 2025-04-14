@@ -6,12 +6,13 @@ import MessageItem from '../MessageItem/MessageItem';
 import { groupMessagesByDate, groupMessagesByConsecutiveUser } from './MessageList.utils';
 
 type MessageListProps = {
+  chatId: string;
   myId: string;
   userList: Types.UserList;
   messages: Types.Message[];
 };
 
-function MessageList({ myId, userList, messages }: MessageListProps) {
+function MessageList({ chatId, myId, userList, messages }: MessageListProps) {
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,10 +27,10 @@ function MessageList({ myId, userList, messages }: MessageListProps) {
         const groupedByUser = groupMessagesByConsecutiveUser(messages);
 
         return (
-          <>
+          <div key={`${chatId}-${dateStr}`}>
             <S.DateDivider className="bg-white-tp-01 !text-caption-04 text-grayscale-02">{dateStr}</S.DateDivider>
             {groupedByUser.map(({ senderId, messages }) => (
-              <S.MessageListBody>
+              <S.MessageListBody key={`${chatId}-${dateStr}-${senderId}`}>
                 {senderId !== myId && (
                   <S.UserInfo>
                     <Icons.Profile className="w-[36px] h-[36px]" />
@@ -39,6 +40,7 @@ function MessageList({ myId, userList, messages }: MessageListProps) {
                 <ul>
                   {messages.map((msg, idx) => (
                     <MessageItem
+                      key={msg.id}
                       msg={msg}
                       isMine={senderId === myId}
                       isFirst={idx === 0}
@@ -48,7 +50,7 @@ function MessageList({ myId, userList, messages }: MessageListProps) {
                 </ul>
               </S.MessageListBody>
             ))}
-          </>
+          </div>
         );
       })}
       <div ref={messageEndRef} />

@@ -19,7 +19,7 @@ function ChatRoom() {
   return (
     <S.ChatRoomWrapper>
       <ChatRoomHeader chatId={chatId} chatRoom={chatRoom} onTogglePin={onTogglePin} />
-      <MessageList myId={myId} userList={userList} messages={messages} />
+      <MessageList chatId={chatId} myId={myId} userList={userList} messages={messages} />
       <MessageInput chatId={chatId} myId={myId} />
     </S.ChatRoomWrapper>
   );
