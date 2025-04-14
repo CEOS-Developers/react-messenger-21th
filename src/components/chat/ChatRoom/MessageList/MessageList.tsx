@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as S from './MessageList.Styled';
 import * as Types from '@/types';
 import * as Icons from '@/assets/icons/chatroom';
@@ -27,8 +27,10 @@ function MessageList({ chatId, myId, userList, messages }: MessageListProps) {
         const groupedByUser = groupMessagesByConsecutiveUser(messages);
 
         return (
-          <div key={`${chatId}-${dateStr}`}>
-            <S.DateDivider className="bg-white-tp-01 !text-caption-04 text-grayscale-02">{dateStr}</S.DateDivider>
+          <React.Fragment key={`${chatId}-${dateStr}`}>
+            <S.DateDivider className="bg-white-tp-01">
+              <span className="!text-caption-04 text-grayscale-02">{dateStr}</span>
+            </S.DateDivider>
             {groupedByUser.map(({ senderId, messages }) => (
               <S.MessageListBody key={`${chatId}-${dateStr}-${senderId}`}>
                 {senderId !== myId && (
@@ -50,7 +52,7 @@ function MessageList({ chatId, myId, userList, messages }: MessageListProps) {
                 </ul>
               </S.MessageListBody>
             ))}
-          </div>
+          </React.Fragment>
         );
       })}
       <div ref={messageEndRef} />
