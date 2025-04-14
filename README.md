@@ -7,3 +7,9 @@
 ## Usage
 
     https://react-messenger-21th-kwondu.vercel.app/
+
+## SVG Icons (currentColor)
+
+    chatroom/Add, Camera, Imoji, Link
+    indicator/Indicator
+    status/Battery, Celluar, Wifi

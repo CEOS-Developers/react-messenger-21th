@@ -1,20 +1,23 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 function useClock(): string {
   const [time, setTime] = useState(getCurrentTime());
-  const prevTimeRef = useRef(time);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      const now = getCurrentTime();
+    const now = new Date();
+    const msUntilNextMinute = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
 
-      if (prevTimeRef.current != now) {
-        prevTimeRef.current = now;
-        setTime(now);
-      }
-    }, 1000);
+    const timeoutId = setTimeout(() => {
+      setTime(getCurrentTime());
 
-    return () => clearInterval(intervalId);
+      const intervalId = setInterval(() => {
+        setTime(getCurrentTime());
+      }, 60_000); // 60 * 1000
+
+      return () => clearInterval(intervalId);
+    }, msUntilNextMinute);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return time;

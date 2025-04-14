@@ -27,3 +27,4 @@ dist-ssr
 .vscode
 .venv
 Pipfile*
+public/icons

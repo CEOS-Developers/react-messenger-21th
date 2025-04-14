@@ -7,8 +7,8 @@ const StatusBarWrapper = styled.div`
   width: 100%;
   height: var(--statusbar-height);
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 10.47px 31.4px;
   z-index: 900;
 `;

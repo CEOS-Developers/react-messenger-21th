@@ -1,12 +1,12 @@
 import * as S from './Indicator.Styled';
-import * as Icons from '@/assets/icons/navigation';
+import * as Icons from '@/assets/icons/indicator';
 
 function Indicator({ isProfile }: { isProfile: boolean }) {
-  const Indicator = isProfile ? Icons.IndicatorWhite : Icons.IndicatorBlack;
+  const textColor = isProfile ? 'text-grayscale-07-white' : 'text-grayscale-00-black';
 
   return (
-    <S.IndicatorWrapper>
-      <Indicator className="w-[138px] h-[5px]" />
+    <S.IndicatorWrapper className={`${textColor}`}>
+      <Icons.Indicator className="w-[138px] h-[5px]" />
     </S.IndicatorWrapper>
   );
 }

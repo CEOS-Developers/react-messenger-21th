@@ -5,6 +5,7 @@ import Indicator from '@/components/common/Indicator/Indicator';
 
 function Layout() {
   const { pathname } = useLocation();
+
   const isProfile = pathname.startsWith('/profile/');
   const isChatRoom = useMatch('/chat/:chatId') !== null;
 
@@ -12,7 +13,7 @@ function Layout() {
     <div className="relative w-phone-width h-phone-height bg-grayscale-07-white">
       <StatusBar isProfile={isProfile} isChatRoom={isChatRoom} />
       <Outlet />
-      {!isChatRoom && <Navbar />}
+      {!isChatRoom && !isProfile && <Navbar />}
       {!isChatRoom && <Indicator isProfile={isProfile} />}
     </div>
   );

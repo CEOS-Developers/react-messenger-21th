@@ -1,0 +1,23 @@
+import styled from 'styled-components';
+
+const ChatListWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const ChatGroup = styled.ul`
+  padding: 10px var(--phone-margin);
+  display: flex;
+  flex-direction: column;
+
+  li {
+    gap: 8px;
+    display: flex;
+  }
+`;
+
+export { ChatListWrapper, ChatGroup };

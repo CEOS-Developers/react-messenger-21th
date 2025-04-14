@@ -4,17 +4,17 @@ import { STATUS_ITEMS } from '@/constants/status';
 
 function StatusBar({ isProfile, isChatRoom }: { isProfile: boolean; isChatRoom: boolean }) {
   const time = useClock();
+  const backgroundColor = isChatRoom ? 'bg-background-blue-02-opacity' : 'bg-grayscale-07-white';
+  const textColor = isProfile ? 'text-grayscale-07-white' : 'text-grayscale-00-black';
 
   return (
-    <S.StatusBarWrapper className={`${isChatRoom ? 'bg-background-blue-02-opacity' : 'bg-grayscale-07-white'}`}>
-      <span className="!text-status-bar text-grayscale-00-black">{time}</span>
+    <S.StatusBarWrapper className={`${backgroundColor}`}>
+      <span className={`!text-status-bar ${textColor}`}>{time}</span>
       <S.StatusList>
-        {STATUS_ITEMS.map(({ key, blackIcon: BlackIcon, whiteIcon: WhiteIcon, width, height }) => {
-          const IconComponent = isProfile ? WhiteIcon : BlackIcon;
-
+        {STATUS_ITEMS.map(({ key, Icon, width, height }) => {
           return (
-            <li key={key}>
-              <IconComponent style={{ width: `${width}px`, height: `${height}px` }} />
+            <li key={key} className={`${textColor}`}>
+              <Icon style={{ width: `${width}px`, height: `${height}px` }} />
             </li>
           );
         })}

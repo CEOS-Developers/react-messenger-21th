@@ -2,26 +2,29 @@ import styled from 'styled-components';
 
 const NavbarWrapper = styled.nav`
   position: absolute;
-  bottom: 0;
   left: 0;
+  bottom: 0;
   width: 100%;
   height: 83px;
-  max-width: 374px; /* phone width - 1px */
-  padding: 14px 35px 24px;
+  padding: 14px var(--phone-margin) 24px;
   z-index: 900;
 `;
 
 const NavList = styled.ul`
+  width: 100%;
+  gap: var(--phone-gutter);
   display: flex;
-  justify-content: space-between;
-  gap: 48px;
 
   li {
-    width: 40px;
-  }
+    flex: 1;
+    display: flex;
+    justify-content: center;
 
-  li span {
-    height: 20px;
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 `;
 
