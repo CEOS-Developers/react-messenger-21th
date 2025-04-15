@@ -11,13 +11,14 @@ const ChatItemWrapper = styled.li`
 `;
 
 const ChatTitle = styled.div`
-  display: flex;
   gap: 4px;
+  display: flex;
 `;
 
 const ChatPreview = styled.div`
-  display: flex;
   gap: 8px;
+  display: flex;
+  align-items: center;
 `;
 
 export { ChatItemWrapper, ChatTitle, ChatPreview };
