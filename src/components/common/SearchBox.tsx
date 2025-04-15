@@ -1,5 +1,4 @@
 import Search from '../../assets/Icons/List/search.svg?react'
-import * as s from './SearchBox.Styled'
 
 const SearchBox = ({
   searchText,
@@ -12,18 +11,16 @@ const SearchBox = ({
     setSearchText(e.target.value)
   }
   return (
-    <s.SearchBoxWrapper>
-      <s.SearchBoxContainer>
-        <Search />
-        <s.Input
-          value={searchText}
-          onChange={onChangeInputHandler}
-          $isM={true}
-          type="text"
-          placeholder="검색"
-        />
-      </s.SearchBoxContainer>
-    </s.SearchBoxWrapper>
+    <div className="bg-gray03 border-gray13 flex h-[34px] items-center gap-1 rounded px-2">
+      <Search />
+      <input
+        className="font-Caption-m flex-grow border-none bg-transparent py-[0.5px] focus:outline-none"
+        value={searchText}
+        onChange={onChangeInputHandler}
+        type="text"
+        placeholder="검색"
+      />
+    </div>
   )
 }
 
