@@ -6,6 +6,5 @@ export { default as Link } from './Link';
 export { default as Menu } from './Menu';
 export { default as PinOff } from './PinOff';
 export { default as PinOn } from './PinOn';
-export { default as Profile } from './Profile';
 export { default as Search } from './Search';
 export { default as Send } from './Send';
