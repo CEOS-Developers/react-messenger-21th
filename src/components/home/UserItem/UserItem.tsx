@@ -15,7 +15,7 @@ function UserItem({ userId, user, onToggleFavorite }: UserItemProps) {
     <S.UserItemWrapper>
       <div>
         <ProfileImage className={`w-[48px] h-[48px] ${user.profileColor}`} />
-        <Link to="" className="profile-link">
+        <Link to={`profile/${userId}`} className="profile-link">
           <span className="!text-subhead-02 text-grayscale-00-black">{user.name}</span>
           <span className="!text-subhead-03 text-grayscale-02">{user.status}</span>
         </Link>

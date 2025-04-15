@@ -30,7 +30,7 @@ function Home() {
     <S.HomeWrapper>
       <HomeHeader />
       <S.UserGroup>
-        <UserMe user={userList[myId]} />
+        <UserMe myId={myId} user={userList[myId]} />
         <UserList
           userList={favoriteUserList}
           isFavorite={true}
