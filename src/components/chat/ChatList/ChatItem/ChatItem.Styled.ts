@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 const ChatItemWrapper = styled.li`
+  padding: 10px var(--phone-margin);
   display: flex;
 
   .chat-link {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     flex: 1;
   }
 `;

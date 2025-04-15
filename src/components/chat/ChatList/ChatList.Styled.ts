@@ -10,7 +10,6 @@ const ChatListWrapper = styled.div`
 `;
 
 const ChatGroup = styled.ul`
-  padding: 10px var(--phone-margin);
   display: flex;
   flex-direction: column;
 

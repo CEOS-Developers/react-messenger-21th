@@ -13,7 +13,7 @@ function ChatListHeader({ searchValue, setSearchValue }: ChatListHeaderProps) {
         <span className="!text-headline-03 text-grayscale-00-black">대화</span>
         <div>
           <Icons.Edit className="w-[24px] h-[24px]" />
-          <Icons.Add className="w-[24px] h-[24px]" />
+          <Icons.AddChat className="w-[24px] h-[24px]" />
         </div>
       </S.FeatureSection>
       <S.SearchSection className="bg-grayscale-05">

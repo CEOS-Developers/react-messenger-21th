@@ -38,9 +38,10 @@ const MessageListBody = styled.div`
 const UserInfo = styled.div`
   width: 36px;
   height: 52px;
+  gap: 2px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  align-items: center;
 `;
 
 export { MessageListWrapper, DateDivider, MessageListBody, UserInfo };
