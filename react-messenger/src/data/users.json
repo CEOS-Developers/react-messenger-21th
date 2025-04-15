@@ -1,86 +1,74 @@
-[
-  {
-    "group": "내 프로필",
-    "user": {
-      "id": 99,
-      "name": "전지연",
-      "profileImg": "/images/ProfileImg.svg",
+{
+  "myProfile": {
+    "id": 99,
+    "name": "전지연",
+    "profileImg": "/images/ProfileImg.svg",
+    "backgroundImg": "/images/Background.svg",
+    "comment": "아샷추가 정말 좋아요"
+  },
+  "newFriends": [
+    {
+      "id": 1,
+      "name": "원채영",
+      "profileImg": "/images/User1.svg",
       "backgroundImg": "/images/Background.svg",
-      "comment": "아샷추가 정말 좋아요"
+      "comment": "우주 최강 멋쟁이 개발자"
+    },
+    {
+      "id": 2,
+      "name": "브라운",
+      "profileImg": "/images/User2.svg",
+      "backgroundImg": "/images/Background.svg",
+      "comment": "곰돌이 푸가 제 친구예요"
     }
-  },
-  {
-    "group": "새 친구",
-    "users": [
-      {
-        "id": 1,
-        "name": "원채영",
-        "profileImg": "/images/User1.svg",
-        "backgroundImg": "/images/Background.svg",
-        "comment": "우주 최강 멋쟁이 개발자"
-      },
-      {
-        "id": 2,
-        "name": "브라운",
-        "profileImg": "/images/User2.svg",
-        "backgroundImg": "/images/Background.svg",
-        "comment": "곰돌이 푸가 제 친구예요"
-      }
-    ]
-  },
-  {
-    "group": "내 그룹",
-    "groups": [
-      {
-        "id": 1,
-        "groupName": "전가네",
-        "profileImg": "/images/User3.svg",
-        "backgroundImg": "/images/Background.svg",
-        "memberCount": 6,
-        "comment": "전씨 성 가진 사람들 모임"
-      },
-      {
-        "id": 2,
-        "groupName": "CEOS",
-        "profileImg": "/images/User4.svg",
-        "backgroundImg": "/images/Background.svg",
-        "memberCount": 64,
-        "comment": "스타트업 창업자들의 공간"
-      },
-      {
-        "id": 3,
-        "groupName": "야작팟",
-        "profileImg": "/images/User5.svg",
-        "backgroundImg": "/images/Background.svg",
-        "memberCount": 3,
-        "comment": "야작은 사랑이죠"
-      }
-    ]
-  },
-  {
-    "group": "내 친구",
-    "users": [
-      {
-        "id": 3,
-        "name": "따봉이",
-        "profileImg": "/images/User6.svg",
-        "backgroundImg": "/images/Background.svg",
-        "comment": "좋아요 누르고 가세요"
-      },
-      {
-        "id": 4,
-        "name": "콩이",
-        "profileImg": "/images/User7.svg",
-        "backgroundImg": "/images/Background.svg",
-        "comment": "고소한 인생"
-      },
-      {
-        "id": 5,
-        "name": "봉이",
-        "profileImg": "/images/User8.svg",
-        "backgroundImg": "/images/Background.svg",
-        "comment": "이름 따라가는 중"
-      }
-    ]
-  }
-]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "groupName": "전가네",
+      "profileImg": "/images/User3.svg",
+      "backgroundImg": "/images/Background.svg",
+      "memberCount": 6,
+      "comment": "전씨 성 가진 사람들 모임"
+    },
+    {
+      "id": 2,
+      "groupName": "CEOS",
+      "profileImg": "/images/User4.svg",
+      "backgroundImg": "/images/Background.svg",
+      "memberCount": 64,
+      "comment": "스타트업 창업자들의 공간"
+    },
+    {
+      "id": 3,
+      "groupName": "야작팟",
+      "profileImg": "/images/User5.svg",
+      "backgroundImg": "/images/Background.svg",
+      "memberCount": 3,
+      "comment": "야작은 사랑이죠"
+    }
+  ],
+  "friends": [
+    {
+      "id": 3,
+      "name": "따봉이",
+      "profileImg": "/images/User6.svg",
+      "backgroundImg": "/images/Background.svg",
+      "comment": "좋아요 누르고 가세요"
+    },
+    {
+      "id": 4,
+      "name": "콩이",
+      "profileImg": "/images/User7.svg",
+      "backgroundImg": "/images/Background.svg",
+      "comment": "고소한 인생"
+    },
+    {
+      "id": 5,
+      "name": "봉이",
+      "profileImg": "/images/User8.svg",
+      "backgroundImg": "/images/Background.svg",
+      "comment": "이름 따라가는 중"
+    }
+  ]
+}

@@ -9,9 +9,8 @@ type CurrentUser = {
 };
 
 export const getCurrentUser = (): CurrentUser => {
-  const profileSection = data.find((item) => item.group === '내 프로필');
   return (
-    profileSection?.user ?? {
+    data.myProfile ?? {
       id: 0,
       name: '',
       profileImg: '',
