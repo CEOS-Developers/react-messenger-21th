@@ -4,11 +4,12 @@ import * as Icons from '@/assets/icons/profile';
 import { PROFILE_ITEMS } from '@/constants/profile';
 
 type ProfileFeatureProps = {
+  userId: string;
   user: Types.User;
   isMine: boolean;
 };
 
-function ProfileFeature({ user, isMine }: ProfileFeatureProps) {
+function ProfileFeature({ userId, user, isMine }: ProfileFeatureProps) {
   const items = PROFILE_ITEMS[isMine ? 1 : 0];
 
   return (
@@ -23,14 +24,14 @@ function ProfileFeature({ user, isMine }: ProfileFeatureProps) {
       <S.FeatureSection>
         {items.map(({ label, Icon, isButton }) =>
           isButton ? (
-            <div>
+            <div key={`${userId}-${label}`}>
               <button className="cursor-pointer">
                 <Icon className="w-[32px] h-[32px]" />
               </button>
               <span className="!text-profile text-grayscale-07-white">{label}</span>
             </div>
           ) : (
-            <div>
+            <div key={`${userId}-${label}`}>
               <Icon className="w-[32px] h-[32px]" />
               <span className="!text-profile text-grayscale-07-white">{label}</span>
             </div>

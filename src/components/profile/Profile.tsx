@@ -21,7 +21,7 @@ function Profile() {
   return (
     <S.ProfileWrapper className={bgClass}>
       <ProfileHeader userId={userId} user={user} isMine={isMine} onToggleFavorite={onToggleFavorite} />
-      <ProfileFeature user={user} isMine={isMine} />
+      <ProfileFeature userId={userId} user={user} isMine={isMine} />
     </S.ProfileWrapper>
   );
 }
