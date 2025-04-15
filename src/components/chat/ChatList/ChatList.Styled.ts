@@ -13,11 +13,6 @@ const ChatGroup = styled.ul`
   display: flex;
   flex-direction: column;
 
-  li {
-    gap: 8px;
-    display: flex;
-  }
-
   &.top-group {
     margin-top: 162px;
   }
