@@ -14,5 +14,5 @@
     chatroom/Add, Camera, Imoji, Link
     home/Delete, DropDown
     indicator/Indicator
-    profile/User
+    profile/Delete, Etc, ProfileImage, Settings
     status/Battery, Celluar, Wifi
