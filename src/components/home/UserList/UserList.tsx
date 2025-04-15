@@ -8,17 +8,23 @@ type UserListProps = {
   userList: Types.UserList;
   isFavorite: boolean;
   isSearch: boolean;
+  searchValue: string;
+  setSearchValue: (value: string) => void;
   onToggleFavorite: (chatId: string) => void;
 };
 
-function UserList({ userList, isFavorite, isSearch, onToggleFavorite }: UserListProps) {
+function UserList({ userList, isFavorite, isSearch, searchValue, setSearchValue, onToggleFavorite }: UserListProps) {
   const [isDrop, setIsDrop] = useState(true);
 
   if (!isFavorite && !isSearch) return <></>;
 
   return (
-    <S.UserListWrapper className="shadow-[inset_0_1px_0_0_theme(colors.grayscale-05)]">
-      <S.HeaderSection>
+    <S.UserListWrapper>
+      <S.HeaderSection
+        $isFavorite={isFavorite}
+        $isSearch={isSearch}
+        className={`shadow-[inset_0_1px_0_0_theme(colors.grayscale-05)] ${isSearch ? 'bg-white-tp-01' : ''}`}
+      >
         <div>
           <span className="!text-headline-06 text-grayscale-00-black">{`${isFavorite ? '즐겨찾기' : isSearch ? '친구' : ''}`}</span>
           <span className="!text-headline-06 text-grayscale-02">{Object.keys(userList).length}</span>
@@ -28,7 +34,23 @@ function UserList({ userList, isFavorite, isSearch, onToggleFavorite }: UserList
             <Icons.DropDown className={`w-[24px] h-[24px] text-grayscale-03 ${isDrop ? 'rotate-180' : ''}`} />
           </button>
         )}
-        {isSearch && <div></div>}
+        {isSearch && (
+          <S.SearchSection className="bg-grayscale-05">
+            <Icons.Search className="w-[24px] h-[24px]" />
+            <input
+              type="text"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              placeholder="검색"
+              className="!text-caption-02 text-grayscale-00-black placeholder-grayscale-02"
+            />
+            {searchValue.length > 0 && (
+              <button onClick={() => setSearchValue('')} className="cursor-pointer">
+                <Icons.Delete className="w-[24px] h-[24px] text-grayscale-03" />
+              </button>
+            )}
+          </S.SearchSection>
+        )}
       </S.HeaderSection>
       {isDrop &&
         Object.entries(userList).map(([userId, user]) => (

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import * as S from './Home.Styled';
 import { useMyId, useUserList } from '@/contexts/localStorage';
 import HomeHeader from './HomeHeader/HomeHeader';
@@ -6,6 +7,7 @@ import UserList from './UserList/UserList';
 import { filterFavoriteUserList } from './Home.utils';
 
 function Home() {
+  const [searchValue, setSearchValue] = useState<string>('');
   const { myId } = useMyId();
   const { userList, onToggleFavorite } = useUserList();
 
@@ -26,9 +28,18 @@ function Home() {
           userList={filteredOtherUserList}
           isFavorite={true}
           isSearch={false}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
           onToggleFavorite={onToggleFavorite}
         />
-        <UserList userList={otherUserList} isFavorite={false} isSearch={true} onToggleFavorite={onToggleFavorite} />
+        <UserList
+          userList={otherUserList}
+          isFavorite={false}
+          isSearch={true}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          onToggleFavorite={onToggleFavorite}
+        />
       </S.UserGroup>
     </S.HomeWrapper>
   );
