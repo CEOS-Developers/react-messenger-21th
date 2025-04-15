@@ -14,4 +14,5 @@
     chatroom/Add, Camera, Imoji, Link
     home/DropDown
     indicator/Indicator
+    profile/User
     status/Battery, Celluar, Wifi
