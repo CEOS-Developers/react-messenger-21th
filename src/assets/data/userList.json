@@ -1,10 +1,58 @@
 {
-  "user-me": "권동욱",
-  "user-01": "가가가",
-  "user-02": "나나나",
-  "user-03": "다다다",
-  "user-04": "라라라",
-  "user-05": "마마마",
-  "user-06": "바바바",
-  "user-07": "사사사"
+  "user-me": {
+    "name": "김나언",
+    "profileColor": "text-background-blue-01",
+    "status": "2025 화이팅...",
+    "isFavorite": true,
+    "blogUrl": "https://blog.naver.com/skdjs06"
+  },
+  "user-01": {
+    "name": "가가가",
+    "profileColor": "text-background-mint",
+    "status": "상태메시지상태메시지",
+    "isFavorite": false,
+    "blogUrl": "https://blog.naver.com/k0winter"
+  },
+  "user-02": {
+    "name": "나나나",
+    "profileColor": "text-background-mint",
+    "status": "상태메시지상태메시지",
+    "isFavorite": true,
+    "blogUrl": "https://blog.naver.com/k0winter"
+  },
+  "user-03": {
+    "name": "다다다",
+    "profileColor": "text-background-mint",
+    "status": "상태메시지상태메시지",
+    "isFavorite": true,
+    "blogUrl": "https://blog.naver.com/k0winter"
+  },
+  "user-04": {
+    "name": "라라라",
+    "profileColor": "text-background-mint",
+    "status": "상태메시지상태메시지",
+    "isFavorite": false,
+    "blogUrl": "https://blog.naver.com/k0winter"
+  },
+  "user-05": {
+    "name": "마마마",
+    "profileColor": "text-background-mint",
+    "status": "상태메시지상태메시지",
+    "isFavorite": false,
+    "blogUrl": "https://blog.naver.com/k0winter"
+  },
+  "user-06": {
+    "name": "바바바",
+    "profileColor": "text-background-mint",
+    "status": "상태메시지상태메시지",
+    "isFavorite": false,
+    "blogUrl": "https://blog.naver.com/k0winter"
+  },
+  "user-07": {
+    "name": "사사사",
+    "profileColor": "text-background-mint",
+    "status": "상태메시지상태메시지",
+    "isFavorite": true,
+    "blogUrl": "https://blog.naver.com/k0winter"
+  }
 }
