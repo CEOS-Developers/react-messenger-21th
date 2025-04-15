@@ -7,7 +7,6 @@ import List from './list.svg?react'
 import Setting from './setting.svg?react'
 import Back from './back.svg?react'
 import X from './X.svg?react'
-import { EventIcon } from '../../../components/Common/Common.Styled'
 import { useNavigate } from 'react-router'
 
 const HomeIcon = () => {
@@ -34,9 +33,9 @@ const ChatListIcon = () => {
 const ChatRoomIcon = () => {
   const nav = useNavigate()
   return (
-    <EventIcon onClick={() => nav('./members')}>
+    <div className="cursor-pointer" onClick={() => nav('./members')}>
       <List />
-    </EventIcon>
+    </div>
   )
 }
 
@@ -49,18 +48,18 @@ const ProfileIcon = () => (
 const BackIcon = () => {
   const nav = useNavigate()
   return (
-    <EventIcon onClick={() => nav(-1)}>
+    <div className="cursor-pointer" onClick={() => nav(-1)}>
       <Back />
-    </EventIcon>
+    </div>
   )
 }
 
 const BackIconX = () => {
   const nav = useNavigate()
   return (
-    <EventIcon onClick={() => nav(-1)}>
+    <div className="cursor-pointer" onClick={() => nav(-1)}>
       <X />
-    </EventIcon>
+    </div>
   )
 }
 
