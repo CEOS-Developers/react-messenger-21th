@@ -6,6 +6,9 @@ import EmoticonBtn from '@/assets/svgs/chatroom/EmoticonBtn.svg?url';
 import MicrophoneBtn from '@/assets/svgs/chatroom/MicrophoneBtn.svg?url';
 import SendBtn from '@/assets/svgs/chatroom/SendBtn.svg?url';
 
+import clsx from 'clsx';
+import { useMobile } from '@/hooks/useMobile';
+
 type ChatInputProps = {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -18,6 +21,7 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
   const galleryInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
+  const isMobile = useMobile();
   const [isComposing, setIsComposing] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +50,12 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
   };
 
   return (
-    <div className="flex items-center w-[375px] sticky bottom-0 py-2 px-4 shadow-default bg-grey-50">
+    <div
+      className={clsx(
+        'flex items-center w-[375px] bottom-0 py-2 px-4 shadow-default bg-grey-50',
+        isMobile ? 'fixed' : 'sticky',
+      )}
+    >
       {/* 파일 업로드 input */}
       <input
         type="file"

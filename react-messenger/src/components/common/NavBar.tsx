@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { useMobile } from '@/hooks/useMobile';
 import clsx from 'clsx';
 
 import HomeOn from '@/assets/svgs/home/HomeOn.svg?url';
@@ -30,8 +31,14 @@ const menus = [
 ];
 
 const NavBar = () => {
+  const isMobile = useMobile();
   return (
-    <div className="w-[375px] h-[86px] flex shrink-0 sticky bottom-0 shadow-default bg-grey-50">
+    <div
+      className={clsx(
+        'w-[375px] h-[86px] flex shrink-0 bottom-0 shadow-default bg-grey-50',
+        isMobile ? 'fixed' : 'sticky',
+      )}
+    >
       <div className="flex justify-center w-full pt-3 px-4 pb-6 h-full gap-[84px]">
         {menus.map((menu) => (
           <NavLink key={menu.name} to={menu.path}>

@@ -7,10 +7,11 @@ import { formatDate } from '@/utils/formatDate';
 import { useUserStore } from '@/store/userStore';
 import { useChatStore } from '@/store/chatStore';
 import { useStatusBar } from '@/hooks/useStatusBar';
+import clsx from 'clsx';
 
 const ChatRoom = () => {
   const location = useLocation();
-  const { offsetClass } = useStatusBar();
+  const { offsetClass, hideStatusBar } = useStatusBar();
 
   const { name, profileImg, id, type } = location.state || {};
   const { currentUser, targetUser, setTargetUser, switchUser } = useUserStore();
@@ -59,13 +60,13 @@ const ChatRoom = () => {
   let lastDate = '';
 
   return (
-    <div className="flex flex-col justify-between h-full bg-grey-100">
-      <div className={`sticky ${offsetClass} z-10 bg-grey-100`}>
+    <div className="flex flex-col justify-between w-full h-full bg-grey-100">
+      <div className={`${offsetClass} z-10 bg-grey-100`}>
         <ChatHeader name={targetUser.name} onClick={switchUser} />
       </div>
 
       {/* 채팅 메시지 영역 */}
-      <div className="flex flex-col gap-2 p-4 pt-0 overflow-y-auto flex-1">
+      <div className={clsx('flex flex-col gap-2 p-4 pt-0 overflow-y-auto flex-1', hideStatusBar ? 'mt-[32px]' : '')}>
         {messages.map((msg) => {
           const currentDate = msg.time.split('T')[0];
           const isNewDate = currentDate !== lastDate;

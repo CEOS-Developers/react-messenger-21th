@@ -6,7 +6,7 @@ export const useStatusBar = () => {
   const isMobile = useMobile();
 
   const hideStatusBar = isMobile || location.pathname === '/';
-  const offsetClass = hideStatusBar ? 'mt-0 top-0' : 'mt-[44px] top-[44px]';
+  const offsetClass = hideStatusBar ? 'fixed mt-0 top-0' : 'sticky mt-[44px] top-[44px]';
 
   return { hideStatusBar, offsetClass };
 };
