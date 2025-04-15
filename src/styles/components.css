@@ -4,6 +4,9 @@
   .wrapper {
     @apply flex h-full flex-col justify-between;
   }
+  .container {
+    @apply flex flex-grow flex-col justify-between;
+  }
   .app-bar {
     @apply flex h-[54px] items-center justify-between px-5;
   }
