@@ -3,7 +3,7 @@ import './font.css';
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    --statusbar-height: 49.71px;
+    --statusbar-height: 50px;
     --phone-margin: 16px;
     --phone-gutter: 12px;
   }
