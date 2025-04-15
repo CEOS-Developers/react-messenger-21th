@@ -10,6 +10,7 @@
 
 ## SVG Icons (currentColor)
 
+    chatlist/Delete
     chatroom/Add, Camera, Imoji, Link
     indicator/Indicator
     status/Battery, Celluar, Wifi

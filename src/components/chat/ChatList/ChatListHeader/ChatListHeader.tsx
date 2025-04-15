@@ -25,6 +25,11 @@ function ChatListHeader({ searchValue, setSearchValue }: ChatListHeaderProps) {
           placeholder="검색"
           className="!text-caption-02 text-grayscale-00-black placeholder-grayscale-02"
         />
+        {searchValue.length > 0 && (
+          <button onClick={() => setSearchValue('')} className="cursor-pointer">
+            <Icons.Delete className="w-[24px] h-[24px] text-grayscale-03" />
+          </button>
+        )}
       </S.SearchSection>
     </S.ChatListHeaderWrapper>
   );
