@@ -1,20 +1,11 @@
 import { useNavigate } from 'react-router'
 import { NavRole } from '@/utils/constants'
 import * as tab from '@/assets/Icons/NavigationBar'
-import { BOTTOM_BAR_BG_CLASS } from '@/styles/variants'
 
-const NavigationBar = ({
-  select,
-  color,
-}: {
-  select: NavRole
-  color?: 'white' | 'gray'
-}) => {
+const NavigationBar = ({ select }: { select: NavRole }) => {
   const nav = useNavigate()
-  const bg = color ? BOTTOM_BAR_BG_CLASS[color] : 'bg-transparent'
   return (
-    <div
-      className={`border-gray08 ${bg} flex h-[54px] items-center justify-center`}>
+    <div className="flex h-[54px] items-center justify-center">
       <div className="flex gap-[88.5px] pt-[1px]">
         <div className="cursor-pointer" onClick={() => nav('/')}>
           {select === NavRole.HOME ? <tab.HomeSelect /> : <tab.Home />}

@@ -1,18 +1,19 @@
-import * as s from '../components/Common/Common.Styled'
-import { NavRole } from '../utils/constants'
-import ChatListContent from '../components/ChatListContent/ChatListContent'
 import StatusBar from '@/components/Common/StatusBar'
 import HomeBar from '@/components/Common/HomeBar'
 import NavigationBar from '@/components/Common/NavigationBar'
+import ChatListContent from '@/components/ChatListContent/ChatListContent'
+import { NavRole } from '@/utils/constants'
 
 const ChatList = () => {
   return (
-    <s.Container>
+    <div>
       <StatusBar />
       <ChatListContent />
-      <NavigationBar color="white" select={NavRole.CHAT_LIST} />
-      <HomeBar color="white" />
-    </s.Container>
+      <div className="border-gray08 bg-white">
+        <NavigationBar select={NavRole.CHAT_LIST} />
+        <HomeBar />
+      </div>
+    </div>
   )
 }
 

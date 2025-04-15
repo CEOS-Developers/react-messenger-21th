@@ -52,6 +52,12 @@
     color: var(--color-gray06);
   }
 
+  .bg-chat {
+    background: var(--color-chatBackground);
+  }
+  .bg-profile {
+    background: var(--color-profileBackground);
+  }
   .bg-gray01 {
     background-color: var(--color-gray01);
   }

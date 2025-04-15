@@ -15,6 +15,7 @@ import MemberList from '@/pages/MemberList.tsx'
 
 import setUserAndChatRoom from './utils/setUserAndChatRoom.ts'
 import MemberSelection from './pages/MemberSelection.tsx'
+import Layout from './components/Layout.tsx'
 
 function App() {
   const userId = 1
@@ -26,17 +27,19 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Routes>
-          <Route path="/" element={<FriendsList />} />
-          <Route path="/profile/:id" element={<ProfilePage />} />
-          <Route path="/chatlist" element={<ChatList />} />
-          <Route path="/room/:id" element={<ChatRoom />} />
-          <Route path="/room/:id/members" element={<MemberList />} />
-          <Route
-            path="/room/:id/members/selection"
-            element={<MemberSelection />}
-          />
-        </Routes>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<FriendsList />} />
+            <Route path="/profile/:id" element={<ProfilePage />} />
+            <Route path="/chatlist" element={<ChatList />} />
+            <Route path="/room/:id" element={<ChatRoom />} />
+            <Route path="/room/:id/members" element={<MemberList />} />
+            <Route
+              path="/room/:id/members/selection"
+              element={<MemberSelection />}
+            />
+          </Routes>
+        </Layout>
       </ThemeProvider>
     </>
   )

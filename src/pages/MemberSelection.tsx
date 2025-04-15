@@ -1,13 +1,12 @@
-import * as s from '../components/Common/Common.Styled'
-import UserChangeSelection from '../components/MemberSelection/UserChangeSelection'
 import StatusBar from '@/components/Common/StatusBar'
+import UserChangeSelection from '@/components/MemberSelection/UserChangeSelection'
 
 const MemberSelection = () => {
   return (
-    <s.Container>
+    <div>
       <StatusBar color="white" />
       <UserChangeSelection />
-    </s.Container>
+    </div>
   )
 }
 

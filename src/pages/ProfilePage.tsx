@@ -1,15 +1,14 @@
-import HomeBar from '@/components/Common/HomeBar'
-import * as s from '../components/Common/Common.Styled'
-import ProfileContent from '../components/ProfileContent/ProfileContent'
 import StatusBar from '@/components/Common/StatusBar'
+import HomeBar from '@/components/Common/HomeBar'
+import ProfileContent from '@/components/ProfileContent/ProfileContent'
 
 const ProfilePage = () => {
   return (
-    <s.ProfileContainer>
+    <div className="bg-profile">
       <StatusBar color="gray" />
       <ProfileContent />
       <HomeBar />
-    </s.ProfileContainer>
+    </div>
   )
 }
 

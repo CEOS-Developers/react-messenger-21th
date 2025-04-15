@@ -1,18 +1,19 @@
-import * as s from '../components/Common/Common.Styled'
-import { NavRole } from '../utils/constants'
-import FriendsListContent from '../components/FriendsListContent/FriendsListContent'
 import StatusBar from '@/components/Common/StatusBar'
 import HomeBar from '@/components/Common/HomeBar'
 import NavigationBar from '@/components/Common/NavigationBar'
+import FriendsListContent from '@/components/FriendsListContent/FriendsListContent'
+import { NavRole } from '@/utils/constants'
 
 const FriendsList = () => {
   return (
-    <s.Container>
+    <div>
       <StatusBar />
       <FriendsListContent />
-      <NavigationBar color="gray" select={NavRole.HOME} />
-      <HomeBar color="gray" />
-    </s.Container>
+      <div className="bg-gray01 border-gray08">
+        <NavigationBar select={NavRole.HOME} />
+        <HomeBar />
+      </div>
+    </div>
   )
 }
 
