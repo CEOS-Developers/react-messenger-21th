@@ -15,7 +15,7 @@ const ChatList = () => {
     <div className="w-full h-full flex flex-col bg-grey-50">
       <div className="sticky top-0 z-10 bg-grey-50">
         <StatusBar />
-        <span className="text-head1 font-semibold text-grey-900 p-4 block">채팅방</span>
+        <span className="head-1 text-grey-900 p-4 block">채팅방</span>
       </div>
       <div className="flex flex-col overflow-y-auto pb-[30px]">
         {messages.map((msg) => {

@@ -18,20 +18,20 @@ const ChatUser = ({ profileImg, username, lastMessage, time, unread, memberCount
       />
 
       <div className="flex flex-col justify-center w-[254px]">
-        <span className="text-title2 px-4 py-1 font-medium text-grey-900 h-[33px]">
+        <span className="title-2 px-4 py-1 font-medium text-grey-900 h-[33px]">
           {username}
-          {memberCount && <span className="text-title2 text-grey-600">&nbsp;({memberCount})</span>}
+          {memberCount && <span className="title-2 text-grey-600">&nbsp;({memberCount})</span>}
         </span>
         <div className="flex gap-1 px-4 pb-1 pt-[2.4px] h-[27px]">
-          <span className="text-body2 text-grey-400 truncate max-w-[170px] overflow-hidden whitespace-nowrap">
+          <span className="body-2 text-grey-400 truncate max-w-[170px] overflow-hidden whitespace-nowrap">
             {lastMessage}
           </span>
-          <span className="text-body2 text-grey-400 shrink-0">· {time}</span>
+          <span className="body-2 text-grey-400 shrink-0">· {time}</span>
         </div>
       </div>
 
       {typeof unread === 'number' && unread > 0 && (
-        <div className="flex items-center justify-center ml-auto text-caption2 text-grey-50 bg-primary-0 rounded-full w-[20px] h-[20px] text-center">
+        <div className="flex items-center justify-center ml-auto caption-2 text-grey-50 bg-primary-0 rounded-full w-[20px] h-[20px] text-center">
           {unread}
         </div>
       )}

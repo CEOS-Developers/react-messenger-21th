@@ -29,7 +29,7 @@ const menus = [
 
 const BottomMenu = () => {
   return (
-    <div className="w-[375px] h-[86px] sticky bottom-0 shadow-bottommenu bg-grey-50">
+    <div className="w-[375px] h-[86px] sticky bottom-0 shadow-default bg-grey-50">
       <div className="flex justify-center w-full pt-3 px-4 pb-6 h-auto gap-[84px]">
         {menus.map((menu) => (
           <NavLink
@@ -42,7 +42,7 @@ const BottomMenu = () => {
             {({ isActive }) => (
               <>
                 <img src={isActive ? menu.iconOn : menu.iconOff} alt={menu.name} className="w-[24px] h-[24px]" />
-                <span className="text-caption2 font-medium">{menu.name}</span>
+                <span className="caption-2 font-medium">{menu.name}</span>
               </>
             )}
           </NavLink>

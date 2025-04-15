@@ -38,7 +38,7 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
   const [isComposing, setIsComposing] = useState(false);
 
   return (
-    <div className="flex items-center w-[375px] sticky bottom-0 py-2 px-4 shadow-bottommenu bg-grey-50">
+    <div className="flex items-center w-[375px] sticky bottom-0 py-2 px-4 shadow-default bg-grey-50">
       <input
         type="file"
         accept="image/*"
@@ -82,7 +82,7 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
           onChange={handleChange}
           placeholder="텍스트를 입력해주세요"
           rows={1}
-          className="flex-1 w-[191px] border-grey-100 border-[0.5px] pr-[37px] scrollbar-hide max-h-[79px] bg-grey-75 rounded-lg p-2 outline-none text-body2 text-grey-900 placeholder:text-grey-400 resize-none"
+          className="flex-1 w-[191px] border-grey-100 border-[0.5px] pr-[37px] scrollbar-hide max-h-[79px] bg-grey-75 rounded-lg p-2 outline-none body-2 text-grey-900 placeholder:text-grey-400 resize-none"
           onCompositionStart={() => setIsComposing(true)}
           onCompositionEnd={() => setIsComposing(false)}
           onKeyDown={(e: React.KeyboardEvent<HTMLTextAreaElement>) => {

@@ -76,7 +76,7 @@ const ChatRoom = () => {
             <div key={idx}>
               {isNewDate && (
                 <div className="flex justify-center my-2">
-                  <span className="text-caption2 text-grey-50 bg-grey-700 bg-opacity-50 px-2 rounded-[20px]">
+                  <span className="caption-2 text-grey-50 bg-grey-700/50 bg-opacity-50 px-2 rounded-[20px]">
                     {formatDate(msg.time)}
                   </span>
                 </div>

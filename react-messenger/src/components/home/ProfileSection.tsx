@@ -22,8 +22,8 @@ const ProfileSection = () => {
     <div onClick={handleClick} className="flex w-full h-[108px] p-4 bg-grey-50 cursor-pointer">
       <img src={ProfileImg} alt="프로필" className="w-[80px] h-[80px] rounded-full object-cover" />
       <div className="flex flex-col w-full justify-center">
-        <span className="text-head1 font-semibold px-4 py-1">전지연</span>
-        <span className="text-caption2 font-normal text-grey-500 px-4 py-1">{comment}</span>
+        <span className="head-1 font-semibold px-4 py-1">전지연</span>
+        <span className="caption-2 font-normal text-grey-500 px-4 py-1">{comment}</span>
       </div>
     </div>
   );

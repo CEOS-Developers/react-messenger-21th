@@ -10,8 +10,8 @@ const UserItem = ({ name, profileImg, count, onClick }: UserItemProps) => {
     <div className="flex items-center px-4 py-2 gap-[1px] bg-grey-50 cursor-pointer" onClick={onClick}>
       <img src={profileImg} className="w-[48px] h-[48px] rounded-full object-cover" alt={name} />
       <div className="flex px-4">
-        <span className="text-label1 font-semibold">{name}</span>
-        {count && <span className="text-label1 font-semibold text-grey-600">&nbsp; ({count})</span>}
+        <span className="label-1">{name}</span>
+        {count && <span className="label-1 text-grey-600">&nbsp; ({count})</span>}
       </div>
     </div>
   );

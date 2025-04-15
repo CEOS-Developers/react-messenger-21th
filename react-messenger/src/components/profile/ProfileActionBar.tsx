@@ -27,7 +27,7 @@ const ProfileActionBar = ({ isMine }: Props) => {
       {items.map(({ icon, label, onClick }, idx) => (
         <button key={idx} onClick={onClick} className="flex flex-col items-center gap-3 w-[60px]">
           <img src={icon} alt={label} className="w-[24px] h-[24px]" />
-          <span className="text-caption2 text-grey-50">{label}</span>
+          <span className="caption-2 text-grey-50">{label}</span>
         </button>
       ))}
     </div>
