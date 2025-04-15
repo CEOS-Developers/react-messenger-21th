@@ -1,11 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import * as Types from '@/types';
 import initialData from '@/assets/data/userList.json';
+import { toggleFavorite } from '@/utils';
 import { loadUserList, saveUserList } from '@/services/localStorage';
 
 type UserListContextType = {
   userList: Types.UserList;
   setUserList: (updated: Types.UserList) => void;
+  onToggleFavorite: (userId: string) => void;
 };
 
 const UserListContext = createContext<UserListContextType | null>(null);
@@ -29,7 +31,17 @@ function UserListProvider({ children }: { children: React.ReactNode }) {
     saveUserList(updated);
   };
 
-  return <UserListContext.Provider value={{ userList, setUserList: update }}>{children}</UserListContext.Provider>;
+  // favorite
+  const onToggleFavorite = (userId: string) => {
+    const updated = toggleFavorite(userId, userList);
+    update(updated);
+  };
+
+  return (
+    <UserListContext.Provider value={{ userList, setUserList: update, onToggleFavorite }}>
+      {children}
+    </UserListContext.Provider>
+  );
 }
 
 function useUserList() {
