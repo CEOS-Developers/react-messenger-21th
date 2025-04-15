@@ -12,7 +12,7 @@ const ChatHeader = ({ name, onClick }: ChatHeaderProps) => {
   const navigate = useNavigate();
   return (
     <div className="flex w-full h-8 items-center justify-between bg-grey-100 sticky top-[44px] px-4">
-      <img src={BackBtn} className="w-auto h-[32px] p-2 cursor-pointer" onClick={() => navigate('/chatlist')} />
+      <img src={BackBtn} className="w-auto h-[32px] p-2 cursor-pointer" onClick={() => navigate(-1)} />
       <span className="w-[256px] px-[10px] py-1 label-1" onClick={onClick}>
         {name}
       </span>
