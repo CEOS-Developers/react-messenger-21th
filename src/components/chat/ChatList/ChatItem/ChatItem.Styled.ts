@@ -5,6 +5,7 @@ const ChatItemWrapper = styled.li`
   display: flex;
 
   .chat-link {
+    padding-left: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
