@@ -7,7 +7,7 @@ import List from './list.svg?react'
 import Setting from './setting.svg?react'
 import Back from './back.svg?react'
 import X from './X.svg?react'
-import { EventIcon } from '../../../components/common/Common.Styled'
+import { EventIcon } from '../../../components/Common/Common.Styled'
 import { useNavigate } from 'react-router'
 
 const HomeIcon = () => {

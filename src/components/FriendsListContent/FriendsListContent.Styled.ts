@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Body_1 } from '../../styles/Typo.Styled'
 import StyledProps from '../../interface/StyledProps'
-import { Content } from '../common/Common.Styled'
+import { Content } from '../Common/Common.Styled'
 
 const FLContent = styled(Content)`
   gap: 8px;

@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 /** ui */
 import * as s from './ChatListViewer.Styled'
-import SearchBox from '../common/SearchBox'
+import SearchBox from '../Common/SearchBox'
 import RoomItem from './RoomItem'
 
 /** global states */

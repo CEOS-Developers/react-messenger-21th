@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Hangul from 'hangul-js'
 
 import * as s from './FriendsViewer.Styled'
-import SearchBox from '../common/SearchBox'
+import SearchBox from '../Common/SearchBox'
 import ProfileItem from './ProfileItem'
 import ToggleBox from './ToggleBox'
 

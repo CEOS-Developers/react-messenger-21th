@@ -1,5 +1,5 @@
-import { HomeBar, StatusBar } from '../components/common/Bar'
-import * as s from '../components/common/Common.Styled'
+import { HomeBar, StatusBar } from '../components/Common/Bar'
+import * as s from '../components/Common/Common.Styled'
 import ProfileContent from '../components/ProfileContent/ProfileContent'
 
 const ProfilePage = () => {

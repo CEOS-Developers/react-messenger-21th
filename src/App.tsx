@@ -4,7 +4,6 @@ import { useEffect } from 'react'
 /** styles */
 import { ThemeProvider } from 'styled-components'
 import theme from './styles/theme.ts'
-import GlobalStyle from './styles/GlobalStyle.ts'
 import '@/styles/global.css'
 
 /** pages */
@@ -27,7 +26,6 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
         <Routes>
           <Route path="/" element={<FriendsList />} />
           <Route path="/profile/:id" element={<ProfilePage />} />

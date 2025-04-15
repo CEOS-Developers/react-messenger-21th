@@ -1,9 +1,9 @@
 import * as s from './ChatContent.Styled'
-import ContentHeader from '../common/ContentHeader'
+import ContentHeader from '../Common/ContentHeader'
 import ChatTitle from './ChatTitle'
 import TextInput from './TextInput'
 import ChatField from './ChatField'
-import { ChatRoomIcon } from '../../assets/Icons/Header'
+import { ChatRoomIcon } from '../../assets/Icons/AppBar'
 
 import { userData } from '../../assets/data/user.json'
 

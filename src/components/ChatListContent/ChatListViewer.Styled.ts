@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ScrollDiv } from '../common/Common.Styled'
+import { ScrollDiv } from '../Common/Common.Styled'
 
 const Wrapper = styled(ScrollDiv)`
   height: 610px;

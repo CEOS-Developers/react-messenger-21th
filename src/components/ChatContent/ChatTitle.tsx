@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from 'react-router'
 
 import * as s from './ChatTitle.Styled'
-import { EventIcon } from '../common/Common.Styled'
-import Back from '../../assets/Icons/Header/back.svg?react'
+import { EventIcon } from '../Common/Common.Styled'
+import Back from '@/assets/Icons/AppBar/back.svg?react'
 
 import getRoomName from '../../utils/getRoomName'
 

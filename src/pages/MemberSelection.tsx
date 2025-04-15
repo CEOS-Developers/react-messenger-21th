@@ -1,5 +1,5 @@
-import * as s from '../components/common/Common.Styled'
-import { StatusBar } from '../components/common/Bar'
+import * as s from '../components/Common/Common.Styled'
+import { StatusBar } from '../components/Common/Bar'
 import UserChangeSelection from '../components/MemberSelection/UserChangeSelection'
 
 const MemberSelection = () => {

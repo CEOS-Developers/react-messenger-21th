@@ -1,5 +1,5 @@
-import { ChatListIcon } from '../../assets/Icons/Header'
-import ContentHeader from '../common/ContentHeader'
+import { ChatListIcon } from '../../assets/Icons/AppBar'
+import ContentHeader from '../Common/ContentHeader'
 import * as s from './ChatListContent.Styled'
 import ChatListViewer from './ChatListViewer'
 

@@ -1,13 +1,12 @@
-import { useNavigate, useParams } from 'react-router'
+import { useParams } from 'react-router'
 
 /** styles and icon */
 import * as s from './ProfileContent.Styled'
-import { ProfileIcon } from '../../assets/Icons/Header'
-import X from '../../assets/Icons/Header/X.svg?react'
-import { EventIcon } from '../common/Common.Styled'
+import { ProfileIcon } from '../../assets/Icons/AppBar'
+import { BackIconX } from '@/assets/Icons/AppBar'
 
 /** components */
-import ContentHeader from '../common/ContentHeader'
+import ContentHeader from '../Common/ContentHeader'
 import ProfileInfo from './ProfileInfo'
 import { FriendProfleAction, MyProfleAction } from './ProfileAction'
 
@@ -15,7 +14,6 @@ import { useUserStore } from '../../stores/useUserStore'
 import findUser from '../../utils/findUser'
 
 const ProfileContent = () => {
-  const nav = useNavigate()
   const userId = Number(useParams().id)
   const { user } = useUserStore()
   const isMine = userId === user.id
@@ -24,14 +22,7 @@ const ProfileContent = () => {
   if (!curUser) return <div>존재하지 않는 유저</div>
   return (
     <s.Container>
-      <ContentHeader
-        leftChild={
-          <EventIcon onClick={() => nav(-1)}>
-            <X />
-          </EventIcon>
-        }
-        rightChild={<ProfileIcon />}
-      />
+      <ContentHeader leftChild={<BackIconX />} rightChild={<ProfileIcon />} />
       <s.MainContent>
         <ProfileInfo
           isMine={isMine}

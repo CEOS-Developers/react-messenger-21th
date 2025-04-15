@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { BackIconX } from '../../assets/Icons/Header'
-import { MemberSelectionAppBar } from '../common/ContentHeader'
+import { BackIconX } from '../../assets/Icons/AppBar'
+import { MemberSelectionAppBar } from '../Common/ContentHeader'
 import * as s from './UserChangeSelection.Styled'
 import { useLocation, useNavigate } from 'react-router'
 import { MemberArrayType } from '../../utils/getMemberList'

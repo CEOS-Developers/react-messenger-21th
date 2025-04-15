@@ -1,5 +1,5 @@
-import * as s from '../components/common/Common.Styled'
-import { StatusBar, NavigationBar } from '../components/common/Bar'
+import * as s from '../components/Common/Common.Styled'
+import { StatusBar, NavigationBar } from '../components/Common/Bar'
 import { NavRole } from '../utils/constants'
 import FriendsListContent from '../components/FriendsListContent/FriendsListContent'
 

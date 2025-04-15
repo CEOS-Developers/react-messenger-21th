@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router'
 
 import * as s from './FriendsListContent.Styled'
-import { HomeIcon } from '../../assets/Icons/Header'
+import { HomeIcon } from '../../assets/Icons/AppBar'
 import { ProfileDefault } from '../../assets/Icons/Profile'
-import ContentHeader from '../common/ContentHeader'
-import { EventIcon } from '../common/Common.Styled'
+import ContentHeader from '../Common/ContentHeader'
+import { EventIcon } from '../Common/Common.Styled'
 import FriendsViewer from './FriendsViewer'
 
 import { useUserStore } from '../../stores/useUserStore'

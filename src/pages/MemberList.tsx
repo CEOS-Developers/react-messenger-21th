@@ -1,8 +1,8 @@
-import * as s from '../components/common/Common.Styled'
-import { StatusBar } from '../components/common/Bar'
+import * as s from '../components/Common/Common.Styled'
+import { StatusBar } from '../components/Common/Bar'
 import MemberListContent from '../components/MemberList/MemberListContent'
-import ContentHeader from '../components/common/ContentHeader'
-import { BackIcon, ProfileIcon } from '../assets/Icons/Header'
+import ContentHeader from '../components/Common/ContentHeader'
+import { BackIcon, ProfileIcon } from '../assets/Icons/AppBar'
 
 const MemberList = () => {
   return (
