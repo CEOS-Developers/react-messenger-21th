@@ -35,7 +35,7 @@
     );
     --color-profileBackground:
       linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34)),
-      linear-gradient(#ffffff, #92c6ff);
+      linear-gradient(#ffffff -50%, #92c6ff);
 
     --font-weight-regular: 400;
     --font-weight-medium: 500;

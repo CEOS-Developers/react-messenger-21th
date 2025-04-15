@@ -4,7 +4,7 @@ import ProfileContent from '@/components/ProfileContent/ProfileContent'
 
 const ProfilePage = () => {
   return (
-    <div className="bg-profile">
+    <div className="bg-profile wrapper">
       <StatusBar color="gray" />
       <ProfileContent />
       <HomeBar />

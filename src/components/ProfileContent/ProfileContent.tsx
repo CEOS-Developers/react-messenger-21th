@@ -1,16 +1,15 @@
 import { useParams } from 'react-router'
 
 /** styles and icon */
-import * as s from './ProfileContent.Styled'
-import { ProfileIcon } from '../../assets/Icons/AppBar'
+import { ProfileIcon } from '@/assets/Icons/AppBar'
 import { BackIconX } from '@/assets/Icons/AppBar'
 
 /** components */
 import ProfileInfo from './ProfileInfo'
 import { FriendProfleAction, MyProfleAction } from './ProfileAction'
 
-import { useUserStore } from '../../stores/useUserStore'
-import findUser from '../../utils/findUser'
+import { useUserStore } from '@/stores/useUserStore'
+import findUser from '@/utils/findUser'
 
 const ProfileContent = () => {
   const userId = Number(useParams().id)
@@ -20,14 +19,14 @@ const ProfileContent = () => {
 
   if (!curUser) return <div>존재하지 않는 유저</div>
   return (
-    <s.Container>
+    <div className="flex flex-grow flex-col justify-between">
       <div className="bg-gray02">
         <div className="app-bar">
           <BackIconX />
           <ProfileIcon />
         </div>
       </div>
-      <s.MainContent>
+      <div className="flex flex-col gap-[62px] py-[57px]">
         <ProfileInfo
           isMine={isMine}
           name={curUser.name}
@@ -39,8 +38,8 @@ const ProfileContent = () => {
         ) : (
           <FriendProfleAction snsUrl={curUser.snsUrl} id={userId} />
         )}
-      </s.MainContent>
-    </s.Container>
+      </div>
+    </div>
   )
 }
 
