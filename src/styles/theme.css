@@ -51,6 +51,10 @@
   .text-gray06 {
     color: var(--color-gray06);
   }
+
+  .bg-gray01 {
+    background-color: var(--color-gray01);
+  }
   .bg-gray02 {
     background-color: var(--color-gray02);
   }
@@ -58,6 +62,9 @@
     background-color: var(--color-gray03);
   }
 
+  .border-gray08 {
+    border-top: 1px solid var(--color-gray08);
+  }
   .border-gray13 {
     border: 1px solid var(--color-gray13);
   }
