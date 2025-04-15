@@ -4,6 +4,7 @@ import { useMyId, useUserList } from '@/contexts/localStorage';
 import HomeHeader from './HomeHeader/HomeHeader';
 import UserMe from './UserMe/UserMe';
 import UserList from './UserList/UserList';
+import { searchFromStorage } from '@/utils';
 import { filterFavoriteUserList } from './Home.utils';
 
 function Home() {
@@ -17,7 +18,13 @@ function Home() {
   const otherUserList = { ...userList };
   delete otherUserList[myId];
 
-  const filteredOtherUserList = filterFavoriteUserList(otherUserList);
+  const favoriteUserList = filterFavoriteUserList(otherUserList);
+
+  const searchedIndices = searchFromStorage(
+    searchValue,
+    Object.entries(otherUserList).map(([, user]) => user.name),
+  );
+  const searchedUserList = Object.fromEntries(searchedIndices.map((i) => Object.entries(otherUserList)[i]));
 
   return (
     <S.HomeWrapper>
@@ -25,7 +32,7 @@ function Home() {
       <S.UserGroup>
         <UserMe user={userList[myId]} />
         <UserList
-          userList={filteredOtherUserList}
+          userList={favoriteUserList}
           isFavorite={true}
           isSearch={false}
           searchValue={searchValue}
@@ -33,7 +40,7 @@ function Home() {
           onToggleFavorite={onToggleFavorite}
         />
         <UserList
-          userList={otherUserList}
+          userList={searchedUserList}
           isFavorite={false}
           isSearch={true}
           searchValue={searchValue}
