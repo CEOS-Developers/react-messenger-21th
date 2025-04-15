@@ -26,27 +26,25 @@ const ChatList = () => {
             memberCount?: number;
           };
 
-          return (
-            <ChatUser
-              key={`${msg.id}-${msg.type}`}
-              username={chat.name}
-              profileImg={chat.profileImg}
-              lastMessage={lastMsg?.content ?? ''}
-              time={lastMsg?.time ? formatTime(lastMsg.time) : ''}
-              unread={msg.unreadCount}
-              memberCount={chat.memberCount}
-              onClick={() =>
-                navigate('/chatroom', {
-                  state: {
-                    name: chat.name,
-                    profileImg: chat.profileImg,
-                    type: msg.type,
-                    id: msg.id,
-                  },
-                })
-              }
-            />
-          );
+          const chatUserProps = {
+            username: chat.name,
+            profileImg: chat.profileImg,
+            lastMessage: lastMsg?.content ?? '',
+            time: lastMsg?.time ? formatTime(lastMsg.time) : '',
+            unread: msg.unreadCount ?? 0,
+            memberCount: chat.memberCount,
+            onClick: () =>
+              navigate('/chatroom', {
+                state: {
+                  name: chat.name,
+                  profileImg: chat.profileImg,
+                  type: msg.type,
+                  id: msg.id,
+                },
+              }),
+          };
+
+          return <ChatUser key={`${msg.id}-${msg.type}`} {...chatUserProps} />;
         })}
       </div>
       <NavBar />
