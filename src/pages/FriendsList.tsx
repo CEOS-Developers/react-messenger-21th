@@ -1,12 +1,13 @@
 import * as s from '../components/Common/Common.Styled'
-import { StatusBar, NavigationBar } from '../components/Common/Bar'
+import { NavigationBar } from '../components/Common/Bar'
 import { NavRole } from '../utils/constants'
 import FriendsListContent from '../components/FriendsListContent/FriendsListContent'
+import StatusBar from '@/components/Common/StatusBar'
 
 const FriendsList = () => {
   return (
     <s.Container>
-      <StatusBar $isTransparent={true} />
+      <StatusBar />
       <FriendsListContent />
       <NavigationBar select={NavRole.HOME} />
     </s.Container>

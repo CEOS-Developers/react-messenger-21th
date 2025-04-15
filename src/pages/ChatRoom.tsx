@@ -1,6 +1,7 @@
 import * as s from '../components/Common/Common.Styled'
-import { StatusBar, HomeBar } from '../components/Common/Bar'
+import { HomeBar } from '../components/Common/Bar'
 import ChatContent from '../components/ChatContent/ChatContent'
+import StatusBar from '@/components/Common/StatusBar'
 
 const ChatRoom = () => {
   return (
