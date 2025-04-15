@@ -18,7 +18,7 @@ const ChatUser = ({ profileImg, username, lastMessage, time, unread, memberCount
       />
 
       <div className="flex flex-col justify-center w-[254px]">
-        <span className="title-2 px-4 py-1 font-medium text-grey-900 h-[33px]">
+        <span className="title-2 px-4 py-1 text-grey-900 h-[33px]">
           {username}
           {memberCount && <span className="title-2 text-grey-600">&nbsp;({memberCount})</span>}
         </span>

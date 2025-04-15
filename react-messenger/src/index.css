@@ -41,62 +41,81 @@
 @layer components {
   .head-0 {
     font-size: 24px;
+    font-style: normal;
     font-weight: 600;
     line-height: 150%;
     letter-spacing: 0px;
   }
+
   .head-1 {
     font-size: 20px;
+    font-style: normal;
     font-weight: 600;
     line-height: 150%;
     letter-spacing: -0.3px;
   }
+
   .title-1 {
     font-size: 18px;
+    font-style: normal;
     font-weight: 600;
     line-height: 150%;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.27px;
   }
+
   .title-2 {
     font-size: 18px;
+    font-style: normal;
     font-weight: 500;
     line-height: 150%;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.27px;
   }
+
   .label-1 {
     font-size: 16px;
+    font-style: normal;
     font-weight: 600;
     line-height: 150%;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.24px;
   }
+
   .label-2 {
     font-size: 16px;
+    font-style: normal;
     font-weight: 500;
     line-height: 150%;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.24px;
   }
+
   .body-1 {
     font-size: 14px;
+    font-style: normal;
     font-weight: 600;
     line-height: 150%;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.21px;
   }
+
   .body-2 {
     font-size: 14px;
+    font-style: normal;
     font-weight: 400;
     line-height: 150%;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.21px;
   }
+
   .caption-1 {
     font-size: 12px;
+    font-style: normal;
     font-weight: 500;
     line-height: 150%;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.18px;
   }
+
   .caption-2 {
     font-size: 12px;
+    font-style: normal;
     font-weight: 400;
     line-height: 150%;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.18px;
   }
 }
