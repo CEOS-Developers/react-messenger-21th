@@ -1,5 +1,5 @@
 import * as s from './ChatContent.Styled'
-import ContentHeader from '../Common/ContentHeader'
+
 import ChatTitle from './ChatTitle'
 import TextInput from './TextInput'
 import ChatField from './ChatField'
@@ -37,10 +37,12 @@ const ChatContent = () => {
 
   return (
     <s.ChatContentWrapper>
-      <ContentHeader
-        leftChild={<ChatTitle memberIds={memberIds} />}
-        rightChild={<ChatRoomIcon />}
-      />
+      <div className="bg-gray02">
+        <div className="app-bar">
+          <ChatTitle memberIds={memberIds} />
+          <ChatRoomIcon />
+        </div>
+      </div>
       <ChatField member={partnerData} />
       <TextInput />
     </s.ChatContentWrapper>

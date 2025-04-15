@@ -10,6 +10,7 @@ import { useNavigate, useParams } from 'react-router'
 import { getMemberArray } from '../../utils/getMemberList'
 import getRoomName from '../../utils/getRoomName'
 import MemberItem from '../MemberItem/MemberItem'
+import { BackIcon, ProfileIcon } from '@/assets/Icons/AppBar'
 
 const MemberListContent = () => {
   const nav = useNavigate()
@@ -45,59 +46,67 @@ const MemberListContent = () => {
     nav('/chatList', { replace: true })
   }
   return (
-    <s.Wrapper>
-      <s.RoomNameSection>
-        <MultipleProfileDefault colors={colors} />
-        <s.TitleContainer>
-          <s.RoomName>
-            {room?.roomName || (memberIds && getRoomName(memberIds))}
-          </s.RoomName>
-          <s.MemberCount $isM={true}>{memberCount}</s.MemberCount>
-        </s.TitleContainer>
-      </s.RoomNameSection>
-      <s.Section>
-        <s.MemberNum>멤버 {memberCount}</s.MemberNum>
-        <s.MemberList>
-          <s.MemberItem>
-            <Plus />
-            <s.MemberName>친구 초대하기</s.MemberName>
-          </s.MemberItem>
-          <s.MemberItem
-            onClick={() => nav(`/profile/${user.id}`)}
-            key={user.id}>
-            <ProfileDefault color={user.profileColor} />
-            <s.MemberName>{user.name}</s.MemberName>
-            <s.MeTag $isM={true}>나</s.MeTag>
-          </s.MemberItem>
-          {memberData?.map((member) => (
-            <MemberItem
-              id={member.id}
-              key={member.id}
-              name={member.name}
-              profileColor={member.profileColor}
-              onClick={(id) => nav(`/profile/${id}`)}
-            />
-          ))}
-        </s.MemberList>
-      </s.Section>
+    <div className="flex-grow">
+      <div className="bg-white">
+        <div className="app-bar">
+          <BackIcon />
+          <ProfileIcon />
+        </div>
+      </div>
+      <s.Wrapper>
+        <s.RoomNameSection>
+          <MultipleProfileDefault colors={colors} />
+          <s.TitleContainer>
+            <s.RoomName>
+              {room?.roomName || (memberIds && getRoomName(memberIds))}
+            </s.RoomName>
+            <s.MemberCount $isM={true}>{memberCount}</s.MemberCount>
+          </s.TitleContainer>
+        </s.RoomNameSection>
+        <s.Section>
+          <s.MemberNum>멤버 {memberCount}</s.MemberNum>
+          <s.MemberList>
+            <s.MemberItem>
+              <Plus />
+              <s.MemberName>친구 초대하기</s.MemberName>
+            </s.MemberItem>
+            <s.MemberItem
+              onClick={() => nav(`/profile/${user.id}`)}
+              key={user.id}>
+              <ProfileDefault color={user.profileColor} />
+              <s.MemberName>{user.name}</s.MemberName>
+              <s.MeTag $isM={true}>나</s.MeTag>
+            </s.MemberItem>
+            {memberData?.map((member) => (
+              <MemberItem
+                id={member.id}
+                key={member.id}
+                name={member.name}
+                profileColor={member.profileColor}
+                onClick={(id) => nav(`/profile/${id}`)}
+              />
+            ))}
+          </s.MemberList>
+        </s.Section>
 
-      <s.Section>
-        <s.Button
-          $isM={true}
-          onClick={() =>
-            nav('./selection', {
-              state: {
-                memberData,
-              },
-            })
-          }>
-          유저 변경하기
-        </s.Button>
-        <s.OutButton $isM={true} onClick={onClickOutButton}>
-          채팅방 나가기
-        </s.OutButton>
-      </s.Section>
-    </s.Wrapper>
+        <s.Section>
+          <s.Button
+            $isM={true}
+            onClick={() =>
+              nav('./selection', {
+                state: {
+                  memberData,
+                },
+              })
+            }>
+            유저 변경하기
+          </s.Button>
+          <s.OutButton $isM={true} onClick={onClickOutButton}>
+            채팅방 나가기
+          </s.OutButton>
+        </s.Section>
+      </s.Wrapper>
+    </div>
   )
 }
 

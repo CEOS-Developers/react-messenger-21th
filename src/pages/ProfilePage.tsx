@@ -6,7 +6,7 @@ import StatusBar from '@/components/Common/StatusBar'
 const ProfilePage = () => {
   return (
     <s.ProfileContainer>
-      <StatusBar />
+      <StatusBar color="gray" />
       <ProfileContent />
       <HomeBar $isTransparent={true} />
     </s.ProfileContainer>

@@ -45,6 +45,9 @@
 }
 
 @layer utilities {
+  .bg-gray02 {
+    background-color: var(--color-gray02);
+  }
   .bg-gray03 {
     background-color: var(--color-gray03);
   }

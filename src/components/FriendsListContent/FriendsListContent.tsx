@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router'
 import * as s from './FriendsListContent.Styled'
 import { HomeIcon } from '../../assets/Icons/AppBar'
 import { ProfileDefault } from '../../assets/Icons/Profile'
-import ContentHeader from '../Common/ContentHeader'
 import { EventIcon } from '../Common/Common.Styled'
 import FriendsViewer from './FriendsViewer'
 
@@ -28,20 +27,18 @@ const FriendsListContent = () => {
 
   return (
     <s.FLContent>
-      <s.HeaderWrapper>
-        <ContentHeader
-          $isTransparent={true}
-          leftChild={
-            <EventIcon onClick={() => nav(`/profile/${user.id}`)}>
-              <s.UserProfileContainer>
-                <ProfileDefault color={user.profileColor} />
-                <s.Name>{user.name}</s.Name>
-              </s.UserProfileContainer>
-            </EventIcon>
-          }
-          rightChild={<HomeIcon />}
-        />
-      </s.HeaderWrapper>
+      <div className="pt-1">
+        <div className="app-bar app-bar--62">
+          <EventIcon onClick={() => nav(`/profile/${user.id}`)}>
+            <s.UserProfileContainer>
+              <ProfileDefault color={user.profileColor} />
+              <s.Name>{user.name}</s.Name>
+            </s.UserProfileContainer>
+          </EventIcon>
+          <HomeIcon />
+        </div>
+      </div>
+
       <FriendsViewer friendsData={friendsData} />
     </s.FLContent>
   )

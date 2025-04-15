@@ -6,7 +6,6 @@ import { ProfileIcon } from '../../assets/Icons/AppBar'
 import { BackIconX } from '@/assets/Icons/AppBar'
 
 /** components */
-import ContentHeader from '../Common/ContentHeader'
 import ProfileInfo from './ProfileInfo'
 import { FriendProfleAction, MyProfleAction } from './ProfileAction'
 
@@ -22,7 +21,12 @@ const ProfileContent = () => {
   if (!curUser) return <div>존재하지 않는 유저</div>
   return (
     <s.Container>
-      <ContentHeader leftChild={<BackIconX />} rightChild={<ProfileIcon />} />
+      <div className="bg-gray02">
+        <div className="app-bar">
+          <BackIconX />
+          <ProfileIcon />
+        </div>
+      </div>
       <s.MainContent>
         <ProfileInfo
           isMine={isMine}

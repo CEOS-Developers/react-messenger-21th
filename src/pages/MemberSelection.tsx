@@ -5,7 +5,7 @@ import StatusBar from '@/components/Common/StatusBar'
 const MemberSelection = () => {
   return (
     <s.Container>
-      <StatusBar />
+      <StatusBar color="white" />
       <UserChangeSelection />
     </s.Container>
   )

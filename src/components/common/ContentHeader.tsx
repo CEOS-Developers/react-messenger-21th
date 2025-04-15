@@ -1,23 +1,6 @@
 import { EventIcon } from './Common.Styled'
 import * as s from './ContentHeader.Styled'
 
-const ContentHeader = ({
-  leftChild,
-  rightChild,
-  $isTransparent = false,
-}: {
-  leftChild: React.ReactNode
-  rightChild: React.ReactNode
-  $isTransparent?: boolean
-}) => {
-  return (
-    <s.HeaderDiv $isTransparent={$isTransparent}>
-      {leftChild}
-      {rightChild}
-    </s.HeaderDiv>
-  )
-}
-
 export const MemberSelectionAppBar = ({
   backIcon,
   nextText,
@@ -43,5 +26,3 @@ export const MemberSelectionAppBar = ({
     </s.MemberSelectionDiv>
   )
 }
-
-export default ContentHeader

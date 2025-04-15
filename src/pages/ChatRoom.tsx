@@ -6,7 +6,7 @@ import StatusBar from '@/components/Common/StatusBar'
 const ChatRoom = () => {
   return (
     <s.Container>
-      <StatusBar />
+      <StatusBar color="gray" />
       <ChatContent />
       <HomeBar />
     </s.Container>
