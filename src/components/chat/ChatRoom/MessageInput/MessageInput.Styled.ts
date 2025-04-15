@@ -25,7 +25,6 @@ const InputSection = styled.div`
     overflow-y: overlay;
     flex: 1;
     resize: none;
-    cursor: pointer;
     word-break: break-all;
     overflow-wrap: break-word;
 
