@@ -3,7 +3,7 @@ import Friend from '@/assets/svgs/home/FriendBtn.svg?url';
 import Notification from '@/assets/svgs/home/NotificationBtn.svg?url';
 import MoreBtn from '@/assets/svgs/home/MoreBtn.svg?url';
 
-const NavBar = () => {
+const TopBar = () => {
   return (
     <div className="flex justify-end items-center w-[375px] h-[44.6px] px-4 py-[10px] bg-grey-50">
       <div className="flex gap-[14px]">
@@ -16,4 +16,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default TopBar;

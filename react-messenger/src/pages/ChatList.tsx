@@ -1,5 +1,5 @@
 import ChatUser from '@/components/chatlist/ChatUser';
-import BottomMenu from '@/components/home/BottomMenu';
+import NavBar from '@/components/common/NavBar';
 import rawMessages from '@/data/messages.json';
 import { formatTime } from '@/utils/formatDate';
 import { connectJson } from '@/utils/connectJson';
@@ -49,7 +49,7 @@ const ChatList = () => {
           );
         })}
       </div>
-      <BottomMenu />
+      <NavBar />
     </div>
   );
 };

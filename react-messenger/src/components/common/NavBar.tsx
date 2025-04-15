@@ -27,7 +27,7 @@ const menus = [
   },
 ];
 
-const BottomMenu = () => {
+const NavBar = () => {
   return (
     <div className="w-[375px] h-[86px] sticky bottom-0 shadow-default bg-grey-50">
       <div className="flex justify-center w-full pt-3 px-4 pb-6 h-auto gap-[84px]">
@@ -52,4 +52,4 @@ const BottomMenu = () => {
   );
 };
 
-export default BottomMenu;
+export default NavBar;
