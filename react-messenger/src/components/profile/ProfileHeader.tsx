@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import CloseBtn from '@/assets/svgs/profile/CloseBtn.svg?url';
 import SettingBtn from '@/assets/svgs/profile/SettingBtn.svg?url';
+import { useStatusBar } from '@/hooks/useStatusBar';
 
 const ProfileHeader = () => {
   const navigate = useNavigate();
+  const { offsetClass } = useStatusBar();
 
   return (
-    <div className="w-full mt-[44px] sticky top-[44px] z-10 bg-transparent">
+    <div className={`w-full sticky ${offsetClass} z-10 bg-transparent`}>
       <div className="flex justify-between items-center p-4 h-[56px]">
         <img
           src={CloseBtn}

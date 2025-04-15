@@ -6,13 +6,14 @@ import ChatMessage from '@/components/chatroom/ChatMessage';
 import { formatDate } from '@/utils/formatDate';
 import { useUserStore } from '@/store/userStore';
 import { useChatStore } from '@/store/chatStore';
+import { useStatusBar } from '@/hooks/useStatusBar';
 
 const ChatRoom = () => {
   const location = useLocation();
+  const { offsetClass } = useStatusBar();
+
   const { name, profileImg, id, type } = location.state || {};
-
   const { currentUser, targetUser, setTargetUser, switchUser } = useUserStore();
-
   const { messages, input, setInput, initRoom, sendTextMessage, sendImageMessage } = useChatStore();
 
   // roomKey 저장용 ref
@@ -59,7 +60,7 @@ const ChatRoom = () => {
 
   return (
     <div className="flex flex-col justify-between h-full bg-grey-100">
-      <div className="sticky mt-[44px] top-[44px] z-10 bg-grey-100">
+      <div className={`sticky ${offsetClass} z-10 bg-grey-100`}>
         <ChatHeader name={targetUser.name} onClick={switchUser} />
       </div>
 

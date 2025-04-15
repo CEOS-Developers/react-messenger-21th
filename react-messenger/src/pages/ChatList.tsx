@@ -5,17 +5,19 @@ import { formatTime } from '@/utils/formatDate';
 import { connectJson } from '@/utils/connectJson';
 import { useNavigate } from 'react-router-dom';
 import { Message } from '@/type/message';
+import { useStatusBar } from '@/hooks/useStatusBar';
 
 const ChatList = () => {
   const navigate = useNavigate();
   const messages = rawMessages as Message[];
+  const { offsetClass } = useStatusBar();
 
   return (
-    <div className="w-full h-full flex flex-col bg-grey-50">
-      <div className="sticky mt-[44px] top-[44px] z-10 bg-grey-50">
+    <div className="w-full h-[786px] flex flex-col ">
+      <div className={`sticky ${offsetClass} z-10 bg-grey-50`}>
         <span className="head-1 text-grey-900 p-4 block">채팅방</span>
       </div>
-      <div className="flex flex-col overflow-y-auto pb-[30px]">
+      <div className="flex flex-col overflow-y-auto bg-grey-50 b-[30px]">
         {messages.map((msg) => {
           const lastMsg = msg.messages.at(-1);
           const chat = connectJson(msg) as {

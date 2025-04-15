@@ -1,12 +1,9 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import StatusBar from '@/components/statusbar/StatusBar';
-import { useMobile } from '@/hooks/useMobile';
+import { useStatusBar } from '@/hooks/useStatusBar';
 
 const Layout = () => {
-  const location = useLocation();
-  const isMobile = useMobile();
-
-  const hideStatusBar = location.pathname === '/' || isMobile;
+  const { hideStatusBar } = useStatusBar();
 
   return (
     <div className="w-screen min-h-screen flex justify-center items-center overflow-hidden">
@@ -16,7 +13,7 @@ const Layout = () => {
             <StatusBar />
           </div>
         )}
-        <div className={`flex-1 ${hideStatusBar ? 'h-[812px]' : 'h-[768px]'} relative`}>
+        <div className={`flex-1 ${hideStatusBar ? 'h-[812px]' : 'h-[768px]'} `}>
           <Outlet />
         </div>
       </div>
