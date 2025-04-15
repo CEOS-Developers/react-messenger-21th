@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import ProfileImg from '@/assets/svgs/home/ProfileImg.svg?url';
+import { getCurrentUser } from '@/utils/getCurrentUser';
 
 type User = {
   name: string;
@@ -14,23 +14,27 @@ type UserStore = {
   switchUser: () => void;
 };
 
-export const useUserStore = create<UserStore>((set, get) => ({
-  currentUser: {
-    name: '전지연',
-    id: 99,
-    profileImg: ProfileImg,
-  },
-  targetUser: {
-    name: '',
-    id: 0,
-    profileImg: '',
-  },
-  setTargetUser: (user) => set({ targetUser: user }),
-  switchUser: () => {
-    const { currentUser, targetUser } = get();
-    set({
-      currentUser: targetUser,
-      targetUser: currentUser,
-    });
-  },
-}));
+export const useUserStore = create<UserStore>((set, get) => {
+  const profile = getCurrentUser();
+
+  return {
+    currentUser: {
+      id: profile.id,
+      name: profile.name,
+      profileImg: profile.profileImg,
+    },
+    targetUser: {
+      name: '',
+      id: 0,
+      profileImg: '',
+    },
+    setTargetUser: (user) => set({ targetUser: user }),
+    switchUser: () => {
+      const { currentUser, targetUser } = get();
+      set({
+        currentUser: targetUser,
+        targetUser: currentUser,
+      });
+    },
+  };
+});
