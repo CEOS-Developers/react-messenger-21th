@@ -12,7 +12,7 @@
 
     chatlist/Delete
     chatroom/Add, Camera, Imoji, Link
-    home/DropDown
+    home/Delete, DropDown
     indicator/Indicator
     profile/User
     status/Battery, Celluar, Wifi
