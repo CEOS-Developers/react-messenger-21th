@@ -8,8 +8,6 @@ type UserItemProps = {
 };
 
 function UserItem({ user }: UserItemProps) {
-  console.log(user);
-
   return (
     <S.UserMeWrapper className="shadow-[inset_0_1px_0_0_theme(colors.grayscale-05)]">
       <ProfileImage className={`w-[72px] h-[72px] ${user.profileColor}`} />
