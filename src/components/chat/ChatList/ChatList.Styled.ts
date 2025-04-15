@@ -18,6 +18,10 @@ const ChatGroup = styled.ul`
     gap: 8px;
     display: flex;
   }
+
+  &.top-group {
+    margin-top: 162px;
+  }
 `;
 
 export { ChatListWrapper, ChatGroup };
