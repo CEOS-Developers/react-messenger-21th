@@ -46,5 +46,12 @@
     "messages": [{ "id": "msg-04-01", "senderId": "user-me", "text": "shortmsg", "timestamp": 1739999999999 }],
     "isPinned": false,
     "lastReadMessageId": "msg-04-01"
+  },
+  "chatroom-05": {
+    "userIds": ["user-me", "user-02", "user-04", "user-06"],
+    "title": "4 users",
+    "messages": [{ "id": "msg-05-01", "senderId": "user-me", "text": "hi", "timestamp": 1740000999999 }],
+    "isPinned": false,
+    "lastReadMessageId": "msg-05-01"
   }
 }
