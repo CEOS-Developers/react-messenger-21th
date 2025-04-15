@@ -12,5 +12,6 @@
 
     chatlist/Delete
     chatroom/Add, Camera, Imoji, Link
+    home/DropDown
     indicator/Indicator
     status/Battery, Celluar, Wifi
