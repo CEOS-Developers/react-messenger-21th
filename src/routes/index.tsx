@@ -5,6 +5,7 @@ import ChatList from '@/components/chat/ChatList/ChatList';
 import ChatRoom from '@/components/chat/ChatRoom/ChatRoom';
 import Call from '@/components/call/Call';
 import Plus from '@/components/plus/Plus';
+import Profile from '@/components/profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: 'chat/:chatId', element: <ChatRoom /> },
       { path: 'call', element: <Call /> },
       { path: 'plus', element: <Plus /> },
+      { path: 'profile/:userId', element: <Profile /> },
     ],
   },
 ]);
