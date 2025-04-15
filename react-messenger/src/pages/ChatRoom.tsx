@@ -67,13 +67,13 @@ const ChatRoom = () => {
 
       {/* 채팅 메시지 영역 */}
       <div className="flex flex-col gap-2 p-4 pt-0 overflow-y-auto flex-1">
-        {messages.map((msg, idx) => {
+        {messages.map((msg) => {
           const currentDate = msg.time.split('T')[0];
           const isNewDate = currentDate !== lastDate;
           lastDate = currentDate;
 
           return (
-            <div key={idx}>
+            <div key={msg.id}>
               {isNewDate && (
                 <div className="flex justify-center my-2">
                   <span className="caption-2 text-grey-50 bg-grey-700/50 bg-opacity-50 px-2 rounded-[20px]">

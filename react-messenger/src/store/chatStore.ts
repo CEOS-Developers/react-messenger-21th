@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { v4 as uuid } from 'uuid';
 import { MessageItem, Message } from '@/type/message';
 import allMessages from '@/data/messages.json';
 
@@ -53,6 +54,7 @@ export const useChatStore = create<ChatStore>((set, get) => ({
     const { messages, conversationMap } = get();
 
     const newMessage: MessageItem = {
+      id: uuid(),
       type: 'text',
       content,
       time: new Date().toISOString(),
@@ -72,6 +74,7 @@ export const useChatStore = create<ChatStore>((set, get) => ({
     const { messages, conversationMap } = get();
 
     const newMessage: MessageItem = {
+      id: uuid(),
       type: 'image',
       content: base64,
       time: new Date().toISOString(),

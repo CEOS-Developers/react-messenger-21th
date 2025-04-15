@@ -6,6 +6,7 @@ export type Message = {
 };
 
 export type MessageItem = {
+  id: string;
   type: 'text' | 'image';
   content: string;
   time: string;
