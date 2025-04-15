@@ -60,13 +60,13 @@ const ChatInput = ({ value, onChange, onSend, onImageSend }: ChatInputProps) => 
 
       {/* 버튼 영역 */}
       <div className="flex gap-4 w-[122px]">
-        <button>
+        <button aria-label="추가">
           <img src={PlusBtn} className="w-6 h-6 cursor-pointer" />
         </button>
-        <button onClick={() => cameraInputRef.current?.click()}>
+        <button onClick={() => cameraInputRef.current?.click()} aria-label="카메라">
           <img src={CameraBtn} className="w-6 h-6 cursor-pointer" />
         </button>
-        <button onClick={() => galleryInputRef.current?.click()}>
+        <button onClick={() => galleryInputRef.current?.click()} aria-label="갤러리">
           <img src={GalleryBtn} className="w-6 h-6 cursor-pointer" />
         </button>
       </div>
