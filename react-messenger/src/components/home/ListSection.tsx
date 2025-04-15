@@ -3,7 +3,7 @@ import ListTitle from './ListTitle';
 import UserItem from './UserItem';
 import data from '@/data/users.json';
 import { useNavigate } from 'react-router-dom';
-import { User, Group } from '@/type/User';
+import { User, Group } from '@/type/user';
 
 const ListSection = () => {
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});

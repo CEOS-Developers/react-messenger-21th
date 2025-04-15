@@ -6,7 +6,6 @@ import ChatMessage from '@/components/chatroom/ChatMessage';
 import { formatDate } from '@/utils/formatDate';
 import { useUserStore } from '@/store/userStore';
 import { useChatStore } from '@/store/chatStore';
-import StatusBar from '@/components/statusbar/StatusBar';
 
 const ChatRoom = () => {
   const location = useLocation();
@@ -60,8 +59,7 @@ const ChatRoom = () => {
 
   return (
     <div className="flex flex-col justify-between h-full bg-grey-100">
-      <div className="sticky top-0 z-10 bg-grey-100">
-        <StatusBar />
+      <div className="sticky mt-[44px] top-[44px] z-10 bg-grey-100">
         <ChatHeader name={targetUser.name} onClick={switchUser} />
       </div>
 
@@ -73,7 +71,7 @@ const ChatRoom = () => {
           lastDate = currentDate;
 
           return (
-            <div key={msg.id}>
+            <div key={`${roomKeyRef.current}-${msg.id}`}>
               {isNewDate && (
                 <div className="flex justify-center my-2">
                   <span className="caption-2 text-grey-50 bg-grey-700/50 bg-opacity-50 px-2 rounded-[20px]">

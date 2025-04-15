@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { v4 as uuid } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { MessageItem, Message } from '@/type/message';
 import allMessages from '@/data/messages.json';
 
@@ -25,11 +25,17 @@ export const useChatStore = create<ChatStore>((set, get) => ({
   conversationMap: (() => {
     const map: Record<string, MessageItem[]> = {};
 
-    // 메시지 파일을 기반으로 초기화 (localStorage에 저장된 데이터 우선)
     (allMessages as Message[]).forEach((msg) => {
       const key = generateRoomKey(99, msg.id, msg.type);
       const stored = localStorage.getItem(key);
-      map[key] = stored ? JSON.parse(stored) : msg.messages;
+
+      const originalMessages = stored ? JSON.parse(stored) : msg.messages;
+      const withId = originalMessages.map((m: any) => ({
+        ...m,
+        id: m.id ?? uuidv4(),
+      }));
+
+      map[key] = withId;
     });
 
     return map;
@@ -54,7 +60,7 @@ export const useChatStore = create<ChatStore>((set, get) => ({
     const { messages, conversationMap } = get();
 
     const newMessage: MessageItem = {
-      id: uuid(),
+      id: uuidv4(),
       type: 'text',
       content,
       time: new Date().toISOString(),
@@ -74,7 +80,7 @@ export const useChatStore = create<ChatStore>((set, get) => ({
     const { messages, conversationMap } = get();
 
     const newMessage: MessageItem = {
-      id: uuid(),
+      id: uuidv4(),
       type: 'image',
       content: base64,
       time: new Date().toISOString(),

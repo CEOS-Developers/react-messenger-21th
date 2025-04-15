@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import StatusBar from '@/components/statusbar/StatusBar';
 import CloseBtn from '@/assets/svgs/profile/CloseBtn.svg?url';
 import SettingBtn from '@/assets/svgs/profile/SettingBtn.svg?url';
 
@@ -7,8 +6,7 @@ const ProfileHeader = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full sticky top-0 z-10 bg-transparent">
-      <StatusBar />
+    <div className="w-full mt-[44px] sticky top-[44px] z-10 bg-transparent">
       <div className="flex justify-between items-center p-4 h-[56px]">
         <img
           src={CloseBtn}

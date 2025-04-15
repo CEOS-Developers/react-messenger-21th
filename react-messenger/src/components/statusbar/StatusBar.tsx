@@ -21,7 +21,7 @@ const StatusBar = () => {
   }, []);
 
   return (
-    <div className="flex justify-between items-center bg-inherit w-full h-[44px] p-[13px_23.853px_13.334px_24px]">
+    <div className="flex justify-between items-center bg-transparent w-full h-[44px] p-[13px_23.853px_13.334px_24px]">
       <span className="text-[15px] text-black font-helvetica">{time}</span>
       <div className="flex gap-[5px]">
         <img src={Cellular} alt="cellular" className="w-[17px] h-[10.6px]" />
