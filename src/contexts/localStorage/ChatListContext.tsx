@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import * as Types from '@/types';
 import initialData from '@/assets/data/chatList.json';
-import { sendMessage, togglePin } from '@/utils';
+import { createChat, sendMessage, togglePin } from '@/utils';
 import { loadChatList, saveChatList } from '@/services/localStorage';
 
 type ChatListContextType = {
@@ -9,6 +9,7 @@ type ChatListContextType = {
   setChatList: (updated: Types.ChatList) => void;
   onTogglePin: (chatId: string) => void;
   onSend: (chatId: string, senderId: string, text: string) => void;
+  onCreateChat: (myId: string, userId: string, user: Types.User) => string;
 };
 
 const ChatListContext = createContext<ChatListContextType | null>(null);
@@ -44,8 +45,16 @@ function ChatListProvider({ children }: { children: React.ReactNode }) {
     update(updated);
   };
 
+  // create chat
+  const onCreateChat = (myId: string, userId: string, user: Types.User): string => {
+    const [updated, chatId] = createChat(chatList, myId, userId, user);
+    update(updated);
+
+    return chatId;
+  };
+
   return (
-    <ChatListContext.Provider value={{ chatList, setChatList: update, onTogglePin, onSend }}>
+    <ChatListContext.Provider value={{ chatList, setChatList: update, onTogglePin, onSend, onCreateChat }}>
       {children}
     </ChatListContext.Provider>
   );
