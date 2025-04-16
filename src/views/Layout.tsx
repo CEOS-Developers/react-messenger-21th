@@ -8,7 +8,7 @@ function Layout() {
   const isChatRoom = useMatch('/chat/:chatId') !== null;
 
   return (
-    <div className="relative w-phone-width h-phone-height bg-grayscale-07-white">
+    <div className="relative w-100 h-screan max-w-phone-width max-h-phone-height bg-grayscale-07-white">
       <StatusBar isProfile={isProfile} isChatRoom={isChatRoom} />
       <Outlet />
       {!isChatRoom && !isProfile && <Navbar />}
