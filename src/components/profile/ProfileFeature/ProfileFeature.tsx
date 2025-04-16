@@ -3,7 +3,6 @@ import * as S from './ProfileFeature.Styled';
 import * as Types from '@/types';
 import * as Icons from '@/assets/icons/profile';
 import { PROFILE_ITEMS } from '@/constants/profile';
-import { Navigate } from 'react-router-dom';
 
 type ProfileFeatureProps = {
   userId: string;
