@@ -35,7 +35,6 @@ const SearchSection = styled.div`
     flex: 1;
 
     /* Mobile zoom in */
-    font-size: 16px;
     transform: scale(0.875);
     transform-origin: left center;
 
