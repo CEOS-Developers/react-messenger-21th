@@ -1,16 +1,27 @@
+import { useNavigate } from 'react-router-dom';
 import * as S from './ProfileFeature.Styled';
 import * as Types from '@/types';
 import * as Icons from '@/assets/icons/profile';
 import { PROFILE_ITEMS } from '@/constants/profile';
+import { Navigate } from 'react-router-dom';
 
 type ProfileFeatureProps = {
   userId: string;
   user: Types.User;
+  myId: string;
   isMine: boolean;
+  onCreateChat: (myId: string, userId: string, user: Types.User) => string;
 };
 
-function ProfileFeature({ userId, user, isMine }: ProfileFeatureProps) {
+function ProfileFeature({ userId, user, myId, isMine, onCreateChat }: ProfileFeatureProps) {
+  const navigate = useNavigate();
+
   const items = PROFILE_ITEMS[isMine ? 1 : 0];
+
+  const onClickToCreatChat = (myId: string, userId: string, user: Types.User) => {
+    const chatId = onCreateChat(myId, userId, user);
+    navigate(`/chat/${chatId}`);
+  };
 
   return (
     <S.ProfileFeatureWrapper>
@@ -25,7 +36,7 @@ function ProfileFeature({ userId, user, isMine }: ProfileFeatureProps) {
         {items.map(({ label, Icon, isButton }) =>
           isButton ? (
             <div key={`${userId}-${label}`}>
-              <button className="cursor-pointer">
+              <button onClick={() => onClickToCreatChat(myId, userId, user)} className="cursor-pointer">
                 <Icon className="w-[32px] h-[32px]" />
               </button>
               <span className="!text-profile text-grayscale-07-white">{label}</span>

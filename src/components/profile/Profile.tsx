@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom';
 import * as S from './Profile.Styled';
-import { useMyId, useUserList } from '@/contexts/localStorage';
+import { useChatList, useMyId, useUserList } from '@/contexts/localStorage';
 import ProfileHeader from './ProfileHeader/ProfileHeader';
 import ProfileFeature from './ProfileFeature/ProfileFeature';
 
 function Profile() {
   const { userId } = useParams();
+  const { onCreateChat } = useChatList();
   const { myId } = useMyId();
   const { userList, onToggleFavorite } = useUserList();
 
@@ -21,7 +22,7 @@ function Profile() {
   return (
     <S.ProfileWrapper className={bgClass}>
       <ProfileHeader userId={userId} user={user} isMine={isMine} onToggleFavorite={onToggleFavorite} />
-      <ProfileFeature userId={userId} user={user} isMine={isMine} />
+      <ProfileFeature userId={userId} user={user} myId={myId} isMine={isMine} onCreateChat={onCreateChat} />
     </S.ProfileWrapper>
   );
 }
