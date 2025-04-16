@@ -54,7 +54,7 @@ function MessageInput({ chatId, myId }: MessageInputProps) {
           onCompositionEnd={() => setIsComposing(false)}
           placeholder=""
           rows={1}
-          className="!text=body-01 text-grayscale-00-black"
+          className="!text-body-01 text-grayscale-00-black"
         />
         <div>
           <Icons.Imoji className="w-[24px] h-[24px] text-grayscale-03" />
