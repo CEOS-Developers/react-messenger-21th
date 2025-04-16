@@ -34,25 +34,31 @@ function ChatList() {
       <ChatListHeader searchValue={searchValue} setSearchValue={setSearchValue} />
       {filteredPinnedChats.length > 0 && (
         <S.ChatGroup className={`${isPinGroupTop ? 'top-group' : ''}`}>
-          {sortChatsByLastMessage(filteredPinnedChats).map(([chatId, room]) => (
-            <ChatItem
-              key={chatId}
-              chatId={chatId}
-              room={room}
-              userList={userList}
-              myId={myId}
-              isPinned={true}
-              onTogglePin={onTogglePin}
-            />
-          ))}
+          {sortChatsByLastMessage(filteredPinnedChats).map(
+            ([chatId, room]) =>
+              room.messages.length > 0 && (
+                <ChatItem
+                  key={chatId}
+                  chatId={chatId}
+                  room={room}
+                  userList={userList}
+                  myId={myId}
+                  isPinned={true}
+                  onTogglePin={onTogglePin}
+                />
+              ),
+          )}
         </S.ChatGroup>
       )}
       {filteredPinnedChats.length > 0 && <div className="h-[4px] bg-grayscale-05" />}
       {filteredNormalChats.length > 0 && (
         <S.ChatGroup className={`${isNormalGroupTop ? 'top-group' : ''}`}>
-          {sortChatsByLastMessage(filteredNormalChats).map(([chatId, room]) => (
-            <ChatItem key={chatId} chatId={chatId} userList={userList} myId={myId} room={room} isPinned={false} />
-          ))}
+          {sortChatsByLastMessage(filteredNormalChats).map(
+            ([chatId, room]) =>
+              room.messages.length > 0 && (
+                <ChatItem key={chatId} chatId={chatId} userList={userList} myId={myId} room={room} isPinned={false} />
+              ),
+          )}
         </S.ChatGroup>
       )}
     </S.ChatListWrapper>
