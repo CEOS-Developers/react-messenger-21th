@@ -17,7 +17,7 @@ const PROFILE_ITEMS = [
       Icon: Icons.Video,
       isButton: false,
     },
-  ],
+  ], // friend
   [
     {
       label: '친구 추가',
@@ -34,7 +34,7 @@ const PROFILE_ITEMS = [
       Icon: Icons.Bookmark,
       isButton: false,
     },
-  ],
+  ], // me
 ];
 
 export { PROFILE_ITEMS };
