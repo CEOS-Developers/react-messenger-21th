@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const MessageInputWrapper = styled.div`
+  width: 100%;
   min-height: 84px;
   padding: 10px var(--phone-margin) 40px;
   gap: 10px;
@@ -19,6 +20,7 @@ const InputSection = styled.div`
   padding: 5px 18px;
   gap: 10px;
   display: flex;
+  flex: 1;
 
   textarea {
     line-height: 22px;
