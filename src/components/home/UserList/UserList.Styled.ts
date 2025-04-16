@@ -30,6 +30,11 @@ const SearchSection = styled.div`
   input {
     flex: 1;
 
+    /* Mobile zoom in */
+    font-size: 16px;
+    transform: scale(0.875);
+    transform-origin: left center;
+
     &:focus-visible,
     &:focus:not(:focus-visible) {
       outline: none;
