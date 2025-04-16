@@ -23,7 +23,7 @@ function ChatListHeader({ searchValue, setSearchValue }: ChatListHeaderProps) {
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="검색"
-          className="!text-caption-02 text-grayscale-00-black placeholder-grayscale-02"
+          className="!text-caption-02-mobile text-grayscale-00-black placeholder-grayscale-02"
         />
         {searchValue.length > 0 && (
           <button onClick={() => setSearchValue('')} className="cursor-pointer">
