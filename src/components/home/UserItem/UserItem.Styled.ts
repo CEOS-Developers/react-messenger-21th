@@ -12,8 +12,8 @@ const UserItemWrapper = styled.li`
       padding-left: 8px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       flex: 1;
+      justify-content: center;
     }
   }
 `;

@@ -4,6 +4,7 @@ import './font.css';
 const GlobalStyle = createGlobalStyle`
   :root {
     --statusbar-height: 50px;
+    --navbar-height: 83px;
     --phone-margin: 16px;
     --phone-gutter: 12px;
   }

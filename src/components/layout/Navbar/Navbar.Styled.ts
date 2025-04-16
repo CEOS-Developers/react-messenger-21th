@@ -5,22 +5,22 @@ const NavbarWrapper = styled.nav`
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 83px;
+  height: var(--navbar-height);
   padding: 14px var(--phone-margin) 24px;
   z-index: 900;
 `;
 
 const NavList = styled.ul`
-  width: 100%;
   gap: var(--phone-gutter);
   display: flex;
 
   li {
-    flex: 1;
     display: flex;
+    flex: 1;
     justify-content: center;
 
     .nav-item {
+      gap: 1px;
       display: flex;
       flex-direction: column;
       align-items: center;

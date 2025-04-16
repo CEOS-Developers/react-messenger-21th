@@ -2,7 +2,7 @@ import * as Types from '@/types';
 
 type ChatEntry = [string, Types.ChatRoom];
 
-function splitPinnedChats(chatList: Types.ChatList) {
+function splitPinnedChats(chatList: Types.ChatList): { pinnedChats: ChatEntry[]; normalChats: ChatEntry[] } {
   const pinnedChats: ChatEntry[] = [];
   const normalChats: ChatEntry[] = [];
 

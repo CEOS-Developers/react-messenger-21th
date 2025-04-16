@@ -15,7 +15,6 @@ const StatusBarWrapper = styled.div`
 
 const StatusList = styled.ul`
   display: flex;
-  justify-conent: space-between;
   align-items: center;
   gap: 6.1px;
 `;

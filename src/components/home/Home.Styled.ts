@@ -7,10 +7,11 @@ const HomeWrapper = styled.div`
 `;
 
 const UserGroup = styled.div`
-  padding-bottom: 83px;
+  padding-bottom: var(--navbar-height);
   display: flex;
   flex-direction: column;
   flex: 1;
+
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
