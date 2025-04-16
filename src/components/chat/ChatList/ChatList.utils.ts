@@ -8,6 +8,8 @@ function splitPinnedChats(chatList: Types.ChatList) {
 
   for (const entry of Object.entries(chatList)) {
     const [, room] = entry;
+    if (room.messages.length === 0) continue;
+
     if (room.isPinned) pinnedChats.push(entry);
     else normalChats.push(entry);
   }

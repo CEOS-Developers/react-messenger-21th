@@ -6,6 +6,18 @@ const ChatListWrapper = styled.div`
   flex-direction: column;
 `;
 
+const ChatGroupWrapper = styled.div`
+  padding-bottom: 83px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 const ChatGroup = styled.ul`
   display: flex;
   flex-direction: column;
@@ -15,4 +27,4 @@ const ChatGroup = styled.ul`
   }
 `;
 
-export { ChatListWrapper, ChatGroup };
+export { ChatListWrapper, ChatGroupWrapper, ChatGroup };
