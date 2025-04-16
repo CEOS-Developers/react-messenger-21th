@@ -1,6 +1,6 @@
 {
   "chatroom-01": {
-    "userIds": ["user-me", "user-01"],
+    "userIds": ["user-01", "user-me"],
     "title": "Chat01",
     "messages": [
       { "id": "msg-01-01", "senderId": "user-me", "text": "안녕", "timestamp": 1742983945000 },
@@ -10,7 +10,7 @@
     "lastReadMessageId": "msg-01-02"
   },
   "chatroom-02": {
-    "userIds": ["user-me", "user-02", "user-03", "user-04", "user-05"],
+    "userIds": ["user-02", "user-03", "user-04", "user-05", "user-me"],
     "title": "챗룸02",
     "messages": [
       { "id": "msg-02-01", "senderId": "user-03", "text": "너는 이름이 뭐니?", "timestamp": 1742984000000 },
@@ -32,7 +32,7 @@
     "lastReadMessageId": "msg-02-03"
   },
   "chatroom-03": {
-    "userIds": ["user-me", "user-04"],
+    "userIds": ["user-04", "user-me"],
     "title": "유저 04",
     "messages": [
       { "id": "msg-03-01", "senderId": "user-04", "text": "일이삼사오육칠팔구영일이삼사오", "timestamp": 1742897123456 }
@@ -41,14 +41,14 @@
     "lastReadMessageId": "msg-03-01"
   },
   "chatroom-04": {
-    "userIds": ["user-me", "user-06", "user-07"],
+    "userIds": ["user-06", "user-07", "user-me"],
     "title": "longtitlelongtitle",
     "messages": [{ "id": "msg-04-01", "senderId": "user-me", "text": "shortmsg", "timestamp": 1739999999999 }],
     "isPinned": false,
     "lastReadMessageId": "msg-04-01"
   },
   "chatroom-05": {
-    "userIds": ["user-me", "user-02", "user-04", "user-06"],
+    "userIds": ["user-02", "user-04", "user-06", "user-me"],
     "title": "4 users",
     "messages": [{ "id": "msg-05-01", "senderId": "user-me", "text": "hi", "timestamp": 1740000999999 }],
     "isPinned": false,
