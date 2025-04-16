@@ -1,13 +1,18 @@
-import { useEffect, useState } from 'react';
-
-const MOBILE_REGEX = /iPhone|iPad|iPod|Android/i;
+import { useState, useEffect } from 'react';
 
 export const useMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
-    const userAgent = navigator.userAgent;
-    setIsMobile(MOBILE_REGEX.test(userAgent));
+    const checkIsMobile = () => {
+      const userAgent = typeof window.navigator === 'undefined' ? '' : navigator.userAgent;
+      const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+      setIsMobile(mobile || ('ontouchstart' in window && window.innerWidth <= 1024));
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
 
   return isMobile;
