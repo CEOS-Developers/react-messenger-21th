@@ -7,11 +7,11 @@ function createChat(
   userId: string,
   user: Types.User,
 ): [Types.ChatList, string] {
-  const userIds = [userId, myId].sort();
+  const sortedUserIds = [userId, myId].sort();
 
   // if same userIds exist, return the chat room id
   const existingEntry = Object.entries(chatList).find(
-    ([_, room]) => JSON.stringify(room.userIds) === JSON.stringify(userIds),
+    ([_, room]) => JSON.stringify(room.userIds.sort()) === JSON.stringify(sortedUserIds),
   );
 
   if (existingEntry) {
@@ -20,7 +20,7 @@ function createChat(
 
   const newChatId = generateId();
   const newChatRoom: Types.ChatRoom = {
-    userIds: userIds,
+    userIds: sortedUserIds,
     title: user.name,
     messages: [],
     isPinned: false,
