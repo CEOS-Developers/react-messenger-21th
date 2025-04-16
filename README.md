@@ -1,7 +1,5 @@
 # 3~4주차 미션: React-Messenger
 
-> > > > > > > upstream/master
-
 ## File Structure
 
     TBD
