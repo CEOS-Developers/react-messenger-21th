@@ -1,21 +1,21 @@
 import styled from 'styled-components';
 
 const ProfileFeatureWrapper = styled.div`
-  margin-top: 375px;
+  margin-top: calc(100vh * 375 / 812); /* phone height ratio */
   padding: 0 var(--phone-margin);
-  gap: 40px;
+  gap: calc(100vh * 40 / 812); /* phone height ratio */
   display: flex;
   flex-direction: column;
 `;
 
 const MainSection = styled.div`
-  gap: 25px;
+  gap: calc(100vh * 25 / 812); /* phone height ratio */
   display: flex;
   flex-direction: column;
   align-items: center;
 
   div {
-    gap: 12px;
+    gap: calc(100vh * 12 / 812); /* phone height ratio */
     display: flex;
     flex-direction: column;
     align-items: center;
