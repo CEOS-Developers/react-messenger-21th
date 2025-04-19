@@ -1,16 +1,16 @@
 import { useState } from 'react'
-import { BackIconX } from '../../assets/Icons/AppBar'
-import * as s from './UserChangeSelection.Styled'
 import { useLocation, useNavigate } from 'react-router'
-import { MemberArrayType } from '../../utils/getMemberList'
-import MemberItem from '../MemberList/MemberItem'
 
-import CheckBox from '../../assets/Icons/Checkbox/checkbox.svg?react'
-import Radio from '../../assets/Icons/Checkbox/checkbox_radio.svg?react'
-import setUserAndChatRoom from '../../utils/setUserAndChatRoom'
 import ActionBar from '../Common/ActionBar'
+import MemberItem from '../MemberList/MemberItem'
+import { BackIconX } from '@/assets/Icons/AppBar'
+import CheckBox from '@/assets/Icons/Checkbox/checkbox.svg?react'
+import Radio from '@/assets/Icons/Checkbox/checkbox_radio.svg?react'
 
-const UserChangeSelection = () => {
+import { MemberArrayType } from '@/utils/getMemberList'
+import setUserAndChatRoom from '@/utils/setUserAndChatRoom'
+
+const RadioSelection = () => {
   const [selectedId, setSelectedId] = useState(-1)
   const { memberData } = useLocation().state
   const nav = useNavigate()
@@ -25,7 +25,7 @@ const UserChangeSelection = () => {
   }
 
   return (
-    <s.Wrapper>
+    <div className="bg-gray02 container">
       <div className="bg-white">
         <ActionBar
           backIcon={<BackIconX />}
@@ -35,10 +35,12 @@ const UserChangeSelection = () => {
           isActive={selectedId !== -1}
         />
       </div>
-      <s.Description $isR={true}>멤버 중 1명을 선택해 주세요.</s.Description>
-      <s.MemberList>
+      <div className="font-Body-2-m text-gray09 pt-4 pb-2 text-center">
+        멤버 중 1명을 선택해 주세요.
+      </div>
+      <div className="scroll-container list px-5">
         {memberData?.map((member: MemberArrayType) => (
-          <s.ItemContainer key={member.id}>
+          <div className="flex flex-col" key={member.id}>
             <MemberItem
               id={member.id}
               name={member.name}
@@ -46,12 +48,12 @@ const UserChangeSelection = () => {
               Btn={selectedId === member.id ? <Radio /> : <CheckBox />}
               onClick={onClickMemberItem}
             />
-            <s.Partition />
-          </s.ItemContainer>
+            <div className="partition"></div>
+          </div>
         ))}
-      </s.MemberList>
-    </s.Wrapper>
+      </div>
+    </div>
   )
 }
 
-export default UserChangeSelection
+export default RadioSelection

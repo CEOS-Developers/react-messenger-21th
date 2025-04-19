@@ -37,4 +37,8 @@
   .member-item {
     @apply flex cursor-pointer items-center gap-3;
   }
+  .partition {
+    background-color: var(--color-gray04);
+    @apply mt-2.5 h-[1px] w-[277px] self-end;
+  }
 }

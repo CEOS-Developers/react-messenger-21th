@@ -1,11 +1,11 @@
 import StatusBar from '@/components/Common/StatusBar'
-import UserChangeSelection from '@/components/MemberSelection/UserChangeSelection'
+import RadioSelection from '@/components/MemberSelection/RadioSelection'
 
 const MemberSelection = () => {
   return (
-    <div>
+    <div className="wrapper">
       <StatusBar color="white" />
-      <UserChangeSelection />
+      <RadioSelection />
     </div>
   )
 }
