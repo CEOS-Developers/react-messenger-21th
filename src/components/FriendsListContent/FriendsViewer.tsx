@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import Hangul from 'hangul-js'
 
-import * as s from './FriendsViewer.Styled'
 import SearchBox from '../Common/SearchBox'
 import ProfileItem from './ProfileItem'
 import ToggleBox from './ToggleBox'
@@ -34,7 +33,7 @@ const FriendsViewer = ({
   })
 
   return (
-    <s.Wrapper>
+    <div className="scroll-container">
       <SearchBox searchText={searchText} setSearchText={setSearchText} />
       <ToggleBox
         text="그룹"
@@ -48,13 +47,13 @@ const FriendsViewer = ({
         isOpen={friendsOpen}
         setClosed={setFriendsOpen}
       />
-      <s.List>
+      <div className="list">
         {friendsOpen &&
           filteredFriends.map((friend) => (
             <ProfileItem key={friend.id} {...friend} />
           ))}
-      </s.List>
-    </s.Wrapper>
+      </div>
+    </div>
   )
 }
 

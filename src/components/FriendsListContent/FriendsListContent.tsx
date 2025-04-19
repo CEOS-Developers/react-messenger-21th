@@ -1,9 +1,7 @@
 import { useNavigate } from 'react-router'
 
-import * as s from './FriendsListContent.Styled'
 import { HomeIcon } from '../../assets/Icons/AppBar'
 import { ProfileDefault } from '../../assets/Icons/Profile'
-import { EventIcon } from '../Common/Common.Styled'
 import FriendsViewer from './FriendsViewer'
 
 import { useUserStore } from '../../stores/useUserStore'
@@ -26,21 +24,23 @@ const FriendsListContent = () => {
     .sort((a, b) => a.name.localeCompare(b.name, 'ko-KR'))
 
   return (
-    <s.FLContent>
+    <div className="container">
       <div className="pt-1">
         <div className="app-bar app-bar--62">
-          <EventIcon onClick={() => nav(`/profile/${user.id}`)}>
-            <s.UserProfileContainer>
+          <div
+            className="cursor-pointer"
+            onClick={() => nav(`/profile/${user.id}`)}>
+            <div className="flex items-center gap-[9px]">
               <ProfileDefault color={user.profileColor} />
-              <s.Name>{user.name}</s.Name>
-            </s.UserProfileContainer>
-          </EventIcon>
+              <h2 className="font-Body-1-b">{user.name}</h2>
+            </div>
+          </div>
           <HomeIcon />
         </div>
       </div>
 
       <FriendsViewer friendsData={friendsData} />
-    </s.FLContent>
+    </div>
   )
 }
 

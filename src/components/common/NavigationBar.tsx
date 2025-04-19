@@ -1,22 +1,35 @@
 import { useNavigate } from 'react-router'
 import { NavRole } from '@/utils/constants'
 import * as tab from '@/assets/Icons/NavigationBar'
+import HomeBar from '@/components/Common/HomeBar'
+import { BOTTOM_BAR_BG_CLASS } from '@/styles/variants'
 
-const NavigationBar = ({ select }: { select: NavRole }) => {
+const NavigationBar = ({
+  select,
+  color,
+}: {
+  select: NavRole
+  color?: 'white' | 'gray'
+}) => {
   const nav = useNavigate()
+  const bg = color ? BOTTOM_BAR_BG_CLASS[color] : 'bg-transparent'
+
   return (
-    <div className="flex h-[54px] items-center justify-center">
-      <div className="flex gap-[88.5px] pt-[1px]">
-        <div className="cursor-pointer" onClick={() => nav('/')}>
-          {select === NavRole.HOME ? <tab.HomeSelect /> : <tab.Home />}
-        </div>
-        <div className="cursor-pointer" onClick={() => nav('/chatList')}>
-          {select === NavRole.CHAT_LIST ? <tab.ChatSelect /> : <tab.Chat />}
-        </div>
-        <div>
-          <tab.Call />
+    <div className={`${bg} border-gray08`}>
+      <div className="flex h-[54px] items-center justify-center">
+        <div className="flex gap-[88.5px] pt-[1px]">
+          <div className="cursor-pointer" onClick={() => nav('/')}>
+            {select === NavRole.HOME ? <tab.HomeSelect /> : <tab.Home />}
+          </div>
+          <div className="cursor-pointer" onClick={() => nav('/chatList')}>
+            {select === NavRole.CHAT_LIST ? <tab.ChatSelect /> : <tab.Chat />}
+          </div>
+          <div>
+            <tab.Call />
+          </div>
         </div>
       </div>
+      <HomeBar />
     </div>
   )
 }

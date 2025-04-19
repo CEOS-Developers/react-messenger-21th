@@ -5,8 +5,15 @@
     @apply flex h-full flex-col justify-between;
   }
   .container {
-    @apply flex flex-grow flex-col justify-between;
+    @apply flex h-full flex-1 flex-col overflow-y-hidden;
   }
+  .scroll-container {
+    @apply flex-1 overflow-auto px-5;
+  }
+  .scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+
   .app-bar {
     @apply flex h-[54px] items-center justify-between px-5;
   }
@@ -15,5 +22,9 @@
   }
   .top-bar {
     @apply flex gap-1;
+  }
+
+  .list {
+    @apply flex flex-col gap-4;
   }
 }
