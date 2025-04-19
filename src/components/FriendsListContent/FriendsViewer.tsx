@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import Hangul from 'hangul-js'
 
 import SearchBox from '../Common/SearchBox'
 import ProfileItem from './ProfileItem'
 import ToggleBox from './ToggleBox'
 
-import { User } from '../../interface/User'
+import { User } from '@/interface/User'
+import { filterByName } from '@/utils/filterByName'
 
 const FriendsViewer = ({
   friendsData,
@@ -26,11 +26,7 @@ const FriendsViewer = ({
   }, [searchText])
 
   /* 이름 검색 */
-  const filteredFriends = friendsData.filter((friend) => {
-    const disassembled = Hangul.disassemble(friend.name).join('')
-    const inputDisassembled = Hangul.disassemble(searchText).join('')
-    return disassembled.includes(inputDisassembled)
-  })
+  const filteredFriends = filterByName(friendsData, searchText)
 
   return (
     <div className="scroll-container">

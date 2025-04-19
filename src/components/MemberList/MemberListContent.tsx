@@ -69,7 +69,15 @@ const MemberListContent = () => {
           <div className="font-Body-2-b text-black">멤버 {memberCount}</div>
 
           <div className="flex flex-col gap-[18px]">
-            <div className="member-item">
+            <div
+              className="member-item"
+              onClick={() =>
+                nav('./invite', {
+                  state: {
+                    memberIds,
+                  },
+                })
+              }>
               <Plus />
               <div className="font-Body-1-b">친구 초대하기</div>
             </div>

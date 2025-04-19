@@ -16,6 +16,7 @@ import MemberList from '@/pages/MemberList.tsx'
 import setUserAndChatRoom from './utils/setUserAndChatRoom.ts'
 import MemberChange from './pages/MemberChange.tsx'
 import Layout from './components/Layout.tsx'
+import InviteFriends from './pages/InviteFriends.tsx'
 
 function App() {
   const userId = 1
@@ -35,6 +36,10 @@ function App() {
             <Route path="/room/:id" element={<ChatRoom />} />
             <Route path="/room/:id/members" element={<MemberList />} />
             <Route path="/room/:id/members/change" element={<MemberChange />} />
+            <Route
+              path="/room/:id/members/invite"
+              element={<InviteFriends />}
+            />
           </Routes>
         </Layout>
       </ThemeProvider>
