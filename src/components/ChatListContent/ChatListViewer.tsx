@@ -30,7 +30,9 @@ const ChatListViewer = () => {
 
   return (
     <s.Wrapper>
-      <SearchBox searchText={searchText} setSearchText={setSearchText} />
+      <div className="pt-2">
+        <SearchBox searchText={searchText} setSearchText={setSearchText} />
+      </div>
       <s.List>
         {sortedChatRoom && searchText && (
           <SearchedChatList

@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router'
 
 import ActionBar from '../Common/ActionBar'
 import SearchBox from '../Common/SearchBox'
-import MemberItem from '../MemberList/MemberItem'
+import PartitionItem from '../Common/PartitionItem'
 import { BackIconX } from '@/assets/Icons/AppBar'
 import CheckBox from '@/assets/Icons/Checkbox/checkbox.svg?react'
 import CheckedBox from '@/assets/Icons/Checkbox/checkbox_checked.svg?react'
@@ -81,16 +81,15 @@ const CheckboxSelection = () => {
           친구 {filteredFriends.length}
         </div>
         {filteredFriends?.map(({ id, name, profileColor }) => (
-          <div className="flex flex-col" key={id}>
-            <MemberItem
-              id={id}
-              name={name}
-              profileColor={profileColor}
-              Btn={selectedIds.includes(id) ? <CheckedBox /> : <CheckBox />}
-              onClick={handleClickMemberItem}
-            />
-            <div className="partition"></div>
-          </div>
+          <PartitionItem
+            key={id}
+            profileColor={profileColor}
+            onClick={() => handleClickMemberItem(id)}>
+            <div className="flex py-[11px] pr-[14px]">
+              <p className="font-Body-1-b flex-1">{name}</p>
+              {selectedIds.includes(id) ? <CheckedBox /> : <CheckBox />}
+            </div>
+          </PartitionItem>
         ))}
       </div>
     </div>

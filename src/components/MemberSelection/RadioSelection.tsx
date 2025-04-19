@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 
 import ActionBar from '../Common/ActionBar'
-import MemberItem from '../MemberList/MemberItem'
 import { BackIconX } from '@/assets/Icons/AppBar'
 import CheckBox from '@/assets/Icons/Checkbox/checkbox.svg?react'
 import Radio from '@/assets/Icons/Checkbox/checkbox_radio.svg?react'
 
 import { MemberArrayType } from '@/utils/getMemberList'
 import setUserAndChatRoom from '@/utils/setUserAndChatRoom'
+import PartitionItem from '../Common/PartitionItem'
 
 const RadioSelection = () => {
   const [selectedId, setSelectedId] = useState(-1)
@@ -39,17 +39,16 @@ const RadioSelection = () => {
         멤버 중 1명을 선택해 주세요.
       </div>
       <div className="scroll-container list px-5">
-        {memberData?.map((member: MemberArrayType) => (
-          <div className="flex flex-col" key={member.id}>
-            <MemberItem
-              id={member.id}
-              name={member.name}
-              profileColor={member.profileColor}
-              Btn={selectedId === member.id ? <Radio /> : <CheckBox />}
-              onClick={onClickMemberItem}
-            />
-            <div className="partition"></div>
-          </div>
+        {memberData?.map(({ id, name, profileColor }: MemberArrayType) => (
+          <PartitionItem
+            key={id}
+            profileColor={profileColor}
+            onClick={() => onClickMemberItem(id)}>
+            <div className="flex py-[11px] pr-[14px]">
+              <p className="font-Body-1-b flex-1">{name}</p>
+              {selectedId === id ? <Radio /> : <CheckBox />}
+            </div>
+          </PartitionItem>
         ))}
       </div>
     </div>

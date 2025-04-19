@@ -1,6 +1,5 @@
-import * as s from './ToggleBox.Styled'
-import Down from '../../assets/Icons/List/down.svg?react'
-import Up from '../../assets/Icons/List/up.svg?react'
+import Down from '@/assets/Icons/List/down.svg?react'
+import Up from '@/assets/Icons/List/up.svg?react'
 
 const ToggleBox = ({
   text,
@@ -14,12 +13,14 @@ const ToggleBox = ({
   setClosed: (state: boolean) => void
 }) => {
   return (
-    <s.Container onClick={() => setClosed(!isOpen)}>
-      <s.TextContainer>
+    <div
+      className="flex h-[41px] items-center justify-between pb-2"
+      onClick={() => setClosed(!isOpen)}>
+      <div className="font-Body-2-b">
         {text} {length}
-      </s.TextContainer>
-      <s.IconContainer>{isOpen ? <Down /> : <Up />}</s.IconContainer>
-    </s.Container>
+      </div>
+      <div className="cursor-pointer">{isOpen ? <Down /> : <Up />}</div>
+    </div>
   )
 }
 

@@ -30,7 +30,9 @@ const FriendsViewer = ({
 
   return (
     <div className="scroll-container">
-      <SearchBox searchText={searchText} setSearchText={setSearchText} />
+      <div className="py-2">
+        <SearchBox searchText={searchText} setSearchText={setSearchText} />
+      </div>
       <ToggleBox
         text="그룹"
         length={2}
