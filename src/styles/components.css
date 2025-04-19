@@ -13,6 +13,9 @@
   .scroll-container::-webkit-scrollbar {
     display: none;
   }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
 
   .app-bar {
     @apply flex h-[54px] items-center justify-between px-5;

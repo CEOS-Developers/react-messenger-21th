@@ -1,7 +1,4 @@
-import * as s from './ChatContent.Styled'
-
 import ChatTitle from './ChatTitle'
-import TextInput from './TextInput'
 import ChatField from './ChatField'
 import { ChatRoomIcon } from '../../assets/Icons/AppBar'
 
@@ -9,6 +6,7 @@ import { userData } from '../../assets/data/user.json'
 
 import { useLocation } from 'react-router'
 import { useUserStore } from '../../stores/useUserStore'
+import TextFiled from './TextFiled'
 
 const ChatContent = () => {
   const { member } = useLocation().state ?? {}
@@ -36,7 +34,7 @@ const ChatContent = () => {
   )
 
   return (
-    <s.ChatContentWrapper>
+    <div className="container">
       <div className="bg-gray02">
         <div className="app-bar">
           <ChatTitle memberIds={memberIds} />
@@ -44,8 +42,8 @@ const ChatContent = () => {
         </div>
       </div>
       <ChatField member={partnerData} />
-      <TextInput />
-    </s.ChatContentWrapper>
+      <TextFiled />
+    </div>
   )
 }
 export default ChatContent

@@ -68,8 +68,14 @@
     background-color: var(--color-gray03);
   }
 
+  .border-t-gray03 {
+    border-top: 1px solid var(--color-gray03);
+  }
   .border-gray08 {
     border-top: 1px solid var(--color-gray08);
+  }
+  .border-gray05 {
+    border: 1px solid var(--color-gray05);
   }
   .border-gray13 {
     border: 1px solid var(--color-gray13);
