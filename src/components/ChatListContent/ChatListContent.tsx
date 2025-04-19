@@ -1,5 +1,5 @@
-import { ChatListIcon } from '../../assets/Icons/AppBar'
 import ChatListViewer from './ChatListViewer'
+import { ChatListIcon } from '@/assets/Icons/AppBar'
 
 const ChatListContent = () => {
   return (

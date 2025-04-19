@@ -1,14 +1,13 @@
 import { useState } from 'react'
 
 /** ui */
-import * as s from './ChatListViewer.Styled'
 import SearchBox from '../Common/SearchBox'
 import RoomItem from './RoomItem'
+import SearchedChatList from './SearchedChatList'
 
 /** global states */
-import { useUserStore } from '../../stores/useUserStore'
-import { useChatRoomStore } from '../../stores/useChatRoomStore'
-import SearchedChatList from './SearchedChatList'
+import { useUserStore } from '@/stores/useUserStore'
+import { useChatRoomStore } from '@/stores/useChatRoomStore'
 
 const ChatListViewer = () => {
   const { user } = useUserStore()
@@ -29,11 +28,11 @@ const ChatListViewer = () => {
     .sort((a, b) => b.lastChat.id - a.lastChat.id)
 
   return (
-    <s.Wrapper>
+    <div className="scroll-container">
       <div className="pt-2">
         <SearchBox searchText={searchText} setSearchText={setSearchText} />
       </div>
-      <s.List>
+      <div className="list pt-6">
         {sortedChatRoom && searchText && (
           <SearchedChatList
             sortedChatRoom={sortedChatRoom}
@@ -44,8 +43,8 @@ const ChatListViewer = () => {
           sortedChatRoom?.map(
             (room) => room && <RoomItem key={room.chatRoomId} {...room} />
           )}
-      </s.List>
-    </s.Wrapper>
+      </div>
+    </div>
   )
 }
 

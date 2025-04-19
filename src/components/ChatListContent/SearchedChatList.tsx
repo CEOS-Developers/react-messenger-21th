@@ -1,10 +1,9 @@
 import Hangul from 'hangul-js'
-import { useUserStore } from '../../stores/useUserStore'
-import { getAllMemberName } from '../../utils/getAllmemberName'
-import { ChatRoom } from '../../interface/ChatRoom'
-import { Chat } from '../../interface/Chat'
 import RoomItem from './RoomItem'
-import * as s from './SearchedChatList.Styled'
+import { useUserStore } from '@/stores/useUserStore'
+import { getAllMemberName } from '@/utils/getAllmemberName'
+import { ChatRoom } from '@/interface/ChatRoom'
+import { Chat } from '@/interface/Chat'
 
 interface RoomItemProps extends ChatRoom {
   lastSeenTime: number
@@ -36,26 +35,26 @@ const SearchedChatList = ({
   })
 
   return (
-    <s.Wrapper>
-      <s.Section>
-        <s.Keyword $isM={true}>채팅방</s.Keyword>
+    <div className="flex flex-col gap-2">
+      <div className="font-Body-2-m text-gray12 flex flex-col gap-1">
+        <div className="py-2.5">채팅방</div>
         {filteredRoom.length === 0 ? (
-          <s.Result $isM={true}>검색 결과가 없습니다.</s.Result>
+          <div className="self-center pb-4">검색 결과가 없습니다.</div>
         ) : (
-          <s.ChatContainer>
+          <div className="list">
             {filteredRoom.map(
               (room: RoomItemProps) =>
                 room && <RoomItem key={room.chatRoomId} {...room} />
             )}
-          </s.ChatContainer>
+          </div>
         )}
-      </s.Section>
+      </div>
 
-      <s.Section>
-        <s.Keyword $isM={true}>메시지</s.Keyword>
-        <s.Result $isM={true}>검색 결과가 없습니다.</s.Result>
-      </s.Section>
-    </s.Wrapper>
+      <div className="font-Body-2-m text-gray12 flex flex-col gap-1">
+        <div className="py-2.5">메시지</div>
+        <div className="self-center pb-4">검색 결과가 없습니다.</div>
+      </div>
+    </div>
   )
 }
 

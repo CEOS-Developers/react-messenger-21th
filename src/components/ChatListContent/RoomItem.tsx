@@ -1,19 +1,15 @@
 import { useNavigate } from 'react-router'
 
-import * as s from './RoomItem.Styled'
-import {
-  MultipleProfile,
-  ProfileCircleDefault,
-} from '../../assets/Icons/Profile'
+import { MultipleProfile, ProfileCircleDefault } from '@/assets/Icons/Profile'
 
-import { useUserStore } from '../../stores/useUserStore'
-import { ChatRoom } from '../../interface/ChatRoom'
-import { Chat } from '../../interface/Chat'
+import { useUserStore } from '@/stores/useUserStore'
+import { ChatRoom } from '@/interface/ChatRoom'
+import { Chat } from '@/interface/Chat'
 
-import findUser from '../../utils/findUser'
-import getRoomName from '../../utils/getRoomName'
-import getUnreadCount from '../../utils/getUnreadCount'
-import getLastChatTime from '../../utils/getLastChatTime'
+import findUser from '@/utils/findUser'
+import getRoomName from '@/utils/getRoomName'
+import getUnreadCount from '@/utils/getUnreadCount'
+import getLastChatTime from '@/utils/getLastChatTime'
 
 interface RoomItemProps extends ChatRoom {
   lastSeenTime: number
@@ -56,31 +52,37 @@ const RoomItem = ({
   }
 
   return (
-    <s.Wapper onClick={chatRoomClickHandler}>
-      <s.Container>
+    <div className="h-[72px] cursor-pointer" onClick={chatRoomClickHandler}>
+      <div className="flex gap-3">
         {memberCount === 2 ? (
           <ProfileCircleDefault color={memberColors[0]} />
         ) : (
           <MultipleProfile colors={memberColors} />
         )}
 
-        <s.TextContainer>
+        <div className="border-b-gray04 flex flex-1 justify-between gap-1 pb-1.5">
           <div>
-            <s.TitleContainer>
-              <s.Name>{determinedRoomName}</s.Name>
-              <s.MemCount>{memberCount > 2 ? memberCount : null}</s.MemCount>
-            </s.TitleContainer>
-            <s.Message $isR={true}>{lastChat.content}</s.Message>
+            <div className="font-Body-1-b flex gap-1">
+              <p className="ellipsis max-w-[189px]">{determinedRoomName}</p>
+              <p className="text-gray08">
+                {memberCount > 2 ? memberCount : null}
+              </p>
+            </div>
+            <p className="font-Body-2-r text-gray12 ellipsis-2 h-[42px] w-[224px]">
+              {lastChat.content}
+            </p>
           </div>
-          <s.TimeContainer $isM={true}>
-            <s.Time>{lastChatTime}</s.Time>
+          <div className="font-Caption-m flex flex-col items-end gap-1.5">
+            <p className="text-gray09 whitespace-nowrap">{lastChatTime}</p>
             {unreadCount > 0 ? (
-              <s.BlackCircle>{unreadCount}</s.BlackCircle>
+              <div className="flex-center bg-gray11 h-[22px] w-[23px] rounded-[16.5px] text-white">
+                {unreadCount}
+              </div>
             ) : null}
-          </s.TimeContainer>
-        </s.TextContainer>
-      </s.Container>
-    </s.Wapper>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
