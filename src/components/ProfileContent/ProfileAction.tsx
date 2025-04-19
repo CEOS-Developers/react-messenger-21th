@@ -1,25 +1,25 @@
-import * as s from './ProfileAction.Styled'
-
-import Edit from '@/assets/Icons/ProfileAction/edit.svg?react'
-import Keep from '@/assets/Icons/ProfileAction/keep.svg?react'
-import Star from '@/assets/Icons/ProfileAction/star.svg?react'
-
-import Chat from '@/assets/Icons/ProfileAction/chat.svg?react'
-import Phonecall from '@/assets/Icons/ProfileAction/phonecall.svg?react'
-import Instagram from '@/assets/Icons/ProfileAction/instagram.svg?react'
-import { EventIcon } from '../Common/Common.Styled'
-import { getRoomId } from '../../utils/getRoomId'
 import { useNavigate } from 'react-router'
-import { useUserStore } from '../../stores/useUserStore'
-import { useChatRoomStore } from '../../stores/useChatRoomStore'
+
+import { getRoomId } from '@/utils/getRoomId'
+import { useUserStore } from '@/stores/useUserStore'
+import { useChatRoomStore } from '@/stores/useChatRoomStore'
+
+import {
+  Chat,
+  Edit,
+  Instagram,
+  Keep,
+  Phonecall,
+  Star,
+} from '@/assets/Icons/ProfileAction'
 
 const MyProfleAction = () => {
   return (
-    <s.Container>
+    <div className="profile-action-container">
       <Edit />
       <Star />
       <Keep />
-    </s.Container>
+    </div>
   )
 }
 const FriendProfleAction = ({ snsUrl, id }: { snsUrl: string; id: number }) => {
@@ -38,21 +38,21 @@ const FriendProfleAction = ({ snsUrl, id }: { snsUrl: string; id: number }) => {
     })
   }
   return (
-    <s.Container>
-      <EventIcon onClick={onClickChatIconHander}>
+    <div className="profile-action-container">
+      <div className="cursor-pointer" onClick={onClickChatIconHander}>
         <Chat />
-      </EventIcon>
+      </div>
       <Phonecall />
       {snsUrl.trim() ? (
-        <EventIcon>
+        <div className="cursor-pointer">
           <a href={snsUrl} target="_blank" rel="noopener noreferrer">
             <Instagram />
           </a>
-        </EventIcon>
+        </div>
       ) : (
         <Instagram />
       )}
-    </s.Container>
+    </div>
   )
 }
 

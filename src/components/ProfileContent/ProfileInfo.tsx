@@ -1,4 +1,3 @@
-import * as s from './ProfileInfo.Styled'
 import { ProfileCircleBig } from '@/assets/Icons/Profile'
 import ArrowRight from '@/assets/Icons/ProfileAction/right.svg?react'
 import InfoEdit from '@/assets/Icons/ProfileAction/infoedit.svg?react'
@@ -15,23 +14,23 @@ const ProfileInfo = ({
   profileMessage: string
 }) => {
   return (
-    <s.InfoContainer>
+    <div className="flex flex-col items-center gap-3">
       <ProfileCircleBig color={profileColor} />
-      <s.TextContainer>
-        <s.NameContainer>
-          <s.Name>{name}</s.Name>
+      <div className="flex flex-col items-center gap-1 text-white">
+        <div className="relative flex items-center">
+          <p className="font-Headline2">{name}</p>
           {isMine ? null : (
-            <s.EditIcon>
+            <div className="absolute -right-[26px]">
               <InfoEdit />
-            </s.EditIcon>
+            </div>
           )}
-        </s.NameContainer>
-        <s.MessageContainer>
-          <s.Message $isR={true}>{profileMessage}</s.Message>
+        </div>
+        <div className="flex items-center gap-1">
+          <p className="font-Body-2-r">{profileMessage}</p>
           <ArrowRight />
-        </s.MessageContainer>
-      </s.TextContainer>
-    </s.InfoContainer>
+        </div>
+      </div>
+    </div>
   )
 }
 
