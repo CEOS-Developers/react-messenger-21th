@@ -1,4 +1,3 @@
-import * as s from './MemberItem.Styled'
 import { ProfileDefault } from '../../assets/Icons/Profile'
 
 const MemberItem = ({
@@ -15,11 +14,11 @@ const MemberItem = ({
   onClick: (id: number) => void
 }) => {
   return (
-    <s.MemberItem onClick={() => onClick(id)}>
+    <div className="member-item justify-between" onClick={() => onClick(id)}>
       <ProfileDefault color={profileColor} />
-      <s.MemberName>{name}</s.MemberName>
-      <s.CheckBtn>{Btn}</s.CheckBtn>
-    </s.MemberItem>
+      <div className="font-Body-1-b flex-1">{name}</div>
+      <div className="pr-[14px]">{Btn}</div>
+    </div>
   )
 }
 

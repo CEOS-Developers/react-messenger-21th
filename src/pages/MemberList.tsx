@@ -3,8 +3,8 @@ import MemberListContent from '@/components/MemberList/MemberListContent'
 
 const MemberList = () => {
   return (
-    <div>
-      <StatusBar color="white" />
+    <div className="wrapper">
+      <StatusBar color="gray" />
       <MemberListContent />
     </div>
   )

@@ -45,6 +45,9 @@
 }
 
 @layer utilities {
+  .text-red {
+    color: var(--color-red);
+  }
   .text-blue {
     color: var(--color-blue);
   }
@@ -59,6 +62,9 @@
   }
   .text-gray11 {
     color: var(--color-gray11);
+  }
+  .text-gray12 {
+    color: var(--color-gray12);
   }
 
   .bg-chat {
@@ -76,6 +82,12 @@
   .bg-gray03 {
     background-color: var(--color-gray03);
   }
+  .bg-gray04 {
+    background-color: var(--color-gray04);
+  }
+  .bg-gray08 {
+    background-color: var(--color-gray08);
+  }
 
   .border-t-gray03 {
     border-top: 1px solid var(--color-gray03);
@@ -91,6 +103,9 @@
   }
   .border-gray13 {
     border: 1px solid var(--color-gray13);
+  }
+  .border-red {
+    border: 1px solid var(--color-red);
   }
 
   .rounded {

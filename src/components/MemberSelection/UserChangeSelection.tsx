@@ -3,7 +3,7 @@ import { BackIconX } from '../../assets/Icons/AppBar'
 import * as s from './UserChangeSelection.Styled'
 import { useLocation, useNavigate } from 'react-router'
 import { MemberArrayType } from '../../utils/getMemberList'
-import MemberItem from '../MemberItem/MemberItem'
+import MemberItem from '../MemberList/MemberItem'
 
 import CheckBox from '../../assets/Icons/Checkbox/checkbox.svg?react'
 import Radio from '../../assets/Icons/Checkbox/checkbox_radio.svg?react'

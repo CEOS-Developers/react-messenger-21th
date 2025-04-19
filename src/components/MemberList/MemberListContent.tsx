@@ -1,16 +1,15 @@
-import * as s from './MemberListContent.Styled'
-import Plus from '../../assets/Icons/List/plus.svg?react'
-import { useUserStore } from '../../stores/useUserStore'
-import {
-  MultipleProfileDefault,
-  ProfileDefault,
-} from '../../assets/Icons/Profile'
-import { useChatRoomStore } from '../../stores/useChatRoomStore'
 import { useNavigate, useParams } from 'react-router'
-import { getMemberArray } from '../../utils/getMemberList'
-import getRoomName from '../../utils/getRoomName'
-import MemberItem from '../MemberItem/MemberItem'
+
+import MemberItem from './MemberItem'
+import SquareButton from './SquareButton'
+import Plus from '@/assets/Icons/List/plus.svg?react'
+import { MultipleProfileDefault, ProfileDefault } from '@/assets/Icons/Profile'
 import { BackIcon, ProfileIcon } from '@/assets/Icons/AppBar'
+
+import { useUserStore } from '@/stores/useUserStore'
+import { useChatRoomStore } from '@/stores/useChatRoomStore'
+import { getMemberArray } from '@/utils/getMemberList'
+import getRoomName from '@/utils/getRoomName'
 
 const MemberListContent = () => {
   const nav = useNavigate()
@@ -45,38 +44,47 @@ const MemberListContent = () => {
     removeChatRoom(roomId)
     nav('/chatList', { replace: true })
   }
+
   return (
-    <div className="flex-grow">
-      <div className="bg-white">
+    <div className="bg-gray03 container">
+      <div className="bg-gray02 pb-1">
         <div className="app-bar">
           <BackIcon />
           <ProfileIcon />
         </div>
       </div>
-      <s.Wrapper>
-        <s.RoomNameSection>
+
+      <div className="scroll-container flex flex-col gap-8 p-5">
+        <div className="flex-center list">
           <MultipleProfileDefault colors={colors} />
-          <s.TitleContainer>
-            <s.RoomName>
+          <div className="flex items-center gap-1.5">
+            <h1 className="font-Headline3 ellipsis max-w-[305px]">
               {room?.roomName || (memberIds && getRoomName(memberIds))}
-            </s.RoomName>
-            <s.MemberCount $isM={true}>{memberCount}</s.MemberCount>
-          </s.TitleContainer>
-        </s.RoomNameSection>
-        <s.Section>
-          <s.MemberNum>멤버 {memberCount}</s.MemberNum>
-          <s.MemberList>
-            <s.MemberItem>
+            </h1>
+            <div className="font-Subhead-m text-gray10">{memberCount}</div>
+          </div>
+        </div>
+
+        <div className="list">
+          <div className="font-Body-2-b text-black">멤버 {memberCount}</div>
+
+          <div className="flex flex-col gap-[18px]">
+            <div className="member-item">
               <Plus />
-              <s.MemberName>친구 초대하기</s.MemberName>
-            </s.MemberItem>
-            <s.MemberItem
+              <div className="font-Body-1-b">친구 초대하기</div>
+            </div>
+
+            <div
+              className="member-item"
               onClick={() => nav(`/profile/${user.id}`)}
               key={user.id}>
               <ProfileDefault color={user.profileColor} />
-              <s.MemberName>{user.name}</s.MemberName>
-              <s.MeTag $isM={true}>나</s.MeTag>
-            </s.MemberItem>
+              <div className="font-Body-1-b">{user.name}</div>
+              <div className="font-Body-2-m flex-center bg-gray08 h-6 w-6 rounded-full text-white">
+                나
+              </div>
+            </div>
+
             {memberData?.map((member) => (
               <MemberItem
                 id={member.id}
@@ -86,26 +94,28 @@ const MemberListContent = () => {
                 onClick={(id) => nav(`/profile/${id}`)}
               />
             ))}
-          </s.MemberList>
-        </s.Section>
+          </div>
+        </div>
+      </div>
 
-        <s.Section>
-          <s.Button
-            $isM={true}
-            onClick={() =>
-              nav('./selection', {
-                state: {
-                  memberData,
-                },
-              })
-            }>
-            유저 변경하기
-          </s.Button>
-          <s.OutButton $isM={true} onClick={onClickOutButton}>
-            채팅방 나가기
-          </s.OutButton>
-        </s.Section>
-      </s.Wrapper>
+      <div className="list p-5">
+        <SquareButton
+          text="유저 변경하기"
+          isOut={false}
+          onClick={() =>
+            nav('./selection', {
+              state: {
+                memberData,
+              },
+            })
+          }
+        />
+        <SquareButton
+          text="채팅방 나가기"
+          isOut={true}
+          onClick={onClickOutButton}
+        />
+      </div>
     </div>
   )
 }

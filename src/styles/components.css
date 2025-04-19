@@ -18,9 +18,7 @@
   }
 
   .flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @apply flex items-center justify-center;
   }
 
   .app-bar {
@@ -35,5 +33,8 @@
 
   .list {
     @apply flex flex-col gap-4;
+  }
+  .member-item {
+    @apply flex cursor-pointer items-center gap-3;
   }
 }
