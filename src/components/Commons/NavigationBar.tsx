@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router'
 import { NavRole } from '@/utils/constants'
 import * as tab from '@/assets/Icons/NavigationBar'
-import HomeBar from '@/components/Common/HomeBar'
+import HomeBar from '@/components/Commons/HomeBar'
 import { BOTTOM_BAR_BG_CLASS } from '@/styles/variants'
 
 const NavigationBar = ({

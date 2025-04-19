@@ -1,5 +1,5 @@
-import StatusBar from '@/components/Common/StatusBar'
-import HomeBar from '@/components/Common/HomeBar'
+import StatusBar from '@/components/Commons/StatusBar'
+import HomeBar from '@/components/Commons/HomeBar'
 import ProfileContent from '@/components/ProfileContent/ProfileContent'
 
 const ProfilePage = () => {

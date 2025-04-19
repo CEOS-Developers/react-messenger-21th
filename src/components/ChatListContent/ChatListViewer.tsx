@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 /** ui */
-import SearchBox from '../Common/SearchBox'
+import SearchBox from '../Commons/SearchBox'
 import RoomItem from './RoomItem'
 import SearchedChatList from './SearchedChatList'
 

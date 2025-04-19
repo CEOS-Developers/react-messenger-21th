@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router'
 import { ProfileCircleDefault } from '@/assets/Icons/Profile'
-import PartitionItem from '../Common/PartitionItem'
+import PartitionItem from '../Commons/PartitionItem'
 
 const ProfileItem = ({
   id,

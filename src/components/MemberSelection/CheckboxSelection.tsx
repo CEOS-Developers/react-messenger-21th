@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router'
 
-import ActionBar from '../Common/ActionBar'
-import SearchBox from '../Common/SearchBox'
-import PartitionItem from '../Common/PartitionItem'
+import ActionBar from '../Commons/ActionBar'
+import SearchBox from '../Commons/SearchBox'
+import PartitionItem from '../Commons/PartitionItem'
 import { BackIconX } from '@/assets/Icons/AppBar'
 import CheckBox from '@/assets/Icons/Checkbox/checkbox.svg?react'
 import CheckedBox from '@/assets/Icons/Checkbox/checkbox_checked.svg?react'

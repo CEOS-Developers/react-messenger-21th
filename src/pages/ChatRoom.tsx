@@ -1,4 +1,4 @@
-import StatusBar from '@/components/Common/StatusBar'
+import StatusBar from '@/components/Commons/StatusBar'
 import ChatContent from '@/components/ChatContent/ChatContent'
 
 const ChatRoom = () => {

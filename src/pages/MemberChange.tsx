@@ -1,4 +1,4 @@
-import StatusBar from '@/components/Common/StatusBar'
+import StatusBar from '@/components/Commons/StatusBar'
 import RadioSelection from '@/components/MemberSelection/RadioSelection'
 
 const MemberChange = () => {

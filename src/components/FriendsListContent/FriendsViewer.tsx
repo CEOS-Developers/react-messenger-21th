@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import SearchBox from '../Common/SearchBox'
+import SearchBox from '../Commons/SearchBox'
 import ProfileItem from './ProfileItem'
 import ToggleBox from './ToggleBox'
 

@@ -1,6 +1,6 @@
-import StatusBar from '@/components/Common/StatusBar'
+import StatusBar from '@/components/Commons/StatusBar'
 import ChatListContent from '@/components/ChatListContent/ChatListContent'
-import NavigationBar from '@/components/Common/NavigationBar'
+import NavigationBar from '@/components/Commons/NavigationBar'
 import { NavRole } from '@/utils/constants'
 
 const ChatList = () => {

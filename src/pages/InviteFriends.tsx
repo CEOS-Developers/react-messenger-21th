@@ -1,4 +1,4 @@
-import StatusBar from '@/components/Common/StatusBar'
+import StatusBar from '@/components/Commons/StatusBar'
 import CheckboxSelection from '@/components/MemberSelection/CheckboxSelection'
 
 const InviteFriends = () => {

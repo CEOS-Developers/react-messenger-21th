@@ -6,7 +6,7 @@ import {
   MicrophoneIcon,
   SendIcon,
 } from '@/assets/Icons/TextInput'
-import HomeBar from '@/components/Common/HomeBar'
+import HomeBar from '@/components/Commons/HomeBar'
 
 import { useUserStore } from '@/stores/useUserStore'
 import { useChatRoomStore } from '@/stores/useChatRoomStore'

@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 
-import ActionBar from '../Common/ActionBar'
+import ActionBar from '../Commons/ActionBar'
 import { BackIconX } from '@/assets/Icons/AppBar'
 import CheckBox from '@/assets/Icons/Checkbox/checkbox.svg?react'
 import Radio from '@/assets/Icons/Checkbox/checkbox_radio.svg?react'
 
 import { MemberArrayType } from '@/utils/getMemberList'
 import setUserAndChatRoom from '@/utils/setUserAndChatRoom'
-import PartitionItem from '../Common/PartitionItem'
+import PartitionItem from '../Commons/PartitionItem'
 
 const RadioSelection = () => {
   const [selectedId, setSelectedId] = useState(-1)

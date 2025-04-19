@@ -1,5 +1,5 @@
-import StatusBar from '@/components/Common/StatusBar'
-import NavigationBar from '@/components/Common/NavigationBar'
+import StatusBar from '@/components/Commons/StatusBar'
+import NavigationBar from '@/components/Commons/NavigationBar'
 import FriendsListContent from '@/components/FriendsListContent/FriendsListContent'
 import { NavRole } from '@/utils/constants'
 

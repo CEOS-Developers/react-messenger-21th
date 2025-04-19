@@ -1,4 +1,4 @@
-import StatusBar from '@/components/Common/StatusBar'
+import StatusBar from '@/components/Commons/StatusBar'
 import MemberListContent from '@/components/MemberList/MemberListContent'
 
 const MemberList = () => {
