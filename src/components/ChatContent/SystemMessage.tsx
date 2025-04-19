@@ -8,7 +8,7 @@ const SystemMessage = ({
   content: string
 }) => {
   return (
-    <div className="system-message text-gray09 font-Caption-m border-gray07 mb-5 w-fit max-w-[280px] flex-col rounded text-center break-keep whitespace-normal">
+    <div className="system-message text-gray09 font-Caption-m border-gray07 mb-5 w-fit max-w-[280px] flex-col rounded text-center break-words whitespace-normal">
       <p>{formatTime(timestamp)}</p>
       <p>{content}</p>
     </div>

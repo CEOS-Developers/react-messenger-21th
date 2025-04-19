@@ -1,7 +1,10 @@
 import { useNavigate } from 'react-router'
 
 import * as s from './RoomItem.Styled'
-import { MultipleProfile, ProfileDefault } from '../../assets/Icons/Profile'
+import {
+  MultipleProfile,
+  ProfileCircleDefault,
+} from '../../assets/Icons/Profile'
 
 import { useUserStore } from '../../stores/useUserStore'
 import { ChatRoom } from '../../interface/ChatRoom'
@@ -56,7 +59,7 @@ const RoomItem = ({
     <s.Wapper onClick={chatRoomClickHandler}>
       <s.Container>
         {memberCount === 2 ? (
-          <ProfileDefault color={memberColors[0]} />
+          <ProfileCircleDefault color={memberColors[0]} />
         ) : (
           <MultipleProfile colors={memberColors} />
         )}

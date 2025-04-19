@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router'
-import { ProfileDefault } from '../../assets/Icons/Profile'
+import { ProfileCircleDefault } from '@/assets/Icons/Profile'
 import * as s from './ProfileItem.Styled'
 
 const ProfileItem = ({
@@ -17,7 +17,7 @@ const ProfileItem = ({
   return (
     <s.Wapper onClick={() => nav(`/profile/${id}`)}>
       <s.Container>
-        <ProfileDefault color={profileColor} />
+        <ProfileCircleDefault color={profileColor} />
         <s.TextContainer>
           <s.Name>{name}</s.Name>
           <s.Message $isR={true}>{profileMessage}</s.Message>

@@ -1,76 +1,84 @@
-import * as s from './index.Styled'
-import BigIcon from './Peoples-big.svg?react'
-import DefaultIcon from './Peoples-default.svg?react'
-import MediumIcon from './Peoples-medium.svg?react'
-import MiniIcon from './Peoples-mini.svg?react'
+import DefaultCircle from './circle-peoples-default.svg?react'
+import BigCircle from './circle-peoples-big.svg?react'
+import MediumCircle from './circle-peoples-medium.svg?react'
+import MiniCircle from './circle-peoples-mini.svg?react'
+import { PROFILE_BG_CLASS } from '@/styles/variants'
 
-type ProfileProps = {
+const ProfileContainer = ({
+  color,
+  size,
+  children,
+}: {
   color: string
-}
-
-const ProfileBig = ({ color }: ProfileProps) => {
+  size: number
+  children: React.ReactNode
+}) => {
+  const bg = PROFILE_BG_CLASS[color] ?? 'bg-gray02'
+  const sizeClass = `h-[${size}px] w-[${size}px]`
   return (
-    <s.ProfileBig $color={color}>
-      <s.PeopleMargin $margin={30}>
-        <BigIcon />
-      </s.PeopleMargin>
-    </s.ProfileBig>
+    <div className={`flex-center rounded-full ${sizeClass} ${bg}`}>
+      {children}
+    </div>
   )
 }
 
-const ProfileDefault = ({ color }: ProfileProps) => {
+const ProfileCircleBig = ({ color }: { color: string }) => {
   return (
-    <s.ProfileDefault $color={color}>
-      <DefaultIcon />
-    </s.ProfileDefault>
+    <ProfileContainer color={color} size={102}>
+      <BigCircle />
+    </ProfileContainer>
   )
 }
 
-const ProfileMedium = ({ color }: ProfileProps) => {
+const ProfileCircleDefault = ({ color }: { color: string }) => {
   return (
-    <s.ProfileMedium $color={color}>
-      <s.PeopleMargin $margin={9}>
-        <MediumIcon />
-      </s.PeopleMargin>
-    </s.ProfileMedium>
+    <ProfileContainer color={color} size={46}>
+      <DefaultCircle />
+    </ProfileContainer>
   )
 }
 
-const ProfileMini = ({ color }: ProfileProps) => {
+const ProfileCircleMedium = ({ color }: { color: string }) => {
   return (
-    <s.ProfileMini $color={color}>
-      <s.PeopleMargin $margin={2}>
-        <MiniIcon />
-      </s.PeopleMargin>
-    </s.ProfileMini>
+    <ProfileContainer color={color} size={30}>
+      <MediumCircle />
+    </ProfileContainer>
+  )
+}
+
+const ProfileCircleMini = ({ color }: { color: string }) => {
+  return (
+    <ProfileContainer color={color} size={22}>
+      <MiniCircle />
+    </ProfileContainer>
   )
 }
 
 const MultipleProfile = ({ colors }: { colors: string[] }) => {
   return (
-    <s.Profile2by2>
+    <div className="profile-group h-[46px]">
       {colors.map((color, idx) => (
-        <ProfileMini key={idx} color={color} />
+        <ProfileCircleMini key={idx} color={color} />
       ))}
-    </s.Profile2by2>
+    </div>
   )
 }
 
 const MultipleProfileDefault = ({ colors }: { colors: string[] }) => {
   return (
-    <s.Profile2by2Default>
+    <div className="profile-group h-auto w-auto">
       {colors.map((color, idx) => (
-        <ProfileDefault key={idx} color={color} />
+        <ProfileCircleDefault key={idx} color={color} />
       ))}
-    </s.Profile2by2Default>
+    </div>
   )
 }
 
 export {
-  ProfileBig,
-  ProfileDefault,
-  ProfileMedium,
-  ProfileMini,
   MultipleProfile,
   MultipleProfileDefault,
+  ProfileCircleBig,
+  ProfileCircleDefault,
+  ProfileCircleMedium,
+  ProfileCircleMini,
 }

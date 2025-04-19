@@ -1,7 +1,7 @@
 import * as s from './ProfileInfo.Styled'
-import { ProfileBig } from '../../assets/Icons/Profile'
-import ArrowRight from '../../assets/Icons/ProfileAction/right.svg?react'
-import InfoEdit from '../../assets/Icons/ProfileAction/infoedit.svg?react'
+import { ProfileCircleBig } from '@/assets/Icons/Profile'
+import ArrowRight from '@/assets/Icons/ProfileAction/right.svg?react'
+import InfoEdit from '@/assets/Icons/ProfileAction/infoedit.svg?react'
 
 const ProfileInfo = ({
   isMine,
@@ -16,7 +16,7 @@ const ProfileInfo = ({
 }) => {
   return (
     <s.InfoContainer>
-      <ProfileBig color={profileColor} />
+      <ProfileCircleBig color={profileColor} />
       <s.TextContainer>
         <s.NameContainer>
           <s.Name>{name}</s.Name>

@@ -3,7 +3,10 @@ import { useNavigate, useParams } from 'react-router'
 import MemberItem from './MemberItem'
 import SquareButton from './SquareButton'
 import Plus from '@/assets/Icons/List/plus.svg?react'
-import { MultipleProfileDefault, ProfileDefault } from '@/assets/Icons/Profile'
+import {
+  MultipleProfileDefault,
+  ProfileCircleDefault,
+} from '@/assets/Icons/Profile'
 import { BackIcon, ProfileIcon } from '@/assets/Icons/AppBar'
 
 import { useUserStore } from '@/stores/useUserStore'
@@ -86,7 +89,7 @@ const MemberListContent = () => {
               className="member-item"
               onClick={() => nav(`/profile/${user.id}`)}
               key={user.id}>
-              <ProfileDefault color={user.profileColor} />
+              <ProfileCircleDefault color={user.profileColor} />
               <div className="font-Body-1-b">{user.name}</div>
               <div className="font-Body-2-m flex-center bg-gray08 h-6 w-6 rounded-full text-white">
                 나

@@ -1,4 +1,4 @@
-import { ProfileDefault } from '../../assets/Icons/Profile'
+import { ProfileCircleDefault } from '@/assets/Icons/Profile'
 
 const MemberItem = ({
   id,
@@ -15,7 +15,7 @@ const MemberItem = ({
 }) => {
   return (
     <div className="member-item justify-between" onClick={() => onClick(id)}>
-      <ProfileDefault color={profileColor} />
+      <ProfileCircleDefault color={profileColor} />
       <div className="font-Body-1-b flex-1">{name}</div>
       <div className="pr-[14px]">{Btn}</div>
     </div>

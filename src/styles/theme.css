@@ -73,6 +73,15 @@
   .bg-profile {
     background: var(--color-profileBackground);
   }
+  .bg-skyblue {
+    background: var(--color-skyblue);
+  }
+  .bg-orange {
+    background: var(--color-orange);
+  }
+  .bg-purple {
+    background: var(--color-purple);
+  }
   .bg-gray01 {
     background-color: var(--color-gray01);
   }

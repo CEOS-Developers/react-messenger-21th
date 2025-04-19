@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router'
 
-import { HomeIcon } from '../../assets/Icons/AppBar'
-import { ProfileDefault } from '../../assets/Icons/Profile'
+import { HomeIcon } from '@/assets/Icons/AppBar'
+import { ProfileCircleDefault } from '@/assets/Icons/Profile'
 import FriendsViewer from './FriendsViewer'
 
-import { useUserStore } from '../../stores/useUserStore'
-import findUser from '../../utils/findUser'
+import { useUserStore } from '@/stores/useUserStore'
+import findUser from '@/utils/findUser'
 
 const FriendsListContent = () => {
   const { user } = useUserStore()
@@ -31,7 +31,7 @@ const FriendsListContent = () => {
             className="cursor-pointer"
             onClick={() => nav(`/profile/${user.id}`)}>
             <div className="flex items-center gap-[9px]">
-              <ProfileDefault color={user.profileColor} />
+              <ProfileCircleDefault color={user.profileColor} />
               <h2 className="font-Body-1-b">{user.name}</h2>
             </div>
           </div>
