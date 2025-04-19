@@ -1,10 +1,6 @@
 import { useLocation, useNavigate } from 'react-router'
-
-import * as s from './ChatTitle.Styled'
-import { EventIcon } from '../Common/Common.Styled'
 import Back from '@/assets/Icons/AppBar/back.svg?react'
-
-import getRoomName from '../../utils/getRoomName'
+import getRoomName from '@/utils/getRoomName'
 
 const ChatTitle = ({ memberIds }: { memberIds: number[] }) => {
   const nav = useNavigate()
@@ -12,13 +8,17 @@ const ChatTitle = ({ memberIds }: { memberIds: number[] }) => {
   const isGroupChat = memberCount > 2
 
   return (
-    <s.ChatTitleContainer>
-      <EventIcon onClick={() => nav('/chatList')}>
+    <div className="flex items-center">
+      <div className="cursor-pointer" onClick={() => nav('/chatList')}>
         <Back width={24} />
-      </EventIcon>
-      <s.ChatName>{roomName || getRoomName(memberIds)}</s.ChatName>
-      <s.MemberNum>{isGroupChat ? memberCount : null}</s.MemberNum>
-    </s.ChatTitleContainer>
+      </div>
+      <h1 className="font-Headline3 ellipsis max-w-[189px] pr-1.5 pl-2">
+        {roomName || getRoomName(memberIds)}
+      </h1>
+      <span className="font-Subhead-m text-gray10">
+        {isGroupChat ? memberCount : null}
+      </span>
+    </div>
   )
 }
 

@@ -1,12 +1,11 @@
+import { useLocation } from 'react-router'
 import ChatTitle from './ChatTitle'
 import ChatField from './ChatField'
-import { ChatRoomIcon } from '../../assets/Icons/AppBar'
-
-import { userData } from '../../assets/data/user.json'
-
-import { useLocation } from 'react-router'
-import { useUserStore } from '../../stores/useUserStore'
 import TextFiled from './TextFiled'
+import { ChatRoomIcon } from '@/assets/Icons/AppBar'
+
+import { useUserStore } from '@/stores/useUserStore'
+import findUser from '@/utils/findUser'
 
 const ChatContent = () => {
   const { member } = useLocation().state ?? {}
@@ -21,7 +20,7 @@ const ChatContent = () => {
       acc: Record<number, { name: string; profileColor: string }>,
       id: number
     ) => {
-      const user = userData.find((user) => user.id === id)
+      const user = findUser(id)
       if (user) {
         acc[id] = {
           name: user.name,

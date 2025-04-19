@@ -1,32 +1,18 @@
 import { useEffect, useRef } from 'react'
+import { useParams } from 'react-router'
 
 import * as s from './ChatField.Styled'
-import { ProfileMedium } from '../../assets/Icons/Profile'
 
-import { formatDate, formatTime } from '../../utils/format'
-import { useUserStore } from '../../stores/useUserStore'
-import { useChatRoomStore } from '../../stores/useChatRoomStore'
-import { useParams } from 'react-router'
-import { Chat } from '../../interface/Chat'
+import { useUserStore } from '@/stores/useUserStore'
+import { useChatRoomStore } from '@/stores/useChatRoomStore'
+import { Chat } from '@/interface/Chat'
+import PartnerProfile from './PartnerProfile'
+import ChatDate from './ChatDate'
+import ChatTime from './ChatTime'
 
-const getFriendProfile = (color: string, name: string) => {
-  return (
-    <s.ProfileContainer>
-      <ProfileMedium color={color} />
-      <s.Name $isM={true}>{name}</s.Name>
-    </s.ProfileContainer>
-  )
-}
-
-const getDateDiv = (date: string, dateIdx: number) => {
-  return dateIdx === 0 ? (
-    <s.FirstDateDiv $isM={true}>{formatDate(date)}</s.FirstDateDiv>
-  ) : (
-    <s.DateDiv $isM={true}>{formatDate(date)}</s.DateDiv>
-  )
-}
-
-interface ChatFieldProps {
+const ChatField = ({
+  member,
+}: {
   member: Record<
     number,
     {
@@ -34,9 +20,7 @@ interface ChatFieldProps {
       profileColor: string
     }
   >
-}
-
-const ChatField = ({ member }: ChatFieldProps) => {
+}) => {
   const { user } = useUserStore()
   const myId = user.id
 
@@ -54,7 +38,8 @@ const ChatField = ({ member }: ChatFieldProps) => {
       chatWrapperRef.current.scrollTop = chatWrapperRef.current.scrollHeight
   }, [chats, myId])
 
-  if (!chats) return <div></div>
+  /* 채팅 내역이 없을 때 빈 화면 출력 */
+  if (!chats) return <div className="flex-1"></div>
 
   const dateChatPair = Object.entries(chats)
 
@@ -81,10 +66,10 @@ const ChatField = ({ member }: ChatFieldProps) => {
   }
 
   return (
-    <s.ChatFieldWrapper ref={chatWrapperRef}>
+    <div className="scroll-container" ref={chatWrapperRef}>
       {dateChatPair.map(([date, chat], dateIdx) => (
         <div key={date}>
-          {getDateDiv(date, dateIdx)}
+          {<ChatDate date={date} dateIdx={dateIdx} />}
           {chat.map(({ id, content, sender }: Chat, chatIdx: number) => {
             const isMe = sender === myId //sender와 내 id가 같은가?
             const isLastSender = determineLastSender(sender)
@@ -98,26 +83,26 @@ const ChatField = ({ member }: ChatFieldProps) => {
               isLastMessage || !isNextSender || !isSentSameTime
             return (
               <s.ChatContainer key={id}>
-                {!isMe && (!isLastSender || !isLastMsgSentSameTime)
-                  ? member[sender]
-                    ? getFriendProfile(
-                        member[sender].profileColor,
-                        member[sender].name
-                      )
-                    : null
-                  : null}
+                {!isMe && (!isLastSender || !isLastMsgSentSameTime) ? (
+                  member[sender] ? (
+                    <PartnerProfile
+                      color={member[sender].profileColor}
+                      name={member[sender].name}
+                    />
+                  ) : null
+                ) : null}
                 <s.ChatBubbleContainer
                   $isMe={isMe}
                   $needBigMargin={(!isMe || !isNextSender) && souldDisplayTime}
                   $isNextSender={isNextSender}>
                   {isMe && souldDisplayTime ? (
-                    <s.TimeDiv>{formatTime(id)}</s.TimeDiv>
+                    <ChatTime timestamp={id} />
                   ) : null}
                   <s.ChatDiv $isR={true} $isMe={isMe}>
                     <div>{content}</div>
                   </s.ChatDiv>
                   {!isMe && souldDisplayTime ? (
-                    <s.TimeDiv>{formatTime(id)}</s.TimeDiv>
+                    <ChatTime timestamp={id} />
                   ) : null}
                 </s.ChatBubbleContainer>
               </s.ChatContainer>
@@ -125,7 +110,7 @@ const ChatField = ({ member }: ChatFieldProps) => {
           })}
         </div>
       ))}
-    </s.ChatFieldWrapper>
+    </div>
   )
 }
 

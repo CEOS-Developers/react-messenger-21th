@@ -17,6 +17,12 @@
     display: none;
   }
 
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .app-bar {
     @apply flex h-[54px] items-center justify-between px-5;
   }

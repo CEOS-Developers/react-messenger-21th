@@ -1,17 +1,6 @@
 import styled, { css } from 'styled-components'
 import StyledProps from '../../interface/StyledProps'
-import { Body_2, Caption, ChatTime } from '../../styles/Typo.Styled'
-
-const ChatFieldWrapper = styled.div`
-  flex-grow: 1;
-  padding: 0px 20px;
-  max-height: 626px;
-  overflow: auto;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`
+import { Body_2 } from '../../styles/Typo.Styled'
 
 const ChatContainer = styled.div`
   display: flex;
@@ -27,39 +16,6 @@ const ChatBubbleContainer = styled.div<StyledProps>`
   align-self: ${({ $isMe }) => ($isMe ? 'flex-end' : 'flex-start')};
   margin-bottom: ${({ $needBigMargin, $isNextSender }) =>
     $needBigMargin ? ($isNextSender ? '16px' : '20px') : '8px'};
-`
-
-const DateDiv = styled.div<StyledProps>`
-  color: ${({ theme }) => theme.colors.gray09};
-  ${Caption}
-
-  width: 138px;
-  height: 24px;
-  border-radius: 2px;
-  border: 1px solid ${({ theme }) => theme.colors.gray07};
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 24px auto 20px auto;
-`
-
-const FirstDateDiv = styled(DateDiv)`
-  margin: 16px auto 24px auto;
-`
-
-const Icon = styled.div`
-  margin-top: 9px;
-`
-const Name = styled.div<StyledProps>`
-  color: ${({ theme }) => theme.colors.gray11};
-  ${Caption}
-`
-
-const ProfileContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
 `
 
 const ChatDiv = styled.div<StyledProps>`
@@ -83,21 +39,4 @@ const othersChatStyle = css`
   margin-left: 30px;
 `
 
-const TimeDiv = styled.div`
-  color: ${({ theme }) => theme.colors.gray09};
-  ${ChatTime}
-  white-space: nowrap;
-`
-
-export {
-  ChatFieldWrapper,
-  ChatContainer,
-  ChatBubbleContainer,
-  DateDiv,
-  FirstDateDiv,
-  ChatDiv,
-  Icon,
-  Name,
-  ProfileContainer,
-  TimeDiv,
-}
+export { ChatContainer, ChatBubbleContainer, ChatDiv }
