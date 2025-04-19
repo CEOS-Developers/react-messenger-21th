@@ -1,7 +1,7 @@
 import StatusBar from '@/components/Common/StatusBar'
 import RadioSelection from '@/components/MemberSelection/RadioSelection'
 
-const MemberSelection = () => {
+const MemberChange = () => {
   return (
     <div className="wrapper">
       <StatusBar color="white" />
@@ -10,4 +10,4 @@ const MemberSelection = () => {
   )
 }
 
-export default MemberSelection
+export default MemberChange

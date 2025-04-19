@@ -103,7 +103,7 @@ const MemberListContent = () => {
           text="유저 변경하기"
           isOut={false}
           onClick={() =>
-            nav('./selection', {
+            nav('./change', {
               state: {
                 memberData,
               },

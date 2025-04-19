@@ -14,7 +14,7 @@ import ProfilePage from '@/pages/ProfilePage.tsx'
 import MemberList from '@/pages/MemberList.tsx'
 
 import setUserAndChatRoom from './utils/setUserAndChatRoom.ts'
-import MemberSelection from './pages/MemberSelection.tsx'
+import MemberChange from './pages/MemberChange.tsx'
 import Layout from './components/Layout.tsx'
 
 function App() {
@@ -34,10 +34,7 @@ function App() {
             <Route path="/chatlist" element={<ChatList />} />
             <Route path="/room/:id" element={<ChatRoom />} />
             <Route path="/room/:id/members" element={<MemberList />} />
-            <Route
-              path="/room/:id/members/selection"
-              element={<MemberSelection />}
-            />
+            <Route path="/room/:id/members/change" element={<MemberChange />} />
           </Routes>
         </Layout>
       </ThemeProvider>
