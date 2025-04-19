@@ -11,7 +11,7 @@ interface ChatRoomState {
 
   removeChatRoom: (roomId: number) => void
   createChatRoom: (roomId: number, members: number[]) => void
-  addMember: (roomId: number, memberId: number) => void
+  addMember: (roomId: number, memberId: number[]) => void
 }
 
 export const useChatRoomStore = create<ChatRoomState>((set) => ({
@@ -84,9 +84,7 @@ export const useChatRoomStore = create<ChatRoomState>((set) => ({
       const updatedChatRooms = state.chatRoom.map((room) => {
         if (room.chatRoomId !== roomId) return room
 
-        const newMemberIds = room.member.includes(memberId)
-          ? room.member
-          : [...room.member, memberId]
+        const newMemberIds = Array.from(new Set([...room.member, ...memberId]))
 
         return {
           ...room,

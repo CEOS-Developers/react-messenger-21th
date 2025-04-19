@@ -9,6 +9,8 @@ import { Chat } from '@/interface/Chat'
 import PartnerProfile from './PartnerProfile'
 import ChatDate from './ChatDate'
 import ChatTime from './ChatTime'
+import { SYSTEM_ID } from '@/utils/constants'
+import SystemMessage from './SystemMessage'
 
 const ChatField = ({
   member,
@@ -71,6 +73,8 @@ const ChatField = ({
         <div key={date}>
           {<ChatDate date={date} dateIdx={dateIdx} />}
           {chat.map(({ id, content, sender }: Chat, chatIdx: number) => {
+            if (sender === SYSTEM_ID)
+              return <SystemMessage timestamp={id} content={content} />
             const isMe = sender === myId //sender와 내 id가 같은가?
             const isLastSender = determineLastSender(sender)
             const isLastMsgSentSameTime = determineLastMsgSentSameTime(id)

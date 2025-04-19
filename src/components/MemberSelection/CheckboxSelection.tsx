@@ -11,15 +11,20 @@ import CheckedBox from '@/assets/Icons/Checkbox/checkbox_checked.svg?react'
 import { useUserStore } from '@/stores/useUserStore'
 import findUser from '@/utils/findUser'
 import { filterByName } from '@/utils/filterByName'
+import { useChatRoomStore } from '@/stores/useChatRoomStore'
+import getRoomName from '@/utils/getRoomName'
+import { SYSTEM_ID } from '@/utils/constants'
 
 const CheckboxSelection = () => {
   const nav = useNavigate()
-  const roomId = useParams().id
+  const roomId = Number(useParams().id)
   const location = useLocation()
   const memberIds = location.state?.memberIds || []
   const [selectedIds, setSelectedIds] = useState<number[]>([])
   const [searchText, setSearchText] = useState('')
-  const { user } = useUserStore()
+
+  const { user, updateLastSeenTime } = useUserStore()
+  const { addChat, addMember } = useChatRoomStore()
 
   /* 친구 중 이 채팅방에 없는 친구 목록 불러오기 */
   const friendsData = user.friends
@@ -44,8 +49,16 @@ const CheckboxSelection = () => {
   }
 
   const handleInviteFriends = () => {
+    const friendNames = getRoomName(selectedIds)
+    const newChat = {
+      id: Date.now(),
+      sender: SYSTEM_ID,
+      content: `${user.name}님이 ${friendNames}님을 그룹에 추가했습니다.`,
+    }
+    updateLastSeenTime(roomId)
+    addChat(roomId, newChat)
+    addMember(roomId, selectedIds)
     nav(-2)
-    // nav(`/room/${roomId}`)
   }
 
   return (

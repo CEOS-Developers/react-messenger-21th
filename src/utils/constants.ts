@@ -4,4 +4,6 @@ enum NavRole {
   CALL,
 }
 
-export { NavRole }
+const SYSTEM_ID = -1
+
+export { NavRole, SYSTEM_ID }
