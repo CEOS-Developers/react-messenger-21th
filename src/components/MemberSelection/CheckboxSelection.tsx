@@ -4,6 +4,7 @@ import { useLocation, useNavigate, useParams } from 'react-router'
 import ActionBar from '../Commons/ActionBar'
 import SearchBox from '../Commons/SearchBox'
 import PartitionItem from '../Commons/PartitionItem'
+import HorizontalScrollContainer from './HorizontalScrollContainer'
 import { BackIconX } from '@/assets/Icons/AppBar'
 import CheckBox from '@/assets/Icons/Checkbox/checkbox.svg?react'
 import CheckedBox from '@/assets/Icons/Checkbox/checkbox_checked.svg?react'
@@ -62,7 +63,7 @@ const CheckboxSelection = () => {
   }
 
   return (
-    <div className="container gap-4">
+    <div className="container">
       <div className="bg-white">
         <ActionBar
           backIcon={<BackIconX />}
@@ -72,11 +73,19 @@ const CheckboxSelection = () => {
           onClick={handleInviteFriends}
         />
       </div>
-      <div className="px-5">
+
+      <HorizontalScrollContainer
+        selectedIds={selectedIds}
+        friendsData={friendsData}
+        handleClickMemberItem={handleClickMemberItem}
+      />
+
+      <div className="px-5 pb-2">
         <SearchBox searchText={searchText} setSearchText={setSearchText} />
       </div>
 
-      <div className="scroll-container list">
+      <div
+        className={`scroll-container list ${selectedIds.length === 0 && 'pt-2'}`}>
         <div className="font-Body-2-b py-2.5 text-black">
           친구 {filteredFriends.length}
         </div>
