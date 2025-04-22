@@ -1,14 +1,8 @@
+import { Color } from '@/apis/dto';
 import DefaultProfile from '@/components/DefaultProfile';
 import { getProfileColor } from '@/utils/getProfileColor';
 
-export default function FriendsItem({
-	name,
-	color,
-}: {
-	name: string;
-	color: 'blue' | 'purple' | 'orange' | 'pink' | 'yellow';
-	isActive: boolean;
-}) {
+export default function FriendsItem({ name, color }: { name: string; color: Color; isActive: boolean }) {
 	const bgColor = getProfileColor('background', color);
 	const pathColor = getProfileColor('path', color);
 

@@ -1,7 +1,6 @@
-export const getProfileColor = (
-	type: 'background' | 'path',
-	color: 'blue' | 'purple' | 'yellow' | 'pink' | 'orange',
-) => {
+import { Color } from '@/apis/dto';
+
+export const getProfileColor = (type: 'background' | 'path', color: Color) => {
 	const isBackground = type === 'background';
 
 	if (isBackground) {
@@ -32,4 +31,3 @@ export const getProfileColor = (
 		}
 	}
 };
-// bg-profile-blue-100
