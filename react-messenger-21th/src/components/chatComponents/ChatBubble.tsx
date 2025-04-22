@@ -2,7 +2,9 @@ import { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { addReaction } from '../states/chatSlice';
 import { useParams } from 'react-router-dom';
+
 import * as s from '../styles/ChatBubbleStyles';
+
 import ReactionPopup from './ReactionPopup';
 
 interface ChatBubbleProps {

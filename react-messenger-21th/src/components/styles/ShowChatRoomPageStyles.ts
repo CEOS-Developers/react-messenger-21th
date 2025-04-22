@@ -67,3 +67,17 @@ export const ChatRoomList = styled.div`
   align-self: stretch;
   background-color: ${({ theme }) => theme.colors.grey03};
 `;
+
+export const InputSearchText = styled.input`
+  flex: 1;
+  height: 24px;
+  margin: 0 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+
+  &:focus {
+    outline: none;
+    border-color: #555;
+  }
+`;

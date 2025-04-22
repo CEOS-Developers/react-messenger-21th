@@ -77,7 +77,7 @@ export const StatusMessage = styled.p`
 
 export const ProfileWrapper = styled.div`
   display: flex;
-  width: 375px;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -140,8 +140,8 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 48px;
+  padding-bottom: 50px;
   flex: 1 0 0;
-  align-self: stretch;
 `;
 
 export const ButtonAndTextContainer = styled.div`

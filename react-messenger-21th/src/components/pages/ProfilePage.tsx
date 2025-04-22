@@ -1,7 +1,6 @@
 // src/components/pages/FriendsPage.tsx
 import { useSelector } from 'react-redux';
 import { RootState } from '../states/store';
-import { idForMe } from '../../mocks/mockData'; // 내 ID 가져오기
 import { User } from '../states/chatSlice'; // 유저 타입명 가져오기
 
 import * as s from '../styles/ProfilePageStyles';
@@ -17,6 +16,8 @@ import MusicButton from '/public/assets/icons/MusicButton.svg?react';
 import SettingButton from '/public/assets/icons/SettingButton.svg?react';
 
 const FriendsPage = () => {
+  const idForMe = 'user-me';
+
   const users = useSelector((state: RootState) => state.chat.users);
   const me = users.find((user): user is User => user.id === idForMe);
   if (!me) return null; // null 값 방지

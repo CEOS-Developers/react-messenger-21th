@@ -1,0 +1,196 @@
+{
+  "idForMe": "user-me",
+  "friends": [
+    {
+      "id": "friend-1",
+      "name": "김서연",
+      "image": "/assets/icons/ProfileDarkGreyS.svg",
+      "statusMessage": "pr 자료 만들어야 하는데...",
+      "isUpdated": true,
+      "birthday": "2005-02-20T00:00:00.000Z"
+    },
+    {
+      "id": "friend-2",
+      "name": "성이름",
+      "image": "/assets/icons/ProfileGreyS.svg",
+      "statusMessage": "저녁 모 먹지",
+      "isUpdated": false,
+      "birthday": "2025-04-22T00:00:00.000Z"
+    },
+    {
+      "id": "friend-3",
+      "name": "강수진",
+      "image": "/assets/icons/ProfileWhiteS.svg",
+      "statusMessage": "등교하기 시러요",
+      "isUpdated": true,
+      "birthday": "2000-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "friend-4",
+      "name": "이화여자대학교",
+      "image": "/assets/icons/ProfileDarkGreyS.svg",
+      "statusMessage": "오늘도 화이팅!",
+      "isUpdated": false,
+      "birthday": "1886-02-08T00:00:00.000Z"
+    },
+    {
+      "id": "friend-5",
+      "name": "가나다",
+      "image": "/assets/icons/ProfileGreyS.svg",
+      "statusMessage": "가나다라바마사!",
+      "isUpdated": true,
+      "birthday": "2000-04-28T00:00:00.000Z"
+    },
+    {
+      "id": "friend-6",
+      "name": "라마바",
+      "image": "/assets/icons/ProfileWhiteS.svg",
+      "statusMessage": "으아아아아아아앙아아아앙",
+      "isUpdated": false,
+      "birthday": "2011-04-28T00:00:00.000Z"
+    },
+    {
+      "id": "friend-7",
+      "name": "시험언제끝나",
+      "image": "/assets/icons/ProfileDarkGreyS.svg",
+      "statusMessage": "&&*",
+      "isUpdated": false,
+      "birthday": "2011-04-28T00:00:00.000Z"
+    },
+    {
+      "id": "friend-8",
+      "name": "아잠만",
+      "image": "/assets/icons/ProfileGreyS.svg",
+      "statusMessage": "후아암~~-_-",
+      "isUpdated": true,
+      "birthday": "2011-04-26T00:00:00.000Z"
+    },
+    {
+      "id": "friend-9",
+      "name": "애플이",
+      "image": "/assets/icons/ProfileWhiteS.svg",
+      "statusMessage": "🍎",
+      "isUpdated": true,
+      "birthday": "2011-04-25T00:00:00.000Z"
+    },
+    {
+      "id": "friend-10",
+      "name": "잭슨",
+      "image": "/assets/icons/ProfileDarkGreyS.svg",
+      "statusMessage": "우쭐!",
+      "isUpdated": true,
+      "birthday": "2011-04-23T00:00:00.000Z"
+    },
+    {
+      "id": "friend-11",
+      "name": "쭈니",
+      "image": "/assets/icons/ProfileGreyS.svg",
+      "statusMessage": "어차피",
+      "isUpdated": true,
+      "birthday": "2011-04-24T00:00:00.000Z"
+    },
+    {
+      "id": "friend-12",
+      "name": "히죽이",
+      "image": "/assets/icons/ProfileWhiteS.svg",
+      "statusMessage": "먹보",
+      "isUpdated": true,
+      "birthday": "2011-04-24T00:00:00.000Z"
+    }
+  ],
+  "me": {
+    "id": "user-me",
+    "name": "이지후",
+    "image": "/assets/icons/ProfileWhiteS.svg",
+    "statusMessage": "냠냠"
+  },
+  "chatRooms": [
+    {
+      "id": "room1",
+      "participants": ["user-me", "friend-1"],
+      "messages": [
+        {
+          "id": "msg-1-1",
+          "senderId": "friend-1",
+          "text": "안녕!",
+          "timestamp": "2025-03-27T00:00:00.000Z",
+          "isMine": false
+        },
+        {
+          "id": "msg-1-2",
+          "senderId": "user-me",
+          "text": "안녕! 반가워~",
+          "timestamp": "2025-03-27T00:00:00.000Z",
+          "isMine": true
+        }
+      ]
+    },
+    {
+      "id": "room2",
+      "participants": ["user-me", "friend-2"],
+      "messages": [
+        {
+          "id": "msg-2-1",
+          "senderId": "friend-2",
+          "text": "배고프당 마싯는 거 먹고 싶당",
+          "timestamp": "2025-04-11T00:00:00.000Z",
+          "isMine": false
+        },
+        {
+          "id": "msg-2-2",
+          "senderId": "friend-2",
+          "text": "긴 텍스트 시험용 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ",
+          "timestamp": "2025-04-22T00:00:00.000Z",
+          "isMine": false
+        }
+      ]
+    },
+    {
+      "id": "room3",
+      "participants": ["user-me", "friend-4"],
+      "messages": [
+        {
+          "id": "msg-3-1",
+          "senderId": "user-me",
+          "text": "공대 셔틀 만들어주새요요",
+          "timestamp": "2025-04-22T00:00:00.000Z",
+          "isMine": true
+        },
+        {
+          "id": "msg-3-2",
+          "senderId": "friend-4",
+          "text": "ㅎ.ㅎ ~-~ ㅇㅁㅇ",
+          "timestamp": "2025-04-22T00:00:00.000Z",
+          "isMine": false
+        }
+      ]
+    },
+    {
+      "id": "room4",
+      "participants": ["user-me", "friend-6"],
+      "messages": [
+        {
+          "id": "msg-4-1",
+          "senderId": "user-me",
+          "text": "안녕하세요안녕하세요",
+          "timestamp": "2025-04-21T00:00:00.000Z",
+          "isMine": true
+        },
+        {
+          "id": "msg-4-2",
+          "senderId": "friend-6",
+          "text": "ㅎ.ㅎ ~_~ ㅇㅁㅇ ㅇㅅㅇㅇ",
+          "timestamp": "2025-04-22T00:00:00.000Z",
+          "isMine": false
+        },
+        {
+          "id": "msg-4-3",
+          "senderId": "friend-6",
+          "text": "~~~~~!!!!!!!!!!",
+          "timestamp": "2025-04-22T00:00:00.000Z",
+          "isMine": false
+        }
+      ]
+    }
+  ]
+}

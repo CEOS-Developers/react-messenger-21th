@@ -25,6 +25,25 @@ export const ProfileList = styled.div`
   align-items: center;
   gap: 12px;
   align-self: stretch;
+
+  overflow-x: auto; /* 가로 스크롤 켜기 */
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+
+  /* 스크롤바 커스터마이징 */
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 `;
 
 export const ProfileItem = styled.div`
@@ -33,6 +52,8 @@ export const ProfileItem = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  /* 크기 고정 */
+  flex-shrink: 0;
 `;
 
 export const ProfileImage = styled.img`

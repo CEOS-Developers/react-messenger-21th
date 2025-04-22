@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../states/store';
 import { switchSender } from '../states/chatSlice';
-import { idForMe } from '../../mocks/mockData';
 import { useParams, useNavigate } from 'react-router-dom'; // roomID 받아올 예정
 
 import * as s from '../styles/ChatRoomPageStyles';
@@ -15,6 +14,8 @@ import PlusButtonIcon from '/public/assets/icons/PlusNotSelected.svg?react';
 import PrevButton from '/public/assets/icons/PrevButton.svg?react';
 
 const ChatRoomPage = () => {
+  const idForMe = 'user-me';
+
   // Hook은 무조건 컴포넌트 최상단에서 호출
   const chatListRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();

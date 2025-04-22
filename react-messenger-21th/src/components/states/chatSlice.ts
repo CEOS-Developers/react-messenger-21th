@@ -1,7 +1,7 @@
 // chatSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { chatRooms, me, friends } from '../../mocks/mockData'; // import 수정
 import { loadFromLocalStorage } from '../../utils/storage'; // 경로는 알맞게 조정!
+import jsonData from '../../mocks/mockData.json'; // ← webpack이나 vite에서 json import 지원
 
 export type Message = {
   id: string;
@@ -31,32 +31,51 @@ export type User = {
 interface ChatState {
   chatRooms: ChatRoom[];
   currentChatRoomId: string | null;
-  currentSenderId: string | null;
+  currentSenderId: string;
   users: User[];
 }
 
 // 1. localStorage에서 불러오기
 const savedChatRoomsRaw = loadFromLocalStorage('chatRooms');
 
-// 1-1. isMine, birthday 복원
+// 1-1. isMine 복원
 const reconstructedChatRooms = savedChatRoomsRaw?.map((room: ChatRoom) => ({
   ...room,
   participants: room.participants, // 그대로 유지
   messages: room.messages.map((msg) => ({
     ...msg,
-    isMine: msg.senderId === me.id,
+    isMine: msg.senderId === jsonData.idForMe,
   })),
 }));
 
 // 2. mockData + localStorage 병합
-const initialChatRooms = reconstructedChatRooms ?? chatRooms; // 없으면 mockData fallback
+const fallbackChatRooms: ChatRoom[] = jsonData.chatRooms.map((room) => ({
+  ...room,
+  messages: room.messages.map((msg) => ({
+    ...msg,
+    timestamp: msg.timestamp,
+    isMine: msg.senderId === jsonData.idForMe,
+  })),
+}));
+const initialChatRooms = reconstructedChatRooms ?? fallbackChatRooms;
+
+// birthDay -> date 객체
+const users: User[] = [
+  {
+    ...jsonData.me,
+  },
+  ...jsonData.friends.map((f) => ({
+    ...f,
+    birthday: f.birthday ? new Date(f.birthday) : undefined,
+  })),
+];
 
 // 초기 상태
 const initialState: ChatState = {
   chatRooms: initialChatRooms,
   currentChatRoomId: initialChatRooms[0]?.id || null,
-  currentSenderId: me.id,
-  users: [me, ...friends],
+  currentSenderId: jsonData.idForMe,
+  users,
 };
 
 const chatSlice = createSlice({
@@ -89,6 +108,7 @@ const chatSlice = createSlice({
     switchChatRoom: (state, action: PayloadAction<string>) => {
       state.currentChatRoomId = action.payload;
     },
+
     // 채팅방 추가하기기
     addChatRoom: (
       state,
@@ -100,6 +120,7 @@ const chatSlice = createSlice({
         messages: [],
       });
     },
+
     // 메시지 보는 기준 바꾸기기
     switchSender: (state, action: PayloadAction<string>) => {
       state.currentSenderId = action.payload;
@@ -135,4 +156,5 @@ export const {
   switchSender,
   addReaction,
 } = chatSlice.actions;
+
 export default chatSlice.reducer;
