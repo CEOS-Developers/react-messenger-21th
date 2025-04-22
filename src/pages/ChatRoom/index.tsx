@@ -10,9 +10,11 @@ import MessageInput from './components/MessageInput';
 import MessageContainer from './components/MessageContainer';
 import { useParams } from 'react-router-dom';
 import { useMessagesStore } from '@/store/useMessagesStore';
+import { useChatRoomLisStore } from '@/store/useChatRoomListStore';
 
 export default function ChatRoom() {
 	const { chatRoomId } = useParams();
+	const { setChatRoomList } = useChatRoomLisStore();
 	const { getMessagesByUsers, initMessages, sendMessage } = useMessagesStore();
 	const messagesByUsers = getMessagesByUsers();
 
@@ -40,12 +42,15 @@ export default function ChatRoom() {
 	};
 
 	const handleMessageSubmit = (message: string) => {
-		sendMessage({
-			fromUser: currentUser,
+		const newMessage = {
+			id: crypto.randomUUID(),
 			content: message,
 			createdAt: new Date().toISOString(),
-			id: crypto.randomUUID(),
-		});
+			fromUser: currentUser,
+		};
+
+		sendMessage(newMessage);
+		setChatRoomList(Number(chatRoomId), newMessage);
 	};
 
 	return (
