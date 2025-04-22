@@ -1,4 +1,4 @@
-import chatRoomList from '@/assets/data/chatroomList.json';
+import chatRoomList from '@/assets/data/chatRoomList.json';
 import { ChatRoomDto } from '@/apis/dto';
 
 export const getChatRoomList = () => {
