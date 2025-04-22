@@ -10,7 +10,7 @@ interface ChatRoomState {
   addChat: (roomId: number, newChat: Chat) => void
 
   removeChatRoom: (roomId: number) => void
-  createChatRoom: (roomId: number, members: number[]) => void
+  createChatRoom: (roomId: number, members: number[], roomName?: string) => void
   addMember: (roomId: number, memberId: number[]) => void
 }
 
@@ -59,13 +59,13 @@ export const useChatRoomStore = create<ChatRoomState>((set) => ({
       }
     })
   },
-  createChatRoom: (roomId, members) => {
+  createChatRoom: (roomId, members, roomName) => {
     set((state) => {
       if (!state.chatRoom) return state
 
       const newRoom = {
         chatRoomId: roomId,
-        roomName: null,
+        roomName: roomName || null,
         member: [...members],
         chats: {},
       }

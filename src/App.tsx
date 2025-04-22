@@ -12,11 +12,13 @@ import FriendsList from '@/pages/FriendsList.tsx'
 import ChatList from '@/pages/ChatList.tsx'
 import ProfilePage from '@/pages/ProfilePage.tsx'
 import MemberList from '@/pages/MemberList.tsx'
+import MemberChange from '@/pages/MemberChange.tsx'
+import InviteFriends from '@/pages/InviteFriends.tsx'
+import CreateGroup from '@/pages/CreateGroup.tsx'
+import GroupSettings from '@/pages/GroupSettings.tsx'
 
 import setUserAndChatRoom from './utils/setUserAndChatRoom.ts'
-import MemberChange from './pages/MemberChange.tsx'
 import Layout from './components/Layout.tsx'
-import InviteFriends from './pages/InviteFriends.tsx'
 
 function App() {
   const userId = 1
@@ -31,6 +33,8 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<FriendsList />} />
+            <Route path="/group" element={<CreateGroup />} />
+            <Route path="/group/settings" element={<GroupSettings />} />
             <Route path="/profile/:id" element={<ProfilePage />} />
             <Route path="/chatlist" element={<ChatList />} />
             <Route path="/room/:id" element={<ChatRoom />} />
