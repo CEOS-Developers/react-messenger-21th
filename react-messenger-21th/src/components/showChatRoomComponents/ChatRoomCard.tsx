@@ -1,5 +1,4 @@
 import { Message } from '../states/chatSlice';
-import { idForMe } from '../../mocks/mockData';
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 
@@ -39,6 +38,7 @@ const ChatRoomCard = ({
 }: Props) => {
   const navigate = useNavigate();
   const longPressTimeout = useRef<number | null>(null); // 핀 감지용
+  const idForMe = 'user-me';
 
   const handleClick = () => {
     onActivate(room.id);

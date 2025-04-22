@@ -48,7 +48,8 @@ const reconstructedChatRooms = savedChatRoomsRaw?.map((room: ChatRoom) => ({
   })),
 }));
 
-// 2. mockData + localStorage 병합
+// 2. mockData + localStorage 병합: 룸 번호마다, 메시지 번호로 탐색해서 저장장
+// isMine은 저장 안 해 놨다가 복원시킬 때 계산
 const fallbackChatRooms: ChatRoom[] = jsonData.chatRooms.map((room) => ({
   ...room,
   messages: room.messages.map((msg) => ({
@@ -59,7 +60,8 @@ const fallbackChatRooms: ChatRoom[] = jsonData.chatRooms.map((room) => ({
 }));
 const initialChatRooms = reconstructedChatRooms ?? fallbackChatRooms;
 
-// birthDay -> date 객체
+// 3. User mockData로부터 불러오기기
+// birthDay -> date 객체 변환은 이때! (json은 date객체 못 받음)
 const users: User[] = [
   {
     ...jsonData.me,
