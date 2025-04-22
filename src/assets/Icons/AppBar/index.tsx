@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { useNavigate } from 'react-router'
 import Favourite from './favourite.svg?react'
 import Bell from './bell.svg?react'
 import People from './people-plus.svg?react'
@@ -7,26 +7,25 @@ import List from './list.svg?react'
 import Setting from './setting.svg?react'
 import Back from './back.svg?react'
 import X from './X.svg?react'
-import { useNavigate } from 'react-router'
 
 const HomeIcon = () => {
   return (
-    <IconGroup>
+    <div className="app-bar-icon-group">
       <Favourite />
       <Bell />
       <People />
       <Setting />
-    </IconGroup>
+    </div>
   )
 }
 
 const ChatListIcon = () => {
   return (
-    <IconGroup>
+    <div className="app-bar-icon-group">
       <List />
       <Image />
       <Setting />
-    </IconGroup>
+    </div>
   )
 }
 
@@ -40,9 +39,9 @@ const ChatRoomIcon = () => {
 }
 
 const ProfileIcon = () => (
-  <IconGroup>
+  <div>
     <Setting />
-  </IconGroup>
+  </div>
 )
 
 const BackIcon = () => {
@@ -70,11 +69,6 @@ const CustomBackIcon = ({ onClick }: { onClick: () => void }) => {
     </div>
   )
 }
-
-const IconGroup = styled.div`
-  display: flex;
-  gap: 12px;
-`
 
 export {
   HomeIcon,

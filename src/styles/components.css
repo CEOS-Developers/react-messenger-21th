@@ -35,6 +35,9 @@
   .top-bar {
     @apply flex gap-1;
   }
+  .app-bar-icon-group {
+    @apply flex gap-3;
+  }
 
   .list {
     @apply flex flex-col gap-4;
