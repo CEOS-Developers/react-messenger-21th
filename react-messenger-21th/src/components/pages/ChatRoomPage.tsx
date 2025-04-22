@@ -2,6 +2,8 @@ import { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../states/store';
 import { switchSender } from '../states/chatSlice';
+import { idForMe } from '../../mocks/mockData';
+import { useParams, useNavigate } from 'react-router-dom'; // roomID 받아올 예정
 
 import * as s from '../styles/ChatRoomPageStyles';
 import ChatBoard from '../chatComponents/ChatBoard';
@@ -11,17 +13,11 @@ import SearchButtonIcon from '/public/assets/icons/SearchUpperBar.svg?react';
 import MenuButtonIcon from '/public/assets/icons/Hamburger.svg?react';
 import PlusButtonIcon from '/public/assets/icons/PlusNotSelected.svg?react';
 import PrevButton from '/public/assets/icons/PrevButton.svg?react';
-import { useParams, useNavigate } from 'react-router-dom'; // roomID 받아올 예정
 
 const ChatRoomPage = () => {
   // Hook은 무조건 컴포넌트 최상단에서 호출
   const chatListRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-
-  // prev 버튼
-  const handleBack = () => {
-    navigate('/chat-rooms'); // 채팅방 목록 페이지 경로로
-  };
 
   const { roomId } = useParams(); // URL에서 roomId 받아오기
   const dispatch = useDispatch();
@@ -48,6 +44,12 @@ const ChatRoomPage = () => {
     .filter((u): u is (typeof users)[number] => Boolean(u));
 
   const partner = roomUsers.find((user) => user.id !== currentSenderId);
+
+  // prev 버튼
+  const handleBack = () => {
+    navigate('/chat-rooms'); // 채팅방 목록 페이지 경로로
+    dispatch(switchSender(idForMe));
+  };
 
   const handlePartnerClick = () => {
     if (partner?.id) {
