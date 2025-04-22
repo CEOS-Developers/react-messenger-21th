@@ -68,3 +68,14 @@ export const MessageWrapper = styled.div<{ isMine: boolean }>`
   align-items: flex-end;
   flex-direction: ${({ isMine }) => (isMine ? 'row-reverse' : 'row')};
 `;
+
+export const ReactionEmoji = styled.span<{ isMine: boolean }>`
+  position: absolute;
+  bottom: -10px;
+  ${({ isMine }) => (isMine ? 'left: -10px;' : 'right: -10px;')}
+  font-size: 16px;
+  background: white;
+  border-radius: 50%;
+  padding: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+`;

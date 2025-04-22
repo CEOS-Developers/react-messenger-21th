@@ -9,6 +9,7 @@ export type Message = {
   text: string;
   timestamp: string;
   isMine: boolean;
+  reaction?: '❤️' | '🥹' | '😊' | null;
 };
 
 export type ChatRoom = {
@@ -103,9 +104,35 @@ const chatSlice = createSlice({
     switchSender: (state, action: PayloadAction<string>) => {
       state.currentSenderId = action.payload;
     },
+
+    // 감정 표현 추가하기
+    addReaction: (
+      state,
+      action: PayloadAction<{
+        roomId: string;
+        messageId: string;
+        reaction: '❤️' | '🥹' | '😊' | null;
+      }>,
+    ) => {
+      const { roomId, messageId, reaction } = action.payload;
+      const room = state.chatRooms.find((r) => r.id === roomId);
+      const message = room?.messages.find((m) => m.id === messageId);
+      if (message) {
+        message.reaction =
+          message.reaction === reaction ? null : action.payload.reaction;
+
+        // 저장
+        localStorage.setItem('chatRooms', JSON.stringify(state.chatRooms));
+      }
+    },
   },
 });
 
-export const { sendMessage, switchChatRoom, addChatRoom, switchSender } =
-  chatSlice.actions;
+export const {
+  sendMessage,
+  switchChatRoom,
+  addChatRoom,
+  switchSender,
+  addReaction,
+} = chatSlice.actions;
 export default chatSlice.reducer;

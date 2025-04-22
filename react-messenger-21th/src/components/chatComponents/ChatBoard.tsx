@@ -98,6 +98,8 @@ const ChatBoard = () => {
                     group.messages[msgIndex - 1].senderId !== msg.senderId
                   }
                   showTimestamp={showTimestamp} // 마지막 메시지에 표시
+                  messageId={msg.id}
+                  reaction={msg.reaction}
                 />
               );
             })}
