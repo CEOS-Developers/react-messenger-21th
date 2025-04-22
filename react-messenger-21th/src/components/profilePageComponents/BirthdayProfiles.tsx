@@ -4,6 +4,7 @@ import { useState } from 'react'; // 토글 버튼용
 import ProfileModal from '../profileModalComponents/ProfileModal';
 import * as s from '../styles/BirthdayProfileStyles';
 
+import BirthdayIcon from '/public/assets/icons/BirthdayIcon.svg?react';
 import GivePresentIcon from '/public/assets/icons/GivePresentIcon.svg?react';
 import ToggleDown from '/public/assets/icons/ToggleDown.svg?react';
 import ToggleUp from '/public/assets/icons/ToggleUp.svg?react';
@@ -53,7 +54,12 @@ const BirthdayProfiles = ({ users }: Props) => {
         {isOpen &&
           birthdayUsers.map((user) => (
             <s.BirthdayItem key={user.id} onClick={() => setSelectedUser(user)}>
-              <s.ProfileImage src={user.image} />
+              <s.ProfileImgGroup>
+                <s.ProfileImage src={user.image} width="40px" height="40px" />
+                <s.BirthdayIconWrapper>
+                  <BirthdayIcon width="24px" height="24px" />
+                </s.BirthdayIconWrapper>
+              </s.ProfileImgGroup>
               <s.TextGroup>
                 <s.Name>{user.name}</s.Name>
                 <s.Birthday>

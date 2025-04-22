@@ -47,13 +47,33 @@ export const BirthdayItem = styled.div`
   align-items: flex-start;
 `;
 
-export const ProfileImage = styled.img`
+export const ProfileImgGroup = styled.div`
   display: flex;
   width: 46px;
   height: 45px;
   justify-content: center;
   align-items: center;
+  position: relative;
   align-self: center;
+`;
+export const BirthdayIconWrapper = styled.div`
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+`;
+
+export const ProfileImage = styled.img`
+  display: flex;
+  left: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const TextGroup = styled.div`
