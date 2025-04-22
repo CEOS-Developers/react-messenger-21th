@@ -1,4 +1,4 @@
-import type { MessageDto, UserDto } from '@/pages/ChatRoom/dto';
+import type { MessageDto, UserDto } from '@/apis/dto';
 
 // createMessagesByUsers
 export interface messagesByUserDto {

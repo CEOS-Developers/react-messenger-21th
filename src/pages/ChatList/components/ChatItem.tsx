@@ -1,4 +1,4 @@
-import { UserDto } from '@/pages/ChatRoom/dto';
+import { UserDto } from '@/apis/dto';
 import { createOtherUserContent } from '@/utils/createOtherUserContent';
 import { formatCreatedAt } from '@/utils/formatCreatedAt';
 import ChatRoomImg from './ChatRoomImg';

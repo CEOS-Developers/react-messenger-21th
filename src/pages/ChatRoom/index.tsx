@@ -6,7 +6,7 @@ import { createOtherUserContent } from '@/utils/createOtherUserContent';
 import SubTopBar from '@/components/SubTopBar';
 
 import type { messagesByUserDto } from '@/utils/dto';
-import type { MessageDto, UserDto } from './dto';
+import type { MessageDto, UserDto } from '../../apis/dto';
 
 import MessageInput from './components/MessageInput';
 import MessageContainer from './components/MessageContainer';

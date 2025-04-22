@@ -1,5 +1,5 @@
 import allMessages from '@/assets/data/messages.json';
-import { MessageDto, UserDto } from '@/pages/ChatRoom/dto';
+import { MessageDto, UserDto } from '@/apis/dto';
 
 interface AllMessagesResponse {
 	chatRoomId: number;

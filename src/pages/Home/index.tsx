@@ -2,7 +2,7 @@ import { getRecentActiveFriends } from '@/apis/getRecentActiveFriends';
 import MainTopBar from '@/components/MainTopBar';
 import RecentActiveFriend from '@/components/RecentActiveFriend';
 import { useEffect, useState } from 'react';
-import type { UserDto } from '../ChatRoom/dto';
+import type { UserDto } from '../../apis/dto';
 import { getAllFriends } from '@/apis/getAllFriends';
 import FriendsItem from './components/FriendItem';
 import DefaultProfile from '@/components/DefaultProfile';

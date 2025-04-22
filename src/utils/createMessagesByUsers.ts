@@ -1,4 +1,4 @@
-import type { MessageDto } from '@/pages/ChatRoom/dto';
+import type { MessageDto } from '@/apis/dto';
 import type { messagesByUserDto } from './dto';
 
 import { formatCreatedAt } from './formatCreatedAt';

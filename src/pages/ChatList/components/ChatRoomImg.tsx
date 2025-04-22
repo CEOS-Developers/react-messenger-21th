@@ -1,6 +1,6 @@
 import DefaultProfile from '@/components/DefaultProfile';
 import GroupProfile from '@/components/GroupProfile';
-import { UserDto } from '@/pages/ChatRoom/dto';
+import { UserDto } from '@/apis/dto';
 import { CURRENT_USER_ID } from '@/utils/constants';
 import { getProfileColor } from '@/utils/getProfileColor';
 

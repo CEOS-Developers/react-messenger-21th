@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { ChatRoomDto, getChatRoomList } from '@/apis/getChatRoomList';
 import RecentActiveFriend from '@/components/RecentActiveFriend';
 import Divider from '@/components/Divider';
-import { UserDto } from '../ChatRoom/dto';
+import { UserDto } from '../../apis/dto';
 import { getRecentActiveFriends } from '@/apis/getRecentActiveFriends';
 
 export default function ChatList() {

@@ -1,4 +1,4 @@
-import { UserDto } from '@/pages/ChatRoom/dto';
+import { UserDto } from '@/apis/dto';
 import DefaultProfile from './DefaultProfile';
 import { getProfileColor } from '@/utils/getProfileColor';
 

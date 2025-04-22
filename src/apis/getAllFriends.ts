@@ -1,5 +1,5 @@
 import users from '@/assets/data/users.json';
-import { UserDto } from '@/pages/ChatRoom/dto';
+import { UserDto } from '@/apis/dto';
 import { CURRENT_USER_ID } from '@/utils/constants';
 
 export const getAllFriends = () => {

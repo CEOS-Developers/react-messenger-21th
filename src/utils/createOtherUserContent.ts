@@ -1,4 +1,4 @@
-import type { UserDto } from '@/pages/ChatRoom/dto';
+import type { UserDto } from '@/apis/dto';
 import { CURRENT_USER_ID } from './constants';
 
 export const createOtherUserContent = (joinedUsers: UserDto[]) => {

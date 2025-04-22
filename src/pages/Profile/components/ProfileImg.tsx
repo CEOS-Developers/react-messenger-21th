@@ -1,5 +1,5 @@
 import Profile from '@/assets/icons/profile.svg?react';
-import { UserDto } from '@/pages/ChatRoom/dto';
+import { UserDto } from '@/apis/dto';
 import { getProfileColor } from '@/utils/getProfileColor';
 import clsx from 'clsx';
 
