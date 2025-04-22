@@ -1,24 +1,19 @@
 import MainTopBar from '@/components/MainTopBar';
 import NavBar from '@/components/NavBar';
 import ChatItem from './components/ChatItem';
-import { useEffect, useState } from 'react';
-import { getChatRoomList } from '@/apis/getChatRoomList';
+import { useEffect } from 'react';
 import RecentActiveFriend from '@/components/RecentActiveFriend';
 import Divider from '@/components/Divider';
-import { ChatRoomDto, UserDto } from '../../apis/dto';
 import { getRecentActiveFriends } from '@/apis/getRecentActiveFriends';
+import { useChatRoomLisStore } from '@/store/useChatRoomListStore';
 
 export default function ChatList() {
-	const [chatRoomList, setChatRoomList] = useState<ChatRoomDto[]>([]);
-	const [friends, setFriends] = useState<UserDto[]>([]);
+	const { chatRoomList, initChatRoomList } = useChatRoomLisStore();
+	const friends = getRecentActiveFriends();
 
 	// 초기 데이터 페칭
 	useEffect(() => {
-		const chatRoomListResponse = getChatRoomList();
-		const friendsResponse = getRecentActiveFriends();
-
-		setChatRoomList(chatRoomListResponse);
-		setFriends(friendsResponse);
+		if (chatRoomList.length === 0) initChatRoomList();
 	}, []);
 
 	return (
