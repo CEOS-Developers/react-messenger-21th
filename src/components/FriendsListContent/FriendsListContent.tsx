@@ -6,9 +6,11 @@ import FriendsViewer from './FriendsViewer'
 
 import { useUserStore } from '@/stores/useUserStore'
 import findUser from '@/utils/findUser'
+import { useChatRoomStore } from '@/stores/useChatRoomStore'
 
 const FriendsListContent = () => {
   const { user } = useUserStore()
+  const { chatRoom } = useChatRoomStore()
   const nav = useNavigate()
 
   const friendsData = user.friends
@@ -22,6 +24,21 @@ const FriendsListContent = () => {
     })
     .filter((friend) => friend !== null)
     .sort((a, b) => a.name.localeCompare(b.name, 'ko-KR'))
+
+  const joinedGroupChat = user.joinedRooms
+    .map((joineddRoom) => {
+      const roomData = chatRoom?.find(
+        (room) => room.chatRoomId === joineddRoom.chatRoomId
+      )
+      if (!roomData) return null
+
+      /* 1:1 채팅이거나 채팅방 이름이 없는 단체 채팅방은 제외 */
+      const { chatRoomId, member, roomName } = roomData
+      if (roomName === null || member.length < 3) return null
+
+      return { chatRoomId, member, roomName }
+    })
+    .filter((room) => room !== null)
 
   return (
     <div className="container">
@@ -39,7 +56,10 @@ const FriendsListContent = () => {
         </div>
       </div>
 
-      <FriendsViewer friendsData={friendsData} />
+      <FriendsViewer
+        friendsData={friendsData}
+        joinedGroupChat={joinedGroupChat}
+      />
     </div>
   )
 }

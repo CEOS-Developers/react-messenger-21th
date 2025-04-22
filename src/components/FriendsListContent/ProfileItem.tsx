@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router'
-import { ProfileCircleDefault } from '@/assets/Icons/Profile'
 import PartitionItem from '../Commons/PartitionItem'
 
 const ProfileItem = ({
@@ -24,22 +23,6 @@ const ProfileItem = ({
         </p>
       </div>
     </PartitionItem>
-  )
-  return (
-    <div
-      className="flex cursor-pointer flex-col"
-      onClick={() => nav(`/profile/${id}`)}>
-      <div className="flex gap-3 py-2.5">
-        <ProfileCircleDefault color={profileColor} />
-        <div className="flex-1">
-          <p className="font-Body-1-b">{name}</p>
-          <p className="font-Body-2-r text-gray12 min-h-[21px]">
-            {profileMessage}
-          </p>
-        </div>
-      </div>
-      <div className="partition"></div>
-    </div>
   )
 }
 
