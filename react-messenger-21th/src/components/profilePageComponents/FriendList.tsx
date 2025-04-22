@@ -1,5 +1,4 @@
 // src/components/friendsComponents/FriendList.tsx
-import { idForMe } from '../../mocks/mockData'; // 내 ID 가져오기
 import { useState } from 'react'; // 토글 버튼용
 
 import * as s from '../styles/FriendListStyles';
@@ -20,6 +19,8 @@ interface Props {
 }
 
 const FriendList = ({ users }: Props) => {
+  const idForMe = 'user-me';
+
   const [isOpen, setIsOpen] = useState(true); // 기본값: 토글 오픈
   const friends = users.filter((user) => user.id !== idForMe); // 나 빼기!
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
