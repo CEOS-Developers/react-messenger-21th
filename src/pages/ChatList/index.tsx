@@ -24,7 +24,7 @@ export default function ChatList() {
 	return (
 		<div>
 			<MainTopBar content="채팅" />
-			<div className=" h-[38.5rem] overflow-scroll no-scrollbar">
+			<div className="h-[38.5rem] overflow-scroll no-scrollbar">
 				<div className="px-5 py-2.5 flex gap-2 overflow-scroll no-scrollbar">
 					{friends.map((friend) => (
 						<RecentActiveFriend key={friend.id} {...friend} />

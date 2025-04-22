@@ -8,7 +8,7 @@ import Battery from '@/assets/icons/battery.svg?react';
 export default function Frame({ children }: { children: ReactNode }) {
 	const location = useLocation();
 	const pathname = location.pathname;
-	const bgColor = pathname === '/chatlist' ? 'bg-black-000' : 'bg-black-200';
+	const bgColor = pathname === '/chatlist' || pathname === '/' ? 'bg-black-000' : 'bg-black-200';
 
 	return (
 		<div

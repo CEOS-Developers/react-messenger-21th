@@ -26,7 +26,6 @@ export default function ChatRoomImg({ joinedUsers }: { joinedUsers: UserDto[] })
 	})();
 
 	if (targetUsers.length === 1) {
-		// TODO: getProfileColor 로직을 Profile 컴포넌트 내부로 이동
 		const bgColor = getProfileColor('background', targetUsers[0].color);
 		const pathColor = getProfileColor('path', targetUsers[0].color);
 		const isActive = targetUsers[0].isActive;
