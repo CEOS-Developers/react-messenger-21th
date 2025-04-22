@@ -92,6 +92,8 @@ const IconGroup = styled.div`
 `;
 
 const FriendsBoard = styled.div`
+  width: 100%;
+  height: 100%;
   background-color: ${({ theme }) => theme.colors.grey03};
   overflow-y: auto;
 `;
@@ -108,6 +110,9 @@ const BottomBar = styled.div`
   gap: 12px;
 `;
 
-const MyProfileContainer = styled.div``;
+const MyProfileContainer = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 
 export default FriendsPage;

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M9.55469 10L13.1094 8L9.55469 10Z" fill="#FEFEFE"/>
+  <path d="M9.55469 10L13.1094 8" stroke="#FEFEFE" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9.55469 10V14V10Z" fill="#FEFEFE"/>
+  <path d="M9.55469 10V14" stroke="#FEFEFE" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9.55467 10L6 8L9.55467 10Z" fill="#FEFEFE"/>
+  <path d="M9.55467 10L6 8" stroke="#FEFEFE" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9.55469 10L13.1094 12L9.55469 10Z" fill="#FEFEFE"/>
+  <path d="M9.55469 10L13.1094 12" stroke="#FEFEFE" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9.55469 6V10V6Z" fill="#FEFEFE"/>
+  <path d="M9.55469 6V10" stroke="#FEFEFE" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9.55467 10L6 12L9.55467 10Z" fill="#FEFEFE"/>
+  <path d="M9.55467 10L6 12" stroke="#FEFEFE" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="10" cy="10" r="9.4" stroke="#FEFEFE" stroke-width="1.2"/>
+</svg>

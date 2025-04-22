@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import ProfileModal from '../profileModalComponents/ProfileModal';
 
@@ -13,16 +14,27 @@ interface Props {
 }
 
 const MyProfile = ({ me }: Props) => {
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+
   return (
-    <MyProfileWrapper>
-      <ProfileInfoGroup>
-        <ProfileImage src={me.image} alt="내 프로필" />
-        <MyName>{me.name}</MyName>
-      </ProfileInfoGroup>
-      <StatusMessage>
-        <StatusText>{me.statusMessage || '상태메시지'}</StatusText>
-      </StatusMessage>
-    </MyProfileWrapper>
+    <div>
+      <MyProfileWrapper onClick={() => setSelectedUser(me)}>
+        <ProfileInfoGroup>
+          <ProfileImage src={me.image} alt="내 프로필" />
+          <MyName>{me.name}</MyName>
+        </ProfileInfoGroup>
+        <StatusMessage>
+          <StatusText>{me.statusMessage || '상태메시지'}</StatusText>
+        </StatusMessage>
+      </MyProfileWrapper>
+
+      {selectedUser && (
+        <ProfileModal
+          user={selectedUser}
+          onClose={() => setSelectedUser(null)}
+        />
+      )}
+    </div>
   );
 };
 
