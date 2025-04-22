@@ -1,5 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
+import ProfileModal from '../profileModalComponents/ProfileModal';
 
 interface User {
   id: string;
@@ -12,7 +12,7 @@ interface Props {
   me: User;
 }
 
-const MyProfile: React.FC<Props> = ({ me }) => {
+const MyProfile = ({ me }: Props) => {
   return (
     <MyProfileWrapper>
       <ProfileInfoGroup>
