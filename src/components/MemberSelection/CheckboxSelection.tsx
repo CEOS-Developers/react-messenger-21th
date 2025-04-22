@@ -5,7 +5,7 @@ import ActionBar from '../Commons/ActionBar'
 import SearchBox from '../Commons/SearchBox'
 import PartitionItem from '../Commons/PartitionItem'
 import HorizontalScrollContainer from './HorizontalScrollContainer'
-import { BackIconX } from '@/assets/Icons/AppBar'
+import { CustomBackIcon } from '@/assets/Icons/AppBar'
 import CheckBox from '@/assets/Icons/Checkbox/checkbox.svg?react'
 import CheckedBox from '@/assets/Icons/Checkbox/checkbox_checked.svg?react'
 
@@ -15,12 +15,15 @@ import { filterByName } from '@/utils/filterByName'
 
 const CheckboxSelection = ({
   handleNextAction,
+  handleBackAction,
 }: {
   handleNextAction: (selectedIds: number[]) => void
+  handleBackAction: () => void
 }) => {
   const location = useLocation()
   const memberIds = location.state?.memberIds || []
-  const [selectedIds, setSelectedIds] = useState<number[]>([])
+  const selectedIds_ = location.state?.selectedIds || []
+  const [selectedIds, setSelectedIds] = useState<number[]>(selectedIds_)
   const [searchText, setSearchText] = useState('')
 
   const { user } = useUserStore()
@@ -51,7 +54,7 @@ const CheckboxSelection = ({
     <div className="container">
       <div className="bg-white">
         <ActionBar
-          backIcon={<BackIconX />}
+          backIcon={<CustomBackIcon onClick={handleBackAction} />}
           title="멤버 선택"
           isActive={selectedIds.length !== 0}
           nextText="다음"

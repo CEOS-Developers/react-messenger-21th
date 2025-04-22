@@ -11,11 +11,17 @@ const CreateGroup = () => {
       },
     })
   }
+  const handleBack = () => {
+    nav('/')
+  }
 
   return (
     <div className="wrapper">
       <StatusBar color="white" />
-      <CheckboxSelection handleNextAction={handleNext} />
+      <CheckboxSelection
+        handleNextAction={handleNext}
+        handleBackAction={handleBack}
+      />
     </div>
   )
 }

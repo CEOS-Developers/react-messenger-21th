@@ -24,11 +24,17 @@ const InviteFriends = () => {
     addMember(roomId, selectedIds)
     nav(-2)
   }
+  const handleBack = () => {
+    nav(-1)
+  }
 
   return (
     <div className="wrapper">
       <StatusBar color="white" />
-      <CheckboxSelection handleNextAction={handleInviteFriends} />
+      <CheckboxSelection
+        handleNextAction={handleInviteFriends}
+        handleBackAction={handleBack}
+      />
     </div>
   )
 }

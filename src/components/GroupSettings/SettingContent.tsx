@@ -1,18 +1,20 @@
+import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
+
 import { useUserStore } from '@/stores/useUserStore'
 import { useChatRoomStore } from '@/stores/useChatRoomStore'
 import { SYSTEM_ID } from '@/utils/constants'
 import getRoomName from '@/utils/getRoomName'
+import findUser from '@/utils/findUser'
+
+import ActionBar from '../Commons/ActionBar'
+import DeletableMemberItem from '../MemberSelection/DeletableMemberItem'
+import GroupItem from './GroupItem'
 import { ProfileCircleBig, ProfileCircleDefault } from '@/assets/Icons/Profile'
 import Camera from '@/assets/Icons/List/camera.svg?react'
-import ActionBar from '../Commons/ActionBar'
-import { BackIcon } from '@/assets/Icons/AppBar'
 import Plus from '@/assets/Icons/List/plus.svg?react'
 import Reset from '@/assets/Icons/List/group-x.svg?react'
-import GroupItem from './GroupItem'
-import { useState } from 'react'
-import DeletableMemberItem from '../MemberSelection/DeletableMemberItem'
-import findUser from '@/utils/findUser'
+import { CustomBackIcon } from '@/assets/Icons/AppBar'
 
 interface FriendType {
   id: number
@@ -76,11 +78,15 @@ const SettingContent = () => {
     setSelectedIds(newIds)
   }
 
+  const handleBack = () => {
+    nav('/group', { state: { selectedIds }, replace: true })
+  }
+
   return (
     <div className="container">
       <div className="bg-white">
         <ActionBar
-          backIcon={<BackIcon />}
+          backIcon={<CustomBackIcon onClick={handleBack} />}
           title="그룹 프로필 설정"
           isActive={true}
           nextText="만들기"
@@ -117,7 +123,7 @@ const SettingContent = () => {
       <div className="flex flex-col gap-1 pt-2.5">
         <p className="font-Body-2-b px-5 py-2.5">멤버 {member.length}</p>
         <div className="scrollbar-none flex flex-wrap gap-5 overflow-auto px-5">
-          <GroupItem text="추가" onClick={() => nav(-1)}>
+          <GroupItem text="추가" onClick={handleBack}>
             <Plus />
           </GroupItem>
           <GroupItem text={user.name}>

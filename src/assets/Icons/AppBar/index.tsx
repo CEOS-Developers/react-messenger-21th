@@ -63,6 +63,14 @@ const BackIconX = () => {
   )
 }
 
+const CustomBackIcon = ({ onClick }: { onClick: () => void }) => {
+  return (
+    <div className="cursor-pointer" onClick={onClick}>
+      <Back />
+    </div>
+  )
+}
+
 const IconGroup = styled.div`
   display: flex;
   gap: 12px;
@@ -75,4 +83,5 @@ export {
   ProfileIcon,
   BackIcon,
   BackIconX,
+  CustomBackIcon,
 }
