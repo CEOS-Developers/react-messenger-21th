@@ -13,7 +13,11 @@ export default function FriendsItem({
 	const pathColor = getProfileColor('path', color);
 
 	return (
-		<button onClick={() => {}} className="w-full py-2.5 px-5 grid grid-cols-[42px_1fr] gap-0.5 items-center">
+		<button
+			onClick={() => {}}
+			className="w-full py-2.5 px-5 grid grid-cols-[42px_1fr] gap-0.5 items-center 
+				active:bg-black-100 transition-colors"
+		>
 			<div className="flex justify-center -ml-1.5">
 				<DefaultProfile bgColor={bgColor} pathColor={pathColor} />
 			</div>

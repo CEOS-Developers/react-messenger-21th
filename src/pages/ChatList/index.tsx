@@ -2,10 +2,10 @@ import MainTopBar from '@/components/MainTopBar';
 import NavBar from '@/components/NavBar';
 import ChatItem from './components/ChatItem';
 import { useEffect, useState } from 'react';
-import { ChatRoomDto, getChatRoomList } from '@/apis/getChatRoomList';
+import { getChatRoomList } from '@/apis/getChatRoomList';
 import RecentActiveFriend from '@/components/RecentActiveFriend';
 import Divider from '@/components/Divider';
-import { UserDto } from '../../apis/dto';
+import { ChatRoomDto, UserDto } from '../../apis/dto';
 import { getRecentActiveFriends } from '@/apis/getRecentActiveFriends';
 
 export default function ChatList() {

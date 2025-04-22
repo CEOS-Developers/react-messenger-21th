@@ -19,7 +19,7 @@ export default function Profile() {
 					</div>
 					<div className="mt-[3.875rem] flex flex-col items-center">
 						<div className="head2-semibold mb-2">{currentUserInfo.name || '알수없음'}</div>
-						<div className="body2-regular text-black-400 mb-12">azerosong@gmail.com</div>
+						<div className="body2-regular text-black-400 mb-12">{currentUserInfo.email}</div>
 
 						<Button Icon={Chat} content={'나와의 채팅'} />
 						<Button Icon={Edit} content={'프로필 편집하기'} />

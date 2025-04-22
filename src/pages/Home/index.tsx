@@ -1,8 +1,6 @@
 import { getRecentActiveFriends } from '@/apis/getRecentActiveFriends';
 import MainTopBar from '@/components/MainTopBar';
 import RecentActiveFriend from '@/components/RecentActiveFriend';
-import { useEffect, useState } from 'react';
-import type { UserDto } from '../../apis/dto';
 import { getAllFriends } from '@/apis/getAllFriends';
 import FriendsItem from './components/FriendItem';
 import DefaultProfile from '@/components/DefaultProfile';
@@ -10,32 +8,28 @@ import { getCurrentUserInfo } from '@/apis/getCurrentUserInfo';
 import { getProfileColor } from '@/utils/getProfileColor';
 import Divider from '@/components/Divider';
 import NavBar from '@/components/NavBar';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
-	const [friends, setFriends] = useState<UserDto[]>([]);
-	const [recentActiveFriends, setRecentActiveFriends] = useState<UserDto[]>([]);
-	const [currentUserInfo, setCurrentUserInfo] = useState<UserDto | null>(null);
+	const nav = useNavigate();
+
+	const friends = getAllFriends();
+	const recentActiveFriends = getRecentActiveFriends();
+	const currentUserInfo = getCurrentUserInfo();
 
 	const currentUserBgColor = getProfileColor('background', currentUserInfo?.color || 'blue');
 	const currentUserPathColor = getProfileColor('path', currentUserInfo?.color || 'blue');
-
-	// 초기 데이터 페칭
-	useEffect(() => {
-		const friendsResponse = getAllFriends();
-		const recentActiveFriendsResponse = getRecentActiveFriends();
-		const currentUserInfoResponse = getCurrentUserInfo();
-
-		setFriends(friendsResponse);
-		setRecentActiveFriends(recentActiveFriendsResponse);
-		setCurrentUserInfo(currentUserInfoResponse);
-	}, []);
 
 	return (
 		<div>
 			<MainTopBar content="친구" />
 
 			<div className=" h-[38.5rem] overflow-scroll no-scrollbar">
-				<button className="flex w-full gap-2.5 items-center px-5 py-[1.125rem] head2-semibold">
+				<button
+					onClick={() => nav('/profile')}
+					className="flex w-full gap-2.5 items-center px-5 py-[1.125rem] head2-semibold
+					active:bg-black-100 transition-colors"
+				>
 					<DefaultProfile isMyProfile={true} bgColor={currentUserBgColor} pathColor={currentUserPathColor} />
 					{currentUserInfo?.name || '알수없음'}
 				</button>
@@ -52,7 +46,7 @@ export default function Home() {
 				<Divider />
 				<div className="text-black-500 caption1-medium mx-5 mt-1 mb-2">친구 {friends.length}</div>
 
-				<div>
+				<div className="pb-2.5">
 					{friends.map((friend) => (
 						<FriendsItem {...friend} />
 					))}

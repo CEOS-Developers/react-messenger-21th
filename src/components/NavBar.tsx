@@ -27,13 +27,16 @@ export default function NavBar() {
 	];
 
 	return (
-		<div className="grow h-[5.875rem] flex justify-between px-[4.25rem] py-4 bg-black-000 border-t border-black-200 rounded-b-4xl">
+		<div
+			className="relative z-20 grow h-[5.875rem] flex justify-between px-[4.25rem]
+				pt-2 pb-4 bg-black-000 border-t border-black-200 rounded-b-4xl"
+		>
 			{tabs.map((tab) => (
 				<button
 					key={tab.content}
 					onClick={() => nav(tab.href)}
 					className={clsx(
-						'w-9 h-12 flex flex-col items-center justify-between caption1-medium',
+						'w-13 h-16 p-2 flex flex-col items-center justify-between caption1-medium',
 						pathname === tab.href ? 'text-main-400' : 'text-black-400',
 					)}
 				>

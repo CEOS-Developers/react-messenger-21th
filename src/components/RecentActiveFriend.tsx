@@ -8,7 +8,7 @@ export default function RecentActiveFriend({ name, color, isActive }: UserDto) {
 
 	return (
 		<button
-			className="px-4 py-2.5 flex flex-col gap-2.5 items-center hover:bg-black-50 transition-colors
+			className="px-4 py-2.5 flex flex-col gap-2.5 items-center active:bg-black-100 transition-colors
         border border-black-100 rounded-2xl text-black-500 caption1-regular"
 		>
 			<DefaultProfile bgColor={bgColor} pathColor={pathColor} hasBorder={false} isActive={isActive} />
