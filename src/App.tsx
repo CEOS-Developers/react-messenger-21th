@@ -6,6 +6,7 @@ import ChatRoom from './pages/ChatRoom';
 
 import '@/styles/global.css';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 					<Route path="/" element={<Home />} />
 					<Route path="/chatlist" element={<Chats />} />
 					<Route path="/chatroom/:chatRoomId" element={<ChatRoom />} />
+					<Route path="/profile" element={<Profile />} />
 				</Routes>
 			</Frame>
 		</BrowserRouter>
