@@ -28,7 +28,7 @@ export const UpperBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
+  padding: 12px 16px 12px 20px;
   background-color: white;
   border-bottom: 1px solid #ddd;
   z-index: 100;
@@ -48,7 +48,15 @@ export const ChatText = styled.span`
 export const RightButtons = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
 `;
 
 export const ChatRoomList = styled.div`

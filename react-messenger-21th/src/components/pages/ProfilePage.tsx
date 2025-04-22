@@ -27,10 +27,18 @@ const FriendsPage = () => {
       <s.UpperBar>
         <s.Title>친구</s.Title>
         <s.IconGroup>
-          <SearchUpperBar width="18px" height="18px" />
-          <AddFriendButton width="20px" height="18.961px" />
-          <MusicButton width="32px" height="32px" />
-          <SettingButton width="18px" height="18px" />
+          <s.IconContainer>
+            <SearchUpperBar width="18px" height="18px" />
+          </s.IconContainer>
+          <s.IconContainer>
+            <AddFriendButton width="20px" height="18.961px" />
+          </s.IconContainer>
+          <s.IconContainer>
+            <MusicButton width="32px" height="32px" />
+          </s.IconContainer>
+          <s.IconContainer>
+            <SettingButton width="18px" height="18px" />
+          </s.IconContainer>
         </s.IconGroup>
       </s.UpperBar>
 

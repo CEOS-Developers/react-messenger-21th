@@ -43,9 +43,15 @@ const ShowChatRoomPage = () => {
       <s.UpperBar>
         <s.ChatText>채팅</s.ChatText>
         <s.RightButtons>
-          <SearchButtonIcon width="16px" height="16px" />
-          <PlusChatButton width="16px" height="14px" />
-          <SettingButtonIcon width="18px" height="18px" />
+          <s.ButtonContainer>
+            <SearchButtonIcon width="16px" height="16px" />
+          </s.ButtonContainer>
+          <s.ButtonContainer>
+            <PlusChatButton width="16px" height="14px" />
+          </s.ButtonContainer>
+          <s.ButtonContainer>
+            <SettingButtonIcon width="18px" height="18px" />
+          </s.ButtonContainer>
         </s.RightButtons>
       </s.UpperBar>
 

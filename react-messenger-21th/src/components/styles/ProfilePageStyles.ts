@@ -37,7 +37,7 @@ export const IconGroup = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 `;
 
 export const FriendsBoard = styled.div`
@@ -62,4 +62,13 @@ export const BottomBar = styled.div`
 export const MyProfileContainer = styled.div`
   width: 100%;
   height: 100%;
+`;
+
+export const IconContainer = styled.div`
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
 `;
