@@ -46,3 +46,59 @@ export const BottomBarContainer = styled.div`
   align-items: flex-end;
   gap: 12px;
 `;
+
+export const PlusButtonWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 12px; // 여기만 바닥에서 띄움
+`;
+
+// 왼쪽, 가운데, 오른쪽 그룹 정렬
+export const LeftGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const CenterGroup = styled.div`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+`;
+
+export const PartnerInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+`;
+
+export const RightGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+
+export const CurrentPartnersName = styled.span`
+  cursor: pointer;
+  margin: 0px;
+  color: var(--Grey-Grey09, #111827);
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.24px;
+`;
+
+export const CurrentUsersNumber = styled.span`
+  color: var(--Grey-Grey04, #9ca3af);
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.24px;
+`;

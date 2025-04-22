@@ -1,7 +1,9 @@
 // src/components/friendsComponents/BirthdayProfiles.tsx
-import React from 'react';
-import styled from 'styled-components';
 import { useState } from 'react'; // 토글 버튼용
+
+import ProfileModal from '../profileModalComponents/ProfileModal';
+import * as s from '../styles/BirthdayProfileStyles';
+
 import GivePresentIcon from '/public/assets/icons/GivePresentIcon.svg?react';
 import ToggleDown from '/public/assets/icons/ToggleDown.svg?react';
 import ToggleUp from '/public/assets/icons/ToggleUp.svg?react';
@@ -18,8 +20,10 @@ interface Props {
   users: User[];
 }
 
-const BirthdayProfiles: React.FC<Props> = ({ users }) => {
+const BirthdayProfiles = ({ users }: Props) => {
   const [isOpen, setIsOpen] = useState(true); // 기본값: 토글 오픈
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+
   // 생일자인 유저 반환
   const today = new Date();
 
@@ -34,115 +38,44 @@ const BirthdayProfiles: React.FC<Props> = ({ users }) => {
   );
 
   return birthdayUsers.length > 0 ? (
-    <Section>
-      <HeaderRow>
-        <SectionTitle>생일인 친구 {birthdayUsers.length}</SectionTitle>
-        <ToggleButton onClick={() => setIsOpen((prev) => !prev)}>
+    <s.Section>
+      <s.HeaderRow>
+        <s.SectionTitle>생일인 친구 {birthdayUsers.length}</s.SectionTitle>
+        <s.ToggleButton onClick={() => setIsOpen((prev) => !prev)}>
           {isOpen ? (
             <ToggleDown width="24px" height="24" />
           ) : (
             <ToggleUp width="24px" height="24" />
           )}
-        </ToggleButton>
-      </HeaderRow>
-      <BirthdayItemWrapper>
+        </s.ToggleButton>
+      </s.HeaderRow>
+      <s.BirthdayItemWrapper>
         {isOpen &&
           birthdayUsers.map((user) => (
-            <BirthdayItem key={user.id}>
-              <ProfileImage src={user.image} />
-              <TextGroup>
-                <Name>{user.name}</Name>
-                <Birthday>
+            <s.BirthdayItem key={user.id} onClick={() => setSelectedUser(user)}>
+              <s.ProfileImage src={user.image} />
+              <s.TextGroup>
+                <s.Name>{user.name}</s.Name>
+                <s.Birthday>
                   | 오늘 {user.birthday.getMonth() + 1}월{' '}
                   {user.birthday.getDate()}일
-                </Birthday>
-              </TextGroup>
-              <GivePresentIconWrapper>
+                </s.Birthday>
+              </s.TextGroup>
+              <s.GivePresentIconWrapper>
                 <GivePresentIcon width="56px" height="20px" />
-              </GivePresentIconWrapper>
-            </BirthdayItem>
+              </s.GivePresentIconWrapper>
+            </s.BirthdayItem>
           ))}
-      </BirthdayItemWrapper>
-    </Section>
+
+        {selectedUser && (
+          <ProfileModal
+            user={selectedUser}
+            onClose={() => setSelectedUser(null)}
+          />
+        )}
+      </s.BirthdayItemWrapper>
+    </s.Section>
   ) : null;
 };
 
 export default BirthdayProfiles;
-
-// 스타일
-const Section = styled.div``;
-
-const HeaderRow = styled.div`
-  display: flex;
-  padding: 12px 20px 4px 20px;
-  align-items: center;
-  align-self: stretch;
-  justify-content: space-between;
-`;
-
-const ToggleButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
-  color: ${({ theme }) => theme.colors.grey06};
-`;
-
-const SectionTitle = styled.div`
-  ${({ theme }) => theme.typography.caption1}
-  color: ${({ theme }) => theme.colors.grey05};
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%; /* 16.8px */
-  letter-spacing: -0.012px;
-`;
-
-const BirthdayItemWrapper = styled.div`
-  display: flex;
-  padding: 8px 20px;
-  flex-direction: column;
-  justify-content: center;
-  align-self: stretch;
-`;
-
-const GivePresentIconWrapper = styled.div`
-  align-self: center;
-`;
-
-const BirthdayItem = styled.div`
-  display: flex;
-  height: 56px;
-  justify-content: center;
-  align-items: flex-start;
-`;
-
-const ProfileImage = styled.img`
-  display: flex;
-  width: 46px;
-  height: 45px;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-`;
-
-const TextGroup = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  align-self: center;
-  padding-left: 15px;
-  padding-right: 96px;
-`;
-
-const Name = styled.div`
-  ${({ theme }) => theme.typography.body2}
-  color: ${({ theme }) => theme.colors.grey09};
-  padding-right: 4px;
-  font-size: 16px;
-  line-height: 24px; /* 150% */
-`;
-
-const Birthday = styled.div`
-  ${({ theme }) => theme.typography.caption2}
-  color: ${({ theme }) => theme.colors.grey05};
-`;

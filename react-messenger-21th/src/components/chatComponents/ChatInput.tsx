@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../states/store';
 import { sendMessage } from '../states/chatSlice';
 import { v4 as uuidv4 } from 'uuid';
-import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
+
+import * as s from '../styles/ChatInputStyles';
+
 import SendMessageOn from '/public/assets/icons/SendMessageOn.svg?react';
 import SendEmoticonNotSelected from '/public/assets/icons/EmoticonNotSelected.svg?react';
 import SearchNotSelected from '/public/assets/icons/SearchNotSelected.svg?react';
-import { useParams } from 'react-router-dom';
 
 const ChatInput: React.FC = () => {
   // roomId 받아오기기
@@ -71,9 +73,9 @@ const ChatInput: React.FC = () => {
   };
 
   return (
-    <ChatInputWrapper>
-      <InputWrapper>
-        <InputArea
+    <s.ChatInputWrapper>
+      <s.InputWrapper>
+        <s.InputArea
           ref={textareaRef}
           value={messageInput}
           onChange={handleChange}
@@ -81,7 +83,7 @@ const ChatInput: React.FC = () => {
           placeholder="메시지를 입력하세요"
           rows={1}
         />
-        <IconWrapper>
+        <s.IconWrapper>
           <SendEmoticonNotSelected width="18px" height="18px" />
           {messageInput.trim() === '' ? (
             <SearchNotSelected width="16px" height="16px" />
@@ -92,56 +94,10 @@ const ChatInput: React.FC = () => {
               onClick={handleSendMessage}
             />
           )}
-        </IconWrapper>
-      </InputWrapper>
-    </ChatInputWrapper>
+        </s.IconWrapper>
+      </s.InputWrapper>
+    </s.ChatInputWrapper>
   );
 };
-
-const InputWrapper = styled.div`
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  flex: 1;
-`;
-
-const ChatInputWrapper = styled.div`
-  width: 303px;
-  height: auto;
-  display: flex;
-  padding: 8px 12px;
-  align-items: flex-end;
-  justify-content: space-between; // 양끝 정렬
-  gap: 12px;
-  border-radius: 12px;
-  border: 1px solid var(--Grey-Grey04, #9ca3af);
-  background: var(--Grey-Grey01, #f3f4f6);
-`;
-
-const InputArea = styled.textarea`
-  resize: none; // 크기 조정 불가능
-  flex: 1;
-  background-color: transparent;
-  color: #374151;
-  font-family: 'Pretendard';
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 18px;
-  letter-spacing: -0.21px;
-  border: none;
-  outline: none;
-  min-width: 0px;
-  max-width: 229px;
-  max-
-  word-break: break-all;
-  overflow-wrap: break-word; // 백업용
-`;
-
-const IconWrapper = styled.div`
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  margin-bottom: 2px;
-`;
 
 export default ChatInput;

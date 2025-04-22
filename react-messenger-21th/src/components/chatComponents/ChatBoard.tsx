@@ -2,9 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../states/store';
 import { Message } from '../states/chatSlice';
-import ChatBubble from './ChatBubble';
-import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
+
+import * as s from '../styles/ChatBoardStyles';
+import ChatBubble from './ChatBubble';
 
 const ChatBoard: React.FC = () => {
   const { roomId } = useParams();
@@ -47,7 +48,7 @@ const ChatBoard: React.FC = () => {
   const groupedMessages = groupMessages();
 
   return (
-    <ChatContainer>
+    <s.ChatContainer>
       {/* 현재 선택된 채팅방 메시지에 대해 */}
       {groupedMessages.map((group, index) => {
         // style 적용을 위해 날짜 그룹의 마지막 메시지인지 확인
@@ -56,7 +57,9 @@ const ChatBoard: React.FC = () => {
         return (
           <div key={index}>
             {/* 날짜 스탬프 출력 */}
-            <DateStamp $isLastOfGroup={isLastOfGroup}>{group.date}</DateStamp>
+            <s.DateStamp $isLastOfGroup={isLastOfGroup}>
+              {group.date}
+            </s.DateStamp>
             {group.messages.map((msg, msgIndex) => {
               const sender = users.find((user) => user.id === msg.senderId);
 
@@ -102,24 +105,8 @@ const ChatBoard: React.FC = () => {
           </div>
         );
       })}
-    </ChatContainer>
+    </s.ChatContainer>
   );
 };
-
-// 전체 채팅 보드 스타일
-const ChatContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 0 10px 10px 10px;
-`;
-
-// 날짜 스탬프 스타일
-const DateStamp = styled.div<{ $isLastOfGroup: boolean }>`
-  text-align: center;
-  font-size: ${({ theme }) => theme.typography.caption1.fontSize};
-  color: ${({ theme }) => theme.colors.grey05};
-  padding: ${({ $isLastOfGroup }) =>
-    $isLastOfGroup ? '20px 20px 8px 20px' : '12px 20px 8px 20px'};
-`;
 
 export default ChatBoard;

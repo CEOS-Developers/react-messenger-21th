@@ -2,10 +2,11 @@ import { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../states/store';
 import { switchSender } from '../states/chatSlice';
+
 import * as s from '../styles/ChatRoomPageStyles';
 import ChatBoard from '../chatComponents/ChatBoard';
 import ChatInput from '../chatComponents/ChatInput';
-import styled from 'styled-components';
+
 import SearchButtonIcon from '/public/assets/icons/SearchUpperBar.svg?react';
 import MenuButtonIcon from '/public/assets/icons/Hamburger.svg?react';
 import PlusButtonIcon from '/public/assets/icons/PlusNotSelected.svg?react';
@@ -58,23 +59,23 @@ const ChatRoomPage: React.FC = () => {
     <s.ChatContainer>
       {/* 현재 선택된 채팅방 메시지에 대해 */}
       <s.UpperBarContainer>
-        <LeftGroup>
+        <s.LeftGroup>
           <PrevButton onClick={handleBack} />
-        </LeftGroup>
+        </s.LeftGroup>
 
-        <CenterGroup>
-          <PartnerInfo onClick={handlePartnerClick}>
-            <CurrentPartnersName>
+        <s.CenterGroup>
+          <s.PartnerInfo onClick={handlePartnerClick}>
+            <s.CurrentPartnersName>
               {partner?.name || '이름 없음'}
-            </CurrentPartnersName>
-            <CurrentUsersNumber>{roomUsers.length}</CurrentUsersNumber>
-          </PartnerInfo>
-        </CenterGroup>
+            </s.CurrentPartnersName>
+            <s.CurrentUsersNumber>{roomUsers.length}</s.CurrentUsersNumber>
+          </s.PartnerInfo>
+        </s.CenterGroup>
 
-        <RightGroup>
+        <s.RightGroup>
           <SearchButtonIcon width="18px" height="18px" />
           <MenuButtonIcon width="16px" height="16px" />
-        </RightGroup>
+        </s.RightGroup>
       </s.UpperBarContainer>
 
       <s.ChatContentsContainer ref={chatListRef}>
@@ -82,79 +83,13 @@ const ChatRoomPage: React.FC = () => {
       </s.ChatContentsContainer>
 
       <s.BottomBarContainer>
-        <PlusButtonWrapper>
+        <s.PlusButtonWrapper>
           <PlusButtonIcon width="16px" height="16px" />
-        </PlusButtonWrapper>
+        </s.PlusButtonWrapper>
         <ChatInput />
       </s.BottomBarContainer>
     </s.ChatContainer>
   );
 };
-
-// s.UpperBarContainer
-export const UpperBarContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  height: 48px;
-  border-bottom: 1px solid #e5e7eb;
-`;
-
-const PlusButtonWrapper = styled.div`
-  display: flex;
-  align-items: flex-end;
-  margin-bottom: 12px; // 여기만 바닥에서 띄움
-`;
-
-// 왼쪽, 가운데, 오른쪽 그룹 정렬
-const LeftGroup = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-`;
-
-const CenterGroup = styled.div`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-`;
-
-const PartnerInfo = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-`;
-
-const RightGroup = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-`;
-
-const CurrentPartnersName = styled.span`
-  cursor: pointer;
-  margin: 0px;
-  color: var(--Grey-Grey09, #111827);
-  text-align: center;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px; /* 150% */
-  letter-spacing: -0.24px;
-`;
-
-const CurrentUsersNumber = styled.span`
-  color: var(--Grey-Grey04, #9ca3af);
-  text-align: center;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px; /* 150% */
-  letter-spacing: -0.24px;
-`;
 
 export default ChatRoomPage;
