@@ -10,7 +10,7 @@ import SearchButtonIcon from '/public/assets/icons/SearchUpperBar.svg?react';
 import PlusChatButton from '/public/assets/icons/PlusChatButton.svg?react';
 import SettingButtonIcon from '/public/assets/icons/SettingButton.svg?react';
 
-const ShowChatRoomPage: React.FC = () => {
+const ShowChatRoomPage = () => {
   const chatRooms = useSelector((state: RootState) => state.chat.chatRooms);
   const users = useSelector((state: RootState) => state.chat.users);
   // 고정된 채팅방 관리

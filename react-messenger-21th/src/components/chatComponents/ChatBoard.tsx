@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../states/store';
 import { Message } from '../states/chatSlice';
@@ -7,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import * as s from '../styles/ChatBoardStyles';
 import ChatBubble from './ChatBubble';
 
-const ChatBoard: React.FC = () => {
+const ChatBoard = () => {
   const { roomId } = useParams();
 
   const currentSenderId = useSelector(

@@ -30,14 +30,14 @@ interface Props {
 }
 
 // 방 번호와 유저 명단 받아오기
-const ChatRoomCard: React.FC<Props> = ({
+const ChatRoomCard = ({
   room,
   users,
   isPinned,
   isActive,
   onTogglePin,
   onActivate,
-}) => {
+}: Props) => {
   const navigate = useNavigate();
   const longPressTimeout = useRef<number | null>(null); // 핀 감지용
 

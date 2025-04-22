@@ -1,5 +1,4 @@
 // src/components/shared/BottomNavigation.tsx
-import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import * as s from '../styles/BottomNavStyles';
@@ -12,7 +11,7 @@ import BPlusNotSelected from '/public/assets/icons/BPlusNotSelected.svg?react';
 import BFriendSelected from '/public/assets/icons/BFriendSelected.svg?react';
 import BChatsSelected from '/public/assets/icons/BChatsSelected.svg?react';
 
-const BottomNav: React.FC = () => {
+const BottomNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
 

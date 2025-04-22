@@ -11,7 +11,7 @@ import SendMessageOn from '/public/assets/icons/SendMessageOn.svg?react';
 import SendEmoticonNotSelected from '/public/assets/icons/EmoticonNotSelected.svg?react';
 import SearchNotSelected from '/public/assets/icons/SearchNotSelected.svg?react';
 
-const ChatInput: React.FC = () => {
+const ChatInput = () => {
   // roomId 받아오기기
   const { roomId } = useParams();
 

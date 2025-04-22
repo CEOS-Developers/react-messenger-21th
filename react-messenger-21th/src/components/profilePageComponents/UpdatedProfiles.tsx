@@ -13,7 +13,7 @@ interface User {
 interface Props {
   users: User[];
 }
-const UpdatedProfiles: React.FC<Props> = ({ users }) => {
+const UpdatedProfiles = ({ users }: Props) => {
   const updatedUsers = users?.filter((user) => user.isUpdated) || [];
 
   if (updatedUsers.length === 0) return null;

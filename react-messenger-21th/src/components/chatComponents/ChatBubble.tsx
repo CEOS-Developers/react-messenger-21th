@@ -1,5 +1,3 @@
-import React from 'react';
-
 import * as s from '../styles/ChatBubbleStyles';
 
 interface ChatBubbleProps {
@@ -12,7 +10,7 @@ interface ChatBubbleProps {
   showTimestamp: boolean; // 같은 시간대면 타임스탬프 생략
 }
 
-const ChatBubble: React.FC<ChatBubbleProps> = ({
+const ChatBubble = ({
   image,
   userName,
   text,
@@ -20,7 +18,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
   timestamp,
   showProfile,
   showTimestamp, // 추가된 prop
-}) => {
+}: ChatBubbleProps) => {
   return (
     <s.BubbleRow isMine={isMine}>
       <s.ProfileColumn>

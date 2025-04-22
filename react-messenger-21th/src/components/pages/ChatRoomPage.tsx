@@ -13,7 +13,7 @@ import PlusButtonIcon from '/public/assets/icons/PlusNotSelected.svg?react';
 import PrevButton from '/public/assets/icons/PrevButton.svg?react';
 import { useParams, useNavigate } from 'react-router-dom'; // roomID 받아올 예정
 
-const ChatRoomPage: React.FC = () => {
+const ChatRoomPage = () => {
   // Hook은 무조건 컴포넌트 최상단에서 호출
   const chatListRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
