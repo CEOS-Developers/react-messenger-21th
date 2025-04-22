@@ -15,7 +15,11 @@ export default function SubTopBar({ content, onClickContent }: { content: string
 
 	return (
 		<div className="sticky px-5 py-2.5 grid grid-cols-[4.75rem_auto_4.75rem] items-center">
-			<button onClick={() => nav(-1)}>
+			<button
+				onClick={() => nav(-1)}
+				className={`w-9 h-9 flex justify-center items-center -ml-3 rounded-full
+					transition-colors ${opacity === 0.3 ? 'active:bg-white/30' : 'active:bg-white/10'}`}
+			>
 				<Back className={opacity === 0.3 ? 'text-black-300' : 'text-black-000'} />
 			</button>
 			<div
