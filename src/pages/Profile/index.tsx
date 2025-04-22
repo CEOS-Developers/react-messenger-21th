@@ -13,7 +13,10 @@ export default function Profile() {
 		<div className="bg-main-400 rounded-b-4xl">
 			<SubTopBar content="내 프로필" />
 			<div className="relative h-[38.5rem]">
-				<div className="absolute bottom-0 w-full h-[26rem] bg-black-000">
+				<div
+					className="absolute bottom-0 w-full h-[26rem] bg-black-000
+						starting:translate-y-1/12 transition-transform duration-400"
+				>
 					<div className="absolute -top-12 left-1/2 -translate-x-1/2">
 						<ProfileImg {...currentUserInfo} />
 					</div>
