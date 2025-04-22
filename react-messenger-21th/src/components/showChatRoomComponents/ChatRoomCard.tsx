@@ -1,4 +1,3 @@
-import React from 'react';
 import { Message } from '../states/chatSlice';
 import { idForMe } from '../../mocks/mockData';
 import { useNavigate } from 'react-router-dom';

@@ -1,6 +1,4 @@
 // src/components/friendsComponents/UpdatedProfiles.tsx
-import React from 'react';
-
 import * as s from '../styles/UpdatedProfileStyles';
 
 interface User {
