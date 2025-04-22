@@ -38,7 +38,7 @@ export default function MessageContainer({
 		>
 			{messagesByUsers.map((messagesByUser) => (
 				<div key={messagesByUser.messages[0].id}>
-					{messagesByUser.isDateVisible && <DateDivider date={new Date(messagesByUser.messages[0].createdAt)} />}
+					{messagesByUser.isDateVisible && <DateDivider date={messagesByUser.messages[0].createdAt} />}
 					{messagesByUser.fromUser.id === currentUserId ? (
 						<SentMessage messages={messagesByUser.messages} />
 					) : (

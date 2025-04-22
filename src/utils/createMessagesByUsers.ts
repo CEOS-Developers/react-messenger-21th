@@ -15,11 +15,11 @@ export const createMessagesByUsers = (messages: MessageDto[]) => {
 		const currentSenderId = message.fromUser.id;
 		const nextSenderId = i === maxIndex ? '-1' : messages[i + 1].fromUser.id;
 
-		const currentCreatedAt = formatCreatedAt(new Date(message.createdAt));
-		const nextCreatedAt = i === maxIndex ? '' : formatCreatedAt(new Date(messages[i + 1].createdAt));
+		const currentCreatedAt = formatCreatedAt(message.createdAt);
+		const nextCreatedAt = i === maxIndex ? '' : formatCreatedAt(messages[i + 1].createdAt);
 
-		const prevDate = i === 0 ? '' : formatDate(new Date(messages[i - 1].createdAt));
-		const currentDate = formatDate(new Date(message.createdAt));
+		const prevDate = i === 0 ? '' : formatDate(messages[i - 1].createdAt);
+		const currentDate = formatDate(message.createdAt);
 
 		// 시간 표시 여부
 		const isTimeVisible = currentCreatedAt !== nextCreatedAt || currentSenderId !== nextSenderId;

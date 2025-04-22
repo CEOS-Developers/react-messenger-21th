@@ -9,7 +9,7 @@ export default function SentMessage({ messages }: { messages: messageByUserDto[]
 	return (
 		<div className="flex flex-col gap-2 py-2.5">
 			{messages.map(({ id, createdAt, content, isTimeVisible }, index) => {
-				const formattedCreatedAt = formatCreatedAt(new Date(createdAt));
+				const formattedCreatedAt = formatCreatedAt(createdAt);
 
 				return (
 					<div key={id} className="flex justify-end">
