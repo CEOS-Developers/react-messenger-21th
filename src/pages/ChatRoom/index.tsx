@@ -1,25 +1,23 @@
 import { useEffect, useState } from 'react';
 
 import { getAllMessages } from '@/apis/getAllMessages';
-import { createMessagesByUsers } from '@/utils/createMessagesByUsers';
 import { createOtherUserContent } from '@/utils/createOtherUserContent';
 import SubTopBar from '@/components/SubTopBar';
 
-import type { messagesByUserDto } from '@/utils/dto';
-import type { MessageDto, UserDto } from '../../apis/dto';
+import type { UserDto } from '../../apis/dto';
 
 import MessageInput from './components/MessageInput';
 import MessageContainer from './components/MessageContainer';
 import { useParams } from 'react-router-dom';
+import { useMessagesStore } from '@/store/useMessagesStore';
 
 export default function ChatRoom() {
 	const { chatRoomId } = useParams();
+	const { getMessagesByUsers, initMessages, sendMessage } = useMessagesStore();
+	const messagesByUsers = getMessagesByUsers();
 
 	const [currentUserId, setCurrentUserId] = useState(3);
-	const [messages, setMessages] = useState<MessageDto[]>([]);
 	const [joinedUsers, setJoinedUsers] = useState<UserDto[]>([]);
-
-	const [messagesByUsers, setMessagesByUsers] = useState<messagesByUserDto[]>([]);
 
 	// 상대방 필터링
 	const joinedUserIds = joinedUsers.map((user) => user.id);
@@ -31,13 +29,8 @@ export default function ChatRoom() {
 		const response = getAllMessages(Number(chatRoomId) ?? -1);
 
 		setJoinedUsers(response.joinedUsers);
-		setMessages(response.messages);
+		if (messagesByUsers.length === 0) initMessages(response.messages);
 	}, []);
-
-	// 메시지가 추가될 때마다 유저별 메시지 필터링
-	useEffect(() => {
-		setMessagesByUsers(createMessagesByUsers(messages));
-	}, [messages]);
 
 	const handleTopBarContentClick = () => {
 		const currentIndex = joinedUserIds.indexOf(currentUserId);
@@ -47,10 +40,12 @@ export default function ChatRoom() {
 	};
 
 	const handleMessageSubmit = (message: string) => {
-		setMessages([
-			...messages,
-			{ fromUser: currentUser, content: message, createdAt: new Date().toISOString(), id: crypto.randomUUID() },
-		]);
+		sendMessage({
+			fromUser: currentUser,
+			content: message,
+			createdAt: new Date().toISOString(),
+			id: crypto.randomUUID(),
+		});
 	};
 
 	return (
