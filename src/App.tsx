@@ -19,12 +19,13 @@ import GroupSettings from '@/pages/GroupSettings.tsx'
 
 import setUserAndChatRoom from './utils/setUserAndChatRoom.ts'
 import Layout from './components/Layout.tsx'
+import { usePersistUserStore } from './stores/usePersistUserStore.ts'
 
 function App() {
-  const userId = 1
+  const { curUserId } = usePersistUserStore()
 
   useEffect(() => {
-    setUserAndChatRoom(userId)
+    setUserAndChatRoom(curUserId)
   }, [])
 
   return (

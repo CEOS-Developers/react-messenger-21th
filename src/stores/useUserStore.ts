@@ -1,6 +1,6 @@
 import { create } from 'zustand'
-import { User } from '../interface/User'
-import { defaultUser } from '../assets/data/defaultUser'
+import { User } from '@/interface/User'
+import { defaultUser } from '@/assets/data/defaultUser'
 
 interface UserState {
   user: User

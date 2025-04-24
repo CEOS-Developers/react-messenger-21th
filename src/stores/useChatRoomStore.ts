@@ -1,17 +1,18 @@
 import { create } from 'zustand'
-import { ChatRoom } from '../interface/ChatRoom'
-import { Chat } from '../interface/Chat'
-import { formatDateForData } from '../utils/format'
+import { ChatRoom } from '@/interface/ChatRoom'
+import { Chat } from '@/interface/Chat'
+import { formatDateForData } from '@/utils/format'
 
 interface ChatRoomState {
   chatRoom: ChatRoom[] | null
   chatRoomRef: number
   setChatRoom: (chatRooms: ChatRoom[]) => void
+
   addChat: (roomId: number, newChat: Chat) => void
+  addMember: (roomId: number, memberId: number[]) => void
 
   removeChatRoom: (roomId: number) => void
   createChatRoom: (roomId: number, members: number[], roomName?: string) => void
-  addMember: (roomId: number, memberId: number[]) => void
 }
 
 export const useChatRoomStore = create<ChatRoomState>((set) => ({
@@ -38,6 +39,26 @@ export const useChatRoomStore = create<ChatRoomState>((set) => ({
         return {
           ...room,
           chats: updatedChats,
+        }
+      })
+
+      return {
+        chatRoom: updatedChatRooms,
+      }
+    })
+  },
+  addMember: (roomId, memberId) => {
+    set((state) => {
+      if (!state.chatRoom) return state
+
+      const updatedChatRooms = state.chatRoom.map((room) => {
+        if (room.chatRoomId !== roomId) return room
+
+        const newMemberIds = Array.from(new Set([...room.member, ...memberId]))
+
+        return {
+          ...room,
+          member: newMemberIds,
         }
       })
 
@@ -74,26 +95,6 @@ export const useChatRoomStore = create<ChatRoomState>((set) => ({
 
       return {
         chatRoom: [...state.chatRoom, newRoom],
-      }
-    })
-  },
-  addMember: (roomId, memberId) => {
-    set((state) => {
-      if (!state.chatRoom) return state
-
-      const updatedChatRooms = state.chatRoom.map((room) => {
-        if (room.chatRoomId !== roomId) return room
-
-        const newMemberIds = Array.from(new Set([...room.member, ...memberId]))
-
-        return {
-          ...room,
-          member: newMemberIds,
-        }
-      })
-
-      return {
-        chatRoom: updatedChatRooms,
       }
     })
   },

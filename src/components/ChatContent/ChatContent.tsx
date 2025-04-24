@@ -5,11 +5,12 @@ import TextFiled from './TextFiled'
 import { ChatRoomIcon } from '@/assets/Icons/AppBar'
 
 import { useUserStore } from '@/stores/useUserStore'
-import findUser from '@/utils/findUser'
+import { usePersistUserStore } from '@/stores/usePersistUserStore'
 
 const ChatContent = () => {
   const { member } = useLocation().state ?? {}
   const { user } = useUserStore()
+  const { getUserById } = usePersistUserStore()
 
   /* 나를 제외한 멤버들의 Id 배열 */
   const memberIds = member.filter((memberId: number) => memberId !== user.id)
@@ -20,7 +21,7 @@ const ChatContent = () => {
       acc: Record<number, { name: string; profileColor: string }>,
       id: number
     ) => {
-      const user = findUser(id)
+      const user = getUserById(id)
       if (user) {
         acc[id] = {
           name: user.name,
