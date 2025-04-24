@@ -1,0 +1,171 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import 'tailwindcss';
+@plugin 'tailwind-scrollbar-hide';
+
+@theme {
+  --color-primary-0: #39d4a3;
+
+  --color-grey-50: #fcfcfe;
+  --color-grey-75: #f6f6f6;
+  --color-grey-100: #ebebf0;
+  --color-grey-200: #e4e4eb;
+  --color-grey-300: #d6d5de;
+  --color-grey-400: #bab9c6;
+  --color-grey-500: #a4a3ae;
+  --color-grey-600: #72717d;
+  --color-grey-700: #5e5d69;
+  --color-grey-800: #3f3e49;
+  --color-grey-900: #121214;
+
+  --font-family-pretendard: 'Pretendard', sans-serif;
+  --font-family-helvetica: Helvetica, Arial, sans-serif;
+
+  --shadow-default: 0 0 12px rgba(0, 0, 0, 0.08);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-family-pretendard);
+  }
+}
+
+@layer utilities {
+  .font-pretendard {
+    font-family: var(--font-family-pretendard);
+  }
+  .font-helvetica {
+    font-family: var(--font-family-helvetica);
+  }
+}
+
+@layer components {
+  .head-0 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    letter-spacing: 0px;
+  }
+
+  .head-1 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    letter-spacing: -0.3px;
+  }
+
+  .title-1 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    letter-spacing: -0.27px;
+  }
+
+  .title-2 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: -0.27px;
+  }
+
+  .label-1 {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    letter-spacing: -0.24px;
+  }
+
+  .label-2 {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: -0.24px;
+  }
+
+  .body-1 {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    letter-spacing: -0.21px;
+  }
+
+  .body-2 {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: -0.21px;
+  }
+
+  .caption-1 {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: -0.18px;
+  }
+
+  .caption-2 {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: -0.18px;
+  }
+}
+
+.loader {
+  @apply relative inline-block w-[150px] h-[150px];
+  --base-color: #ffffff;
+}
+
+.loader::before {
+  content: '';
+  @apply absolute top-0 left-0 w-[96px] h-[96px] rounded-full bg-gray-800;
+  background-image:
+    radial-gradient(circle 18px at 48px 48px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 9px at 48px 0px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 9px at 0px 48px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 9px at 96px 48px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 9px at 48px 96px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 9px at 78px 12px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 9px at 78px 78px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 9px at 12px 78px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 9px at 12px 12px, var(--base-color) 100%, transparent 0);
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  animation: rotationBack 3s linear infinite;
+}
+
+.loader::after {
+  content: '';
+  @apply absolute top-[45px] left-[88px] w-[63px] h-[63px] rounded-full bg-gray-800;
+  background-image:
+    radial-gradient(circle 13.5px at 31.5px 31.5px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 6.75px at 31.5px 0px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 6.75px at 0px 31.5px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 6.75px at 63px 31.5px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 6.75px at 31.5px 63px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 6.75px at 52.5px 7.5px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 6.75px at 52.5px 52.5px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 6.75px at 7.5px 52.5px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 6.75px at 7.5px 7.5px, var(--base-color) 100%, transparent 0);
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  animation: rotationBack 4s linear infinite reverse;
+}
+
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}

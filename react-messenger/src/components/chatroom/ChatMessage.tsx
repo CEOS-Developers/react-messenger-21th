@@ -1,0 +1,65 @@
+import { useNavigate } from 'react-router-dom';
+import { MessageItem } from '@/type/message';
+import { formatTime } from '@/utils/formatDate';
+
+interface SenderInfo {
+  id: number;
+  name: string;
+  profileImg: string;
+  chatType: 'user' | 'group';
+}
+
+type ChatMessageProps = {
+  message: MessageItem;
+  isMine: boolean;
+  senderInfo: SenderInfo;
+};
+
+const ChatMessage = ({ message, isMine, senderInfo }: ChatMessageProps) => {
+  const navigate = useNavigate();
+
+  const handleProfileClick = () => {
+    navigate(`/profile/${senderInfo.id}?chatType=${senderInfo.chatType}`);
+  };
+
+  return (
+    <div className={`flex items-start ${isMine ? 'justify-end' : 'justify-start'} w-full`}>
+      <div className="flex items-center gap-2 mb-1 shrink-0">
+        {!isMine && senderInfo.profileImg && (
+          <img
+            src={senderInfo.profileImg}
+            alt={senderInfo.name}
+            className="w-12 h-12 rounded-full object-cover cursor-pointer"
+            onClick={handleProfileClick}
+          />
+        )}
+      </div>
+
+      <div className="flex flex-col gap-1 ml-2">
+        {!isMine && <span className="caption-2 text-grey-500">{senderInfo.name}</span>}
+        <div className={`flex items-end gap-1 ${isMine ? 'flex-row-reverse' : 'flex-row'}`}>
+          {message.messageType === 'text' ? (
+            <div
+              className={`max-w-[216px] shadow-default px-2 py-1 rounded-lg bg-grey-50 body-2 text-grey-900 break-words whitespace-pre-line ${
+                isMine ? 'rounded-tr-none' : 'rounded-tl-none'
+              }`}
+            >
+              {message.content}
+            </div>
+          ) : (
+            <img
+              src={message.content}
+              alt="uploaded"
+              className={`w-auto max-w-[230px] h-[140px] object-cover rounded-lg ${
+                isMine ? 'rounded-tr-none' : 'rounded-tl-none'
+              }`}
+            />
+          )}
+          <span className="caption-2 text-grey-400">{formatTime(message.createdAt)}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ChatMessage;

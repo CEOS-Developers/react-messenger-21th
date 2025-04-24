@@ -1,0 +1,241 @@
+[
+  {
+    "chatId": 1,
+    "targetUserId": 4,
+    "chatType": "user",
+    "unreadCount": 2,
+    "messages": [
+      {
+        "messageId": 0,
+        "messageType": "text",
+        "content": "오늘 뭐 먹을까?",
+        "createdAt": "2025-03-20T08:00:00",
+        "senderId": 4
+      },
+      {
+        "messageId": 1,
+        "messageType": "text",
+        "content": "라면 끓일까 고민 중",
+        "createdAt": "2025-03-20T08:06:00",
+        "senderId": 99
+      },
+      {
+        "messageId": 2,
+        "messageType": "text",
+        "content": "근데 또 자야겠지..",
+        "createdAt": "2025-03-20T08:26:00",
+        "senderId": 4
+      },
+      {
+        "messageId": 3,
+        "messageType": "text",
+        "content": "내일 올 때 햄부기 사와주라 햄부기햄북 햄북어 햄북스딱스 함부르크햄부가우가 햄비기햄부거 햄부가티햄부기온앤 온을 차려오거라. 햄부기햄북 햄북어 햄북스딱스 함부르크햄부가우가 햄비기햄부거 햄부가티햄부기온앤 온을 차려오라고 하지않앗느냐. 텍스트 버블은 max 200이 넘어가면 줄바꿈이 돼요",
+        "createdAt": "2025-03-22T08:26:00",
+        "senderId": 4
+      }
+    ]
+  },
+  {
+    "chatId": 2,
+    "targetUserId": 1,
+    "chatType": "group",
+    "unreadCount": 2,
+    "messages": [
+      {
+        "messageId": 0,
+        "messageType": "text",
+        "content": "모닝커피 한잔 하자~",
+        "createdAt": "2025-03-20T08:39:00",
+        "senderId": 3
+      },
+      {
+        "messageId": 1,
+        "messageType": "text",
+        "content": "오늘 날씨 진짜 좋다",
+        "createdAt": "2025-03-20T08:20:00",
+        "senderId": 99
+      },
+      {
+        "messageId": 2,
+        "messageType": "text",
+        "content": "점심 메뉴 추천 받아요",
+        "createdAt": "2025-03-20T09:35:00",
+        "senderId": 2
+      }
+    ]
+  },
+  {
+    "chatId": 3,
+    "targetUserId": 3,
+    "chatType": "group",
+    "unreadCount": 3,
+    "messages": [
+      {
+        "messageId": 0,
+        "messageType": "text",
+        "content": "회의 시작 몇 분 전!",
+        "createdAt": "2025-03-20T09:30:00",
+        "senderId": 5
+      },
+      {
+        "messageId": 1,
+        "messageType": "text",
+        "content": "노션 확인해줘~",
+        "createdAt": "2025-03-20T10:27:00",
+        "senderId": 99
+      },
+      {
+        "messageId": 2,
+        "messageType": "text",
+        "content": "줌 링크 공유함!",
+        "createdAt": "2025-03-20T11:28:00",
+        "senderId": 3
+      }
+    ]
+  },
+  {
+    "chatId": 4,
+    "targetUserId": 2,
+    "chatType": "user",
+    "unreadCount": 0,
+    "messages": [
+      {
+        "messageId": 0,
+        "messageType": "text",
+        "content": "버스 탔어!",
+        "createdAt": "2025-03-20T11:45:00",
+        "senderId": 2
+      },
+      {
+        "messageId": 1,
+        "messageType": "text",
+        "content": "곧 도착 예정!",
+        "createdAt": "2025-03-20T11:00:00",
+        "senderId": 99
+      },
+      {
+        "messageId": 2,
+        "messageType": "text",
+        "content": "잠깐만 기다려줘",
+        "createdAt": "2025-03-20T10:56:00",
+        "senderId": 2
+      }
+    ]
+  },
+  {
+    "chatId": 5,
+    "targetUserId": 2,
+    "chatType": "group",
+    "unreadCount": 2,
+    "messages": [
+      {
+        "messageId": 0,
+        "messageType": "text",
+        "content": "우리 MT 어디로 갈까?",
+        "createdAt": "2025-03-20T09:24:00",
+        "senderId": 2
+      },
+      {
+        "messageId": 1,
+        "messageType": "text",
+        "content": "강촌 어때?",
+        "createdAt": "2025-03-20T10:36:00",
+        "senderId": 99
+      },
+      {
+        "messageId": 2,
+        "messageType": "text",
+        "content": "다들 시간 돼?",
+        "createdAt": "2025-03-20T14:46:00",
+        "senderId": 4
+      }
+    ]
+  },
+  {
+    "chatId": 6,
+    "targetUserId": 5,
+    "chatType": "user",
+    "unreadCount": 1,
+    "messages": [
+      {
+        "messageId": 0,
+        "messageType": "text",
+        "content": "야옹~",
+        "createdAt": "2025-03-20T10:30:00",
+        "senderId": 5
+      },
+      {
+        "messageId": 1,
+        "messageType": "text",
+        "content": "간식 줘~",
+        "createdAt": "2025-03-20T16:00:00",
+        "senderId": 99
+      },
+      {
+        "messageId": 2,
+        "messageType": "text",
+        "content": "진짜 간식 좀 줘...",
+        "createdAt": "2025-03-20T09:25:00",
+        "senderId": 5
+      }
+    ]
+  },
+  {
+    "chatId": 7,
+    "targetUserId": 1,
+    "chatType": "user",
+    "unreadCount": 7,
+    "messages": [
+      {
+        "messageId": 0,
+        "messageType": "text",
+        "content": "굿모닝 🌞",
+        "createdAt": "2025-03-20T11:54:00",
+        "senderId": 1
+      },
+      {
+        "messageId": 1,
+        "messageType": "text",
+        "content": "오늘도 화이팅이야!",
+        "createdAt": "2025-03-20T12:26:00",
+        "senderId": 99
+      },
+      {
+        "messageId": 2,
+        "messageType": "text",
+        "content": "정말 고마워!",
+        "createdAt": "2025-03-20T18:00:00",
+        "senderId": 1
+      }
+    ]
+  },
+  {
+    "chatId": 8,
+    "targetUserId": 3,
+    "chatType": "user",
+    "unreadCount": 2,
+    "messages": [
+      {
+        "messageId": 0,
+        "messageType": "text",
+        "content": "ㅋㅋ 이거 봤어?",
+        "createdAt": "2025-03-20T16:45:00",
+        "senderId": 3
+      },
+      {
+        "messageId": 1,
+        "messageType": "text",
+        "content": "진짜 웃겨 ㅋㅋ",
+        "createdAt": "2025-03-20T10:12:00",
+        "senderId": 99
+      },
+      {
+        "messageId": 2,
+        "messageType": "text",
+        "content": "이건 레전드다",
+        "createdAt": "2025-03-20T13:45:00",
+        "senderId": 3
+      }
+    ]
+  }
+]
