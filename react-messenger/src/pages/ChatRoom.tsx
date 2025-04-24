@@ -93,11 +93,23 @@ const ChatRoom = () => {
   // 메시지 발신자 정보 조회
   const getSenderInfo = (senderId: number | string) => {
     const id = Number(senderId);
-    if (id === myInfo.id) return myInfo;
+
+    if (id === myInfo.id) {
+      return {
+        id: myInfo.id,
+        name: myInfo.name,
+        profileImg: myInfo.profileImg,
+        chatType: 'user' as const,
+      };
+    }
+
     const found = groupMembers.find((user) => user.id === id);
+
     return {
+      id,
       name: found?.name ?? '알 수 없음',
       profileImg: found?.profileImg ?? '',
+      chatType: 'user' as const,
     };
   };
 
@@ -125,7 +137,14 @@ const ChatRoom = () => {
             lastDate = currentDate;
 
             const isMine = msg.senderId === myInfo.id;
-            const senderInfo = isGroupChat ? getSenderInfo(msg.senderId) : isMine ? myInfo : otherInfo;
+            const senderInfo = isGroupChat
+              ? getSenderInfo(msg.senderId)
+              : ({
+                  id: isMine ? myInfo.id : otherInfo.id,
+                  name: isMine ? myInfo.name : otherInfo.name,
+                  profileImg: isMine ? myInfo.profileImg : otherInfo.profileImg,
+                  chatType: 'user',
+                } as const);
 
             return (
               <div key={`${roomKeyRef.current}-${msg.messageId}`}>

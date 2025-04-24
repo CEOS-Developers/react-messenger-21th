@@ -1,9 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import { MessageItem } from '@/type/message';
 import { formatTime } from '@/utils/formatDate';
 
 interface SenderInfo {
+  id: number;
   name: string;
   profileImg: string;
+  chatType: 'user' | 'group';
 }
 
 type ChatMessageProps = {
@@ -13,11 +16,22 @@ type ChatMessageProps = {
 };
 
 const ChatMessage = ({ message, isMine, senderInfo }: ChatMessageProps) => {
+  const navigate = useNavigate();
+
+  const handleProfileClick = () => {
+    navigate(`/profile/${senderInfo.id}?chatType=${senderInfo.chatType}`);
+  };
+
   return (
     <div className={`flex items-start ${isMine ? 'justify-end' : 'justify-start'} w-full`}>
       <div className="flex items-center gap-2 mb-1 shrink-0">
         {!isMine && senderInfo.profileImg && (
-          <img src={senderInfo.profileImg} alt={senderInfo.name} className="w-12 h-12 rounded-full object-cover" />
+          <img
+            src={senderInfo.profileImg}
+            alt={senderInfo.name}
+            className="w-12 h-12 rounded-full object-cover cursor-pointer"
+            onClick={handleProfileClick}
+          />
         )}
       </div>
 
