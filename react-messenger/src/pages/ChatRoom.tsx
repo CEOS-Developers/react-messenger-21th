@@ -19,21 +19,30 @@ const ChatRoom = () => {
   const {
     currentUser,
     targetUser,
-    setTargetUser,
-    setGroupMembers,
     groupMembers,
+    viewIndex,
+    setTargetUser,
+    setChatType,
+    setGroupMembers,
     resetView,
-    isSwitched: storeSwitched,
     toggleView,
   } = useUserStore();
 
+  const isGroupChat = chatType === 'group';
   const { messages, input, setInput, initRoom, sendTextMessage, sendImageMessage } = useChatStore();
 
-  const isGroupChat = chatType === 'group';
-  const myInfo = useMemo(() => (storeSwitched ? targetUser : currentUser), [storeSwitched, currentUser, targetUser]);
+  const allViewers = useMemo(() => [currentUser, ...groupMembers], [currentUser, groupMembers]);
 
-  const otherInfo = useMemo(() => (storeSwitched ? currentUser : targetUser), [storeSwitched, currentUser, targetUser]);
+  const myInfo = isGroupChat ? allViewers[viewIndex] || currentUser : currentUser;
+
+  const otherInfo = isGroupChat ? currentUser : targetUser;
+
   const roomKeyRef = useRef('');
+
+  // 진입 시 chatType 설정
+  useEffect(() => {
+    if (chatType) setChatType(chatType); // location.state.chatType에서 받은 값
+  }, [chatType]);
 
   // 그룹 멤버 설정
   useEffect(() => {
@@ -60,7 +69,6 @@ const ChatRoom = () => {
     }
   }, [targetUserId, location.state]);
 
-  // 채팅방 초기화
   useEffect(() => {
     if (chatId) {
       const key = initRoom(chatId);
@@ -70,11 +78,10 @@ const ChatRoom = () => {
 
   useEffect(() => {
     return () => {
-      resetView(); // 채팅방 나갈 때만 초기화
+      resetView();
     };
   }, []);
 
-  // 스크롤 아래로
   const bottomRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
