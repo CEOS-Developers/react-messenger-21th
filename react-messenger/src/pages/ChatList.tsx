@@ -1,17 +1,44 @@
 import ChatUser from '@/components/chatlist/ChatUser';
 import NavBar from '@/components/common/NavBar';
-import rawMessages from '@/data/messages.json';
-import { formatTime } from '@/utils/formatDate';
-import { connectJson } from '@/utils/connectJson';
 import { useNavigate } from 'react-router-dom';
-import { Message } from '@/type/message';
 import { useStatusBar } from '@/hooks/useStatusBar';
+import { useChatStore } from '@/store/chatStore';
+import { connectJson } from '@/utils/connectJson';
+import { formatTime } from '@/utils/formatDate';
 import clsx from 'clsx';
+import { Message } from '@/type/message';
 
 const ChatList = () => {
   const navigate = useNavigate();
-  const messages = rawMessages as Message[];
   const { offsetClass, hideStatusBar } = useStatusBar();
+  const { conversationMap, conversationMeta } = useChatStore();
+
+  const seenTargetUserIds = new Set<number>();
+
+  const chatRooms: Message[] = Object.entries(conversationMap)
+    .map(([chatId, messages]) => {
+      const meta = conversationMeta[chatId];
+
+      const message: Message = {
+        chatId: Number(chatId),
+        messages,
+        targetUserId: meta?.targetUserId ?? messages[0]?.senderId ?? 0,
+        chatType: meta?.chatType ?? 'user',
+        unreadCount: meta?.unreadCount ?? 0,
+      };
+
+      return message;
+    })
+    .filter((msg) => {
+      if (msg.chatType !== 'user') return true;
+      if (seenTargetUserIds.has(msg.targetUserId)) return false;
+      seenTargetUserIds.add(msg.targetUserId);
+      return true;
+    })
+    .sort(
+      (a, b) =>
+        new Date(b.messages.at(-1)?.createdAt ?? 0).getTime() - new Date(a.messages.at(-1)?.createdAt ?? 0).getTime(),
+    );
 
   return (
     <div className="w-full h-full flex flex-col bg-grey-50">
@@ -21,33 +48,29 @@ const ChatList = () => {
       <div
         className={clsx('flex flex-col overflow-y-auto h-full b-[30px]', hideStatusBar ? 'pt-[62px]' : 'max-h-[620px]')}
       >
-        {messages.map((msg) => {
-          const lastMsg = msg.messages.at(-1);
-          const chat = connectJson(msg) as {
-            name: string;
-            profileImg: string;
-            memberCount?: number;
-          };
+        {chatRooms.map((room) => {
+          const lastMsg = room.messages.at(-1);
+          const chatMeta = connectJson(room);
 
           const chatUserProps = {
-            username: chat.name,
-            profileImg: chat.profileImg,
+            username: chatMeta.name,
+            profileImg: chatMeta.profileImg,
             lastMessage: lastMsg?.content ?? '',
             time: lastMsg?.createdAt ? formatTime(lastMsg.createdAt) : '',
-            unread: msg.unreadCount ?? 0,
-            memberCount: chat.memberCount,
+            unread: room.unreadCount,
+            memberCount: chatMeta.memberCount,
             onClick: () =>
-              navigate(`/chat/${msg.chatId}`, {
+              navigate(`/chat/${room.chatId}`, {
                 state: {
-                  name: chat.name,
-                  profileImg: chat.profileImg,
-                  type: msg.chatType,
-                  targetUserId: msg.targetUserId,
+                  name: chatMeta.name,
+                  profileImg: chatMeta.profileImg,
+                  type: chatMeta.memberCount ? 'group' : 'user',
+                  targetUserId: chatMeta.targetUserId,
                 },
               }),
           };
 
-          return <ChatUser key={`${msg.chatId}`} {...chatUserProps} />;
+          return <ChatUser key={room.chatId} {...chatUserProps} />;
         })}
       </div>
       <NavBar />

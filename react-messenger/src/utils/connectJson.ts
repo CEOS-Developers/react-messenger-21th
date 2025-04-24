@@ -1,7 +1,14 @@
+// utils/connectJson.ts
 import usersData from '@/data/users.json';
 import { Message } from '@/type/message';
 
-export const connectJson = (msg: Message) => {
+type ConnectedChatMeta = Message & {
+  name: string;
+  profileImg: string;
+  memberCount?: number;
+};
+
+export const connectJson = (msg: Message): ConnectedChatMeta => {
   if (msg.chatType === 'user') {
     const allUsers = [...usersData.newFriends, ...usersData.friends];
     const user = allUsers.find((u) => u.id === msg.targetUserId);
@@ -28,5 +35,9 @@ export const connectJson = (msg: Message) => {
     }
   }
 
-  return msg;
+  return {
+    name: '알 수 없음',
+    profileImg: '',
+    ...msg,
+  };
 };
