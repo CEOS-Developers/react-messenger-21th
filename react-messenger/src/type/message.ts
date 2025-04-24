@@ -1,14 +1,14 @@
 export type Message = {
-  id: number;
-  type: 'user' | 'group';
+  chatId: number;
+  chatType: 'user' | 'group';
   messages: MessageItem[];
-  unreadCount?: number;
+  unreadCount: number;
 };
 
 export type MessageItem = {
-  id: string | number;
-  type: 'text' | 'image';
+  messageId: number;
+  messageType: 'text' | 'image';
   content: string;
-  time: string;
-  sender?: number;
+  createdAt: string;
+  senderId: number;
 };

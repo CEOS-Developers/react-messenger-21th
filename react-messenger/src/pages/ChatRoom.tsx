@@ -68,23 +68,23 @@ const ChatRoom = () => {
       {/* 채팅 메시지 영역 */}
       <div className={clsx('flex flex-col gap-2 p-4 pt-0 overflow-y-auto flex-1', hideStatusBar ? 'mt-[32px]' : '')}>
         {messages.map((msg) => {
-          const currentDate = msg.time.split('T')[0];
+          const currentDate = msg.createdAt.split('T')[0];
           const isNewDate = currentDate !== lastDate;
           lastDate = currentDate;
 
           return (
-            <div key={`${roomKeyRef.current}-${msg.id}`}>
+            <div key={`${roomKeyRef.current}-${msg.messageId}`}>
               {isNewDate && (
                 <div className="flex justify-center my-2">
                   <span className="caption-2 text-grey-50 bg-grey-700/50 bg-opacity-50 px-2 rounded-[20px]">
-                    {formatDate(msg.time)}
+                    {formatDate(msg.createdAt)}
                   </span>
                 </div>
               )}
               <ChatMessage
                 message={msg}
-                isMine={msg.sender === currentUser.id}
-                senderInfo={msg.sender === currentUser.id ? currentUser : targetUser}
+                isMine={msg.senderId === currentUser.id}
+                senderInfo={msg.senderId === currentUser.id ? currentUser : targetUser}
               />
             </div>
           );

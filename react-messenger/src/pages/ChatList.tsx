@@ -15,8 +15,8 @@ const ChatList = () => {
 
   return (
     <div className="w-full h-full flex flex-col bg-grey-50">
-      <div className={`w-full h-[62px] ${offsetClass} z-10 bg-grey-50`}>
-        <span className="head-1 text-grey-900 p-4 block">채팅방</span>
+      <div className={`w-[375px] h-[62px] ${offsetClass} z-10 bg-grey-50`}>
+        <span className="w-full head-1 text-grey-900 p-4 block">채팅방</span>
       </div>
       <div
         className={clsx('flex flex-col overflow-y-auto h-full b-[30px]', hideStatusBar ? 'pt-[62px]' : 'max-h-[620px]')}
@@ -33,7 +33,7 @@ const ChatList = () => {
             username: chat.name,
             profileImg: chat.profileImg,
             lastMessage: lastMsg?.content ?? '',
-            time: lastMsg?.time ? formatTime(lastMsg.time) : '',
+            time: lastMsg?.createdAt ? formatTime(lastMsg.createdAt) : '',
             unread: msg.unreadCount ?? 0,
             memberCount: chat.memberCount,
             onClick: () =>
@@ -41,13 +41,13 @@ const ChatList = () => {
                 state: {
                   name: chat.name,
                   profileImg: chat.profileImg,
-                  type: msg.type,
-                  id: msg.id,
+                  type: msg.chatType,
+                  id: msg.chatId,
                 },
               }),
           };
 
-          return <ChatUser key={`${msg.id}-${msg.type}`} {...chatUserProps} />;
+          return <ChatUser key={`${msg.chatId}-${msg.chatType}`} {...chatUserProps} />;
         })}
       </div>
       <NavBar />

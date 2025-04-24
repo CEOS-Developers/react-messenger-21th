@@ -24,7 +24,7 @@ const ChatMessage = ({ message, isMine, senderInfo }: ChatMessageProps) => {
       <div className="flex flex-col gap-1 ml-2">
         {!isMine && <span className="caption-2 text-grey-500">{senderInfo.name}</span>}
         <div className={`flex items-end gap-1 ${isMine ? 'flex-row-reverse' : 'flex-row'}`}>
-          {message.type === 'text' ? (
+          {message.messageType === 'text' ? (
             <div
               className={`max-w-[216px] shadow-default px-2 py-1 rounded-lg bg-grey-50 body-2 text-grey-900 break-words whitespace-pre-line ${isMine ? 'rounded-tr-none' : 'rounded-tl-none'}`}
             >
@@ -37,7 +37,7 @@ const ChatMessage = ({ message, isMine, senderInfo }: ChatMessageProps) => {
               className={`w-auto max-w-[230px] h-[140px] object-cover rounded-lg ${isMine ? 'rounded-tr-none' : 'rounded-tl-none'}`}
             />
           )}
-          <span className="caption-2 text-grey-400">{formatTime(message.time)}</span>
+          <span className="caption-2 text-grey-400">{formatTime(message.createdAt)}</span>
         </div>
       </div>
     </div>
