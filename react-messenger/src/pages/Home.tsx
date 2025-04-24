@@ -15,7 +15,7 @@ const Home = () => {
       </div>
       <div
         className={clsx(
-          'h-full  overflow-y-auto pb-4 scrollbar-hide',
+          'h-full overflow-y-auto pb-4 scrollbar-hide',
           hideStatusBar ? 'mt-[44px] mb-[86px]' : 'max-h-[637px]',
         )}
       >
