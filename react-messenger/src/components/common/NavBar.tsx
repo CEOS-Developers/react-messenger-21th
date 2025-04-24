@@ -18,7 +18,7 @@ const menus = [
   },
   {
     name: '채팅',
-    path: '/chatlist',
+    path: '/chat',
     iconOn: ChatOn,
     iconOff: ChatOff,
   },

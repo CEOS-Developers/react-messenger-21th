@@ -37,17 +37,17 @@ const ChatList = () => {
             unread: msg.unreadCount ?? 0,
             memberCount: chat.memberCount,
             onClick: () =>
-              navigate('/chatroom', {
+              navigate(`/chat/${msg.chatId}`, {
                 state: {
                   name: chat.name,
                   profileImg: chat.profileImg,
                   type: msg.chatType,
-                  id: msg.chatId,
+                  targetUserId: msg.targetUserId,
                 },
               }),
           };
 
-          return <ChatUser key={`${msg.chatId}-${msg.chatType}`} {...chatUserProps} />;
+          return <ChatUser key={`${msg.targetUserId}-${msg.chatType}`} {...chatUserProps} />;
         })}
       </div>
       <NavBar />

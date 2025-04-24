@@ -1,6 +1,7 @@
 [
   {
-    "chatId": 4,
+    "chatId": 0,
+    "targetUserId": 4,
     "chatType": "user",
     "unreadCount": 2,
     "messages": [
@@ -36,6 +37,7 @@
   },
   {
     "chatId": 1,
+    "targetUserId": 1,
     "chatType": "group",
     "unreadCount": 2,
     "messages": [
@@ -63,7 +65,8 @@
     ]
   },
   {
-    "chatId": 3,
+    "chatId": 2,
+    "targetUserId": 3,
     "chatType": "group",
     "unreadCount": 3,
     "messages": [
@@ -91,7 +94,8 @@
     ]
   },
   {
-    "chatId": 2,
+    "chatId": 3,
+    "targetUserId": 2,
     "chatType": "user",
     "unreadCount": 0,
     "messages": [
@@ -119,7 +123,8 @@
     ]
   },
   {
-    "chatId": 2,
+    "chatId": 4,
+    "targetUserId": 2,
     "chatType": "group",
     "unreadCount": 2,
     "messages": [
@@ -148,6 +153,7 @@
   },
   {
     "chatId": 5,
+    "targetUserId": 5,
     "chatType": "user",
     "unreadCount": 1,
     "messages": [
@@ -175,7 +181,8 @@
     ]
   },
   {
-    "chatId": 1,
+    "chatId": 6,
+    "targetUserId": 1,
     "chatType": "user",
     "unreadCount": 7,
     "messages": [
@@ -203,7 +210,8 @@
     ]
   },
   {
-    "chatId": 3,
+    "chatId": 7,
+    "targetUserId": 3,
     "chatType": "user",
     "unreadCount": 2,
     "messages": [

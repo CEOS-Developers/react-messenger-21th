@@ -15,8 +15,8 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<OnBoarding />} />
-          <Route path="/chatlist" element={<ChatList />} />
-          <Route path="/chatroom" element={<ChatRoom />} />
+          <Route path="/chat" element={<ChatList />} />
+          <Route path="/chat/:chatId" element={<ChatRoom />} />
           <Route path="/setting" element={<Setting />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/home" element={<Home />} />

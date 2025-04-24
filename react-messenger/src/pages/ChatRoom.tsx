@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import ChatHeader from '@/components/chatroom/ChatHeader';
 import ChatInput from '@/components/chatroom/ChatInput';
 import ChatMessage from '@/components/chatroom/ChatMessage';
@@ -10,32 +10,33 @@ import { useStatusBar } from '@/hooks/useStatusBar';
 import clsx from 'clsx';
 
 const ChatRoom = () => {
+  const { chatId } = useParams();
   const location = useLocation();
-  const { offsetClass, hideStatusBar } = useStatusBar();
 
-  const { name, profileImg, id, type } = location.state || {};
+  const { name, profileImg, targetUserId, type } = location.state || {};
+
+  const { offsetClass, hideStatusBar } = useStatusBar();
   const { currentUser, targetUser, setTargetUser, switchUser } = useUserStore();
   const { messages, input, setInput, initRoom, sendTextMessage, sendImageMessage } = useChatStore();
 
-  // roomKey 저장용 ref
   const roomKeyRef = useRef('');
 
-  // 최초 마운트 시 targetUser 설정
+  // 최초 마운트 시 유저 정보 설정
   useEffect(() => {
-    if (name && id && profileImg) {
-      setTargetUser({ name, id, profileImg });
+    if (name && targetUserId && profileImg) {
+      setTargetUser({ name, id: targetUserId, profileImg });
     }
-  }, []);
+  }, [name, targetUserId, profileImg, setTargetUser]);
 
-  // 대화방(roomKey) 초기화
+  // 채팅방 메시지 초기화
   useEffect(() => {
-    if (currentUser.id && targetUser.id && type) {
-      const newRoomKey = initRoom(currentUser.id, targetUser.id, type);
-      roomKeyRef.current = newRoomKey;
+    if (chatId) {
+      const key = initRoom(chatId);
+      roomKeyRef.current = key;
     }
-  }, [currentUser.id, targetUser.id, type]);
+  }, [chatId, initRoom]);
 
-  // 스크롤 하단으로 이동
+  // 스크롤 하단 이동용 ref
   const bottomRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -56,16 +57,15 @@ const ChatRoom = () => {
     reader.readAsDataURL(file);
   };
 
-  //  날짜 구분용
   let lastDate = '';
 
   return (
     <div className="flex flex-col justify-between w-full h-full bg-grey-100">
       <div className={`${offsetClass} z-10 bg-grey-100`}>
-        <ChatHeader name={targetUser.name} onClick={switchUser} />
+        <ChatHeader name={targetUser?.name ?? '알 수 없음'} onClick={switchUser} />
       </div>
 
-      {/* 채팅 메시지 영역 */}
+      {/* 메시지 영역 */}
       <div className={clsx('flex flex-col gap-2 p-4 pt-0 overflow-y-auto flex-1', hideStatusBar ? 'mt-[32px]' : '')}>
         {messages.map((msg) => {
           const currentDate = msg.createdAt.split('T')[0];

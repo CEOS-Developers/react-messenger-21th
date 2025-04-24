@@ -1,12 +1,13 @@
 export type Message = {
   chatId: number;
+  targetUserId: number;
   chatType: 'user' | 'group';
   messages: MessageItem[];
   unreadCount: number;
 };
 
 export type MessageItem = {
-  messageId: number;
+  messageId: number | string;
   messageType: 'text' | 'image';
   content: string;
   createdAt: string;

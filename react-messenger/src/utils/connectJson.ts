@@ -4,7 +4,7 @@ import { Message } from '@/type/message';
 export const connectJson = (msg: Message) => {
   if (msg.chatType === 'user') {
     const allUsers = [...usersData.newFriends, ...usersData.friends];
-    const user = allUsers.find((u) => u.id === msg.chatId);
+    const user = allUsers.find((u) => u.id === msg.targetUserId);
 
     if (user) {
       return {
@@ -16,7 +16,7 @@ export const connectJson = (msg: Message) => {
   }
 
   if (msg.chatType === 'group') {
-    const group = usersData.groups.find((g) => g.id === msg.chatId);
+    const group = usersData.groups.find((g) => g.id === msg.targetUserId);
 
     if (group) {
       return {
