@@ -28,7 +28,7 @@ export const useUserStore = create<UserStore>((set, get) => {
     targetUser: { id: 0, name: '', profileImg: '' },
     groupMembers: [],
     viewIndex: 0,
-    chatType: 'user', // 기본값 1:1
+    chatType: 'user',
 
     setTargetUser: (user) => set({ targetUser: user }),
     setGroupMembers: (members) => set({ groupMembers: members }),

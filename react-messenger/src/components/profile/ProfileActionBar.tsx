@@ -20,7 +20,6 @@ type ActionBarProps = {
   chatId: number;
   chatType: 'user' | 'group';
 };
-
 const ProfileActionBar = ({
   isMine,
   isCalling,
@@ -33,44 +32,52 @@ const ProfileActionBar = ({
 }: ActionBarProps) => {
   const navigate = useNavigate();
 
-  const items = isMine
-    ? [
+  const getActions = () => {
+    if (isMine) {
+      return [
         { icon: ChatMySelfBtn, label: '나와의 채팅', onClick: () => {} },
         { icon: EditBtn, label: '프로필 편집', onClick: () => {} },
         { icon: SettingBtn, label: '설정', onClick: () => {} },
-      ]
-    : isCalling
-      ? [
-          { icon: Mute, label: '음소거', onClick: () => {} },
-          {
-            icon: <EndCallIcon />,
-            label: '',
-            onClick: () => setIsCalling(false),
-          },
-          { icon: Speaker, label: '스피커', onClick: () => {} },
-        ]
-      : [
-          {
-            icon: Chat,
-            label: '채팅',
-            onClick: () =>
-              navigate(`/chat/${chatId}`, {
-                state: {
-                  name: targetUserName,
-                  profileImg: targetProfileImg,
-                  targetUserId: targetUserId,
-                  chatType: chatType,
-                  isSwitched: false,
-                },
-              }),
-          },
-          {
-            icon: Call,
-            label: '전화',
-            onClick: () => setIsCalling(true),
-          },
-          { icon: VideoCall, label: '영상통화', onClick: () => {} },
-        ];
+      ];
+    }
+
+    if (isCalling) {
+      return [
+        { icon: Mute, label: '음소거', onClick: () => {} },
+        {
+          icon: <EndCallIcon />,
+          label: '',
+          onClick: () => setIsCalling(false),
+        },
+        { icon: Speaker, label: '스피커', onClick: () => {} },
+      ];
+    }
+
+    return [
+      {
+        icon: Chat,
+        label: '채팅',
+        onClick: () =>
+          navigate(`/chat/${chatId}`, {
+            state: {
+              name: targetUserName,
+              profileImg: targetProfileImg,
+              targetUserId,
+              chatType,
+              isSwitched: false,
+            },
+          }),
+      },
+      {
+        icon: Call,
+        label: '전화',
+        onClick: () => setIsCalling(true),
+      },
+      { icon: VideoCall, label: '영상통화', onClick: () => {} },
+    ];
+  };
+
+  const items = getActions();
 
   return (
     <div

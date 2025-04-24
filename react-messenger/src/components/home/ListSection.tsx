@@ -12,63 +12,48 @@ const ListSection = () => {
   const toggleSection = (key: string) => {
     setOpenSections((prev) => ({
       ...prev,
-      [key]: !(prev[key] ?? true),
+      [key]: !prev[key],
     }));
   };
 
-  const sections = [
-    {
-      title: '새 친구',
-      key: 'newFriends',
-      items: data.newFriends,
-      isGroup: false,
-      isMine: false,
-    },
-    {
-      title: '내 그룹',
-      key: 'groups',
-      items: data.groups,
-      isGroup: true,
-      isMine: false,
-    },
-    {
-      title: '내 친구',
-      key: 'friends',
-      items: data.friends,
-      isGroup: false,
-      isMine: false,
-    },
+  const sections: {
+    title: string;
+    key: string;
+    items: (User | Group)[];
+    isGroup: boolean;
+  }[] = [
+    { title: '새 친구', key: 'newFriends', items: data.newFriends, isGroup: false },
+    { title: '내 그룹', key: 'groups', items: data.groups, isGroup: true },
+    { title: '내 친구', key: 'friends', items: data.friends, isGroup: false },
   ];
 
   return (
     <div className="flex flex-col">
-      {sections.map((section) => {
-        const isOpen = openSections[section.key] ?? true;
-        const count = section.items.length;
+      {sections.map(({ title, key, items }) => {
+        const isOpen = openSections[key] ?? true;
 
         return (
-          <div key={section.key}>
-            <ListTitle title={section.title} count={count} isOpen={isOpen} onClick={() => toggleSection(section.key)} />
+          <div key={key}>
+            <ListTitle title={title} count={items.length} isOpen={isOpen} onClick={() => toggleSection(key)} />
             {isOpen && (
               <div className="flex flex-col">
-                {section.isGroup
-                  ? (section.items as Group[]).map((group) => (
-                      <UserItem
-                        key={group.id}
-                        name={group.groupName}
-                        profileImg={group.profileImg}
-                        count={group.members?.length ?? 0}
-                        onClick={() => navigate(`/profile/${group.id}?chatType=group`)}
-                      />
-                    ))
-                  : (section.items as User[]).map((user) => (
-                      <UserItem
-                        key={user.id}
-                        name={user.name}
-                        profileImg={user.profileImg}
-                        onClick={() => navigate(`/profile/${user.id}?chatType=user`)}
-                      />
-                    ))}
+                {items.map((item) => {
+                  const id = 'groupName' in item ? item.id : item.id;
+                  const name = 'groupName' in item ? item.groupName : item.name;
+                  const profileImg = item.profileImg;
+                  const count = 'members' in item ? (item.members?.length ?? 0) : undefined;
+                  const chatType = 'groupName' in item ? 'group' : 'user';
+
+                  return (
+                    <UserItem
+                      key={id}
+                      name={name}
+                      profileImg={profileImg}
+                      count={count}
+                      onClick={() => navigate(`/profile/${id}?chatType=${chatType}`)}
+                    />
+                  );
+                })}
               </div>
             )}
           </div>

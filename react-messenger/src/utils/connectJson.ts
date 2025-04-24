@@ -7,37 +7,30 @@ type ConnectedChatMeta = Message & {
   memberCount?: number;
 };
 
-export const connectJson = (msg: Message): ConnectedChatMeta => {
-  const allUsers = [usersData.myProfile, ...usersData.newFriends, ...usersData.friends];
+const UNKNOWN_USER = {
+  name: '알 수 없음',
+  profileImg: '',
+};
 
+const allUsers = [usersData.myProfile, ...usersData.newFriends, ...usersData.friends];
+
+export const connectJson = (msg: Message): ConnectedChatMeta => {
   if (msg.chatType === 'user') {
     const user = allUsers.find((u) => u.id === msg.targetUserId);
-
-    if (user) {
-      return {
-        name: user.name,
-        profileImg: user.profileImg,
-        ...msg,
-      };
-    }
+    return user ? { ...msg, name: user.name, profileImg: user.profileImg } : { ...msg, ...UNKNOWN_USER };
   }
 
   if (msg.chatType === 'group') {
     const group = usersData.groups.find((g) => g.id === msg.targetUserId);
-
-    if (group) {
-      return {
-        name: group.groupName,
-        profileImg: group.profileImg,
-        memberCount: group.members?.length,
-        ...msg,
-      };
-    }
+    return group
+      ? {
+          ...msg,
+          name: group.groupName,
+          profileImg: group.profileImg,
+          memberCount: group.members?.length ?? 0,
+        }
+      : { ...msg, ...UNKNOWN_USER };
   }
 
-  return {
-    name: '알 수 없음',
-    profileImg: '',
-    ...msg,
-  };
+  return { ...msg, ...UNKNOWN_USER };
 };
