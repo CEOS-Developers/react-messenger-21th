@@ -11,6 +11,6 @@ export type Group = {
   groupName: string;
   profileImg: string;
   backgroundImg: string;
-  memberCount: number;
+  members: User[];
   comment: string;
 };

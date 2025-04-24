@@ -11,7 +11,7 @@ const UserItem = ({ name, profileImg, count, onClick }: UserItemProps) => {
       <img src={profileImg} className="w-[48px] h-[48px] rounded-full object-cover" alt={name} />
       <div className="flex px-4">
         <span className="label-1">{name}</span>
-        {count && <span className="label-1 text-grey-600">&nbsp; ({count})</span>}
+        {count !== undefined && <span className="label-1 text-grey-600">&nbsp; ({count})</span>}
       </div>
     </div>
   );

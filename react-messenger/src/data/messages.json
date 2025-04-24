@@ -46,7 +46,7 @@
         "messageType": "text",
         "content": "모닝커피 한잔 하자~",
         "createdAt": "2025-03-20T08:39:00",
-        "senderId": 1
+        "senderId": 3
       },
       {
         "messageId": 1,
@@ -60,7 +60,7 @@
         "messageType": "text",
         "content": "점심 메뉴 추천 받아요",
         "createdAt": "2025-03-20T09:35:00",
-        "senderId": 1
+        "senderId": 2
       }
     ]
   },
@@ -75,7 +75,7 @@
         "messageType": "text",
         "content": "회의 시작 몇 분 전!",
         "createdAt": "2025-03-20T09:30:00",
-        "senderId": 3
+        "senderId": 5
       },
       {
         "messageId": 1,
@@ -147,7 +147,7 @@
         "messageType": "text",
         "content": "다들 시간 돼?",
         "createdAt": "2025-03-20T14:46:00",
-        "senderId": 2
+        "senderId": 4
       }
     ]
   },

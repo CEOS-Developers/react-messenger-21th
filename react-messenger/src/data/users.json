@@ -28,24 +28,72 @@
       "groupName": "전가네",
       "profileImg": "/images/User3.svg",
       "backgroundImg": "/images/Background.svg",
-      "memberCount": 6,
-      "comment": "전씨 성 가진 사람들 모임"
+      "comment": "전씨 성 가진 사람들 모임",
+      "members": [
+        {
+          "id": 99,
+          "name": "전지연",
+          "profileImg": "/images/ProfileImg.svg"
+        },
+        {
+          "id": 3,
+          "name": "따봉이",
+          "profileImg": "/images/User6.svg"
+        },
+        {
+          "id": 2,
+          "name": "브라운",
+          "profileImg": "/images/User2.svg"
+        }
+      ]
     },
     {
       "id": 2,
       "groupName": "CEOS",
       "profileImg": "/images/User4.svg",
       "backgroundImg": "/images/Background.svg",
-      "memberCount": 64,
-      "comment": "스타트업 창업자들의 공간"
+      "comment": "스타트업 창업자들의 공간",
+      "members": [
+        {
+          "id": 99,
+          "name": "전지연",
+          "profileImg": "/images/ProfileImg.svg"
+        },
+        {
+          "id": 4,
+          "name": "콩이",
+          "profileImg": "/images/User7.svg"
+        },
+        {
+          "id": 2,
+          "name": "브라운",
+          "profileImg": "/images/User2.svg"
+        }
+      ]
     },
     {
       "id": 3,
       "groupName": "야작팟",
       "profileImg": "/images/User5.svg",
       "backgroundImg": "/images/Background.svg",
-      "memberCount": 3,
-      "comment": "야작은 사랑이죠"
+      "comment": "야작은 사랑이죠",
+      "members": [
+        {
+          "id": 99,
+          "name": "전지연",
+          "profileImg": "/images/ProfileImg.svg"
+        },
+        {
+          "id": 5,
+          "name": "봉이",
+          "profileImg": "/images/User8.svg"
+        },
+        {
+          "id": 3,
+          "name": "따봉이",
+          "profileImg": "/images/User6.svg"
+        }
+      ]
     }
   ],
   "friends": [

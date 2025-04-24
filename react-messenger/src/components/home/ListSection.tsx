@@ -57,7 +57,7 @@ const ListSection = () => {
                         key={group.id}
                         name={group.groupName}
                         profileImg={group.profileImg}
-                        count={group.memberCount}
+                        count={group.members?.length ?? 0}
                         onClick={() => navigate(`/profile/${group.id}?type=group`)}
                       />
                     ))

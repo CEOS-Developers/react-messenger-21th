@@ -29,7 +29,7 @@ export const connectJson = (msg: Message): ConnectedChatMeta => {
       return {
         name: group.groupName,
         profileImg: group.profileImg,
-        memberCount: group.memberCount,
+        memberCount: group.members?.length,
         ...msg,
       };
     }

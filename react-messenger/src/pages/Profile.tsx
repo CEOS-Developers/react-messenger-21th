@@ -40,10 +40,19 @@ const Profile = () => {
   if (!user) return <div className="p-4">존재하지 않는 프로필입니다.</div>;
 
   const name = 'name' in user ? user.name : user.groupName;
-  const found = messages.find(
-    (chat) =>
-      chat.messages.some((m) => m.senderId === user.id) && chat.messages.some((m) => m.senderId === myProfile.id),
-  );
+  const found = messages.find((chat) => {
+    if (type === 'group') {
+      return chat.chatType === 'group' && chat.targetUserId === user.id;
+    }
+
+    // 1:1 채팅인 경우
+    return (
+      chat.chatType === 'user' &&
+      ((chat.targetUserId === user.id && chat.messages.some((m) => m.senderId === myProfile.id)) ||
+        (chat.targetUserId === myProfile.id && chat.messages.some((m) => m.senderId === user.id)))
+    );
+  });
+
   const maxChatId = Math.max(...messages.map((chat) => chat.chatId));
   const chatId = found?.chatId ?? maxChatId + 1;
   const rawType = found?.chatType ?? type;
