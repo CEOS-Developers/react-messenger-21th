@@ -27,7 +27,7 @@ const ChatRoom = () => {
     resetView,
     toggleView,
   } = useUserStore();
-  const { messages, input, setInput, initRoom, sendTextMessage, sendImageMessage } = useChatStore();
+  const { messages, input, setInput, initRoom, sendTextMessage, sendImageMessage, setUnreadCount } = useChatStore();
 
   const isGroupChat = chatType === 'group';
 
@@ -45,7 +45,13 @@ const ChatRoom = () => {
   // 초기화: chatType 설정, 채팅방 키 생성, 대상 유저 설정, 그룹 멤버 설정
   useEffect(() => {
     if (chatType) setChatType(chatType);
-    if (chatId) roomKeyRef.current = initRoom(chatId);
+    if (chatId) {
+      const key = initRoom(chatId);
+      roomKeyRef.current = key;
+
+      // unreadCount 0으로 초기화
+      setUnreadCount(key, 0);
+    }
 
     // 1:1일 때 채팅 상대 설정
     if (targetUserId && name && profileImg) {

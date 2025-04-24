@@ -20,6 +20,7 @@ type ChatStore = {
   initRoom: (chatId: string) => string;
   sendTextMessage: (content: string, senderId: number, roomKey: string) => void;
   sendImageMessage: (base64: string, senderId: number, roomKey: string) => void;
+  setUnreadCount: (chatId: string, count: number) => void;
 };
 
 export const useChatStore = create<ChatStore>((set, get) => {
@@ -36,13 +37,13 @@ export const useChatStore = create<ChatStore>((set, get) => {
       id: m.messageId ?? uuidv4(),
     }));
 
+    const storedUnread = localStorage.getItem(`unread-${key}`);
     map[key] = withId;
-
     meta[key] = {
       chatId: msg.chatId,
       targetUserId: msg.targetUserId,
       chatType: msg.chatType,
-      unreadCount: msg.unreadCount,
+      unreadCount: storedUnread !== null ? Number(storedUnread) : msg.unreadCount,
     };
   });
 
@@ -96,6 +97,19 @@ export const useChatStore = create<ChatStore>((set, get) => {
 
       set({ messages: updated, conversationMap: newMap });
       localStorage.setItem(roomKey, JSON.stringify(updated));
+    },
+    setUnreadCount: (chatId, count) => {
+      set((state) => {
+        const updated = {
+          ...state.conversationMeta,
+          [chatId]: {
+            ...state.conversationMeta[chatId],
+            unreadCount: count,
+          },
+        };
+        localStorage.setItem(`unread-${chatId}`, String(count));
+        return { conversationMeta: updated };
+      });
     },
   };
 });
