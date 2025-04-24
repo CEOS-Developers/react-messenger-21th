@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router'
 import { MultipleProfile } from '@/assets/Icons/Profile'
-import findUser from '@/utils/findUser'
+import { usePersistUserStore } from '@/stores/usePersistUserStore'
 import { ChatRoom } from '@/interface/ChatRoom'
 
 const GroupChatItem = ({
@@ -9,10 +9,11 @@ const GroupChatItem = ({
   roomName,
 }: Omit<ChatRoom, 'chats'>) => {
   const nav = useNavigate()
+  const { getUserById } = usePersistUserStore()
 
   const memberColors = member
     .slice(0, 4)
-    .map((memberId: number) => findUser(memberId)?.profileColor || 'gray02')
+    .map((memberId: number) => getUserById(memberId)?.profileColor || 'gray02')
   const memberCount = member.length
   return (
     <div

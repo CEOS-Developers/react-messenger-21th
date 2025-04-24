@@ -9,13 +9,14 @@ import ProfileInfo from './ProfileInfo'
 import { FriendProfleAction, MyProfleAction } from './ProfileAction'
 
 import { useUserStore } from '@/stores/useUserStore'
-import findUser from '@/utils/findUser'
+import { usePersistUserStore } from '@/stores/usePersistUserStore'
 
 const ProfileContent = () => {
   const userId = Number(useParams().id)
   const { user } = useUserStore()
+  const { getUserById } = usePersistUserStore()
   const isMine = userId === user.id
-  const curUser = findUser(userId)
+  const curUser = getUserById(userId)
 
   if (!curUser) return <div>존재하지 않는 유저</div>
   return (
@@ -36,7 +37,7 @@ const ProfileContent = () => {
         {isMine ? (
           <MyProfleAction />
         ) : (
-          <FriendProfleAction snsUrl={curUser.snsUrl} id={userId} />
+          <FriendProfleAction snsUrl={curUser.snsUrl ?? ''} id={userId} />
         )}
       </div>
     </div>

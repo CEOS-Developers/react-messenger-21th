@@ -3,9 +3,9 @@ import { useLocation, useNavigate } from 'react-router'
 
 import { useUserStore } from '@/stores/useUserStore'
 import { useChatRoomStore } from '@/stores/useChatRoomStore'
+import { usePersistUserStore } from '@/stores/usePersistUserStore'
 import { SYSTEM_ID } from '@/utils/constants'
 import getRoomName from '@/utils/getRoomName'
-import findUser from '@/utils/findUser'
 
 import ActionBar from '../Commons/ActionBar'
 import DeletableMemberItem from '../MemberSelection/DeletableMemberItem'
@@ -27,11 +27,12 @@ const SettingContent = () => {
   const selectedIds_ = useLocation().state.selectedIds
 
   /* state */
+  const { getUserById } = usePersistUserStore()
   const [selectedIds, setSelectedIds] = useState<number[]>(selectedIds_)
   const [roomName, setRoomName] = useState('')
   const friendsData = selectedIds
     .map((id_: number) => {
-      const friend = findUser(id_)
+      const friend = getUserById(id_)
       if (!friend) return null
 
       const { id, name, profileColor } = friend

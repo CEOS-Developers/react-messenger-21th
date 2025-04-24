@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router'
 import { MultipleProfile, ProfileCircleDefault } from '@/assets/Icons/Profile'
 
 import { useUserStore } from '@/stores/useUserStore'
+import { usePersistUserStore } from '@/stores/usePersistUserStore'
 import { ChatRoom } from '@/interface/ChatRoom'
 import { Chat } from '@/interface/Chat'
 
-import findUser from '@/utils/findUser'
 import getRoomName from '@/utils/getRoomName'
 import getUnreadCount from '@/utils/getUnreadCount'
 import getLastChatTime from '@/utils/getLastChatTime'
@@ -26,6 +26,7 @@ const RoomItem = ({
 }: RoomItemProps) => {
   const nav = useNavigate()
   const { user, updateLastSeenTime } = useUserStore()
+  const { getUserById } = usePersistUserStore()
 
   const memberCount = member.length
   const memberIds = member.filter((memberId: number) => memberId !== user.id)
@@ -34,7 +35,7 @@ const RoomItem = ({
 
   const memberColors = memberIds
     .slice(0, 4)
-    .map((memberId: number) => findUser(memberId)?.profileColor || 'gray02')
+    .map((memberId: number) => getUserById(memberId)?.profileColor || 'gray02')
 
   const lastChatTime = getLastChatTime(lastChat.id)
   const unreadCount = getUnreadCount(chats, lastSeenTime)

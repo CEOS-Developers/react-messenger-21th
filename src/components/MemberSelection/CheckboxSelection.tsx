@@ -10,7 +10,7 @@ import CheckBox from '@/assets/Icons/Checkbox/checkbox.svg?react'
 import CheckedBox from '@/assets/Icons/Checkbox/checkbox_checked.svg?react'
 
 import { useUserStore } from '@/stores/useUserStore'
-import findUser from '@/utils/findUser'
+import { usePersistUserStore } from '@/stores/usePersistUserStore'
 import { filterByName } from '@/utils/filterByName'
 
 const CheckboxSelection = ({
@@ -29,9 +29,10 @@ const CheckboxSelection = ({
   const { user } = useUserStore()
 
   /* 친구 중 이 채팅방에 없는 친구 목록 불러오기 */
+  const { getUserById } = usePersistUserStore()
   const friendsData = user.friends
     .map((id_) => {
-      const friend = findUser(id_)
+      const friend = getUserById(id_)
       if (!friend || memberIds.includes(friend.id)) return null
 
       const { id, name, profileColor } = friend

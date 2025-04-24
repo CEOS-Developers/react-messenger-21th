@@ -9,12 +9,10 @@ import Radio from '@/assets/Icons/Checkbox/checkbox_radio.svg?react'
 import { MemberArrayType } from '@/utils/getMemberList'
 import setUserAndChatRoom from '@/utils/setUserAndChatRoom'
 import PartitionItem from '../Commons/PartitionItem'
-import { usePersistUserStore } from '@/stores/usePersistUserStore'
 
 const RadioSelection = () => {
   const [selectedId, setSelectedId] = useState(-1)
   const { memberData } = useLocation().state
-  const { setCurUser } = usePersistUserStore()
   const nav = useNavigate()
 
   const onClickMemberItem = (id: number) => {
@@ -22,7 +20,6 @@ const RadioSelection = () => {
   }
 
   const onClickConfirm = () => {
-    setCurUser(selectedId)
     setUserAndChatRoom(selectedId)
     nav(-2)
   }

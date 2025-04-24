@@ -5,17 +5,18 @@ import { ProfileCircleDefault } from '@/assets/Icons/Profile'
 import FriendsViewer from './FriendsViewer'
 
 import { useUserStore } from '@/stores/useUserStore'
-import findUser from '@/utils/findUser'
 import { useChatRoomStore } from '@/stores/useChatRoomStore'
+import { usePersistUserStore } from '@/stores/usePersistUserStore'
 
 const FriendsListContent = () => {
   const { user } = useUserStore()
   const { chatRoom } = useChatRoomStore()
+  const { getUserById } = usePersistUserStore()
   const nav = useNavigate()
 
   const friendsData = user.friends
     .map((id) => {
-      const friend = findUser(id)
+      const friend = getUserById(id)
       if (!friend) return null
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
