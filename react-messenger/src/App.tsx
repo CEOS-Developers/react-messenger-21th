@@ -19,6 +19,7 @@ function App() {
           <Route path="/chat/:chatId" element={<ChatRoom />} />
           <Route path="/setting" element={<Setting />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:id" element={<Profile />} />
           <Route path="/home" element={<Home />} />
         </Route>
       </Routes>

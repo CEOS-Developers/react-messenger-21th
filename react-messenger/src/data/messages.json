@@ -1,6 +1,6 @@
 [
   {
-    "chatId": 0,
+    "chatId": 1,
     "targetUserId": 4,
     "chatType": "user",
     "unreadCount": 2,
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "chatId": 1,
+    "chatId": 2,
     "targetUserId": 1,
     "chatType": "group",
     "unreadCount": 2,
@@ -65,7 +65,7 @@
     ]
   },
   {
-    "chatId": 2,
+    "chatId": 3,
     "targetUserId": 3,
     "chatType": "group",
     "unreadCount": 3,
@@ -94,7 +94,7 @@
     ]
   },
   {
-    "chatId": 3,
+    "chatId": 4,
     "targetUserId": 2,
     "chatType": "user",
     "unreadCount": 0,
@@ -123,7 +123,7 @@
     ]
   },
   {
-    "chatId": 4,
+    "chatId": 5,
     "targetUserId": 2,
     "chatType": "group",
     "unreadCount": 2,
@@ -152,7 +152,7 @@
     ]
   },
   {
-    "chatId": 5,
+    "chatId": 6,
     "targetUserId": 5,
     "chatType": "user",
     "unreadCount": 1,
@@ -181,7 +181,7 @@
     ]
   },
   {
-    "chatId": 6,
+    "chatId": 7,
     "targetUserId": 1,
     "chatType": "user",
     "unreadCount": 7,
@@ -210,7 +210,7 @@
     ]
   },
   {
-    "chatId": 7,
+    "chatId": 8,
     "targetUserId": 3,
     "chatType": "user",
     "unreadCount": 2,

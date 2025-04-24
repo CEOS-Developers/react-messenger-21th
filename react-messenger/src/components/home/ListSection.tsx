@@ -22,18 +22,21 @@ const ListSection = () => {
       key: 'newFriends',
       items: data.newFriends,
       isGroup: false,
+      isMine: false,
     },
     {
       title: '내 그룹',
       key: 'groups',
       items: data.groups,
       isGroup: true,
+      isMine: false,
     },
     {
       title: '내 친구',
       key: 'friends',
       items: data.friends,
       isGroup: false,
+      isMine: false,
     },
   ];
 
@@ -55,17 +58,7 @@ const ListSection = () => {
                         name={group.groupName}
                         profileImg={group.profileImg}
                         count={group.memberCount}
-                        onClick={() =>
-                          navigate('/profile', {
-                            state: {
-                              username: group.groupName,
-                              profileImg: group.profileImg,
-                              backgroundImg: group.backgroundImg,
-                              comment: group.comment,
-                              isMine: false,
-                            },
-                          })
-                        }
+                        onClick={() => navigate(`/profile/${group.id}?type=group`)}
                       />
                     ))
                   : (section.items as User[]).map((user) => (
@@ -73,17 +66,7 @@ const ListSection = () => {
                         key={user.id}
                         name={user.name}
                         profileImg={user.profileImg}
-                        onClick={() =>
-                          navigate('/profile', {
-                            state: {
-                              username: user.name,
-                              profileImg: user.profileImg,
-                              backgroundImg: user.backgroundImg,
-                              comment: user.comment,
-                              isMine: false,
-                            },
-                          })
-                        }
+                        onClick={() => navigate(`/profile/${user.id}?type=user`)}
                       />
                     ))}
               </div>

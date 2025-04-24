@@ -10,10 +10,10 @@ export type User = {
 export type UserStore = {
   currentUser: User;
   targetUser: User;
-  isSwitched: boolean; // ✅ 현재 시점을 전환했는지 여부
+  isSwitched: boolean;
   setTargetUser: (user: User) => void;
-  toggleView: () => void; // ✅ 시점만 바꿔줌
-  resetView: () => void; // ✅ 원래 사용자로 복귀
+  toggleView: () => void;
+  resetView: () => void;
 };
 
 export const useUserStore = create<UserStore>((set, get) => {

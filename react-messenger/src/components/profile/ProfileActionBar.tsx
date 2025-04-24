@@ -9,13 +9,29 @@ import Speaker from '@/assets/svgs/profile/Speaker.svg?url';
 import EndCallIcon from './EndCallIcon';
 import clsx from 'clsx';
 
-type Props = {
+type ActionBarProps = {
   isMine: boolean;
   isCalling: boolean;
   setIsCalling: React.Dispatch<React.SetStateAction<boolean>>;
+  targetUserId: number;
+  targetUserName: string;
+  targetProfileImg: string;
+  chatId: number;
 };
 
-const ProfileActionBar = ({ isMine, isCalling, setIsCalling }: Props) => {
+import { useNavigate } from 'react-router-dom';
+
+const ProfileActionBar = ({
+  isMine,
+  isCalling,
+  setIsCalling,
+  targetUserId,
+  targetUserName,
+  targetProfileImg,
+  chatId,
+}: ActionBarProps) => {
+  const navigate = useNavigate();
+
   const items = isMine
     ? [
         { icon: ChatMySelfBtn, label: '나와의 채팅', onClick: () => {} },
@@ -33,7 +49,20 @@ const ProfileActionBar = ({ isMine, isCalling, setIsCalling }: Props) => {
           { icon: Speaker, label: '스피커', onClick: () => {} },
         ]
       : [
-          { icon: Chat, label: '채팅', onClick: () => {} },
+          {
+            icon: Chat,
+            label: '채팅',
+            onClick: () =>
+              navigate(`/chat/${chatId}`, {
+                state: {
+                  name: targetUserName,
+                  profileImg: targetProfileImg,
+                  targetUserId,
+                  type: 'user',
+                  isSwitched: false,
+                },
+              }),
+          },
           {
             icon: Call,
             label: '전화',
