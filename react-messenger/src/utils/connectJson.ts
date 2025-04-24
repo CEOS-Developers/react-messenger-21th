@@ -1,4 +1,3 @@
-// utils/connectJson.ts
 import usersData from '@/data/users.json';
 import { Message } from '@/type/message';
 
@@ -9,8 +8,9 @@ type ConnectedChatMeta = Message & {
 };
 
 export const connectJson = (msg: Message): ConnectedChatMeta => {
+  const allUsers = [usersData.myProfile, ...usersData.newFriends, ...usersData.friends];
+
   if (msg.chatType === 'user') {
-    const allUsers = [...usersData.newFriends, ...usersData.friends];
     const user = allUsers.find((u) => u.id === msg.targetUserId);
 
     if (user) {

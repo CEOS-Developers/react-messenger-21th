@@ -33,17 +33,23 @@
         {
           "id": 99,
           "name": "전지연",
-          "profileImg": "/images/ProfileImg.svg"
+          "profileImg": "/images/ProfileImg.svg",
+          "backgroundImg": "/images/Background.svg",
+          "comment": "아샷추가 정말 좋아요"
         },
         {
           "id": 3,
           "name": "따봉이",
-          "profileImg": "/images/User6.svg"
+          "profileImg": "/images/User6.svg",
+          "backgroundImg": "/images/Background.svg",
+          "comment": "좋아요 누르고 가세요"
         },
         {
           "id": 2,
           "name": "브라운",
-          "profileImg": "/images/User2.svg"
+          "profileImg": "/images/User2.svg",
+          "backgroundImg": "/images/Background.svg",
+          "comment": "곰돌이 푸가 제 친구예요"
         }
       ]
     },
@@ -57,17 +63,23 @@
         {
           "id": 99,
           "name": "전지연",
-          "profileImg": "/images/ProfileImg.svg"
+          "profileImg": "/images/ProfileImg.svg",
+          "backgroundImg": "/images/Background.svg",
+          "comment": "아샷추가 정말 좋아요"
         },
         {
           "id": 4,
           "name": "콩이",
-          "profileImg": "/images/User7.svg"
+          "profileImg": "/images/User7.svg",
+          "backgroundImg": "/images/Background.svg",
+          "comment": "고소한 인생"
         },
         {
           "id": 2,
           "name": "브라운",
-          "profileImg": "/images/User2.svg"
+          "profileImg": "/images/User2.svg",
+          "backgroundImg": "/images/Background.svg",
+          "comment": "곰돌이 푸가 제 친구예요"
         }
       ]
     },
@@ -81,17 +93,23 @@
         {
           "id": 99,
           "name": "전지연",
-          "profileImg": "/images/ProfileImg.svg"
+          "profileImg": "/images/ProfileImg.svg",
+          "backgroundImg": "/images/Background.svg",
+          "comment": "아샷추가 정말 좋아요"
         },
         {
           "id": 5,
           "name": "봉이",
-          "profileImg": "/images/User8.svg"
+          "profileImg": "/images/User8.svg",
+          "backgroundImg": "/images/Background.svg",
+          "comment": "이름 따라가는 중"
         },
         {
           "id": 3,
           "name": "따봉이",
-          "profileImg": "/images/User6.svg"
+          "profileImg": "/images/User6.svg",
+          "backgroundImg": "/images/Background.svg",
+          "comment": "좋아요 누르고 가세요"
         }
       ]
     }

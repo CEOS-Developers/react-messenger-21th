@@ -66,7 +66,7 @@ const ChatList = () => {
                 state: {
                   name: chatMeta.name,
                   profileImg: chatMeta.profileImg,
-                  type: chatMeta.memberCount ? 'group' : 'user',
+                  chatType: chatMeta.memberCount ? 'group' : 'user',
                   targetUserId: chatMeta.targetUserId,
                 },
               }),

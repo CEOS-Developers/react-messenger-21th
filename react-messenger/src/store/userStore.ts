@@ -10,8 +10,10 @@ export type User = {
 export type UserStore = {
   currentUser: User;
   targetUser: User;
+  groupMembers: User[];
   isSwitched: boolean;
   setTargetUser: (user: User) => void;
+  setGroupMembers: (members: User[]) => void;
   toggleView: () => void;
   resetView: () => void;
 };
@@ -22,9 +24,11 @@ export const useUserStore = create<UserStore>((set, get) => {
   return {
     currentUser: profile,
     targetUser: { id: 0, name: '', profileImg: '' },
+    groupMembers: [],
     isSwitched: false,
 
     setTargetUser: (user) => set({ targetUser: user }),
+    setGroupMembers: (members) => set({ groupMembers: members }),
 
     toggleView: () => {
       const current = get();

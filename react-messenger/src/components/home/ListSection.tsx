@@ -58,7 +58,7 @@ const ListSection = () => {
                         name={group.groupName}
                         profileImg={group.profileImg}
                         count={group.members?.length ?? 0}
-                        onClick={() => navigate(`/profile/${group.id}?type=group`)}
+                        onClick={() => navigate(`/profile/${group.id}?chatType=group`)}
                       />
                     ))
                   : (section.items as User[]).map((user) => (
@@ -66,7 +66,7 @@ const ListSection = () => {
                         key={user.id}
                         name={user.name}
                         profileImg={user.profileImg}
-                        onClick={() => navigate(`/profile/${user.id}?type=user`)}
+                        onClick={() => navigate(`/profile/${user.id}?chatType=user`)}
                       />
                     ))}
               </div>

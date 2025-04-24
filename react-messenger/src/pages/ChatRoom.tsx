@@ -8,35 +8,58 @@ import { useUserStore } from '@/store/userStore';
 import { useChatStore } from '@/store/chatStore';
 import { useStatusBar } from '@/hooks/useStatusBar';
 import clsx from 'clsx';
+import users from '@/data/users.json';
 
 const ChatRoom = () => {
   const { chatId } = useParams();
   const location = useLocation();
-
-  const { name, profileImg, targetUserId } = location.state || {};
+  const { targetUserId, chatType } = location.state || {};
 
   const { offsetClass, hideStatusBar } = useStatusBar();
-
-  const { currentUser, targetUser, setTargetUser, resetView, isSwitched: storeSwitched, toggleView } = useUserStore();
+  const {
+    currentUser,
+    targetUser,
+    setTargetUser,
+    setGroupMembers,
+    groupMembers,
+    resetView,
+    isSwitched: storeSwitched,
+    toggleView,
+  } = useUserStore();
 
   const { messages, input, setInput, initRoom, sendTextMessage, sendImageMessage } = useChatStore();
 
-  // 시점 전환된 유저 기준 정보
+  const isGroupChat = chatType === 'group';
+
   const myInfo = storeSwitched ? targetUser : currentUser;
   const otherInfo = storeSwitched ? currentUser : targetUser;
 
   const roomKeyRef = useRef('');
 
-  // targetUser 상태 초기화
+  // 그룹 멤버 설정
   useEffect(() => {
-    if (targetUserId && name && profileImg) {
+    if (isGroupChat) {
+      const group = users.groups.find((g) => g.id === targetUserId);
+      if (group) {
+        const members = group.members ?? [];
+        const detailedMembers = members.map((member) => {
+          const fullUser = [...users.friends, ...users.newFriends, users.myProfile].find((u) => u.id === member.id);
+          return fullUser || member;
+        });
+        setGroupMembers(detailedMembers);
+      }
+    }
+  }, [isGroupChat, targetUserId]);
+
+  useEffect(() => {
+    if (targetUserId && location.state?.name && location.state?.profileImg) {
       setTargetUser({
         id: targetUserId,
-        name,
-        profileImg,
+        name: location.state.name,
+        profileImg: location.state.profileImg,
       });
     }
-  }, [targetUserId, name, profileImg]);
+  }, [targetUserId, location.state]);
 
   // 채팅방 초기화
   useEffect(() => {
@@ -47,7 +70,9 @@ const ChatRoom = () => {
   }, [chatId, initRoom]);
 
   useEffect(() => {
-    resetView();
+    return () => {
+      resetView(); // 채팅방 나갈 때만 초기화
+    };
   }, []);
 
   // 스크롤 아래로
@@ -71,38 +96,54 @@ const ChatRoom = () => {
     reader.readAsDataURL(file);
   };
 
-  // 날짜 분기
+  const getSenderInfo = (senderId: number | string) => {
+    const normalizedId = Number(senderId);
+    if (normalizedId === myInfo.id) return myInfo;
+
+    const found = groupMembers.find((user) => user.id === normalizedId);
+
+    return {
+      name: found?.name ?? '알 수 없음',
+      profileImg: found?.profileImg ?? '/images/default-profile.png',
+    };
+  };
+
   let lastDate = '';
 
   return (
     <div className="flex flex-col justify-between w-full h-full bg-grey-100">
       {/* 헤더 */}
       <div className={`${offsetClass} z-10 bg-grey-100`}>
-        <ChatHeader name={otherInfo.name} onClick={toggleView} /> {/* ✅ toggleView로 시점 전환 */}
+        <ChatHeader name={otherInfo.name} onClick={toggleView} />
       </div>
 
       {/* 메시지 영역 */}
       <div className={clsx('flex flex-col gap-2 p-4 pt-0 overflow-y-auto flex-1', hideStatusBar ? 'mt-[32px]' : '')}>
-        {messages.map((msg) => {
-          const currentDate = msg.createdAt.split('T')[0];
-          const isNewDate = currentDate !== lastDate;
-          lastDate = currentDate;
+        {messages
+          .filter((msg) => {
+            return !isGroupChat || groupMembers.some((member) => member.id === msg.senderId);
+          })
+          .map((msg) => {
+            const currentDate = msg.createdAt.split('T')[0];
+            const isNewDate = currentDate !== lastDate;
+            lastDate = currentDate;
 
-          const isMine = msg.senderId === myInfo.id;
+            const isMine = msg.senderId === myInfo.id;
+            const senderInfo = isGroupChat ? getSenderInfo(msg.senderId) : isMine ? myInfo : otherInfo;
 
-          return (
-            <div key={`${roomKeyRef.current}-${msg.messageId}`}>
-              {isNewDate && (
-                <div className="flex justify-center my-2">
-                  <span className="caption-2 text-grey-50 bg-grey-700/50 bg-opacity-50 px-2 rounded-[20px]">
-                    {formatDate(msg.createdAt)}
-                  </span>
-                </div>
-              )}
-              <ChatMessage message={msg} isMine={isMine} senderInfo={isMine ? myInfo : otherInfo} />
-            </div>
-          );
-        })}
+            return (
+              <div key={`${roomKeyRef.current}-${msg.messageId}`}>
+                {isNewDate && (
+                  <div className="flex justify-center my-2">
+                    <span className="caption-2 text-grey-50 bg-grey-700/50 px-2 rounded-[20px]">
+                      {formatDate(msg.createdAt)}
+                    </span>
+                  </div>
+                )}
+                <ChatMessage message={msg} isMine={isMine} senderInfo={senderInfo} />
+              </div>
+            );
+          })}
         <div ref={bottomRef} />
       </div>
 

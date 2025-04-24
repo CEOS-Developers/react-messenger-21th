@@ -59,7 +59,7 @@ const ProfileActionBar = ({
                   name: targetUserName,
                   profileImg: targetProfileImg,
                   targetUserId: targetUserId,
-                  type: chatType,
+                  chatType: chatType,
                   isSwitched: false,
                 },
               }),

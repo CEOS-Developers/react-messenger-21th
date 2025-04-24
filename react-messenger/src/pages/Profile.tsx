@@ -26,7 +26,7 @@ const Profile = () => {
   const { isCalling, setIsCalling } = useCallContext();
   const { id } = useParams();
   const [searchParams] = useSearchParams();
-  const type = searchParams.get('type');
+  const type = searchParams.get('chatType');
   const location = useLocation();
   const myProfile = getCurrentUser();
 
