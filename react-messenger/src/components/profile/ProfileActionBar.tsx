@@ -8,6 +8,7 @@ import Mute from '@/assets/svgs/profile/Mute.svg?url';
 import Speaker from '@/assets/svgs/profile/Speaker.svg?url';
 import EndCallIcon from './EndCallIcon';
 import clsx from 'clsx';
+import { useNavigate } from 'react-router-dom';
 
 type ActionBarProps = {
   isMine: boolean;
@@ -17,9 +18,8 @@ type ActionBarProps = {
   targetUserName: string;
   targetProfileImg: string;
   chatId: number;
+  chatType: 'user' | 'group';
 };
-
-import { useNavigate } from 'react-router-dom';
 
 const ProfileActionBar = ({
   isMine,
@@ -29,6 +29,7 @@ const ProfileActionBar = ({
   targetUserName,
   targetProfileImg,
   chatId,
+  chatType,
 }: ActionBarProps) => {
   const navigate = useNavigate();
 
@@ -57,8 +58,8 @@ const ProfileActionBar = ({
                 state: {
                   name: targetUserName,
                   profileImg: targetProfileImg,
-                  targetUserId,
-                  type: 'user',
+                  targetUserId: targetUserId,
+                  type: chatType,
                   isSwitched: false,
                 },
               }),

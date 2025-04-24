@@ -5,7 +5,6 @@ import ProfileActionBar from '@/components/profile/ProfileActionBar';
 import users from '@/data/users.json';
 import messages from '@/data/messages.json';
 import { getCurrentUser } from '@/utils/getCurrentUser';
-import { MessageItem } from '@/type/message';
 
 const useCallContext = () =>
   useOutletContext<{ isCalling: boolean; setIsCalling: React.Dispatch<React.SetStateAction<boolean>> }>();
@@ -41,12 +40,14 @@ const Profile = () => {
   if (!user) return <div className="p-4">존재하지 않는 프로필입니다.</div>;
 
   const name = 'name' in user ? user.name : user.groupName;
-  const chatId = (messages as any[]).find(
+  const found = messages.find(
     (chat) =>
-      chat.chatType === 'user' &&
-      ((chat.targetUserId === user.id && chat.messages.some((m: MessageItem) => m.senderId === myProfile.id)) ||
-        (chat.targetUserId === myProfile.id && chat.messages.some((m: MessageItem) => m.senderId === user.id))),
-  )?.chatId;
+      chat.messages.some((m) => m.senderId === user.id) && chat.messages.some((m) => m.senderId === myProfile.id),
+  );
+  const maxChatId = Math.max(...messages.map((chat) => chat.chatId));
+  const chatId = found?.chatId ?? maxChatId + 1;
+  const rawType = found?.chatType ?? type;
+  const chatType: 'user' | 'group' = rawType === 'group' ? 'group' : 'user';
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-between relative">
@@ -66,6 +67,7 @@ const Profile = () => {
           targetUserName={name}
           targetProfileImg={user.profileImg}
           chatId={chatId}
+          chatType={chatType}
         />
       </div>
     </div>
