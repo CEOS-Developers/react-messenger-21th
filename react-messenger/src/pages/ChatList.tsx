@@ -47,7 +47,7 @@ const ChatList = () => {
               }),
           };
 
-          return <ChatUser key={`${msg.targetUserId}-${msg.chatType}`} {...chatUserProps} />;
+          return <ChatUser key={`${msg.chatId}`} {...chatUserProps} />;
         })}
       </div>
       <NavBar />

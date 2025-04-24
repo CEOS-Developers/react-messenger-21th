@@ -1,39 +1,41 @@
 import { create } from 'zustand';
 import { getCurrentUser } from '@/utils/getCurrentUser';
 
-type User = {
-  name: string;
+export type User = {
   id: number;
+  name: string;
   profileImg: string;
 };
 
-type UserStore = {
+export type UserStore = {
   currentUser: User;
   targetUser: User;
+  isSwitched: boolean; // ✅ 현재 시점을 전환했는지 여부
   setTargetUser: (user: User) => void;
-  switchUser: () => void;
+  toggleView: () => void; // ✅ 시점만 바꿔줌
+  resetView: () => void; // ✅ 원래 사용자로 복귀
 };
 
 export const useUserStore = create<UserStore>((set, get) => {
   const profile = getCurrentUser();
 
   return {
-    currentUser: {
-      id: profile.id,
-      name: profile.name,
-      profileImg: profile.profileImg,
-    },
-    targetUser: {
-      name: '',
-      id: 0,
-      profileImg: '',
-    },
+    currentUser: profile,
+    targetUser: { id: 0, name: '', profileImg: '' },
+    isSwitched: false,
+
     setTargetUser: (user) => set({ targetUser: user }),
-    switchUser: () => {
-      const { currentUser, targetUser } = get();
+
+    toggleView: () => {
+      const current = get();
+      set({ isSwitched: !current.isSwitched });
+    },
+
+    resetView: () => {
+      const originalUser = getCurrentUser();
       set({
-        currentUser: targetUser,
-        targetUser: currentUser,
+        currentUser: originalUser,
+        isSwitched: false,
       });
     },
   };

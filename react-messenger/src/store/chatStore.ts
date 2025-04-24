@@ -21,13 +21,13 @@ export const useChatStore = create<ChatStore>((set, get) => ({
     const map: Record<string, MessageItem[]> = {};
 
     (allMessages as Message[]).forEach((msg) => {
-      const key = String(msg.chatId); // ✅ chatId를 그대로 키로 사용
+      const key = String(msg.chatId);
       const stored = localStorage.getItem(key);
       const originalMessages = stored ? JSON.parse(stored) : msg.messages;
 
       const withId = originalMessages.map((m: any) => ({
         ...m,
-        id: m.id ?? uuidv4(),
+        id: m.messageId ?? uuidv4(),
       }));
 
       map[key] = withId;
@@ -45,7 +45,7 @@ export const useChatStore = create<ChatStore>((set, get) => ({
     const key = String(chatId);
     const messages = conversationMap[key] || [];
     set({ messages });
-    return key; // roomKey로 반환
+    return key;
   },
 
   sendTextMessage: (content, senderId, roomKey) => {

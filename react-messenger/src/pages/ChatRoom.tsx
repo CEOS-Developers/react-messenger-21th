@@ -13,22 +13,32 @@ const ChatRoom = () => {
   const { chatId } = useParams();
   const location = useLocation();
 
-  const { name, profileImg, targetUserId, type } = location.state || {};
+  const { name, profileImg, targetUserId } = location.state || {};
 
   const { offsetClass, hideStatusBar } = useStatusBar();
-  const { currentUser, targetUser, setTargetUser, switchUser } = useUserStore();
+
+  const { currentUser, targetUser, setTargetUser, resetView, isSwitched: storeSwitched, toggleView } = useUserStore();
+
   const { messages, input, setInput, initRoom, sendTextMessage, sendImageMessage } = useChatStore();
+
+  // 시점 전환된 유저 기준 정보
+  const myInfo = storeSwitched ? targetUser : currentUser;
+  const otherInfo = storeSwitched ? currentUser : targetUser;
 
   const roomKeyRef = useRef('');
 
-  // 최초 마운트 시 유저 정보 설정
+  // targetUser 상태 초기화
   useEffect(() => {
-    if (name && targetUserId && profileImg) {
-      setTargetUser({ name, id: targetUserId, profileImg });
+    if (targetUserId && name && profileImg) {
+      setTargetUser({
+        id: targetUserId,
+        name,
+        profileImg,
+      });
     }
-  }, [name, targetUserId, profileImg, setTargetUser]);
+  }, [targetUserId, name, profileImg]);
 
-  // 채팅방 메시지 초기화
+  // 채팅방 초기화
   useEffect(() => {
     if (chatId) {
       const key = initRoom(chatId);
@@ -36,7 +46,11 @@ const ChatRoom = () => {
     }
   }, [chatId, initRoom]);
 
-  // 스크롤 하단 이동용 ref
+  useEffect(() => {
+    resetView();
+  }, []);
+
+  // 스크롤 아래로
   const bottomRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -45,24 +59,26 @@ const ChatRoom = () => {
   // 텍스트 메시지 전송
   const handleSend = () => {
     if (!input.trim()) return;
-    sendTextMessage(input, currentUser.id, roomKeyRef.current);
+    sendTextMessage(input, myInfo.id, roomKeyRef.current);
   };
 
   // 이미지 메시지 전송
   const handleImageSend = (file: File) => {
     const reader = new FileReader();
     reader.onloadend = () => {
-      sendImageMessage(reader.result as string, currentUser.id, roomKeyRef.current);
+      sendImageMessage(reader.result as string, myInfo.id, roomKeyRef.current);
     };
     reader.readAsDataURL(file);
   };
 
+  // 날짜 분기
   let lastDate = '';
 
   return (
     <div className="flex flex-col justify-between w-full h-full bg-grey-100">
+      {/* 헤더 */}
       <div className={`${offsetClass} z-10 bg-grey-100`}>
-        <ChatHeader name={targetUser?.name ?? '알 수 없음'} onClick={switchUser} />
+        <ChatHeader name={otherInfo.name} onClick={toggleView} /> {/* ✅ toggleView로 시점 전환 */}
       </div>
 
       {/* 메시지 영역 */}
@@ -71,6 +87,8 @@ const ChatRoom = () => {
           const currentDate = msg.createdAt.split('T')[0];
           const isNewDate = currentDate !== lastDate;
           lastDate = currentDate;
+
+          const isMine = msg.senderId === myInfo.id;
 
           return (
             <div key={`${roomKeyRef.current}-${msg.messageId}`}>
@@ -81,11 +99,7 @@ const ChatRoom = () => {
                   </span>
                 </div>
               )}
-              <ChatMessage
-                message={msg}
-                isMine={msg.senderId === currentUser.id}
-                senderInfo={msg.senderId === currentUser.id ? currentUser : targetUser}
-              />
+              <ChatMessage message={msg} isMine={isMine} senderInfo={isMine ? myInfo : otherInfo} />
             </div>
           );
         })}
