@@ -2,25 +2,12 @@ import { useOutletContext, useParams, useSearchParams, useLocation } from 'react
 import ProfileHeader from '@/components/profile/ProfileHeader';
 import ProfileInfo from '@/components/profile/ProfileInfo';
 import ProfileActionBar from '@/components/profile/ProfileActionBar';
-import users from '@/data/users.json';
-import messages from '@/data/messages.json';
 import { getCurrentUser } from '@/utils/getCurrentUser';
+import { findUser } from '@/utils/findUser';
+import { getChatInfo } from '@/utils/getChatInfo';
 
 const useCallContext = () =>
   useOutletContext<{ isCalling: boolean; setIsCalling: React.Dispatch<React.SetStateAction<boolean>> }>();
-
-const findUser = (id: number, type: string | null, myProfile: any) => {
-  if (type === 'user') {
-    if (id === myProfile.id) return { user: myProfile, isMine: true };
-    const user = [...(users.newFriends || []), ...(users.friends || [])].find((u) => u.id === id);
-    return { user, isMine: false };
-  }
-  if (type === 'group') {
-    const group = (users.groups || []).find((g) => g.id === id);
-    return { user: group, isMine: false };
-  }
-  return { user: null, isMine: false };
-};
 
 const Profile = () => {
   const { isCalling, setIsCalling } = useCallContext();
@@ -40,23 +27,7 @@ const Profile = () => {
   if (!user) return <div className="p-4">존재하지 않는 프로필입니다.</div>;
 
   const name = 'name' in user ? user.name : user.groupName;
-  const found = messages.find((chat) => {
-    if (type === 'group') {
-      return chat.chatType === 'group' && chat.targetUserId === user.id;
-    }
-
-    // 1:1 채팅인 경우
-    return (
-      chat.chatType === 'user' &&
-      ((chat.targetUserId === user.id && chat.messages.some((m) => m.senderId === myProfile.id)) ||
-        (chat.targetUserId === myProfile.id && chat.messages.some((m) => m.senderId === user.id)))
-    );
-  });
-
-  const maxChatId = Math.max(...messages.map((chat) => chat.chatId));
-  const chatId = found?.chatId ?? maxChatId + 1;
-  const rawType = found?.chatType ?? type;
-  const chatType: 'user' | 'group' = rawType === 'group' ? 'group' : 'user';
+  const { chatId, chatType } = getChatInfo(user.id, type, myProfile.id);
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-between relative">

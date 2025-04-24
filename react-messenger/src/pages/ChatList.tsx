@@ -15,66 +15,76 @@ const ChatList = () => {
 
   const seenTargetUserIds = new Set<number>();
 
-  const chatRooms: Message[] = Object.entries(conversationMap)
-    .map(([chatId, messages]) => {
-      const meta = conversationMeta[chatId];
+  // 채팅방 정보 구성 함수
+  const buildChatRoom = (): Message[] => {
+    return Object.entries(conversationMap)
+      .map(([chatId, messages]) => {
+        const meta = conversationMeta[chatId];
+        return {
+          chatId: Number(chatId),
+          messages,
+          targetUserId: meta?.targetUserId ?? messages[0]?.senderId ?? 0,
+          chatType: meta?.chatType ?? 'user',
+          unreadCount: meta?.unreadCount ?? 0,
+        };
+      })
+      .filter((room) => {
+        if (room.chatType !== 'user') return true;
+        if (seenTargetUserIds.has(room.targetUserId)) return false;
+        seenTargetUserIds.add(room.targetUserId);
+        return true;
+      })
+      .sort((a, b) => {
+        const aTime = new Date(a.messages.at(-1)?.createdAt ?? 0).getTime();
+        const bTime = new Date(b.messages.at(-1)?.createdAt ?? 0).getTime();
+        return bTime - aTime;
+      });
+  };
 
-      const message: Message = {
-        chatId: Number(chatId),
-        messages,
-        targetUserId: meta?.targetUserId ?? messages[0]?.senderId ?? 0,
-        chatType: meta?.chatType ?? 'user',
-        unreadCount: meta?.unreadCount ?? 0,
-      };
+  const getLastMessageContent = (msg?: Message['messages'][0]) => {
+    if (!msg) return '';
+    return msg.messageType === 'image' ? '사진을 보냈습니다.' : (msg.content ?? '');
+  };
 
-      return message;
-    })
-    .filter((msg) => {
-      if (msg.chatType !== 'user') return true;
-      if (seenTargetUserIds.has(msg.targetUserId)) return false;
-      seenTargetUserIds.add(msg.targetUserId);
-      return true;
-    })
-    .sort(
-      (a, b) =>
-        new Date(b.messages.at(-1)?.createdAt ?? 0).getTime() - new Date(a.messages.at(-1)?.createdAt ?? 0).getTime(),
-    );
+  const chatRooms = buildChatRoom();
 
   return (
     <div className="w-full h-full flex flex-col bg-grey-50">
       <div className={`w-[375px] h-[62px] ${offsetClass} z-10 bg-grey-50`}>
         <span className="w-full head-1 text-grey-900 p-4 block">채팅방</span>
       </div>
+
       <div
         className={clsx('flex flex-col overflow-y-auto h-full b-[30px]', hideStatusBar ? 'pt-[62px]' : 'max-h-[620px]')}
       >
         {chatRooms.map((room) => {
           const lastMsg = room.messages.at(-1);
           const chatMeta = connectJson(room);
-          const lastMsgContent =
-            lastMsg?.messageType === 'image' ? '이미지를 전송하였습니다.' : (lastMsg?.content ?? '');
 
-          const chatUserProps = {
-            username: chatMeta.name,
-            profileImg: chatMeta.profileImg,
-            lastMessage: lastMsgContent,
-            createdAt: lastMsg?.createdAt ? formatTime(lastMsg.createdAt) : '',
-            unreadCount: room.unreadCount,
-            memberCount: chatMeta.memberCount,
-            onClick: () =>
-              navigate(`/chat/${room.chatId}`, {
-                state: {
-                  name: chatMeta.name,
-                  profileImg: chatMeta.profileImg,
-                  chatType: chatMeta.memberCount ? 'group' : 'user',
-                  targetUserId: chatMeta.targetUserId,
-                },
-              }),
-          };
-
-          return <ChatUser key={room.chatId} {...chatUserProps} />;
+          return (
+            <ChatUser
+              key={room.chatId}
+              username={chatMeta.name}
+              profileImg={chatMeta.profileImg}
+              lastMessage={getLastMessageContent(lastMsg)}
+              createdAt={lastMsg?.createdAt ? formatTime(lastMsg.createdAt) : ''}
+              unreadCount={room.unreadCount}
+              memberCount={chatMeta.memberCount}
+              onClick={() =>
+                navigate(`/chat/${room.chatId}`, {
+                  state: {
+                    name: chatMeta.name,
+                    profileImg: chatMeta.profileImg,
+                    chatType: chatMeta.memberCount ? 'group' : 'user',
+                    targetUserId: chatMeta.targetUserId,
+                  },
+                })
+              }
+            />
+          );
         })}
       </div>
+
       <NavBar />
     </div>
   );
