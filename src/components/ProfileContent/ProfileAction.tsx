@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router'
 
 import { getRoomId } from '@/utils/getRoomId'
 import { useUserStore } from '@/stores/useUserStore'
-import { useChatRoomStore } from '@/stores/useChatRoomStore'
 
 import {
   Chat,
@@ -12,6 +11,7 @@ import {
   Phonecall,
   Star,
 } from '@/assets/Icons/ProfileAction'
+import { usePersistChatRoomStore } from '@/stores/usePersistChatRoomStore'
 
 const MyProfleAction = () => {
   return (
@@ -25,7 +25,7 @@ const MyProfleAction = () => {
 const FriendProfleAction = ({ snsUrl, id }: { snsUrl: string; id: number }) => {
   const nav = useNavigate()
   const { user } = useUserStore()
-  const { chatRoomRef } = useChatRoomStore()
+  const { chatRoomRef } = usePersistChatRoomStore()
 
   const onClickChatIconHander = () => {
     let roomId = getRoomId(id)

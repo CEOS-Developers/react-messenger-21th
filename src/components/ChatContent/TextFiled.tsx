@@ -10,6 +10,7 @@ import HomeBar from '@/components/Commons/HomeBar'
 
 import { useUserStore } from '@/stores/useUserStore'
 import { useChatRoomStore } from '@/stores/useChatRoomStore'
+import { usePersistChatRoomStore } from '@/stores/usePersistChatRoomStore'
 import { Chat } from '@/interface/Chat'
 
 const TextFiled = () => {
@@ -18,7 +19,8 @@ const TextFiled = () => {
   const roomId = Number(useParams().id)
 
   const { user, updateLastSeenTime, enterChatRoom } = useUserStore()
-  const { chatRoomRef, addChat, createChatRoom } = useChatRoomStore()
+  const { addChat } = useChatRoomStore()
+  const { chatRoomRef, createChatRoom } = usePersistChatRoomStore()
 
   const [text, setText] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)

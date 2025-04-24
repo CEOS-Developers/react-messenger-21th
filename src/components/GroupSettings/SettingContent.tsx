@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router'
 import { useUserStore } from '@/stores/useUserStore'
 import { useChatRoomStore } from '@/stores/useChatRoomStore'
 import { usePersistUserStore } from '@/stores/usePersistUserStore'
+import { usePersistChatRoomStore } from '@/stores/usePersistChatRoomStore'
 import { SYSTEM_ID } from '@/utils/constants'
 import getRoomName from '@/utils/getRoomName'
 
@@ -42,7 +43,8 @@ const SettingContent = () => {
 
   /* store */
   const { user, enterChatRoom, updateLastSeenTime } = useUserStore()
-  const { chatRoomRef, createChatRoom, addChat } = useChatRoomStore()
+  const { addChat } = useChatRoomStore()
+  const { chatRoomRef, createChatRoom } = usePersistChatRoomStore()
   const friendNames = getRoomName(selectedIds)
   const member = [user.id, ...selectedIds]
 

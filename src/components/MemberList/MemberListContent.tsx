@@ -17,7 +17,7 @@ import getRoomName from '@/utils/getRoomName'
 const MemberListContent = () => {
   const nav = useNavigate()
   const { user, leaveChatRoom } = useUserStore()
-  const { chatRoom, removeChatRoom } = useChatRoomStore()
+  const { chatRoom, removeUserChatRoom } = useChatRoomStore()
   const roomId = Number(useParams().id)
   const room = chatRoom?.find((room) => room.chatRoomId === roomId)
   const memberIds = room?.member.filter(
@@ -44,7 +44,7 @@ const MemberListContent = () => {
   const onClickOutButton = () => {
     if (!window.confirm('정말 나가시겠습니까?')) return
     leaveChatRoom(roomId)
-    removeChatRoom(roomId)
+    removeUserChatRoom(roomId)
     nav('/chatList', { replace: true })
   }
 

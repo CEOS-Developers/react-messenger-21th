@@ -5,19 +5,16 @@ import { formatDateForData } from '@/utils/format'
 
 interface ChatRoomState {
   chatRoom: ChatRoom[] | null
-  chatRoomRef: number
   setChatRoom: (chatRooms: ChatRoom[]) => void
 
   addChat: (roomId: number, newChat: Chat) => void
   addMember: (roomId: number, memberId: number[]) => void
 
-  removeChatRoom: (roomId: number) => void
-  createChatRoom: (roomId: number, members: number[], roomName?: string) => void
+  removeUserChatRoom: (roomId: number) => void
 }
 
 export const useChatRoomStore = create<ChatRoomState>((set) => ({
   chatRoom: null,
-  chatRoomRef: 5,
   setChatRoom: (chatRooms) => set({ chatRoom: chatRooms }),
   addChat: (roomId, newChat) => {
     set((state) => {
@@ -67,7 +64,7 @@ export const useChatRoomStore = create<ChatRoomState>((set) => ({
       }
     })
   },
-  removeChatRoom: (roomId) => {
+  removeUserChatRoom: (roomId) => {
     set((state) => {
       if (!state.chatRoom) return state
 
@@ -77,24 +74,6 @@ export const useChatRoomStore = create<ChatRoomState>((set) => ({
 
       return {
         chatRoom: updatedChatRooms,
-      }
-    })
-  },
-  createChatRoom: (roomId, members, roomName) => {
-    set((state) => {
-      if (!state.chatRoom) return state
-
-      const newRoom = {
-        chatRoomId: roomId,
-        roomName: roomName || null,
-        member: [...members],
-        chats: {},
-      }
-
-      state.chatRoomRef += 1
-
-      return {
-        chatRoom: [...state.chatRoom, newRoom],
       }
     })
   },
