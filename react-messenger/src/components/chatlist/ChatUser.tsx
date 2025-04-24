@@ -2,13 +2,21 @@ type ChatUserProps = {
   profileImg: string;
   username: string;
   lastMessage: string;
-  time: string;
-  unread?: number;
+  createdAt: string;
+  unreadCount?: number;
   memberCount?: number;
   onClick?: () => void;
 };
 
-const ChatUser = ({ profileImg, username, lastMessage, time, unread, memberCount, onClick }: ChatUserProps) => {
+const ChatUser = ({
+  profileImg,
+  username,
+  lastMessage,
+  createdAt,
+  unreadCount,
+  memberCount,
+  onClick,
+}: ChatUserProps) => {
   return (
     <div className="flex items-center px-4 py-2 relative cursor-pointer" onClick={onClick}>
       <img
@@ -26,13 +34,13 @@ const ChatUser = ({ profileImg, username, lastMessage, time, unread, memberCount
           <span className="body-2 text-grey-400 truncate max-w-[170px] overflow-hidden whitespace-nowrap">
             {lastMessage}
           </span>
-          <span className="body-2 text-grey-400 shrink-0">· {time}</span>
+          <span className="body-2 text-grey-400 shrink-0">· {createdAt}</span>
         </div>
       </div>
 
-      {typeof unread === 'number' && unread > 0 && (
+      {typeof unreadCount === 'number' && unreadCount > 0 && (
         <div className="flex items-center justify-center ml-auto caption-2 text-grey-50 bg-primary-0 rounded-full w-[20px] h-[20px] text-center">
-          {unread}
+          {unreadCount}
         </div>
       )}
     </div>

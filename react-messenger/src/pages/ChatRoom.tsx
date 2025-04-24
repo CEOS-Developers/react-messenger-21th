@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import ChatHeader from '@/components/chatroom/ChatHeader';
 import ChatInput from '@/components/chatroom/ChatInput';
@@ -30,10 +30,9 @@ const ChatRoom = () => {
   const { messages, input, setInput, initRoom, sendTextMessage, sendImageMessage } = useChatStore();
 
   const isGroupChat = chatType === 'group';
+  const myInfo = useMemo(() => (storeSwitched ? targetUser : currentUser), [storeSwitched, currentUser, targetUser]);
 
-  const myInfo = storeSwitched ? targetUser : currentUser;
-  const otherInfo = storeSwitched ? currentUser : targetUser;
-
+  const otherInfo = useMemo(() => (storeSwitched ? currentUser : targetUser), [storeSwitched, currentUser, targetUser]);
   const roomKeyRef = useRef('');
 
   // 그룹 멤버 설정
@@ -107,14 +106,16 @@ const ChatRoom = () => {
       profileImg: found?.profileImg ?? '/images/default-profile.png',
     };
   };
-
+  const headerName = isGroupChat
+    ? (users.groups.find((g) => g.id === targetUserId)?.groupName ?? '그룹')
+    : otherInfo.name;
   let lastDate = '';
 
   return (
     <div className="flex flex-col justify-between w-full h-full bg-grey-100">
       {/* 헤더 */}
       <div className={`${offsetClass} z-10 bg-grey-100`}>
-        <ChatHeader name={otherInfo.name} onClick={toggleView} />
+        <ChatHeader name={headerName} onClick={toggleView} />
       </div>
 
       {/* 메시지 영역 */}

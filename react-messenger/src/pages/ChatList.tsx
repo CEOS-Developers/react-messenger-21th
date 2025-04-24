@@ -58,8 +58,8 @@ const ChatList = () => {
             username: chatMeta.name,
             profileImg: chatMeta.profileImg,
             lastMessage: lastMsgContent,
-            time: lastMsg?.createdAt ? formatTime(lastMsg.createdAt) : '',
-            unread: room.unreadCount,
+            createdAt: lastMsg?.createdAt ? formatTime(lastMsg.createdAt) : '',
+            unreadCount: room.unreadCount,
             memberCount: chatMeta.memberCount,
             onClick: () =>
               navigate(`/chat/${room.chatId}`, {

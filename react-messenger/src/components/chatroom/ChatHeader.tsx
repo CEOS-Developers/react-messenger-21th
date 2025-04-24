@@ -13,7 +13,7 @@ const ChatHeader = ({ name, onClick }: ChatHeaderProps) => {
   return (
     <div className="flex w-[375px] h-8 items-center justify-between bg-grey-100 sticky top-[44px] px-4">
       <img src={BackBtn} className="w-auto h-[32px] p-2 cursor-pointer" onClick={() => navigate(-1)} />
-      <span className="w-[256px] px-[10px] py-1 label-1" onClick={onClick}>
+      <span className="w-[256px] px-[10px] py-1 label-1 cursor-pointer" onClick={onClick}>
         {name}
       </span>
       <img src={SearchBtn} className="w-[24px] h-[24px] cursor-pointer" />

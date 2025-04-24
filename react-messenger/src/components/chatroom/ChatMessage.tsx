@@ -16,7 +16,7 @@ const ChatMessage = ({ message, isMine, senderInfo }: ChatMessageProps) => {
   return (
     <div className={`flex items-start ${isMine ? 'justify-end' : 'justify-start'} w-full`}>
       <div className="flex items-center gap-2 mb-1 shrink-0">
-        {!isMine && (
+        {!isMine && senderInfo.profileImg && (
           <img src={senderInfo.profileImg} alt={senderInfo.name} className="w-12 h-12 rounded-full object-cover" />
         )}
       </div>
