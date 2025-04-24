@@ -51,11 +51,13 @@ const ChatList = () => {
         {chatRooms.map((room) => {
           const lastMsg = room.messages.at(-1);
           const chatMeta = connectJson(room);
+          const lastMsgContent =
+            lastMsg?.messageType === 'image' ? '이미지를 전송하였습니다.' : (lastMsg?.content ?? '');
 
           const chatUserProps = {
             username: chatMeta.name,
             profileImg: chatMeta.profileImg,
-            lastMessage: lastMsg?.content ?? '',
+            lastMessage: lastMsgContent,
             time: lastMsg?.createdAt ? formatTime(lastMsg.createdAt) : '',
             unread: room.unreadCount,
             memberCount: chatMeta.memberCount,
