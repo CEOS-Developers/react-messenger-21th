@@ -100,7 +100,7 @@ export const ContentWrapper = styled.div`
 
 export const UserInfoContainer = styled.div`
   display: flex;
-  padding: 90px 10px 10px 10px;
+  padding: 90px 10px 0px 10px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
