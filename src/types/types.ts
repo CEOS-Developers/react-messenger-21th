@@ -11,6 +11,7 @@ export type ChatMessages = {
   messageId: number;
   senderId: number;
   content: string | File;
+  contentName?: string;
   timestamp?: string;
 };
 

@@ -46,6 +46,7 @@
         ]
       },
       {
+        "date": "2025-03-27",
         "chatMessages": [
           {
             "type": "text",
@@ -270,7 +271,6 @@
             "timestamp": "2025-03-29T02:40:00Z"
           },
           {
-            "type": "text",
             "messageId": 5,
             "senderId": 0,
             "content": "파이팅",

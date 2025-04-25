@@ -1,6 +1,7 @@
 import { ChatMessages } from '@/types/types';
 import UserList from '@/constants/users.json';
 import ProfileImg from '@/assets/images/profile/ProfileMedium.svg?react';
+import File from '@/assets/images/icon/File.svg?react';
 import { utcToKst24 } from '@/utils/formatDate';
 
 const RecievedMessage = ({ message }: { message: ChatMessages }) => {
@@ -30,6 +31,16 @@ const RecievedMessage = ({ message }: { message: ChatMessages }) => {
               className='border border-neutral-100 rounded-[.25rem] flex w-60 h-60 object-cover'
               src={message.content}
             />
+          )}
+          {message.type === 'file' && typeof message.content === 'string' && (
+            <a
+              href={message.content}
+              download={message.contentName}
+              className='bg-blue-50 border border-neutral-100 rounded-[.25rem] px-3 py-2 flex justify-center items-center font-body-2-med text-neutral-700 whitespace-break-spaces break-all cursor-pointer gap-2'
+            >
+              {message.contentName}
+              <File className='w-10 h-10 shrink-0 border-2 border-neutral-200 rounded-full p-1' />
+            </a>
           )}
           <div className='font-cap-med text-neutral-300'>
             {message?.timestamp && utcToKst24(message.timestamp)}

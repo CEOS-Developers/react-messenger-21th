@@ -1,15 +1,20 @@
 import { ChatMessages, ChatRoom } from '@/types/types';
+import { Dispatch, SetStateAction } from 'react';
 
 const storeMessage = ({
   type,
   chatroomId,
   senderId,
   content,
+  contentName,
+  setShowErrorModal,
 }: {
   type: 'text' | 'image' | 'file';
   chatroomId: string | undefined;
   senderId: number;
   content: string | File;
+  contentName?: string;
+  setShowErrorModal: Dispatch<SetStateAction<string>>;
 }) => {
   const newTimestamp = new Date(); // 현재 시간
   const koreaTimestamp = new Date(newTimestamp.getTime() + 9 * 60 * 60 * 1000); // 9시간 더하기
@@ -38,6 +43,7 @@ const storeMessage = ({
         messageId: newMessageId,
         senderId,
         content,
+        contentName: contentName,
         timestamp: newTimestamp.toISOString(),
       };
 
@@ -56,7 +62,15 @@ const storeMessage = ({
     return room;
   });
 
-  localStorage.setItem('chatrooms', JSON.stringify(updatedChatList));
+  try {
+    localStorage.setItem('chatrooms', JSON.stringify(updatedChatList));
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'QuotaExceededError') {
+      setShowErrorModal('localStorage 용량을 초과했습니다.');
+    } else {
+      console.error(error);
+    }
+  }
 };
 
 export default storeMessage;

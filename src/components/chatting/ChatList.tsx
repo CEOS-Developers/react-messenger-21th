@@ -31,6 +31,8 @@ const ChatList: React.FC<ChatListProps> = ({ group, chatRoomData }) => {
     const lastMessage = lastChat?.chatMessages?.at(-1);
     if (lastMessage?.type === 'image') {
       return '사진을 보냈습니다.';
+    } else if (lastMessage?.type === 'file') {
+      return '파일을 보냈습니다.';
     }
     return lastMessage ? lastMessage.content : '';
   };

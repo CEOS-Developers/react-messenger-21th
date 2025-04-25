@@ -12,6 +12,7 @@ interface newMessageType {
   chatroomId: string | undefined;
   senderId: number;
   content: string | File;
+  setShowErrorModal: Dispatch<SetStateAction<string>>;
 }
 
 const ChatInput = ({
@@ -58,6 +59,7 @@ const ChatInput = ({
         chatroomId: chatroomId,
         senderId: user,
         content: inputText,
+        setShowErrorModal: setShowErrorModal,
       };
 
       storeMessage(newMessage); // 로컬 스토리지에 저장
@@ -91,6 +93,28 @@ const ChatInput = ({
           chatroomId: chatroomId,
           senderId: user,
           content: base64Image,
+          setShowErrorModal: setShowErrorModal,
+        };
+      })
+    );
+
+    newMessages.forEach((message) => storeMessage(message));
+    const storedData = localStorage.getItem('chatrooms'); // 로컬 스토리지에서 꺼냄
+    const chatroomsData = storedData ? JSON.parse(storedData) : []; // JSON을 객체로 변환
+    setChatroomData(chatroomsData);
+  };
+
+  const handleSendFiles = async (files: File[]) => {
+    const newMessages: newMessageType[] = await Promise.all(
+      files.map(async (file) => {
+        const base64File = await convertToBase64(file);
+        return {
+          type: 'file',
+          chatroomId: chatroomId,
+          senderId: user,
+          content: base64File,
+          contentName: file.name,
+          setShowErrorModal: setShowErrorModal,
         };
       })
     );
@@ -146,6 +170,7 @@ const ChatInput = ({
         <MoreModal
           onClose={() => setMore((prev) => !prev)}
           handleSendImages={handleSendImages}
+          handleSendFiles={handleSendFiles}
           setShowErrorModal={setShowErrorModal}
         />
       )}
