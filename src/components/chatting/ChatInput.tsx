@@ -33,6 +33,14 @@ const ChatInput = ({
 
   const [inputText, setInputText] = useState<string>('');
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
+      if (e.shiftKey) return;
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
   const handleSend = () => {
     if (inputText.trim() !== '') {
       const newMessage = {
@@ -68,6 +76,9 @@ const ChatInput = ({
           ref={textareaRef}
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
+          onKeyDown={(e: React.KeyboardEvent<HTMLTextAreaElement>) =>
+            handleKeyDown(e)
+          }
           onInput={handleResizeHeight}
           rows={1}
           className={cn(
