@@ -89,7 +89,7 @@ export const ProfileWrapper = styled.div`
 export const ContentWrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 430px;
+  height: 50%;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
