@@ -140,7 +140,7 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 48px;
-  padding-bottom: 50px;
+  padding-bottom: 70px;
   flex: 1 0 0;
 `;
 
