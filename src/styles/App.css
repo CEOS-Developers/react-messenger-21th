@@ -130,7 +130,7 @@
   }
 
   body {
-    @apply flex justify-center bg-gray-100 box-border;
+    @apply flex justify-center bg-gray-100 box-border font-pretendard;
     color: var(--color-neutral-900);
   }
 
