@@ -19,8 +19,8 @@ const TextFiled = () => {
   const roomId = Number(useParams().id)
 
   const { user, updateLastSeenTime, enterChatRoom } = useUserStore()
-  const { addChat } = useChatRoomStore()
-  const { chatRoomRef, createChatRoom } = usePersistChatRoomStore()
+  const { addChat, createChatRoom } = useChatRoomStore()
+  const { chatRoomRef } = usePersistChatRoomStore()
 
   const [text, setText] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)

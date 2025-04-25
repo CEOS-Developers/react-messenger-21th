@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { chatRoomData } from '@/assets/data/chatRoom.json'
-import { LOCAL_KEY_USER } from '@/utils/constants'
+import { LOCAL_KEY_CHAT } from '@/utils/constants'
 import { ChatRoom } from '@/interface/ChatRoom'
 
 interface PersistChatRoomStore {
@@ -9,9 +9,9 @@ interface PersistChatRoomStore {
   chatRoomRef: number
 
   updateChatRoom: (newRoom: ChatRoom) => void
+  createChatRoom: (newRoom: ChatRoom) => void
 
   getRoomById: (roomId: number) => ChatRoom | undefined
-  createChatRoom: (roomId: number, members: number[], roomName?: string) => void
 }
 
 export const usePersistChatRoomStore = create<PersistChatRoomStore>()(
@@ -19,35 +19,26 @@ export const usePersistChatRoomStore = create<PersistChatRoomStore>()(
     (set, get) => ({
       chatRoomData: chatRoomData as unknown as ChatRoom[],
       chatRoomRef: 5,
+
       updateChatRoom: (newRoom) => {
         const updatedRooms = get().chatRoomData.map((room) =>
           room.chatRoomId === newRoom.chatRoomId ? newRoom : room
         )
         set({ chatRoomData: updatedRooms })
       },
+
+      createChatRoom: (newRoom) =>
+        set({
+          chatRoomData: [...get().chatRoomData, newRoom],
+          chatRoomRef: get().chatRoomRef + 1,
+        }),
+
       getRoomById: (roomId) =>
         get().chatRoomData.find((room) => room.chatRoomId === roomId),
-      createChatRoom: (roomId, members, roomName) => {
-        set((state) => {
-          if (!state.chatRoomData) return state
-
-          const newRoom = {
-            chatRoomId: roomId,
-            roomName: roomName || null,
-            member: [...members],
-            chats: {},
-          }
-
-          state.chatRoomRef += 1
-
-          return {
-            chatRoomData: [...state.chatRoomData, newRoom],
-          }
-        })
-      },
     }),
+
     {
-      name: LOCAL_KEY_USER,
+      name: LOCAL_KEY_CHAT,
     }
   )
 )

@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { User } from '@/interface/User'
 import { defaultUser } from '@/assets/data/defaultUser'
+import { syncToPersistUser } from '@/utils/syncToPersistUser'
 
 interface UserState {
   user: User
@@ -26,11 +27,14 @@ export const useUserStore = create<UserState>((set) => ({
         }
       })
 
+      const updatedUser = {
+        ...state.user,
+        joinedRooms: updatedJoinedRooms,
+      }
+
+      syncToPersistUser(updatedUser)
       return {
-        user: {
-          ...state.user,
-          joinedRooms: updatedJoinedRooms,
-        },
+        user: updatedUser,
       }
     })
   },
@@ -42,11 +46,14 @@ export const useUserStore = create<UserState>((set) => ({
         (room) => room.chatRoomId !== roomId
       )
 
+      const updatedUser = {
+        ...state.user,
+        joinedRooms: updatedJoinedRooms,
+      }
+
+      syncToPersistUser(updatedUser)
       return {
-        user: {
-          ...state.user,
-          joinedRooms: updatedJoinedRooms,
-        },
+        user: updatedUser,
       }
     })
   },
@@ -59,11 +66,14 @@ export const useUserStore = create<UserState>((set) => ({
         { chatRoomId: roomId, lastSeenTime: Date.now() },
       ]
 
+      const updatedUser = {
+        ...state.user,
+        joinedRooms: updatedJoinedRooms,
+      }
+
+      syncToPersistUser(updatedUser)
       return {
-        user: {
-          ...state.user,
-          joinedRooms: updatedJoinedRooms,
-        },
+        user: updatedUser,
       }
     })
   },

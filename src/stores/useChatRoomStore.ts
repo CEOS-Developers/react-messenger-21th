@@ -2,6 +2,9 @@ import { create } from 'zustand'
 import { ChatRoom } from '@/interface/ChatRoom'
 import { Chat } from '@/interface/Chat'
 import { formatDateForData } from '@/utils/format'
+import { syncToPersistChatRoom } from '@/utils/syncToPersistChatRoom'
+import { usePersistChatRoomStore } from './usePersistChatRoomStore'
+import { joinRoom } from '@/utils/joinRoom'
 
 interface ChatRoomState {
   chatRoom: ChatRoom[] | null
@@ -11,11 +14,13 @@ interface ChatRoomState {
   addMember: (roomId: number, memberId: number[]) => void
 
   removeUserChatRoom: (roomId: number) => void
+  createChatRoom: (roomId: number, members: number[], roomName?: string) => void
 }
 
 export const useChatRoomStore = create<ChatRoomState>((set) => ({
   chatRoom: null,
   setChatRoom: (chatRooms) => set({ chatRoom: chatRooms }),
+
   addChat: (roomId, newChat) => {
     set((state) => {
       if (!state.chatRoom) return state
@@ -33,17 +38,19 @@ export const useChatRoomStore = create<ChatRoomState>((set) => ({
           [formattedDate]: [...prevChats, newChat],
         }
 
-        return {
+        const updatedRoom = {
           ...room,
           chats: updatedChats,
         }
+        syncToPersistChatRoom(updatedRoom)
+        return updatedRoom
       })
-
       return {
         chatRoom: updatedChatRooms,
       }
     })
   },
+
   addMember: (roomId, memberId) => {
     set((state) => {
       if (!state.chatRoom) return state
@@ -52,11 +59,14 @@ export const useChatRoomStore = create<ChatRoomState>((set) => ({
         if (room.chatRoomId !== roomId) return room
 
         const newMemberIds = Array.from(new Set([...room.member, ...memberId]))
-
-        return {
+        const updatedRoom = {
           ...room,
           member: newMemberIds,
         }
+
+        joinRoom(roomId, memberId)
+        syncToPersistChatRoom(updatedRoom)
+        return updatedRoom
       })
 
       return {
@@ -64,6 +74,7 @@ export const useChatRoomStore = create<ChatRoomState>((set) => ({
       }
     })
   },
+
   removeUserChatRoom: (roomId) => {
     set((state) => {
       if (!state.chatRoom) return state
@@ -74,6 +85,26 @@ export const useChatRoomStore = create<ChatRoomState>((set) => ({
 
       return {
         chatRoom: updatedChatRooms,
+      }
+    })
+  },
+
+  createChatRoom: (roomId, members, roomName) => {
+    set((state) => {
+      if (!state.chatRoom) return state
+
+      const newRoom = {
+        chatRoomId: roomId,
+        roomName: roomName || null,
+        member: [...members],
+        chats: {},
+      }
+
+      joinRoom(roomId, members)
+      usePersistChatRoomStore.getState().createChatRoom(newRoom)
+
+      return {
+        chatRoom: [...state.chatRoom, newRoom],
       }
     })
   },
