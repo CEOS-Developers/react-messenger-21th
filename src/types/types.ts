@@ -7,10 +7,11 @@ export type Profile = {
 };
 
 export type ChatMessages = {
+  type: 'text' | 'image' | 'file';
   messageId: number;
   senderId: number;
-  text: string;
-  timestamp: string;
+  content: string | File;
+  timestamp?: string;
 };
 
 export type Chats = {

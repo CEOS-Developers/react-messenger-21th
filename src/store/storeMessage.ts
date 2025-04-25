@@ -1,13 +1,15 @@
 import { ChatMessages, ChatRoom } from '@/types/types';
 
 const storeMessage = ({
+  type,
   chatroomId,
   senderId,
-  text,
+  content,
 }: {
+  type: 'text' | 'image' | 'file';
   chatroomId: string | undefined;
   senderId: number;
-  text: string;
+  content: string | File;
 }) => {
   const newTimestamp = new Date(); // 현재 시간
   const koreaTimestamp = new Date(newTimestamp.getTime() + 9 * 60 * 60 * 1000); // 9시간 더하기
@@ -32,9 +34,10 @@ const storeMessage = ({
           : 0;
 
       const newMessage: ChatMessages = {
+        type: type,
         messageId: newMessageId,
         senderId,
-        text,
+        content,
         timestamp: newTimestamp.toISOString(),
       };
 

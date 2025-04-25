@@ -29,13 +29,16 @@ const ChatList: React.FC<ChatListProps> = ({ group, chatRoomData }) => {
   const getLastChatMessageText = (chatRoom: ChatRoom) => {
     const lastChat = chatRoom.chats?.at(-1);
     const lastMessage = lastChat?.chatMessages?.at(-1);
-    return lastMessage ? lastMessage.text : '';
+    if (lastMessage?.type === 'image') {
+      return '사진을 보냈습니다.';
+    }
+    return lastMessage ? lastMessage.content : '';
   };
 
   const getLastChatMessageTime = (chatRoom: ChatRoom) => {
     const lastChat = chatRoom.chats?.at(-1);
     const lastMessage = lastChat?.chatMessages.at(-1);
-    return lastMessage ? utcToKst12(lastMessage.timestamp) : '';
+    return lastMessage?.timestamp ? utcToKst12(lastMessage.timestamp) : '';
   };
 
   return (
