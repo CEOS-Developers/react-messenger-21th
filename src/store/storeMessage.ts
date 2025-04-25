@@ -5,7 +5,7 @@ const storeMessage = ({
   senderId,
   text,
 }: {
-  chatroomId: number;
+  chatroomId: string | undefined;
   senderId: number;
   text: string;
 }) => {
@@ -18,7 +18,9 @@ const storeMessage = ({
   const chatroomsData = storedData ? JSON.parse(storedData) : []; // JSON을 객체로 변환
 
   const updatedChatList = chatroomsData.map((room: ChatRoom) => {
-    if (room.chatroomId === chatroomId) {
+    if (
+      room.chatroomId === (chatroomId !== undefined ? parseInt(chatroomId) : -1)
+    ) {
       let updatedChats = [...room.chats];
       let lastChats = updatedChats[updatedChats.length - 1];
 

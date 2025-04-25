@@ -12,7 +12,7 @@ const ChatInput = ({
   user,
 }: {
   setChatroomData: Dispatch<SetStateAction<ChatroomList>>;
-  chatroomId: number;
+  chatroomId: string | undefined;
   user: number;
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);

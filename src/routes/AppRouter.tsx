@@ -9,8 +9,7 @@ import { PATH } from '@/constants/path';
 import GlobalLayout from '@/components/layout/GlobalLayout';
 import MainLayout from '@/components/layout/MainLayout';
 import { Loading } from '@/components/loading/Loading';
-import { Chatting, Home } from '@/pages';
-import MyProfile from '@/pages/home/MyProfile';
+import { ChatRoom, ChattingList, Home, MyProfile } from '@/pages';
 
 const router = createBrowserRouter([
   {
@@ -51,7 +50,11 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Chatting />,
+            element: <ChattingList />,
+          },
+          {
+            path: PATH.CHATTING.room,
+            element: <ChatRoom />,
           },
         ],
       },

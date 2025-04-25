@@ -3,44 +3,38 @@ import TeamChat from '@/assets/images/profile/TeamChat.svg?react';
 import Profile from '@/assets/images/profile/ProfileBig.svg?react';
 import cn from '@/utils/cn';
 import { useState } from 'react';
-import { Dispatch, SetStateAction } from 'react';
 import { ChatRoom, ChatroomList } from '@/types/types';
 import { utcToKst12 } from '@/utils/formatDate';
 import USERS from '@/constants/users.json';
 import ChattingAlert from '@/components/chatting/ChattingAlert';
+import { useNavigate } from 'react-router-dom';
 
 interface ChatListProps {
   group: string;
   chatRoomData: ChatroomList;
-  setChatroomId: Dispatch<SetStateAction<number | null>>;
 }
 
-const ChatList: React.FC<ChatListProps> = ({
-  group,
-  chatRoomData,
-  setChatroomId,
-}) => {
+const ChatList: React.FC<ChatListProps> = ({ group, chatRoomData }) => {
   const [isListOpen, setIsListOpen] = useState(true);
+  const navigate = useNavigate();
 
   const handleClickList = () => {
     setIsListOpen((prev: boolean) => !prev);
   };
 
   const handleChatRoomClick = (id: number) => {
-    setChatroomId(id);
+    navigate(id.toString());
   };
 
   const getLastChatMessageText = (chatRoom: ChatRoom) => {
-    const lastChat = chatRoom.chats?.[chatRoom.chats.length - 1];
-    const lastMessage =
-      lastChat?.chatMessages[lastChat.chatMessages.length - 1];
+    const lastChat = chatRoom.chats?.at(-1);
+    const lastMessage = lastChat?.chatMessages?.at(-1);
     return lastMessage ? lastMessage.text : '';
   };
 
   const getLastChatMessageTime = (chatRoom: ChatRoom) => {
-    const lastChat = chatRoom.chats?.[chatRoom.chats.length - 1];
-    const lastMessage =
-      lastChat?.chatMessages[lastChat.chatMessages.length - 1];
+    const lastChat = chatRoom.chats?.at(-1);
+    const lastMessage = lastChat?.chatMessages.at(-1);
     return lastMessage ? utcToKst12(lastMessage.timestamp) : '';
   };
 

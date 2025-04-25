@@ -6,6 +6,7 @@ export const PATH = {
   },
   CHATTING: {
     base: '/chatting',
+    room: ':chatroomId',
   },
   OPEN_CHATTING: {
     base: '/openchatting',
