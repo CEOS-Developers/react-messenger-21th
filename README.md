@@ -2,13 +2,31 @@
 
 # 서론
 
-안녕하세요. 21기 프론트엔드 **김영서**입니다😊.  
-메신저를 구현했습니다.
+안녕하세요. 21기 프론트엔드 **김영서**입니다😊.
+
+# 기능
+
+1. 친구 목록 보기
+
+   - 그룹 채팅 만들기
+
+2. 프로필 보기
+
+   - 일대일 채팅 시작하기
+   - (opt) sns 보기
+
+3. 채팅 목록 보기
+
+   - 채팅방 별로 미확인 메시지 개수 보기
+
+4. 채팅방 보기
+
+   - 햄버거 버튼 클릭 시 채팅방 멤버 보기
+   - 채팅방에 친구 초대
+   - 채팅방 나가기
 
 **디자이너와의 협업 미션**
-
-1. [Figma_Designer](https://www.figma.com/design/OEU69uJw5BbMHbVZefdUMO/CEOS_Week2_%EB%A9%94%EC%8B%A0%EC%A0%80_%EC%B5%9C%EC%98%88%EC%9D%80?node-id=35-6239&t=wYooyjsQc9JLResE-1)
-2. [Figma_Copy_Front작업](<https://www.figma.com/design/pSkGA22wqJVELKlyP4HMCL/CEOS_Week2_%EB%A9%94%EC%8B%A0%EC%A0%80_%EC%B5%9C%EC%98%88%EC%9D%80-(Copy)?node-id=35-6239&t=XA3uyZjY4tK0vJQo-1>)
+[Figma_Designer](https://www.figma.com/design/OEU69uJw5BbMHbVZefdUMO/CEOS_Week2_%EB%A9%94%EC%8B%A0%EC%A0%80_%EC%B5%9C%EC%98%88%EC%9D%80?node-id=35-6239&t=wYooyjsQc9JLResE-1)
 
 # 미션
 
@@ -33,18 +51,13 @@
 
 ## 필수 요구사항 검토
 
-- ⭕️ 피그마를 보고 [결과화면](https://react-messenger-20th-jw.vercel.app/)과 같이 구현합니다.
-- ⭕️ 디자인 시스템을 구축합니다.
-- ❌tailwindcss 혹은 ⭕️styledComponent 스타일 라이브러리를 사용합니다.
-- ⭕️채팅방 상단의 프로필을 클릭하면 사용자를 변경할 수 있습니다.
-- ⭕️메세지를 보내면 채팅방 하단으로 스크롤을 이동시킵니다.
-- ⭕️메세지에 유저 정보(프로필 사진, 이름)를 표시합니다.
-- ⭕️user와 message 데이터를 json 파일에 저장합니다.
-- ⭕️UI는 **반응형을 제외**하고 피그마파일을 따라서 진행합니다.
-
-### 추가 구현 기능
-
-- ❌더블 클릭 하면 감정표현을 추가합니다.
+- ⭕️ 피그마를 보고 결과화면과 같이 구현합니다.
+- ⭕️ 친구 목록 기능 구현
+- ⭕️ React Router를 사용하여 친구 목록, 채팅방 목록, 채팅방 등의 페이지를 각각 구성합니다.
+- ⭕️ 로컬스토리지에 채팅방 내용을 저장하여 새로고침 시에도 데이터가 유지되도록 합니다.
+- ⭕️ 메세지에 유저 정보(프로필 사진, 이름)를 표시합니다.
+- ⭕️ user와 message 데이터를 json 파일에 저장합니다.
+- ⭕️ UI는 **반응형을 제외**형을 제외하고 피그마파일을 따라서 진행합니다.
 
 ## 링크 및 참고자료
 
