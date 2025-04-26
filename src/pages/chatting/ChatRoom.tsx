@@ -1,36 +1,33 @@
-import ChatRoomComponent from '@/components/chatting/ChatRoom';
-import { useEffect, useState } from 'react';
+import ChatRoomComponent from '@/components/chatting/ChatRoomComponent';
+import { useEffect } from 'react';
 import ChatRoomData from '@/constants/chatrooms.json';
-import { ChatroomList } from '@/types/types';
 import { useNavigate, useParams } from 'react-router-dom';
+import useMessageStore from '@/store/useMessageStore';
+import { ChatroomList } from '@/types/types';
 
 const ChatRoom = () => {
   const { chatroomId } = useParams();
-  const [chatroomData, setChatroomData] = useState<ChatroomList | []>([]);
   const navigate = useNavigate();
+
+  const chatrooms = useMessageStore((state) => state.chatrooms);
+
+  const initializeChatrooms = useMessageStore(
+    (state) => state.initializeChatrooms
+  );
+
   useEffect(() => {
-    let storedData = localStorage.getItem('chatrooms');
-    if (!storedData) {
-      localStorage.setItem('chatrooms', JSON.stringify(ChatRoomData)); // 값이 없을 때만 초기 데이터 저장
-      storedData = localStorage.getItem('chatrooms');
+    if (chatrooms.length === 0) {
+      initializeChatrooms(ChatRoomData as ChatroomList); // 채팅방 비어 있으면 초기 데이터 세팅
     }
-    const chatroomsData = storedData ? JSON.parse(storedData) : []; // JSON을 객체로 변환
-    setChatroomData(chatroomsData);
-  }, []);
+  }, [chatrooms, initializeChatrooms]);
 
   useEffect(() => {
     if (chatroomId === undefined) {
       navigate('..');
     }
-  }, [chatroomId]);
+  }, [chatroomId, navigate]);
 
-  return (
-    <ChatRoomComponent
-      chatroomId={chatroomId}
-      chatroomData={chatroomData}
-      setChatroomData={setChatroomData}
-    />
-  );
+  return <ChatRoomComponent chatroomId={chatroomId} chatroomData={chatrooms} />;
 };
 
 export default ChatRoom;

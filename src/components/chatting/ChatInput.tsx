@@ -1,8 +1,7 @@
 import Plus from '@/assets/images/icon/Plus.svg?react';
 import Send from '@/assets/images/icon/Send.svg?react';
 import Smile from '@/assets/images/icon/Smile.svg?react';
-import storeMessage from '@/store/storeMessage';
-import { ChatroomList } from '@/types/types';
+import useMessageStore from '@/store/useMessageStore';
 import cn from '@/utils/cn';
 import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import MoreModal, { ErrorModal } from './MoreModal';
@@ -16,11 +15,9 @@ interface newMessageType {
 }
 
 const ChatInput = ({
-  setChatroomData,
   chatroomId,
   user,
 }: {
-  setChatroomData: Dispatch<SetStateAction<ChatroomList>>;
   chatroomId: string | undefined;
   user: number;
 }) => {
@@ -28,6 +25,7 @@ const ChatInput = ({
   const [isRounded, setIsRounded] = useState<boolean>(true);
   const [more, setMore] = useState<boolean>(false); // 더보기 버튼(사진, 파일 전송 등)
   const [showErrorModal, setShowErrorModal] = useState<string>('');
+  const { storeMessage } = useMessageStore();
 
   const handleResizeHeight = () => {
     if (textareaRef.current) {
@@ -62,10 +60,7 @@ const ChatInput = ({
         setShowErrorModal: setShowErrorModal,
       };
 
-      storeMessage(newMessage); // 로컬 스토리지에 저장
-      const storedData = localStorage.getItem('chatrooms'); // 로컬 스토리지에서 꺼냄
-      const chatroomsData = storedData ? JSON.parse(storedData) : []; // JSON을 객체로 변환
-      setChatroomData(chatroomsData);
+      storeMessage(newMessage);
 
       // 입력 완료 후 입력 필드 초기화 및 재조정
       setInputText('');
@@ -99,9 +94,6 @@ const ChatInput = ({
     );
 
     newMessages.forEach((message) => storeMessage(message));
-    const storedData = localStorage.getItem('chatrooms'); // 로컬 스토리지에서 꺼냄
-    const chatroomsData = storedData ? JSON.parse(storedData) : []; // JSON을 객체로 변환
-    setChatroomData(chatroomsData);
   };
 
   const handleSendFiles = async (files: File[]) => {
@@ -120,9 +112,6 @@ const ChatInput = ({
     );
 
     newMessages.forEach((message) => storeMessage(message));
-    const storedData = localStorage.getItem('chatrooms'); // 로컬 스토리지에서 꺼냄
-    const chatroomsData = storedData ? JSON.parse(storedData) : []; // JSON을 객체로 변환
-    setChatroomData(chatroomsData);
   };
 
   return (

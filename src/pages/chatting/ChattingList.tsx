@@ -1,21 +1,22 @@
 import ChatList from '@/components/chatting/ChatList';
 import ChatListHeader from '@/components/layout/header/ChatListHeader';
 import MainLayout from '@/components/layout/MainLayout';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import ChatRoomData from '@/constants/chatrooms.json';
 import { ChatroomList } from '@/types/types';
+import useMessageStore from '@/store/useMessageStore';
 
 const ChattingList = () => {
-  const [chatroomData, setChatroomData] = useState<ChatroomList | []>([]);
+  const chatrooms = useMessageStore((state) => state.chatrooms);
+  const initializeChatrooms = useMessageStore(
+    (state) => state.initializeChatrooms
+  );
+
   useEffect(() => {
-    let storedData = localStorage.getItem('chatrooms');
-    if (!storedData) {
-      localStorage.setItem('chatrooms', JSON.stringify(ChatRoomData)); // 값이 없을 때만 초기 데이터 저장
-      storedData = localStorage.getItem('chatrooms');
+    if (chatrooms.length === 0) {
+      initializeChatrooms(ChatRoomData as ChatroomList);
     }
-    const chatroomsData = storedData ? JSON.parse(storedData) : []; // JSON을 객체로 변환
-    setChatroomData(chatroomsData);
-  }, []);
+  }, [chatrooms, initializeChatrooms]);
 
   return (
     <MainLayout>
@@ -23,16 +24,14 @@ const ChattingList = () => {
       <ChatList
         group='비즈니스'
         chatRoomData={
-          chatroomData.filter(
-            (data) => data.type === 'business'
-          ) as ChatroomList
+          chatrooms.filter((data) => data.type === 'business') as ChatroomList
         }
       />
       <hr className='border-[#E8ECFB] mx-4 my-2' />
       <ChatList
         group='친구'
         chatRoomData={
-          chatroomData.filter((data) => data.type === 'friend') as ChatroomList
+          chatrooms.filter((data) => data.type === 'friend') as ChatroomList
         }
       />
     </MainLayout>

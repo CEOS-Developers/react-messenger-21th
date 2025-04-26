@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ChatHeader from '@/components/layout/header/ChatHeader';
 import ChatInput from '@/components/chatting/ChatInput';
 import RecievedMessage from '@/components/chatting/RecievedMessage';
@@ -10,13 +10,11 @@ import { useNavigate } from 'react-router-dom';
 interface ChatRoomProps {
   chatroomId: string | undefined;
   chatroomData: ChatroomList;
-  setChatroomData: Dispatch<SetStateAction<ChatroomList>>;
 }
 
 const ChatRoomComponent: React.FC<ChatRoomProps> = ({
   chatroomId,
   chatroomData,
-  setChatroomData,
 }) => {
   const messagesEndRef = useRef<HTMLSpanElement>(null);
   const [user, setUser] = useState<number>(0);
@@ -74,11 +72,7 @@ const ChatRoomComponent: React.FC<ChatRoomProps> = ({
       </section>
 
       {/* 채팅 입력창 */}
-      <ChatInput
-        setChatroomData={setChatroomData}
-        chatroomId={chatroomId}
-        user={user}
-      />
+      <ChatInput chatroomId={chatroomId} user={user} />
     </main>
   );
 };
