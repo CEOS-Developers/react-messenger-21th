@@ -11,8 +11,12 @@ import BackArrowIcon from '../assets/back_arrow.svg?react';
 import AddChatIcon from '../assets/add_chat_room.svg?react';
 import ProfileIcon from '../assets/profile.svg?react';
 
+import { useNavigate } from 'react-router-dom';
+
 const ChatList = () => {
   const user = users[0];
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     //로컬에 저장된 현재 유저 아이디 가져오기
@@ -52,7 +56,7 @@ const ChatList = () => {
           <div
             className={`absolute top-1/2 right-0 flex w-14 shrink-0 -translate-x-1 -translate-y-1/2 items-center justify-between`}
           >
-            <AddChatIcon />
+            <AddChatIcon onClick={() => navigate('/chat/add-chat')} />
             <ProfileIcon />
           </div>
         }
