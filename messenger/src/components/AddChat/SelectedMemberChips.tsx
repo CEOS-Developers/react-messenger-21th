@@ -19,23 +19,24 @@ const SelectedMemberChips: React.FC<SelectedMemberChipsProps> = ({
   onRemove,
 }) => {
   return (
-    <div className="flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1">
-      {user.profileImageUrl ? (
-        <img
-          src={user.profileImageUrl}
-          alt={user.name}
-          className="h-6 w-6 rounded-full"
+    <div className="flex flex-col items-center gap-0.5">
+      <div className="relative">
+        {user.profileImageUrl ? (
+          <img
+            src={user.profileImageUrl}
+            alt={user.name}
+            className="h-10 w-10 rounded-full"
+          />
+        ) : (
+          <ProfileIcon className="h-10 w-10 rounded-full" />
+        )}
+        <XIcon
+          className="absolute right-0 bottom-0 h-4 w-4"
+          onClick={onRemove}
         />
-      ) : (
-        <ProfileIcon className="h-6 w-6 rounded-full fill-gray-200" />
-      )}
-      <span className="text-sm text-black">{user.name}</span>
-      <button
-        onClick={onRemove}
-        className="text-gray-400 hover:text-gray-600"
-      >
-        <XIcon className="h-4 w-4" />
-      </button>
+      </div>
+
+      <span className="c2 text-black">{user.name}</span>
     </div>
   );
 };

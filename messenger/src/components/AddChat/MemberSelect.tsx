@@ -35,10 +35,8 @@ const MemberSelect: React.FC<MemberSelectProps> = ({
       {/* 선택된 멤버 표시 */}
       {selectedIds.length > 0 && (
         <div className="pt-4">
-          <span className="text-sm font-medium text-black">
-            {selectedIds.length}명 초대
-          </span>
-          <div className="mt-2 flex gap-2 overflow-x-auto">
+          <span className="c1 text-black">{selectedIds.length}명 초대</span>
+          <div className="mt-3 flex gap-3 overflow-x-auto">
             {selectedIds.map((id) => {
               const user = users.find((u) => u.userId === id)!;
               return (
