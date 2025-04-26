@@ -1,0 +1,161 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: Pretendard;
+  font-display: block;
+  src: url('../assets/font/PretendardVariable.woff2') format('woff2');
+}
+
+@theme {
+  /* Main color */
+  --color-blue-400: #5378f2;
+
+  /* Sub color */
+  --color-blue-300: #7291f7;
+  --color-blue-200: #99b0fb;
+  --color-blue-100: #c6d3fe;
+  --color-blue-0: #f8f9ff;
+
+  /* Neutral color */
+  --color-neutral-900: #13151a;
+  --color-neutral-800: #373b49;
+  --color-neutral-700: #5b6177;
+  --color-neutral-600: #7a839e;
+  --color-neutral-500: #969fbe;
+  --color-neutral-400: #adb7d6;
+  --color-neutral-300: #c3cbe7;
+  --color-neutral-200: #c2c9d5;
+  --color-neutral-100: #d6ddf3;
+  --color-neutral-0: #f7f9ff;
+
+  /* Fonts */
+  --font-pretendard: 'Pretendard', sans-serif;
+}
+
+@layer utilities {
+  .font-heading-1 {
+    font-family: var(--font-pretendard);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 135%; /* 32.4px */
+    letter-spacing: -0.48px;
+  }
+  .font-headline-1 {
+    font-family: var(--font-pretendard);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 135%; /* 29.7px */
+    letter-spacing: -0.44px;
+  }
+  .font-headline-2 {
+    font-family: var(--font-pretendard);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 135%; /* 27px */
+    letter-spacing: -0.4px;
+  }
+  .font-headline-3 {
+    font-family: var(--font-pretendard);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: -0.27px;
+  }
+  .font-body-1-sb {
+    font-family: var(--font-pretendard);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 145%; /* 23.2px */
+    letter-spacing: -0.32px;
+  }
+  .font-body-1-med {
+    font-family: var(--font-pretendard);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145%; /* 23.2px */
+    letter-spacing: -0.32px;
+  }
+  .font-body-2-sb {
+    font-family: var(--font-pretendard);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 145%; /* 20.3px */
+    letter-spacing: -0.14px;
+  }
+  .font-body-2-med {
+    font-family: var(--font-pretendard);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145%; /* 20.3px */
+    letter-spacing: -0.14px;
+  }
+  .font-cap-sb {
+    font-family: var(--font-pretendard);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 18px */
+  }
+
+  .font-cap-med {
+    font-family: var(--font-pretendard);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 18px */
+  }
+
+  .bg-myprofile {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-image: url(/profile/MyProfileBG.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .scrollbar-hide {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scrollbar-width: none;
+  }
+
+  body {
+    @apply flex justify-center bg-gray-100 box-border font-pretendard;
+    color: var(--color-neutral-900);
+  }
+
+  *:focus {
+    outline: none;
+  }
+
+  @keyframes flash {
+    0% {
+      background-color: var(--color-blue-300);
+      box-shadow:
+        32px 0 var(--color-blue-300),
+        -32px 0 #fff;
+    }
+    50% {
+      background-color: #fff;
+      box-shadow:
+        32px 0 var(--color-blue-300),
+        -32px 0 var(--color-blue-300);
+    }
+    100% {
+      background-color: var(--color-blue-300);
+      box-shadow:
+        32px 0 #fff,
+        -32px 0 var(--color-blue-300);
+    }
+  }
+}

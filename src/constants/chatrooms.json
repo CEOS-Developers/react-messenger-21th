@@ -1,0 +1,284 @@
+[
+  {
+    "chatroomId": 0,
+    "title": "CEOS 21기 공지방",
+    "userId": [1, 2, 3, 4, 9, 10, 11],
+    "type": "business",
+    "img": null,
+    "unread": 2,
+    "chats": [
+      {
+        "date": "2025-03-03",
+        "chatMessages": [
+          {
+            "type": "text",
+            "messageId": 0,
+            "senderId": 9,
+            "content": "안녕하세요, CEOS 21기 합격을 진심으로 축하 드립니다!\n이 곳은 CEOS 21기 공지방입니다.\n잡담은 자제 부탁 드립니다:)",
+            "timestamp": "2025-03-03T23:30:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 1,
+            "senderId": 9,
+            "content": "공식 활동을 시작하기에 앞서, 필수 수행 사항과 공지 사항을 안내 드립니다.",
+            "timestamp": "2025-03-03T23:30:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 2,
+            "senderId": 9,
+            "content": "[21기 공개용 노션]\nCEOS의 전반적인 정보를 확인할 수 있는 공개용 노션입니다.",
+            "timestamp": "2025-03-03T23:31:00Z"
+          }
+        ]
+      },
+      {
+        "date": "2025-03-26",
+        "chatMessages": [
+          {
+            "type": "text",
+            "messageId": 0,
+            "senderId": 9,
+            "content": "[네이버 지도]\n바른치킨 공덕파크자이점\n서울 마포구 백범로 152",
+            "timestamp": "2025-03-26T11:33:10Z"
+          }
+        ]
+      },
+      {
+        "date": "2025-03-27",
+        "chatMessages": [
+          {
+            "type": "text",
+            "messageId": 0,
+            "senderId": 9,
+            "content": "[파트별 PR 자료]\n어제 정기 세션 공지 때 안내 드린 파트별 PR 자료 작성 링크입니다.\n아래 링크로 들어 가서 작성해주시면 됩니다.\n타 파트에서는 개인의 역량을 해당 자료에서 확인 하므로, 본 항목을 성실히 작성해 주시기 바랍니다.\n\n대상: 21기 신입부원 전체\n기한: 3월 30일 일요일 23시 59분까지",
+            "timestamp": "2025-03-27T13:11:00Z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "chatroomId": 1,
+    "title": "CEOS 21기 잡담방",
+    "userId": [14, 1, 2, 3, 4, 10, 11],
+    "type": "friend",
+    "img": null,
+    "chats": [
+      {
+        "date": "2025-03-27",
+        "chatMessages": [
+          {
+            "type": "text",
+            "messageId": 0,
+            "senderId": 3,
+            "content": "영희와 철수 단톡 개설했습니다~!\n\ninvite 안되셨다면 저의 엄청난 mistake 이니 상처받지 마시고 katalk 주세요 🥺",
+            "timestamp": "2025-03-17T13:39:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 1,
+            "senderId": 0,
+            "content": "4월 5일 영희와 철수에서 시사회를 개최합니다! 좋은 기회로 사무실을 제공받아 시티뷰가 죽여주는 사무실에서 다같이 영화를 관람하실 수 있습니다~ 가입하지 않으셔도 함께 즐길 수 있으니 많은 참여 부탁드려요!",
+            "timestamp": "2025-03-17T13:40:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 2,
+            "senderId": 14,
+            "content": "헤어지자",
+            "timestamp": "2025-03-03T23:31:00Z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "chatroomId": 2,
+    "title": "카카오 인턴",
+    "userId": [6, 7, 8],
+    "type": "business",
+    "img": null,
+    "chats": [
+      {
+        "date": "2025-03-28",
+        "chatMessages": [
+          {
+            "type": "text",
+            "messageId": 0,
+            "senderId": 8,
+            "content": "카카오 정규직으로 전환되셨습니다!",
+            "timestamp": "2025-03-28T09:00:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 1,
+            "senderId": 8,
+            "content": "축하드려요!",
+            "timestamp": "2025-03-28T09:00:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 2,
+            "senderId": 0,
+            "content": "헉",
+            "timestamp": "2025-03-28T09:00:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 3,
+            "senderId": 0,
+            "content": "ㅇㄱㅈㅉㅇㅇ?",
+            "timestamp": "2025-03-28T09:01:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 4,
+            "senderId": 8,
+            "content": "네 그럼요",
+            "timestamp": "2025-03-28T09:02:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 5,
+            "senderId": 0,
+            "content": "정말 감사합니다!",
+            "timestamp": "2025-03-28T09:02:10Z"
+          }
+        ]
+      },
+      {
+        "date": "2025-03-29",
+        "chatMessages": [
+          {
+            "type": "text",
+            "messageId": 0,
+            "senderId": 6,
+            "content": "헐 대박",
+            "timestamp": "2025-03-28T15:00:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 1,
+            "senderId": 7,
+            "content": "ㅊㅋ",
+            "timestamp": "2025-03-29T00:00:00Z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "chatroomId": 3,
+    "title": "맛집 메이트 겸 다이어트 메이트",
+    "userId": [5],
+    "type": "friend",
+    "img": null,
+    "chats": [
+      {
+        "date": "2025-03-28",
+        "chatMessages": [
+          {
+            "type": "text",
+            "messageId": 0,
+            "senderId": 5,
+            "content": "오늘 여기ㄱㄱ?",
+            "timestamp": "2025-03-28T10:27:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 1,
+            "senderId": 0,
+            "content": "또 먹어?",
+            "timestamp": "2025-03-28T10:28:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 2,
+            "senderId": 5,
+            "content": "아니살뺄거라고이거만먹자고",
+            "timestamp": "2025-03-28T10:30:00Z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "chatroomId": 4,
+    "title": "서다원",
+    "userId": [3],
+    "type": "friend",
+    "img": null,
+    "chats": [
+      {
+        "date": "2025-03-29",
+        "chatMessages": [
+          {
+            "type": "text",
+            "messageId": 1,
+            "senderId": 0,
+            "content": "영희와 철수 마감됐나요?",
+            "timestamp": "2025-03-29T10:28:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 2,
+            "senderId": 3,
+            "content": "절찬리 모집 중",
+            "timestamp": "2025-03-29T10:30:00Z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "chatroomId": 5,
+    "title": "망그러진 곰과 햄터",
+    "userId": [12, 13],
+    "type": "friend",
+    "img": null,
+    "chats": [
+      {
+        "date": "2025-03-29",
+        "chatMessages": [
+          {
+            "type": "text",
+            "messageId": 1,
+            "senderId": 0,
+            "content": "우와 망곰이랑 햄터다",
+            "timestamp": "2025-03-29T01:36:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 2,
+            "senderId": 12,
+            "content": "내 이름은 망곰, 곰이죠",
+            "timestamp": "2025-03-29T02:40:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 3,
+            "senderId": 13,
+            "content": "헤헤",
+            "timestamp": "2025-03-29T02:40:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 4,
+            "senderId": 12,
+            "content": "이제 주말이야 힘내자",
+            "timestamp": "2025-03-29T02:40:00Z"
+          },
+          {
+            "type": "text",
+            "messageId": 5,
+            "senderId": 0,
+            "content": "파이팅",
+            "timestamp": "2025-03-29T03:15:00Z"
+          }
+        ]
+      }
+    ]
+  }
+]

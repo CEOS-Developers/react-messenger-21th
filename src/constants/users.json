@@ -1,0 +1,107 @@
+[
+  {
+    "id": 0,
+    "name": "최서연",
+    "birthday": "2002.02.07",
+    "img": "/profileimgs/seoyeon.png",
+    "type": "me"
+  },
+  {
+    "id": 1,
+    "name": "신수진",
+    "birthday": "2000.07.01",
+    "img": "/profileimgs/profilesample.png",
+    "type": "friend"
+  },
+  {
+    "id": 2,
+    "name": "손서우",
+    "birthday": "2004.09.01",
+    "img": null,
+    "type": "friend"
+  },
+  {
+    "id": 3,
+    "name": "서다원",
+    "birthday": "1999.05.18",
+    "img": "/profileimgs/profilesample2.png",
+    "type": "friend"
+  },
+  {
+    "id": 4,
+    "name": "원채영",
+    "birthday": "2003.01.01",
+    "img": null,
+    "type": "friend"
+  },
+  {
+    "id": 5,
+    "name": "맛집 메이트 겸 다이어트 메이트",
+    "birthday": "2002.03.28",
+    "img": null,
+    "type": "friend"
+  },
+  {
+    "id": 6,
+    "name": "과장님",
+    "birthday": "1997.03.28",
+    "img": null,
+    "type": "business"
+  },
+  {
+    "id": 7,
+    "name": "대리님",
+    "birthday": "1997.06.13",
+    "img": null,
+    "type": "business"
+  },
+  {
+    "id": 8,
+    "name": "부장님",
+    "birthday": "1980.03.29",
+    "img": null,
+    "type": "business"
+  },
+  {
+    "id": 9,
+    "name": "세오스 회장님",
+    "birthday": "2001.01.01",
+    "img": null,
+    "type": "friend"
+  },
+  {
+    "id": 10,
+    "name": "윤영준",
+    "birthday": "2000.01.01",
+    "img": null,
+    "type": "friend"
+  },
+  {
+    "id": 11,
+    "name": "한서정",
+    "birthday": "2002.01.01",
+    "img": null,
+    "type": "friend"
+  },
+  {
+    "id": 12,
+    "name": "망곰",
+    "birthday": "2021.04.07",
+    "img": "/profileimgs/manggom.png",
+    "type": "friend"
+  },
+  {
+    "id": 13,
+    "name": "햄터",
+    "birthday": "2021.04.16",
+    "img": "/profileimgs/hamter.png",
+    "type": "friend"
+  },
+  {
+    "id": 14,
+    "name": "철수",
+    "birthday": "2021.03.31",
+    "img": "/profileimgs/cheolsu.png",
+    "type": "friend"
+  }
+]
