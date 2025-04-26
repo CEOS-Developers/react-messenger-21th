@@ -1,5 +1,4 @@
 // src/components/AddChat/MemberSelect.tsx
-import { useState } from 'react';
 import { users, cafeMembers } from '../../assets/data';
 import MemberListItem from './MemberListItem';
 import SelectedMemberChips from './SelectedMemberChips';
@@ -16,8 +15,7 @@ const MemberSelect: React.FC<MemberSelectProps> = ({
   selectedIds,
   onToggleMember,
 }) => {
-  const [search, setSearch] = useState('');
-
+  const search = '';
   // 해당 카페의 멤버 ID 리스트
   const memberIds = cafeMembers[cafeId] || [];
 

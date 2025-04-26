@@ -8,7 +8,7 @@ interface CafeSelectProps {
 }
 
 const CafeSelect: React.FC<CafeSelectProps> = ({ onSelectCafe }) => {
-  const [search, setSearch] = useState('');
+  const search = '';
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
   const filtered = cafes.filter((c: Cafe) => c.name.includes(search.trim()));
