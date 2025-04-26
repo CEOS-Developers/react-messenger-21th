@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import ChatList from './pages/ChatList';
 import Chat from './pages/Chat';
+import AddChatPage from './pages/AddChatPage';
 import {
   NewsPage,
   HomePage,
@@ -23,6 +24,10 @@ function App() {
       <Route
         path="/chat/:roomId"
         element={<Chat />}
+      />
+      <Route
+        path="/chat/add-chat"
+        element={<AddChatPage />}
       />
       <Route
         path="/news"

@@ -251,3 +251,54 @@ export const chatMock2 = {
 };
 
 export const chatMockList = [chatMock, chatMock2]; // 여러 채팅방 데이터 배열로 묶기
+
+// src/assets/data.ts
+
+export interface Cafe {
+  id: number;
+  name: string;
+  description?: string;
+  iconUrl?: string; // 아이콘이 정해져 있지 않다면 기본 아이콘 사용
+}
+
+export const cafes: Cafe[] = [
+  {
+    id: 1,
+    name: '예술과 법',
+    description: '창의와 정의의 교차점',
+  },
+  {
+    id: 2,
+    name: '2025 흥익시디',
+    description: '흥익대 시각디자인과 25학번',
+  },
+  {
+    id: 3,
+    name: '사회문화적 디자인',
+    description: '사회와 함께하는 디자인 사고',
+  },
+  {
+    id: 4,
+    name: '2024 흥익시디',
+    description: '흥익대 시각디자인과 24학번',
+  },
+  {
+    id: 5,
+    name: '2023 흥익시디',
+    description: '흥익대 시각디자인과 23학번',
+  },
+];
+
+// src/assets/data.ts
+
+// 기존 users, cafes 등 import 문 아래에 추가하세요
+
+/**
+ * 카페별 회원 ID 매핑
+ * key: cafeId
+ * value: 해당 카페에 속한 userId 배열
+ */
+export const cafeMembers: Record<number, number[]> = {
+  1: [1, 2, 3], // '예술과 법' 카페의 멤버: 세오스(1), 이오스(2), 일오스(3)
+  2: [1, 3], // '2025 흥익시디' 카페의 멤버: 세오스(1), 일오스(3)
+};
