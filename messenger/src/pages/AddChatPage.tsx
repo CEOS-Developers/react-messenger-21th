@@ -1,5 +1,5 @@
 // src/pages/AddChatPage.tsx
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import AppBar from '../components/AppBar';
@@ -13,7 +13,7 @@ type Step = 'CAFE' | 'MEMBER';
 const AddChatPage = () => {
   const [step, setStep] = useState<Step>('CAFE');
   const [selectedCafeId, setSelectedCafeId] = useState<number | null>(null);
-  const [selectedMembers, setSelectedMembers] = useState<number | null>(null);
+  const [selectedMemberIds, setSelectedMemberIds] = useState<number[]>([]);
 
   const navigate = useNavigate();
 
@@ -52,18 +52,18 @@ const AddChatPage = () => {
       );
     }
 
-    // if (step === 'MEMBER') {
-    //   return selectedMembers && selectedMembers.length > 0 ? (
-    //     <button
-    //       className="b1 text-white"
-    //       onClick={handleCreateChatRoom}
-    //     >
-    //       확인
-    //     </button>
-    //   ) : (
-    //     <span className="b1 text-[#067A80]">확인</span>
-    //   );
-    // }
+    if (step === 'MEMBER') {
+      return selectedMemberIds && selectedMemberIds.length > 0 ? (
+        <button
+          className="b1 text-white"
+          onClick={handleCreateRoom}
+        >
+          확인
+        </button>
+      ) : (
+        <span className="b1 text-[#067A80]">확인</span>
+      );
+    }
 
     return null;
   };
@@ -88,9 +88,16 @@ const AddChatPage = () => {
         {step === 'CAFE' && <CafeSelect onSelectCafe={handleCafeSelect} />}
         {step === 'MEMBER' && selectedCafeId !== null && (
           <MemberSelect
-            cafeId={selectedCafeId}
-            onBack={() => setStep('CAFE')}
-            onCreateRoom={handleCreateRoom}
+            cafeId={selectedCafeId!}
+            selectedIds={selectedMemberIds}
+            onToggleMember={(id) =>
+              setSelectedMemberIds((prev) =>
+                prev.includes(id)
+                  ? prev.filter((x) => x !== id)
+                  : [...prev, id],
+              )
+            }
+            onCreateRoom={() => handleCreateRoom(selectedMemberIds)}
           />
         )}
       </main>

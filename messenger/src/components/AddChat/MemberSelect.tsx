@@ -3,20 +3,22 @@ import { useState } from 'react';
 import { users, cafeMembers } from '../../assets/data';
 import MemberListItem from './MemberListItem';
 import SelectedMemberChips from './SelectedMemberChips';
+import Search from '../Common/Search';
 
 interface MemberSelectProps {
   cafeId: number;
-  onBack: () => void;
-  onCreateRoom: (memberIds: number[]) => void;
+  selectedIds: number[]; // 부모가 관리하는 선택된 멤버 ID 배열
+  onToggleMember: (id: number) => void; // 토글용 콜백
+  onCreateRoom: () => void; // 확인 버튼 클릭 핸들러
 }
 
 const MemberSelect: React.FC<MemberSelectProps> = ({
   cafeId,
-  onBack,
+  selectedIds,
+  onToggleMember,
   onCreateRoom,
 }) => {
   const [search, setSearch] = useState('');
-  const [selectedIds, setSelectedIds] = useState<number[]>([]);
 
   // 해당 카페의 멤버 ID 리스트
   const memberIds = cafeMembers[cafeId] || [];
@@ -28,17 +30,11 @@ const MemberSelect: React.FC<MemberSelectProps> = ({
       u.name.toLowerCase().includes(search.trim().toLowerCase()),
   );
 
-  const toggle = (id: number) => {
-    setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
-    );
-  };
-
   return (
-    <div className="flex flex-col">
-      {/* 선택된 멤버 */}
+    <div className="flex flex-col px-5">
+      {/* 선택된 멤버 표시 */}
       {selectedIds.length > 0 && (
-        <div className="px-5 pt-4">
+        <div className="pt-4">
           <span className="text-sm font-medium text-black">
             {selectedIds.length}명 초대
           </span>
@@ -49,7 +45,7 @@ const MemberSelect: React.FC<MemberSelectProps> = ({
                 <SelectedMemberChips
                   key={id}
                   user={user}
-                  onRemove={() => toggle(id)}
+                  onRemove={() => onToggleMember(id)}
                 />
               );
             })}
@@ -58,46 +54,23 @@ const MemberSelect: React.FC<MemberSelectProps> = ({
       )}
 
       {/* 검색창 */}
-      <div className="px-5 pt-4">
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="멤버 검색"
-          className="w-full rounded-full border border-gray-200 bg-gray-100 px-4 py-2 text-sm placeholder-gray-300"
-        />
+      <div className="w-full pt-4">
+        <Search placeHolder="카페 검색" />
       </div>
 
       {/* 멤버 헤더 */}
-      <div className="mt-4 px-5 text-sm font-semibold text-black">멤버</div>
+      <div className="mt-5 text-sm font-semibold text-black">멤버</div>
 
       {/* 멤버 리스트 */}
-      <div className="mt-2 divide-y divide-gray-100">
+      <div className="mt-2">
         {filtered.map((u) => (
           <MemberListItem
             key={u.userId}
             user={u}
             selected={selectedIds.includes(u.userId)}
-            onClick={() => toggle(u.userId)}
+            onClick={() => onToggleMember(u.userId)}
           />
         ))}
-
-        {filtered.length === 0 && (
-          <p className="p-5 text-center text-gray-400">검색 결과가 없습니다</p>
-        )}
-      </div>
-
-      {/* 확인 버튼 (내부에도 배치 가능) */}
-      <div className="sticky bottom-0 bg-white px-5 py-4">
-        <button
-          onClick={() => onCreateRoom(selectedIds)}
-          disabled={selectedIds.length === 0}
-          className={`w-full rounded-full py-2 text-white ${
-            selectedIds.length > 0 ? 'bg-green-500' : 'bg-gray-300'
-          }`}
-        >
-          확인
-        </button>
       </div>
     </div>
   );

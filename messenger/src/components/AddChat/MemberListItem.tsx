@@ -1,6 +1,8 @@
 // src/components/AddChat/MemberListItem.tsx
 import React from 'react';
 import ProfileIcon from '../../assets/profile.svg?react';
+import CheckedSelectIcon from '../../assets/checked_select.svg?react';
+import SelectIcon from '../../assets/select.svg?react';
 
 interface User {
   userId: number;
@@ -22,27 +24,23 @@ const MemberListItem: React.FC<MemberListItemProps> = ({
   return (
     <button
       onClick={onClick}
-      className="flex w-full items-center justify-between px-5 py-3 hover:bg-gray-50"
+      className="flex w-full items-center justify-between self-stretch py-2"
     >
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         {user.profileImageUrl ? (
           <img
             src={user.profileImageUrl}
             alt={user.name}
-            className="h-8 w-8 rounded-full"
+            className="h-10 w-10 rounded-full"
           />
         ) : (
-          <ProfileIcon className="h-8 w-8 rounded-full fill-gray-200" />
+          <ProfileIcon className="h-10 w-10" />
         )}
-        <span className="text-base text-black">{user.name}</span>
+        <span className="text-center text-base leading-[normal] font-medium text-[color:var(--Black,#17171B)]">
+          {user.name}
+        </span>
       </div>
-      {selected ? (
-        <div className="flex h-5 w-5 items-center justify-center rounded-full bg-green-200">
-          <span className="text-xs font-bold text-white">✔︎</span>
-        </div>
-      ) : (
-        <div className="h-5 w-5 rounded-full border border-gray-200" />
-      )}
+      {selected ? <CheckedSelectIcon /> : <SelectIcon />}
     </button>
   );
 };
