@@ -1,6 +1,8 @@
 // src/components/AddChat/CafeListItem.tsx
 import React from 'react';
-
+import CafeProfile from '../../assets/cafe_profile.svg?react';
+import CheckedSelectIcon from '../../assets/checked_select.svg?react';
+import SelectIcon from '../../assets/select.svg?react';
 export interface Cafe {
   id: number;
   name: string;
@@ -22,23 +24,17 @@ const CafeListItem: React.FC<CafeListItemProps> = ({
   return (
     <button
       onClick={onClick}
-      className="flex w-full items-center justify-between px-5 py-3 hover:bg-gray-50"
+      className="flex w-full items-center justify-between self-stretch py-2"
     >
-      <div className="flex items-center gap-3">
-        {/* 아이콘이 따로 없으면 기본 회색 원 */}
-        <div className="h-8 w-8 rounded-full bg-gray-200" />
-
-        <span className="text-base text-black">{cafe.name}</span>
+      <div className="flex items-center gap-2">
+        <CafeProfile className="h-10 w-10" />
+        <span className="text-center text-base leading-[normal] font-medium text-[color:var(--Black,#17171B)]">
+          {cafe.name}
+        </span>
       </div>
 
       {/* 라디오 체크 표시 */}
-      {selected ? (
-        <div className="flex h-5 w-5 items-center justify-center rounded-full bg-green-200">
-          <span className="text-xs font-bold text-white">✔︎</span>
-        </div>
-      ) : (
-        <div className="h-5 w-5 rounded-full border border-gray-200" />
-      )}
+      {selected ? <CheckedSelectIcon /> : <SelectIcon />}
     </button>
   );
 };

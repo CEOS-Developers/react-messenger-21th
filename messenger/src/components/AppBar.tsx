@@ -47,7 +47,12 @@ const AppBar = ({
         </div>
 
         {/* 오른쪽 아이콘 */}
-        <div onClick={onRightClick}>{rightIcon}</div>
+        <div
+          className="absolute top-1/2 right-0 -translate-x-0 -translate-y-1/2"
+          onClick={onRightClick}
+        >
+          {rightIcon}
+        </div>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import NavBar from '../components/NavBar';
 import AppBar from '../components/AppBar';
-import Search from '../components/ChatList/Search';
+import Search from '../components/Common/Search';
 import SingleChatRoom from '../components/ChatList/SingleChatRoom';
 
 import { chatRoomData, users, chatMockList } from '../assets/data';
@@ -58,7 +58,7 @@ const ChatList = () => {
         }
       />
       <section className="mt-15 mb-21 flex flex-col items-center gap-1 self-stretch overflow-scroll">
-        <Search />
+        <Search placeHolder="채팅방, 대화내용 검색" />
         <article className="flex flex-col items-start self-stretch">
           {chatRoomData.map((data) => (
             <SingleChatRoom

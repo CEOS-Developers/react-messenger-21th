@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { cafes, Cafe } from '../../assets/data';
 import CafeListItem from './CafeListItem';
-
+import Search from '../Common/Search';
 interface CafeSelectProps {
   onSelectCafe: (cafeId: number) => void;
 }
@@ -14,26 +14,20 @@ const CafeSelect: React.FC<CafeSelectProps> = ({ onSelectCafe }) => {
   const filtered = cafes.filter((c: Cafe) => c.name.includes(search.trim()));
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col px-5">
       {/* 검색창 */}
-      <div className="px-5 pt-4">
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="카페 검색"
-          className="b2 w-full rounded-full border border-gray-200 bg-gray-100 px-4 py-2 placeholder-gray-300"
-        />
-        <p className="mt-2 text-xs text-gray-300">
+      <div className="w-full pt-4">
+        <Search placeHolder="카페 검색" />
+        <p className="c2 mt-2 text-gray-300">
           채팅방 개설 권한이 있는 카페만 보입니다.
         </p>
       </div>
 
       {/* 리스트 헤더 */}
-      <div className="mt-4 px-5 text-sm font-semibold text-black">카페</div>
+      <div className="s2 mt-5 font-semibold text-black">카페</div>
 
       {/* 카페 리스트 */}
-      <div className="mt-2 divide-y divide-gray-100">
+      <div className="mt-2">
         {filtered.map((c: Cafe) => (
           <CafeListItem
             key={c.id}

@@ -1,5 +1,5 @@
 // src/pages/AddChatPage.tsx
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import AppBar from '../components/AppBar';
@@ -15,7 +15,7 @@ const AddChatPage = () => {
 
   const handleCafeSelect = (cafeId: number) => {
     setSelectedCafeId(cafeId);
-    setStep('MEMBER');
+    // setStep('MEMBER');
   };
 
   const handleCreateRoom = (memberIds: number[]) => {
@@ -33,6 +33,9 @@ const AddChatPage = () => {
       },
     });
   };
+  useEffect(() => {
+    console.log(selectedCafeId);
+  }, [selectedCafeId]);
 
   return (
     <div className="flex h-screen w-full flex-col">
@@ -47,16 +50,18 @@ const AddChatPage = () => {
           }
         }}
         rightIcon={
-          step === 'MEMBER' ? (
+          step === 'CAFE' && selectedCafeId ? (
             <button
-              className="text-white opacity-80"
+              className="b1 text-white"
               onClick={() => {
-                /* MemberSelect 컴포넌트 내부 confirm 버튼 대신 여기서 실행해도 무방 */
+                setStep('MEMBER');
               }}
             >
               확인
             </button>
-          ) : null
+          ) : (
+            <span className="b1 text-[#067A80]">확인</span>
+          )
         }
       />
 
