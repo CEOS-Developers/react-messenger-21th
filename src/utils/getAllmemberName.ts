@@ -1,10 +1,9 @@
-import { userData } from '../assets/data/user.json'
+import { usePersistUserStore } from '@/stores/usePersistUserStore'
 
 export const getAllMemberName = (memberIds: number[]) => {
   return memberIds
-    .map(
-      (memberId: number) =>
-        userData.find((user) => user.id === memberId)?.name || ''
+    .map((memberId: number) =>
+      usePersistUserStore.getState().getUserById(memberId)
     )
     .join('')
 }

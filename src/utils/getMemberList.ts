@@ -1,4 +1,4 @@
-import { userData } from '../assets/data/user.json'
+import { usePersistUserStore } from '@/stores/usePersistUserStore'
 
 export interface MemberArrayType {
   id: number
@@ -8,7 +8,7 @@ export interface MemberArrayType {
 
 const getMemberArray = (memberIds: number[]) => {
   const partnerData = memberIds.reduce((acc: MemberArrayType[], id: number) => {
-    const user = userData.find((user) => user.id === id)
+    const user = usePersistUserStore.getState().getUserById(id)
     if (user) {
       acc.push({
         id: id,

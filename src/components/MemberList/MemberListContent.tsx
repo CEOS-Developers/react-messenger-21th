@@ -13,11 +13,14 @@ import { useUserStore } from '@/stores/useUserStore'
 import { useChatRoomStore } from '@/stores/useChatRoomStore'
 import { getMemberArray } from '@/utils/getMemberList'
 import getRoomName from '@/utils/getRoomName'
+import { usePersistChatRoomStore } from '@/stores/usePersistChatRoomStore'
+import { SYSTEM_ID } from '@/utils/constants'
 
 const MemberListContent = () => {
   const nav = useNavigate()
   const { user, leaveChatRoom } = useUserStore()
-  const { chatRoom, removeUserChatRoom } = useChatRoomStore()
+  const { chatRoom, removeUserChatRoom, addChat } = useChatRoomStore()
+  const { removeMember } = usePersistChatRoomStore()
   const roomId = Number(useParams().id)
   const room = chatRoom?.find((room) => room.chatRoomId === roomId)
   const memberIds = room?.member.filter(
@@ -32,19 +35,23 @@ const MemberListContent = () => {
       a.name.localeCompare(b.name, 'ko-KR')
     )
 
-  const colors = memberData
-    ?.slice(0, 4)
-    .map((member) => member.profileColor) || [
-    'gray04',
-    'gray04',
-    'gray04',
-    'gray04',
-  ]
+  const memberColors =
+    memberCount === 1
+      ? ['gray']
+      : memberData?.slice(0, 4).map((member) => member.profileColor)
 
   const onClickOutButton = () => {
     if (!window.confirm('정말 나가시겠습니까?')) return
+
+    const newChat = {
+      id: Date.now(),
+      sender: SYSTEM_ID,
+      content: `${user.name}님이 나가셨습니다.`,
+    }
+    addChat(roomId, newChat)
     leaveChatRoom(roomId)
     removeUserChatRoom(roomId)
+    removeMember(roomId, user.id)
     nav('/chatList', { replace: true })
   }
 
@@ -59,7 +66,9 @@ const MemberListContent = () => {
 
       <div className="scroll-container flex flex-col gap-8 p-5">
         <div className="flex-center list">
-          <MultipleProfileDefault colors={colors} />
+          {memberCount && memberCount <= 2
+            ? memberColors && <ProfileCircleDefault color={memberColors[0]} />
+            : memberColors && <MultipleProfileDefault colors={memberColors} />}
           <div className="flex items-center gap-1.5">
             <h1 className="font-Headline3 ellipsis max-w-[305px]">
               {room?.roomName || (memberIds && getRoomName(memberIds))}

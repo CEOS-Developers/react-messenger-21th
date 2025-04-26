@@ -10,6 +10,7 @@ interface PersistChatRoomStore {
 
   updateChatRoom: (newRoom: ChatRoom) => void
   createChatRoom: (newRoom: ChatRoom) => void
+  removeMember: (roomId: number, memberId: number) => void
 
   getRoomById: (roomId: number) => ChatRoom | undefined
 }
@@ -32,6 +33,18 @@ export const usePersistChatRoomStore = create<PersistChatRoomStore>()(
           chatRoomData: [...get().chatRoomData, newRoom],
           chatRoomRef: get().chatRoomRef + 1,
         }),
+
+      removeMember: (roomId, memberId) => {
+        const updatedRooms = get().chatRoomData.map((room) => {
+          if (room.chatRoomId !== roomId) return room
+          const updatedRoom = {
+            ...room,
+            member: room.member.filter((id) => id !== memberId),
+          }
+          return updatedRoom
+        })
+        set({ chatRoomData: updatedRooms })
+      },
 
       getRoomById: (roomId) =>
         get().chatRoomData.find((room) => room.chatRoomId === roomId),

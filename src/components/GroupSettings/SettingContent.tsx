@@ -43,8 +43,8 @@ const SettingContent = () => {
 
   /* store */
   const { user, enterChatRoom, updateLastSeenTime } = useUserStore()
-  const { addChat } = useChatRoomStore()
-  const { chatRoomRef, createChatRoom } = usePersistChatRoomStore()
+  const { addChat, createChatRoom } = useChatRoomStore()
+  const { chatRoomRef } = usePersistChatRoomStore()
   const friendNames = getRoomName(selectedIds)
   const member = [user.id, ...selectedIds]
 

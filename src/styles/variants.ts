@@ -12,4 +12,5 @@ export const PROFILE_BG_CLASS: { [key: string]: string } = {
   skyblue: 'bg-skyblue',
   orange: 'bg-orange',
   purple: 'bg-purple',
+  gray: 'bg-gray02',
 }

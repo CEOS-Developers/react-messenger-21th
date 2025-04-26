@@ -33,9 +33,14 @@ const RoomItem = ({
 
   const determinedRoomName = roomName ?? getRoomName(memberIds)
 
-  const memberColors = memberIds
-    .slice(0, 4)
-    .map((memberId: number) => getUserById(memberId)?.profileColor || 'gray02')
+  const memberColors =
+    memberIds.length === 0
+      ? ['gray']
+      : memberIds
+          .slice(0, 4)
+          .map(
+            (memberId: number) => getUserById(memberId)?.profileColor || 'gray'
+          )
 
   const lastChatTime = getLastChatTime(lastChat.id)
   const unreadCount = getUnreadCount(chats, lastSeenTime)
@@ -55,7 +60,7 @@ const RoomItem = ({
   return (
     <div className="h-[72px] cursor-pointer" onClick={chatRoomClickHandler}>
       <div className="flex gap-3">
-        {memberCount === 2 ? (
+        {memberCount <= 2 ? (
           <ProfileCircleDefault color={memberColors[0]} />
         ) : (
           <MultipleProfile colors={memberColors} />

@@ -1,4 +1,4 @@
-import { Chat } from '../interface/Chat'
+import { Chat } from '@/interface/Chat'
 
 const getUnreadCount = (
   chats: Record<string, Chat[]>,

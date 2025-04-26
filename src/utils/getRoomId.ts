@@ -1,4 +1,4 @@
-import { useChatRoomStore } from '../stores/useChatRoomStore'
+import { useChatRoomStore } from '@/stores/useChatRoomStore'
 
 const getRoomId = (memberId: number) => {
   const { chatRoom } = useChatRoomStore.getState()
