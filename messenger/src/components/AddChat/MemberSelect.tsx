@@ -9,14 +9,12 @@ interface MemberSelectProps {
   cafeId: number;
   selectedIds: number[]; // 부모가 관리하는 선택된 멤버 ID 배열
   onToggleMember: (id: number) => void; // 토글용 콜백
-  onCreateRoom: () => void; // 확인 버튼 클릭 핸들러
 }
 
 const MemberSelect: React.FC<MemberSelectProps> = ({
   cafeId,
   selectedIds,
   onToggleMember,
-  onCreateRoom,
 }) => {
   const [search, setSearch] = useState('');
 

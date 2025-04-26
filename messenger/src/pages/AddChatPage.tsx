@@ -23,17 +23,27 @@ const AddChatPage = () => {
   };
 
   const handleCreateRoom = (memberIds: number[]) => {
-    // TODO: 방 생성 로직 (localStorage 저장 등) 추가
-    // 현재 사용자 자동 포함
-    // 방 이름 자동 생성 (예: 멤버 이름 조합)
-    // 생성 후 채팅 페이지로 이동
+    // 현재 사용자
+    const currentUserId =
+      /* 로컬에 저장된 current-user 불러오기 or state.user.userId */
+      JSON.parse(localStorage.getItem('current-user') || 'null')?.userId;
+    // 방 이름
     const roomId = Date.now(); // 임시 ID
+
+    if (selectedCafeId == null || selectedMemberIds.length === 0) return;
+
+    // 2) 로컬스토리지에 빈 메시지 배열로 초기화
+    localStorage.setItem(
+      `chat-room-${roomId}`,
+      JSON.stringify([]), // 빈 배열
+    );
+
+    // 생성 후 채팅 페이지로 이동
+
     navigate(`/chat/${roomId}`, {
       state: {
         roomId,
-        participant: [
-          /* currentUserId, ...memberIds */
-        ],
+        participant: [currentUserId, ...memberIds],
       },
     });
   };
@@ -56,7 +66,7 @@ const AddChatPage = () => {
       return selectedMemberIds && selectedMemberIds.length > 0 ? (
         <button
           className="b1 text-white"
-          onClick={handleCreateRoom}
+          onClick={() => handleCreateRoom(selectedMemberIds)}
         >
           확인
         </button>
@@ -97,7 +107,6 @@ const AddChatPage = () => {
                   : [...prev, id],
               )
             }
-            onCreateRoom={() => handleCreateRoom(selectedMemberIds)}
           />
         )}
       </main>
