@@ -25,29 +25,11 @@
    - 채팅방에 친구 초대
    - 채팅방 나가기
 
-**디자이너와의 협업 미션**
-[Figma_Designer](https://www.figma.com/design/OEU69uJw5BbMHbVZefdUMO/CEOS_Week2_%EB%A9%94%EC%8B%A0%EC%A0%80_%EC%B5%9C%EC%98%88%EC%9D%80?node-id=35-6239&t=wYooyjsQc9JLResE-1)
+# 링크
 
-# 미션
-
-## 미션 목표
-
-- TypeScript를 사용해봅시다.
-
-  ```
-  npm create vite@latest .
-  > TypeScript
-
-  npm install
-  npm i styled-components
-  npm i @types/styled-system
-  npm i react-router
-  npm i vite-plugin-svgr
-  ```
-
-- useState로 컴포넌트의 상태를 관리합니다.
-- useEffect와 useRef의 사용법을 이해합니다.
-- ❌tailwindcss의 사용법에 익숙해집니다. -> STyledComponent 사용
+**배포** [결과물](https://react-messenger-21th-five.vercel.app/)  
+**피그마**
+[Figma](https://www.figma.com/design/OEU69uJw5BbMHbVZefdUMO/CEOS_Week2_%EB%A9%94%EC%8B%A0%EC%A0%80_%EC%B5%9C%EC%98%88%EC%9D%80?node-id=35-6239&t=wYooyjsQc9JLResE-1)
 
 ## 필수 요구사항 검토
 
