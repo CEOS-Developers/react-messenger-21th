@@ -58,7 +58,9 @@ const ChatList = () => {
         }
       />
       <section className="mt-15 mb-21 flex flex-col items-center gap-1 self-stretch overflow-scroll">
-        <Search placeHolder="채팅방, 대화내용 검색" />
+        <div className="w-full px-5">
+          <Search placeHolder="채팅방, 대화내용 검색" />
+        </div>
         <article className="flex flex-col items-start self-stretch">
           {chatRoomData.map((data) => (
             <SingleChatRoom
