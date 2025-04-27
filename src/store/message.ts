@@ -1,5 +1,4 @@
 import { atom } from "jotai";
-import cat from "/image/cat.svg";
 export type ChatRooms = {
   [key: string]: ChatRoomInfo;
 };
@@ -56,7 +55,6 @@ export const friendLists: UserListItem[] = [
 export const usersAtom = atom<Users>([
   { id: 1, name: "이주희", status: "대화 가능" },
   { id: 2, name: "김상곤", status: "대화 가능" },
-  { id: 3, name: "배성일", status: "대화 가능", profileImg: cat },
 ]);
 export const userAtom = atom<UserListItem>({
   user: { id: 1, name: "이주희", status: "대화 가능" },
@@ -100,17 +98,7 @@ const messages = {
     },
   ],
 };
-const messages2 = {
-  "2025/3/20": [
-    {
-      id: 1,
-      user: { id: 1, name: "이주희", status: "online" },
-      otherUser: { id: 2, name: "배성일", status: "online" },
-      text: "ㅎㅇㅎㅇ",
-      time: "오후 12:30",
-    },
-  ],
-};
+
 export const chatMessagesAtom = atom<ChatMessages>(messages);
 export const chatRoomTypeAtom = atom<"personal" | "group">("personal");
 export const chatRoomAtom = atom<ChatRoomInfo>();
@@ -122,13 +110,5 @@ export const chatRoomsAtom = atom<ChatRooms>({
     ],
     type: "personal",
     messages: messages,
-  },
-  "2": {
-    users: [
-      { id: 1, name: "이주희", status: "online" },
-      { id: 2, name: "배성일", status: "online", profileImg: cat },
-    ],
-    type: "personal",
-    messages: messages2,
   },
 });

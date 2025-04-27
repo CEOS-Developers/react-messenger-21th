@@ -49,11 +49,14 @@ const ChatRoomPage = () => {
   const addMessage = () => {
     setMessages((prev) => {
       const date = today;
-      if (!prev[date]) {
-        prev[date] = [];
+      const updatedMessages = { ...prev };
+
+      if (!updatedMessages[date]) {
+        updatedMessages[date] = [];
       }
+
       const newMessage = {
-        id: prev[date].length + 1,
+        id: updatedMessages[date].length + 1,
         user: user,
         otherUser: user == users[0] ? users[1] : users[0],
         text: input,
@@ -63,13 +66,24 @@ const ChatRoomPage = () => {
           hour12: true,
         }),
       };
-      prev[date].push(newMessage);
-      return { ...prev };
+
+      updatedMessages[date].push(newMessage);
+
+      // localStorage에 저장 추가
+      localStorage.setItem("chatMessages", JSON.stringify(updatedMessages));
+
+      return updatedMessages;
     });
+
     setInput("");
     setIsMessage(false);
-    console.log(messages);
   };
+  useEffect(() => {
+    const storedMessages = localStorage.getItem("chatMessages");
+    if (storedMessages) {
+      setMessages(JSON.parse(storedMessages));
+    }
+  }, []);
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.isComposing) return;
     if (e.key === "Enter") {
