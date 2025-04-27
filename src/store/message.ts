@@ -25,15 +25,44 @@ export type User = {
   status: string;
 };
 export type Users = User[];
+export type UserListItem = {
+  user: User;
+  phoneNumber: string;
+  birth: string;
+  email: string;
+  introduce?: string;
+};
+export const friendLists: UserListItem[] = [
+  {
+    user: { id: 1, name: "박재영", status: "대화 가능" },
+    phoneNumber: "010-1234-5678",
+    birth: "2003-08-07",
+    email: "apple@apple.com",
+    introduce: "안녕하세요",
+  },
+  {
+    user: { id: 2, name: "김상곤", status: "대화 불가능" },
+    phoneNumber: "010-1234-5678",
+    birth: "1970-01-02",
+    email: "sangona@kakao.com",
+  },
+  {
+    user: { id: 3, name: "배성일", status: "대화 가능" },
+    phoneNumber: "010-1234-5678",
+    birth: "1990-01-02",
+    email: "pae@google.com",
+  },
+];
 export const usersAtom = atom<Users>([
-  { id: 1, name: "이주희", status: "online" },
-  { id: 2, name: "김상곤", status: "online" },
-  { id: 3, name: "배성일", status: "online", profileImg: cat },
+  { id: 1, name: "이주희", status: "대화 가능" },
+  { id: 2, name: "김상곤", status: "대화 가능" },
+  { id: 3, name: "배성일", status: "대화 가능", profileImg: cat },
 ]);
-export const userAtom = atom<User>({
-  id: 1,
-  name: "이주희",
-  status: "online",
+export const userAtom = atom<UserListItem>({
+  user: { id: 1, name: "이주희", status: "대화 가능" },
+  phoneNumber: "010-1234-5678",
+  birth: "2003-08-07",
+  email: "juhee@hongik.ac.kr",
 });
 const messages = {
   "2025/3/20": [
@@ -58,7 +87,7 @@ const messages = {
       user: { id: 1, name: "이주희", status: "online" },
       otherUser: { id: 2, name: "김상곤", status: "online" },
       text: "과제 좀 그만내라",
-      time: "오후 12:36분",
+      time: "오후 12:36",
     },
   ],
   "2025/3/22": [

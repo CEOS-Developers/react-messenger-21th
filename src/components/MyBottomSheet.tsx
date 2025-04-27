@@ -9,11 +9,14 @@ import birth from "/image/birth.svg";
 import arrowDown from "/image/arrowDown.svg";
 import { useState } from "react";
 import MyModal from "./MyModal";
+import { UserListItem } from "../store/message";
 
 interface MyBottomSheetsProps {
   isClose: () => void;
+  type: string;
+  userItem?: UserListItem;
 }
-const MyBottomSheets = ({ isClose }: MyBottomSheetsProps) => {
+const MyBottomSheets = ({ isClose, type, userItem }: MyBottomSheetsProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
@@ -22,46 +25,66 @@ const MyBottomSheets = ({ isClose }: MyBottomSheetsProps) => {
         <BottomSheet onClick={(e) => e.stopPropagation()}>
           <CloseButton onClick={isClose} />
           <Contents>
-            <MyImg>
-              <Camera src={camera} />
-            </MyImg>
-            <MyName>김민수</MyName>
+            <MyImg>{type === "me" && <Camera src={camera} />}</MyImg>
+            <MyName>{userItem?.user.name}</MyName>
             <MyStatus>
-              <StatusIcon />
-              <StatusText>대화가능</StatusText>
-              <Arrow
-                src={arrowDown}
-                onClick={() => setIsModalOpen(!isModalOpen)}
-              />
+              <StatusIcon status={userItem?.user.status} />
+              <StatusText>{userItem?.user.status}</StatusText>
+              {type === "me" && (
+                <Arrow
+                  src={arrowDown}
+                  onClick={() => setIsModalOpen(!isModalOpen)}
+                />
+              )}
             </MyStatus>
-            <TextInput placeholder="대화명을 입력해보세요" />
+            {type === "me" && (
+              <TextInput placeholder={"대화명을 입력해보세요"} />
+            )}
+            {type === "friend" && (
+              <Text introduce={userItem?.introduce}>{userItem?.introduce}</Text>
+            )}
           </Contents>
           <MyMenu>
-            <MenuItem>
-              <img src={mychat} />
-              내게쓰기
-            </MenuItem>
-            <MenuItem>
-              <img src={files} />
-              파일함
-            </MenuItem>
-            <MenuItem>
-              <img src={setting} />
-              상세설정
-            </MenuItem>
+            {type === "me" ? (
+              <>
+                <MenuItem>
+                  <img src={mychat} />
+                  내게쓰기
+                </MenuItem>
+                <MenuItem>
+                  <img src={files} />
+                  파일함
+                </MenuItem>
+                <MenuItem>
+                  <img src={setting} />
+                  상세설정
+                </MenuItem>
+              </>
+            ) : (
+              <>
+                <MenuItem>
+                  <img src={mychat} />
+                  메시지
+                </MenuItem>
+                <MenuItem>
+                  <img src={files} />
+                  전화
+                </MenuItem>
+              </>
+            )}
           </MyMenu>
           <Info>
             <InfoItem>
               <img src={email} />
-              A123456@nate.com
+              {userItem?.email}
             </InfoItem>
             <InfoItem>
               <img src={call} />
-              010-1234-5678
+              {userItem?.phoneNumber}
             </InfoItem>
             <InfoItem>
               <img src={birth} />
-              1992.12.25
+              {userItem?.birth}
             </InfoItem>
           </Info>
         </BottomSheet>
@@ -103,6 +126,9 @@ const MenuItem = styled.div`
 `;
 const MyMenu = styled.div`
   display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background: #f7f7fb;
 `;
 const TextInput = styled.input`
   margin-top: 11px;
@@ -110,9 +136,19 @@ const TextInput = styled.input`
   width: 110px;
   font-size: 12px;
   border: none;
+  text-align: center;
   &::placeholder {
     color: #cbcccd;
   }
+`;
+const Text = styled.div<{ introduce?: string }>`
+  display: ${(props) => (props.introduce ? "block" : "none")};
+  margin-top: 11px;
+  height: 18px;
+  width: 110px;
+  font-size: 12px;
+  text-align: center;
+  color: #676773;
 `;
 const StatusText = styled.div`
   font-size: 14px;
@@ -121,10 +157,11 @@ const StatusText = styled.div`
   margin-right: 2px;
   font-weight: 400;
 `;
-const StatusIcon = styled.div`
+const StatusIcon = styled.div<{ status?: string }>`
   width: 8px;
   height: 8px;
-  background: green;
+  background: ${(props) =>
+    props.status === "대화 가능" ? "#00CD9E" : "#C4CDDD"};
   border-radius: 50%;
 `;
 const MyStatus = styled.div`

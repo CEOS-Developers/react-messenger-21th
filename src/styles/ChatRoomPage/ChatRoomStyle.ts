@@ -109,7 +109,9 @@ const FrontItem = styled.div`
   align-items: center;
   gap: 4px;
 `;
-const Arrow = styled.img``;
+const Arrow = styled.img`
+  padding-top: 3px;
+`;
 const ProfileImg = styled.div<{ src?: string }>`
   width: 28px;
   height: 28px;
