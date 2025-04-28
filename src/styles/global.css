@@ -1,0 +1,71 @@
+@import url('./font.css');
+@import 'tailwindcss';
+
+@theme {
+	--color-main-400: #177bff;
+	--color-main-300: #98c4ff;
+	--color-main-200: #e8f2ff;
+	--color-main-100: #f8fbff;
+
+	--color-black-900: #090d13; /* black */
+	--color-black-700: #373d45;
+	--color-black-600: #4f5760;
+	--color-black-500: #6f7780;
+	--color-black-400: #98a0a9;
+	--color-black-300: #b9bfc6;
+	--color-black-200: #d3d8de;
+	--color-black-100: #f0f3f6;
+	--color-black-50: #f8fbff;
+	--color-black-000: #ffffff; /* white */
+
+	--color-profile-blue-200: #98c4ff; /* 프로필 진한 색 */
+	--color-profile-blue-100: #e8f2ff; /* 프로필 연한 색 */
+
+	--color-profile-yellow-200: #ffe28b;
+	--color-profile-yellow-100: #fff9e8;
+
+	--color-profile-purple-200: #ad9bff;
+	--color-profile-purple-100: #f6f4ff;
+
+	--color-profile-pink-200: #ff98f6;
+	--color-profile-pink-100: #fff0fe;
+
+	--color-profile-orange-200: #ffb898;
+	--color-profile-orange-100: #fff2ec;
+}
+
+#root {
+	margin: auto;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	color: var(--color-black-900);
+}
+
+button {
+	cursor: pointer;
+
+	&:disabled {
+		pointer-events: none;
+	}
+}
+
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.message-input::placeholder {
+	color: var(--color-black-400);
+	font-family: 'Pretandard', sans-serif;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 150%;
+}

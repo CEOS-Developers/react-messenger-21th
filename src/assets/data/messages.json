@@ -1,0 +1,85 @@
+[
+	{
+		"chatRoomId": 1,
+		"joinedUsers": [
+			{
+				"id": 1,
+				"name": "임이솔",
+				"color": "blue",
+				"isActive": false,
+				"lastActiveAt": "2025-03-31T17:19:00"
+			},
+			{
+				"id": 2,
+				"name": "김진현",
+				"color": "purple",
+				"isActive": false,
+				"lastActiveAt": "2025-04-10T23:11:00"
+			},
+			{
+				"id": 3,
+				"name": "하은지",
+				"color": "blue",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T17:19:00"
+			},
+			{
+				"id": 4,
+				"name": "송아영",
+				"color": "yellow",
+				"isActive": true,
+				"lastActiveAt": "2025-04-11T15:19:00"
+			}
+		],
+		"messages": [
+			{
+				"id": "1",
+				"content": "그럼 오늘 어디에서 만날래?",
+				"createdAt": "2025-03-25T17:19:00",
+				"fromUser": {
+					"id": 1,
+					"name": "임이솔",
+					"color": "blue",
+					"isActive": false,
+					"lastActiveAt": "2025-03-31T17:19:00"
+				}
+			},
+			{
+				"id": "2",
+				"content": "러닝하기엔 어디가 괜찮아? 추천좀 해줭\n난 한강공원밖에 몰라..",
+				"createdAt": "2025-03-25T17:19:40",
+				"fromUser": {
+					"id": 1,
+					"name": "임이솔",
+					"color": "blue",
+					"isActive": false,
+					"lastActiveAt": "2025-03-31T17:19:00"
+				}
+			},
+			{
+				"id": "3",
+				"content": "난 지난번에 같이 갔던 곳 좋은거같아~",
+				"createdAt": "2025-03-25T17:19:55",
+				"fromUser": {
+					"id": 2,
+					"name": "김진현",
+					"color": "purple",
+					"isActive": false,
+					"lastActiveAt": "2025-04-10T23:11:00"
+				}
+			},
+			{
+				"id": "4",
+				"content": "난 오늘 무릎이 아파,,",
+				"createdAt": "2025-03-25T17:20:00",
+				"fromUser": {
+					"id": 3,
+					"name": "하은지",
+					"color": "blue",
+					"isActive": true,
+					"lastActiveAt": "2025-04-11T17:19:00"
+				}
+			}
+		]
+	}
+]

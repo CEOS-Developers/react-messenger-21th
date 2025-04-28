@@ -1,0 +1,138 @@
+[
+	{
+		"id": 1,
+		"name": "임이솔",
+		"email": "@",
+		"color": "blue",
+		"isActive": false,
+		"lastActiveAt": "2025-03-31T17:19:00"
+	},
+	{
+		"id": 2,
+		"name": "김진현",
+		"email": "@",
+		"color": "purple",
+		"isActive": false,
+		"lastActiveAt": "2025-04-10T23:11:00"
+	},
+	{
+		"id": 3,
+		"name": "하은지",
+		"email": "gio9370@gmail.com",
+		"color": "blue",
+		"isActive": true,
+		"lastActiveAt": "2025-04-21T17:19:00"
+	},
+	{
+		"id": 4,
+		"name": "송아영",
+		"email": "@",
+		"color": "yellow",
+		"isActive": true,
+		"lastActiveAt": "2025-04-21T15:19:00"
+	},
+	{
+		"id": 5,
+		"name": "김민지",
+		"email": "@",
+		"color": "orange",
+		"isActive": false,
+		"lastActiveAt": "2025-03-25T15:19:00"
+	},
+	{
+		"id": 6,
+		"name": "김다인",
+		"email": "@",
+		"color": "pink",
+		"isActive": true,
+		"lastActiveAt": "2025-04-21T17:46:00"
+	},
+	{
+		"id": 7,
+		"name": "김김김",
+		"email": "@",
+		"color": "purple",
+		"isActive": true,
+		"lastActiveAt": "2025-04-22T17:46:00"
+	},
+	{
+		"id": 8,
+		"name": "다다다",
+		"email": "@",
+		"color": "orange",
+		"isActive": false,
+		"lastActiveAt": "2025-04-22T17:46:00"
+	},
+	{
+		"id": 9,
+		"name": "인인인",
+		"email": "@",
+		"color": "blue",
+		"isActive": false,
+		"lastActiveAt": "2025-04-13T17:46:00"
+	},
+	{
+		"id": 10,
+		"name": "오오오",
+		"email": "@",
+		"color": "pink",
+		"isActive": false,
+		"lastActiveAt": "2025-04-21T17:46:00"
+	},
+	{
+		"id": 11,
+		"name": "후후후",
+		"email": "@",
+		"color": "blue",
+		"isActive": false,
+		"lastActiveAt": "2025-04-17T17:46:00"
+	},
+	{
+		"id": 12,
+		"name": "별별별",
+		"email": "@",
+		"color": "yellow",
+		"isActive": false,
+		"lastActiveAt": "2025-04-14T17:46:00"
+	},
+	{
+		"id": 13,
+		"name": "지지지",
+		"email": "@",
+		"color": "purple",
+		"isActive": false,
+		"lastActiveAt": "2025-04-16T17:46:00"
+	},
+	{
+		"id": 14,
+		"name": "임임임",
+		"email": "@",
+		"color": "yellow",
+		"isActive": true,
+		"lastActiveAt": "2025-04-21T17:46:00"
+	},
+	{
+		"id": 15,
+		"name": "이이이",
+		"email": "@",
+		"color": "orange",
+		"isActive": true,
+		"lastActiveAt": "2025-04-22T17:46:00"
+	},
+	{
+		"id": 16,
+		"name": "솔솔",
+		"email": "@",
+		"color": "blue",
+		"isActive": false,
+		"lastActiveAt": "2025-04-11T17:46:00"
+	},
+	{
+		"id": 17,
+		"name": "기기기",
+		"email": "@",
+		"color": "blue",
+		"isActive": false,
+		"lastActiveAt": "2025-04-11T17:46:00"
+	}
+]
