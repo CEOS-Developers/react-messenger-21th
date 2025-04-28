@@ -1,0 +1,91 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import 'tailwindcss';
+@plugin 'tailwind-scrollbar';
+
+@tailwind utilities;
+
+@theme {
+  /* Green 계열 */
+  --color-green-100: #92f6a9;
+  --color-green-200: #5ae587;
+  --color-green-300: #34cc72;
+  --color-green-400: #01ab59;
+
+  /* Gradient는 배경 이미지 유틸리티에서 직접 사용 */
+  --color-green-gradient:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%),
+    linear-gradient(90deg, #5ae587 0%, #16bbc5 100%);
+
+  /* 기타 색상 */
+  --color-blue: #067a80;
+  --color-red: #ff6d6d;
+
+  /* 그레이 계열 */
+  --color-black: #17171b;
+  --color-gray-900: #30363e;
+  --color-gray-800: #424b56;
+  --color-gray-700: #525e6c;
+  --color-gray-600: #708194;
+  --color-gray-500: #8694a3;
+  --color-gray-400: #9ca7b5;
+  --color-gray-300: #b8c1ca;
+  --color-gray-200: #d4d9df;
+  --color-gray-100: #eff0f1;
+  --color-white: #ffffff;
+
+  /*폰트*/
+  --font-display: 'Pretendard', 'sans-serif';
+}
+
+body {
+  @apply font-sans;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #f5f5f5;
+}
+
+/* 모바일 기기 크기 (iPhone 14 기준) */
+#root {
+  width: 390px;
+  height: 844px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  overflow: hidden;
+  position: relative;
+}
+
+@layer components {
+  .h1 {
+    @apply text-[60px] leading-[140%] font-bold tracking-[-0.01em];
+  }
+
+  .h2 {
+    @apply text-[20px] leading-[140%] font-semibold tracking-[-0.01em];
+  }
+
+  .s1 {
+    @apply text-[16px] leading-[140%] font-semibold tracking-[0em];
+  }
+
+  .s2 {
+    @apply text-[14px] leading-[140%] font-semibold tracking-[0.0025em];
+  }
+
+  .b1 {
+    @apply text-[16px] leading-[150%] font-normal tracking-[0em];
+  }
+
+  .b2 {
+    @apply text-[14px] leading-[150%] font-normal tracking-[0.0025em];
+  }
+
+  .c1 {
+    @apply text-[12px] leading-[140%] font-medium tracking-[0.005em];
+  }
+
+  .c2 {
+    @apply text-[12px] leading-[140%] font-normal tracking-[0.005em];
+  }
+}
