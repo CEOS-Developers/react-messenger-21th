@@ -12,6 +12,9 @@ function ChatList() {
   const { myId } = useMyId();
   const { userList } = useUserList();
 
+  // Must render after all data are loaded
+  if (!myId || !chatList) return null;
+
   const { pinnedChats, normalChats } = splitPinnedChats(chatList);
 
   const pinnedIndices = searchFromStorage(

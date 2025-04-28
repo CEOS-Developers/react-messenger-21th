@@ -11,7 +11,8 @@ function ChatRoom() {
   const { userList } = useUserList();
   const { myId } = useMyId();
 
-  if (!chatId) return null;
+  // Must render after all data are loaded
+  if (!chatId || !chatList[chatId]) return null;
 
   const chatRoom = chatList[chatId];
   const messages = chatRoom.messages;
