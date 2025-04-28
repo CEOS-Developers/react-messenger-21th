@@ -1,0 +1,123 @@
+{
+  "chatroom-01": {
+    "userIds": ["user-01", "user-me"],
+    "title": "Chat01",
+    "messages": [
+      { "id": "msg-01-01", "senderId": "user-me", "text": "안녕", "timestamp": 1742983945000 },
+      { "id": "msg-01-02", "senderId": "user-01", "text": "반가워!", "timestamp": 1742983950352 },
+      { "id": "msg-01-03", "senderId": "user-me", "text": "의미없는내용", "timestamp": 1744785805660 },
+      { "id": "msg-01-04", "senderId": "user-me", "text": "의미없는내용", "timestamp": 1744785805670 },
+      { "id": "msg-01-05", "senderId": "user-me", "text": "의미없는내용", "timestamp": 1744785805680 },
+      { "id": "msg-01-06", "senderId": "user-me", "text": "의미없는내용", "timestamp": 1744785805690 },
+      { "id": "msg-01-07", "senderId": "user-me", "text": "의미없는내용", "timestamp": 1744785805700 },
+      { "id": "msg-01-08", "senderId": "user-me", "text": "의미없는내용", "timestamp": 1744785805710 },
+      { "id": "msg-01-09", "senderId": "user-me", "text": "의미없는내용", "timestamp": 1744785805720 },
+      { "id": "msg-01-10", "senderId": "user-me", "text": "의미없는내용", "timestamp": 1744785805730 },
+      { "id": "msg-01-11", "senderId": "user-me", "text": "의미없는내용", "timestamp": 1744785805740 },
+      { "id": "msg-01-12", "senderId": "user-me", "text": "의미없는내용", "timestamp": 1744785805750 },
+      { "id": "msg-01-13", "senderId": "user-me", "text": "의미없는내용", "timestamp": 1744785805760 },
+      { "id": "msg-01-14", "senderId": "user-me", "text": "의미없는내용", "timestamp": 1744785805770 },
+      { "id": "msg-01-15", "senderId": "user-me", "text": "의미없는내용", "timestamp": 1744785805780 }
+    ],
+    "isPinned": false,
+    "lastReadMessageId": "msg-01-02"
+  },
+  "chatroom-02": {
+    "userIds": ["user-02", "user-03", "user-04", "user-05", "user-me"],
+    "title": "챗룸02",
+    "messages": [
+      { "id": "msg-02-01", "senderId": "user-03", "text": "너는 이름이 뭐니?", "timestamp": 1742984000000 },
+      { "id": "msg-02-02", "senderId": "user-03", "text": "ㅋㅋ", "timestamp": 1742984000000 },
+      {
+        "id": "msg-02-03",
+        "senderId": "user-05",
+        "text": "긴텍스트긴텍스트긴텍스트긴텍스트긴텍스트긴텍스트긴텍스트긴텍스트긴텍스트긴텍스트긴텍스트긴텍스트긴텍스트긴텍스트",
+        "timestamp": 1742984000000
+      },
+      {
+        "id": "msg-02-04",
+        "senderId": "user-02",
+        "text": "일이삼사오육칠팔구영일이삼사오육칠팔구영일이삼",
+        "timestamp": 1742984000000
+      }
+    ],
+    "isPinned": true,
+    "lastReadMessageId": "msg-02-03"
+  },
+  "chatroom-03": {
+    "userIds": ["user-04", "user-me"],
+    "title": "유저 04",
+    "messages": [
+      { "id": "msg-03-01", "senderId": "user-04", "text": "일이삼사오육칠팔구영일이삼사오", "timestamp": 1742897123456 }
+    ],
+    "isPinned": true,
+    "lastReadMessageId": "msg-03-01"
+  },
+  "chatroom-04": {
+    "userIds": ["user-06", "user-07", "user-me"],
+    "title": "longtitlelongtitle",
+    "messages": [{ "id": "msg-04-01", "senderId": "user-me", "text": "shortmsg", "timestamp": 1739999999999 }],
+    "isPinned": false,
+    "lastReadMessageId": "msg-04-01"
+  },
+  "chatroom-05": {
+    "userIds": ["user-02", "user-04", "user-06", "user-me"],
+    "title": "4 users",
+    "messages": [{ "id": "msg-05-01", "senderId": "user-me", "text": "hi", "timestamp": 1740000999999 }],
+    "isPinned": false,
+    "lastReadMessageId": "msg-05-01"
+  },
+  "chatroom-06": {
+    "userIds": ["user-08", "user-me"],
+    "title": "이름",
+    "messages": [
+      { "id": "msg-06-01", "senderId": "user-08", "text": "안녕하세요안녕하세요", "timestamp": 1740000000000 }
+    ],
+    "isPinned": false,
+    "lastReadMessageId": "msg-06-01"
+  },
+  "chatroom-07": {
+    "userIds": ["user-09", "user-me"],
+    "title": "이름",
+    "messages": [
+      { "id": "msg-07-01", "senderId": "user-09", "text": "안녕하세요안녕하세요", "timestamp": 1740000000000 }
+    ],
+    "isPinned": false,
+    "lastReadMessageId": "msg-07-01"
+  },
+  "chatroom-08": {
+    "userIds": ["user-10", "user-me"],
+    "title": "이름",
+    "messages": [
+      { "id": "msg-08-01", "senderId": "user-10", "text": "안녕하세요안녕하세요", "timestamp": 1740000000000 }
+    ],
+    "isPinned": false,
+    "lastReadMessageId": "msg-08-01"
+  },
+  "chatroom-09": {
+    "userIds": ["user-11", "user-me"],
+    "title": "이름",
+    "messages": [
+      { "id": "msg-09-01", "senderId": "user-11", "text": "안녕하세요안녕하세요", "timestamp": 1740000000000 }
+    ],
+    "isPinned": false,
+    "lastReadMessageId": "msg-09-01"
+  },
+  "chatroom-10": {
+    "userIds": ["user-12", "user-me"],
+    "title": "이름",
+    "messages": [
+      { "id": "msg-10-01", "senderId": "user-12", "text": "안녕하세요안녕하세요", "timestamp": 1740000000000 },
+      { "id": "msg-10-02", "senderId": "user-12", "text": "이건안읽은메시지", "timestamp": 1740000009999 }
+    ],
+    "isPinned": false,
+    "lastReadMessageId": "msg-10-01"
+  },
+  "chatroom-11": {
+    "userIds": ["user-13", "user-me"],
+    "title": "이름",
+    "messages": [{ "id": "msg-11-01", "senderId": "user-13", "text": "이건안읽은메시지", "timestamp": 1740000000000 }],
+    "isPinned": false,
+    "lastReadMessageId": null
+  }
+}
