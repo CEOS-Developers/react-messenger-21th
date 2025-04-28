@@ -89,8 +89,12 @@ export const Name = styled.div`
   ${({ theme }) => theme.typography.body2}
   color: ${({ theme }) => theme.colors.grey09};
   padding-right: 4px;
+  max-width: 50px;
   font-size: 16px;
   line-height: 24px; /* 150% */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const Birthday = styled.div`

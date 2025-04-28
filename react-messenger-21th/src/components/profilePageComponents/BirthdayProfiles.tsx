@@ -44,9 +44,9 @@ const BirthdayProfiles = ({ users }: Props) => {
         <s.SectionTitle>생일인 친구 {birthdayUsers.length}</s.SectionTitle>
         <s.ToggleButton onClick={() => setIsOpen((prev) => !prev)}>
           {isOpen ? (
-            <ToggleDown width="24px" height="24" />
+            <ToggleDown width="24px" height="24px" />
           ) : (
-            <ToggleUp width="24px" height="24" />
+            <ToggleUp width="24px" height="24px" />
           )}
         </s.ToggleButton>
       </s.HeaderRow>
